@@ -1,0 +1,36 @@
+Name T2CuTaAbsorberTransportSmoke
+Version 2.0
+
+SurroundingSphere 100.0 0.0 0.0 0.0 100.0
+Include /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/Materials_DEMO2_DR_v3p5.geo
+
+Volume WorldVolume
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0
+WorldVolume.Shape BRIK 100.0. 100.0. 100.0.
+WorldVolume.Mother 0
+
+Volume CuSphere
+CuSphere.Material Copper
+CuSphere.Visibility 1
+CuSphere.Color 4
+CuSphere.Shape SPHE 0.0 1.0 0.0 180.0 0.0 360.0
+CuSphere.Position 0.0 0.0 0.0
+CuSphere.Mother WorldVolume
+
+Volume TaAbsorber
+TaAbsorber.Material Ta
+TaAbsorber.Visibility 1
+TaAbsorber.Color 2
+TaAbsorber.Shape BRIK 2.0 2.0 0.05
+TaAbsorber.Position 0.0 0.0 3.0
+TaAbsorber.Mother WorldVolume
+
+MDStrip3D TaDetector
+TaDetector.DetectorVolume TaAbsorber
+TaDetector.SensitiveVolume TaAbsorber
+TaDetector.Offset 0.0 0.0
+TaDetector.StripNumber 1 1
+TaDetector.NoiseThreshold 0.0001
+TaDetector.TriggerThreshold 0.0001
+TaDetector.EnergyResolution Ideal

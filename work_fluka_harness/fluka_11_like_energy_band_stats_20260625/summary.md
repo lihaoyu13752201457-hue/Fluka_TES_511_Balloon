@@ -150,6 +150,7 @@ This is the check for the photon/electron concern. `deposit_carrier` is the loca
 5. The independent decay-kernel cross-check does not support the hypothesis that one code simply omits the important delayed photons. In fresh independent-source runs, Geant4/MEGAlib smoke and FLUKA production both emit `Na-24` 1369/2754-keV cascades and `Al-28` 1779-keV photons at approximately unit yield; Cu-64 beta-plus yield is also consistent (`0.1767` vs `0.176483`).
 6. The first Phase-2 common-source gate now also passes: FLUKA and MEGAlib both start the same `2048` explicit photon/positron primary rows with closed count, energy, direction, particle-code, and weight bookkeeping. This removes source-adapter resampling as the immediate explanation, but it does not yet test Cu/Ta transport or W2 deposition efficiency.
 7. The first T1 Cu-sphere transport smoke is complete. For 1 cm Cu sphere escape, the 511-related W2 photon yields are close at smoke statistics: Cu-64 positron rows FLUKA/MEGAlib `0.972`, mono-511 rows `0.943`, and pair-511 rows `0.897`; the largest of these approximate Poisson z-scores is `1.21 sigma`. T2/Ta deposition and common raw-deposit truth remain open.
+8. The first T2 Cu+Ta absorber smoke is also complete. It proves both engines can run the same common source through Cu plus a Ta absorber and produce Ta deposited-energy summaries. Low-statistics W2 Ta efficiencies are not yet decisive: Cu-64 positron rows give FLUKA/MEGAlib `2.25` with only `9` vs `4` W2 events (`1.39 sigma`), while mono-511 gives `1` vs `1` W2 event.
 
 ## Decay-Kernel Cross-Code Check
 
@@ -211,6 +212,25 @@ the 511-like Cu-sphere response. It also does not close the delayed discrepancy:
 MEGAlib deposit-level truth, annihilation/stopping observables, T2 Ta/TES
 deposition, and deterministic W2 response are still required.
 
+## Phase-2 T2 Cu+Ta Absorber Smoke
+
+The T2 smoke uses a 1 cm radius Cu sphere plus a single Ta slab
+(`4.0 x 4.0 x 0.1 cm`) at `z = 3.0 cm`. The slab is intentionally larger than
+a physical TES pixel to get nonzero smoke statistics from the `2048` common
+source rows.
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | W2 Ta deposit efficiency | `0.017578` | `0.0078125` | `2.25` | `1.39` |
+| `cu64_eplus_smoke` | 480-550 keV Ta deposit efficiency | `0.019531` | `0.0078125` | `2.5` | `1.60` |
+| `mono511_gamma` | W2 Ta deposit efficiency | `0.001953` | `0.001953` | `1.0` | `0.00` |
+| `pair511_gamma` | W2 Ta deposit efficiency | `0.005859` | `0.003906` | `1.5` | `0.45` |
+
+Interpretation: the machinery now reaches the actual Ta deposited-energy
+observable in both engines, but the smoke is too low-statistics to satisfy the
+Phase-2 W2-efficiency acceptance criteria. The next required step is production
+T2 with agreed Ta/TES dimensions and enough events for weighted uncertainties.
+
 ## Artifacts
 
 - source rows CSV: `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/source_stage_rows.csv`
@@ -220,3 +240,4 @@ deposition, and deterministic W2 response are still required.
 - decay-kernel cross-code comparison: `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv`
 - Phase-2 T0 common-source gate: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md`
 - Phase-2 T1 Cu-sphere smoke: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md`
+- Phase-2 T2 Cu+Ta absorber smoke: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/summary.md`

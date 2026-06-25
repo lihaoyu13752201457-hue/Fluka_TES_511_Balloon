@@ -518,6 +518,33 @@ This is still a smoke, not final Phase-2 closure. MEGAlib deposit-level truth,
 annihilation/stopping observables, T2 Ta/TES deposition, and deterministic W2
 response remain open.
 
+### 14.3 T2 Cu+Ta absorber smoke status, 2026-06-25
+
+The first T2 smoke is complete:
+
+```text
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/summary.md
+```
+
+It reuses the T0 `2048`-row common primary table in a smoke geometry:
+1 cm radius Cu sphere plus a single Ta slab (`4.0 x 4.0 x 0.1 cm`) at
+`z = 3.0 cm`. The Ta slab is intentionally larger than a physical TES pixel
+to get nonzero hit statistics. MEGAlib uses `EnergyResolution Ideal`; FLUKA
+records raw Ta deposited energy.
+
+Key Ta deposited-energy efficiencies:
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | W2 Ta deposit efficiency | `0.017578` | `0.0078125` | `2.25` | `1.39` |
+| `cu64_eplus_smoke` | 480-550 keV Ta deposit efficiency | `0.019531` | `0.0078125` | `2.5` | `1.60` |
+| `mono511_gamma` | W2 Ta deposit efficiency | `0.001953` | `0.001953` | `1.0` | `0.00` |
+| `pair511_gamma` | W2 Ta deposit efficiency | `0.005859` | `0.003906` | `1.5` | `0.45` |
+
+This is still a low-statistics smoke. It proves the shared T2 machinery runs
+and produces Ta deposit truth in both engines, but it does not yet satisfy the
+Phase-2 acceptance criteria for W2 efficiency.
+
 ## 15. Decision after Phase 2
 
 - Phase 1 passes, Phase 2 fails: focus on positron transport, annihilation, atomic de-excitation, and EM thresholds.
@@ -917,7 +944,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Compare first-pass branch/line yields for Cu-64, Na-24, Al-28, I-128
 [ ] Build Geant4/MEGAlib 1e6/isotope production decay-kernel outputs if low-yield-line precision is needed
 [x] Build one common external positron/511 source list and pass T0 source-bookkeeping smoke
-[ ] Run Cu/Ta toy transport in both codes (T1 Cu-sphere smoke complete; T2/Ta and common raw-deposit closure open)
+[ ] Run Cu/Ta toy transport in both codes (T1/T2 smoke complete; production statistics and acceptance closure open)
 [ ] Scan FLUKA effective EM cuts if needed
 [ ] Build cu64_common_positions.csv
 [ ] Audit source region/material in both geometries

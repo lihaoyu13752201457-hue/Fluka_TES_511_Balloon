@@ -1,0 +1,30 @@
+GLOBAL         20000         0         1         0         0         0
+TITLE
+TES511 common-primary T2 Cu-Ta absorber smoke
+DEFAULTS                                                              EM-CASCA
+BEAM       0.0028917                                                  PHOTON
+SOURCE
+GEOBEGIN                                                              COMBNAME
+  0 0                       Common-primary T2 Cu-Ta absorber
+RPP BIGBOX -1000000.0 +1000000.0 -1000000.0 +1000000.0 -1000000.0 +1000000.0
+RPP WORLD  -100.0 +100.0 -100.0 +100.0 -100.0 +100.0
+SPH CUSPH 0.0 0.0 0.0 1.000000
+RPP TASLAB -2.000000 +2.000000 -2.000000 +2.000000 2.950000 3.050000
+END
+BLKHOLE 5 +BIGBOX -WORLD
+TAREG    5 +TASLAB
+CU       5 +CUSPH
+OUTER    5 +WORLD -CUSPH -TASLAB
+END
+GEOEND
+ASSIGNMAT  BLCKHOLE  BLKHOLE
+ASSIGNMAT    VACUUM    OUTER
+ASSIGNMAT    COPPER       CU
+ASSIGNMAT  TANTALUM    TAREG
+EMFCUT      -1.0E-05   1.0E-05       0.0        CU
+EMFCUT      -1.0E-05   1.0E-05       0.0     TAREG
+EMFCUT      -1.0E-05   1.0E-05       0.0     OUTER
+USERDUMP       100.0      99.0       6.0       0.0       0.0       0.0RAWDUMP
+RANDOMIZE        1.0  666901.0
+START         2048.0
+STOP

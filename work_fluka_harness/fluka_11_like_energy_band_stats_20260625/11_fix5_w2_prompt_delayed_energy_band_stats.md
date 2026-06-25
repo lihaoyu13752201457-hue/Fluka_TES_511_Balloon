@@ -369,6 +369,29 @@ mismatch in a simple Cu sphere. It is not sufficient to close the delayed
 residual, because common deposit-level truth, annihilation/stopping
 observables, T2 Ta/TES deposition, and deterministic W2 response remain open.
 
+## Phase-2 T2 Cu+Ta Absorber Smoke
+
+The T2 smoke moves one step closer to the actual W2 observable: a 1 cm radius
+Cu sphere plus one Ta absorber slab (`4.0 x 4.0 x 0.1 cm`) at `z = 3.0 cm`.
+The Ta slab is deliberately larger than a physical TES pixel to get nonzero
+smoke statistics from the `2048` common source rows. MEGAlib uses
+`EnergyResolution Ideal`; FLUKA records raw Ta deposited energy.
+
+Key Ta deposited-energy efficiencies:
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | W2 Ta deposit efficiency | `0.017578` | `0.0078125` | `2.25` | `1.39` |
+| `cu64_eplus_smoke` | 480-550 keV Ta deposit efficiency | `0.019531` | `0.0078125` | `2.5` | `1.60` |
+| `mono511_gamma` | W2 Ta deposit efficiency | `0.001953` | `0.001953` | `1.0` | `0.00` |
+| `pair511_gamma` | W2 Ta deposit efficiency | `0.005859` | `0.003906` | `1.5` | `0.45` |
+
+Interpretation: both engines now produce the same type of Ta deposited-energy
+observable from the common source list. The low event counts mean this is not a
+Phase-2 acceptance pass. Production T2 still needs agreed Ta/TES dimensions,
+higher statistics, common ancestry/stopping observables, and deterministic
+analytic W2 response.
+
 Audit artifacts:
 
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md`
@@ -376,6 +399,7 @@ Audit artifacts:
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv`
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md`
+- `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/summary.md`
 
 ## Follow-Up Checks
 
@@ -392,6 +416,6 @@ composition questions:
    on rejecting single-site events.
 4. Keep reporting energy-band-specific activation fractions; do not quote the
    W2 `6.57%` delayed fraction as a global activation fraction.
-5. Promote the T1 smoke to production common raw-deposit truth, then run the
-   T2 Ta/TES deposition-efficiency gate before treating the full-chain
+5. Promote T1/T2 from smoke to production common raw-deposit truth with agreed
+   Ta/TES dimensions and enough statistics before treating the full-chain
    high-energy deficit as a decay-kernel or source-list effect.

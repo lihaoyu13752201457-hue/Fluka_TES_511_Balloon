@@ -160,6 +160,12 @@ contributor (`438` versus `227`), while `Cu_SubstrateSupport_SolidDisk_L0_deepes
 pulls in the opposite direction (`74` versus `164`). That points to distributed
 geometry/raw-coupling behavior, not a single source-class bookkeeping mistake.
 
+A static boundary-margin audit also argues against the simplest boundary-only
+explanation: source positions with margin `< 0.01 cm` contribute only `0.13` of
+the net W2 raw FLUKA-MEGAlib difference. A runtime point-location scorer and
+positron stopping/annihilation locator are still needed for the physical
+mechanism.
+
 ## Stream Classification Check
 
 The Step05 parser assigns `stream` by SIM file/mode, not by secondary particle

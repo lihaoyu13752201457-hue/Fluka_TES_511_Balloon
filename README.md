@@ -38,6 +38,11 @@ way (`74` versus `164`). The next discriminator is boundary/point-location,
 positron stopping/annihilation, and incident TES ancestry inside those source
 volumes.
 
+A static source-boundary margin audit weakens a pure near-boundary explanation:
+positions with margin `< 0.01 cm` contribute only `0.13` of the net W2 raw
+difference. Runtime point-location and stopping/annihilation location are still
+separate open tests.
+
 ## Key Artifacts
 
 - `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.md`

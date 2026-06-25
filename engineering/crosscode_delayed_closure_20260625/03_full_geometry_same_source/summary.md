@@ -14,6 +14,7 @@
 - raw_production_1e6: `PHASE3_CU64_COMMON_RAW_PRODUCTION_PASS`
 - parent_history_event_builder: `PHASE3_CU64_COMMON_PARENT_EVENT_BUILDER_PASS`
 - raw_coupling_decomposition: `PHASE3_CU64_RAW_COUPLING_DECOMPOSITION_PASS`
+- boundary_margin_audit: `PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_PASS`
 
 ## Production Tags
 
@@ -36,6 +37,7 @@
 - Production-statistics FLUKA/MEGAlib transport has now run for the shared `1,000,000`-parent Cu-64 stream. Full raw truth is retained locally under `/tmp/phase3prod`; committed outputs are bounded summaries only.
 - The common parent-history builder applies identical active-veto and analytic W2 response calculations to both codes. It does not yet perform 1 microsecond / 1 nanosecond sub-event splitting or side-Compton/FoV topology.
 - The raw-coupling decomposition shows the W2 difference is distributed across source volumes/materials and is not isolated to `CuNi` or a non-neutron production tag.
+- The static boundary-margin audit shows the net W2 raw excess is not dominated by source positions with margin `< 0.01 cm`.
 - `sampling_probability` is normalized over Cu-64 rows only and is suitable for deterministic Cu-64 parent resampling.
 
 ## FLUKA Raw-Deposit Smoke
@@ -165,3 +167,28 @@ production. Several source volumes pull in opposite directions, so the next
 discriminator is a more physical raw-coupling audit: runtime point location,
 boundary-near behavior, positron stopping/annihilation location, and incident
 TES ancestry.
+
+## Static Boundary-Margin Audit
+
+Artifact:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/summary.md
+```
+
+W2 raw by static source-boundary margin:
+
+| margin bin | FLUKA W2 | MEGAlib W2 | diff / parent | share of total diff |
+|---|---:|---:|---:|---:|
+| `< 1e-4 cm` | `5` | `2` | `+0.000003` | `0.0115` |
+| `1e-4-1e-3 cm` | `0` | `2` | `-0.000002` | `-0.0077` |
+| `1e-3-1e-2 cm` | `89` | `56` | `+0.000033` | `0.126` |
+| `1e-2-5e-2 cm` | `377` | `351` | `+0.000026` | `0.0996` |
+| `5e-2-1e-1 cm` | `370` | `316` | `+0.000054` | `0.207` |
+| `1e-1-5e-1 cm` | `422` | `278` | `+0.000144` | `0.552` |
+| `>= 5e-1 cm` | `6` | `3` | `+0.000003` | `0.0115` |
+
+Interpretation: static margins `< 0.01 cm` contribute only `0.13` of the net
+W2 raw difference. A pure static boundary-proximity explanation is therefore
+weak, but this does not replace runtime point-location, stopping/annihilation,
+or incident-ancestry audits.

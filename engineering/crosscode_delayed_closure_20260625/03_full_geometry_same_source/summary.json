@@ -1,6 +1,46 @@
 {
   "A": 64,
   "Z": 29,
+  "boundary_margin_audit": {
+    "boundary": "Static boundary-margin audit only; runtime point-location and stopping/annihilation location remain open.",
+    "histories_by_code": {
+      "fluka": 1000000,
+      "megalib": 1000000
+    },
+    "interpretation": "Static source-boundary margin <0.01 cm contributes only 0.13 of net W2 raw difference; pure boundary-proximity explanation is weak.",
+    "key_results": {
+      "largest_margin_bin": {
+        "difference_per_parent": 0.000144,
+        "difference_share_of_total": 0.5517241379310345,
+        "fluka_sum_w": 422.0,
+        "margin_bin": "1e-1_5e-1_cm",
+        "megalib_sum_w": 278.0
+      },
+      "lt_0p01cm_fraction_of_net_w2_raw_difference": 0.13026819923371646,
+      "near_boundary_bins": {
+        "1e-3_1e-2_cm": {
+          "fluka": 89.0,
+          "megalib": 56.0,
+          "share": 0.12643678160919541
+        },
+        "1e-4_1e-3_cm": {
+          "fluka": 0.0,
+          "megalib": 2.0,
+          "share": -0.007662835249042145
+        },
+        "lt_1e-4_cm": {
+          "fluka": 5.0,
+          "megalib": 2.0,
+          "share": 0.011494252873563218
+        }
+      }
+    },
+    "margin_bin_comparison_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/margin_bin_comparison.csv",
+    "nearest_w2_raw_events_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/nearest_w2_raw_events.csv",
+    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/summary.json",
+    "selected_margin_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/selected_margin_summary.csv",
+    "status": "PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_PASS"
+  },
   "fluka_common_raw_smoke": {
     "band_summary": [
       {
@@ -415,7 +455,7 @@
     "status": "SOURCE_REGION_MATERIAL_NAME_AUDIT_PASS"
   },
   "source_sha256": "fa70c28c188ee8dc363c5f579d5332fae474539f40a35afe2624253cdebc5076",
-  "status": "CU64_COMMON_POSITIONS_PHASE3_RAW_PRODUCTION_PARENT_EVENT_BUILDER_AND_DECOMPOSITION_COMPLETE",
+  "status": "CU64_COMMON_POSITIONS_PHASE3_RAW_PRODUCTION_PARENT_EVENT_BUILDER_DECOMPOSITION_AND_BOUNDARY_MARGIN_AUDIT_COMPLETE",
   "top_source_volumes": [
     {
       "activity_fraction": "0.39136667351115603542250747257208020931067939116759672020202725726887290858593176",

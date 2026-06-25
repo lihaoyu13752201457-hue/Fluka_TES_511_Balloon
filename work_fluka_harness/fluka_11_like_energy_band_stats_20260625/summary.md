@@ -82,6 +82,14 @@ step is therefore a physical raw-coupling audit of boundary/point-location,
 positron stopping/annihilation, and incident TES ancestry in the dominant
 volumes.
 
+The first static boundary-margin audit weakens a pure boundary-proximity
+explanation. W2 raw histories from source positions with static margin
+`< 0.01 cm` contribute only `0.13` of the net FLUKA-MEGAlib W2 raw difference.
+The largest margin-bin contribution is instead `0.1-0.5 cm` (`422` FLUKA
+versus `278` MEGAlib, `0.552` of the net difference). This does not replace a
+runtime point-location scorer, but it says the current discrepancy is not just
+"almost all selected sources are numerically on a boundary."
+
 ## Inputs
 
 - TES Step05 event catalog: `/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl`

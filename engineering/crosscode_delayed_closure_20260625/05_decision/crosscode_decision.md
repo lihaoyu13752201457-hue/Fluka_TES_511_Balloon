@@ -81,9 +81,11 @@ across multiple source volumes and materials, dominated by neutron-produced
 Copper parents but not isolated to a single source class.
 `ColdPlate_MXC_50mK_SD_anchor` is the largest positive W2 contributor (`438`
 FLUKA versus `227` MEGAlib), while `Cu_SubstrateSupport_SolidDisk_L0_deepest`
-pulls the other way (`74` versus `164`). The full Step05-equivalent
-1 microsecond / 1 nanosecond splitting and side-Compton/FoV topology remain
-open.
+pulls the other way (`74` versus `164`). The static boundary-margin audit then
+weakens a pure boundary-proximity explanation: source positions with static
+margin `< 0.01 cm` contribute only `0.13` of the net W2 raw difference. The
+full Step05-equivalent 1 microsecond / 1 nanosecond splitting and
+side-Compton/FoV topology remain open.
 
 ## Evidence
 
@@ -233,6 +235,14 @@ Phase-3 Cu-64 raw-coupling decomposition:
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/summary.md
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/dimension_comparison.csv
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/local_tes_carrier_summary.csv
+```
+
+Phase-3 Cu-64 static boundary-margin audit:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/margin_bin_comparison.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/selected_margin_summary.csv
 ```
 
 Runtime identity result:
@@ -435,6 +445,22 @@ is not isolated to `CuNi` or to non-neutron production. The next useful
 discriminator is a physical raw-coupling audit, not another response-window
 check.
 
+Phase-3 static boundary-margin audit:
+
+| margin bin | FLUKA W2 | MEGAlib W2 | diff / parent | share of total diff |
+|---|---:|---:|---:|---:|
+| `< 1e-4 cm` | `5` | `2` | `+0.000003` | `0.0115` |
+| `1e-4-1e-3 cm` | `0` | `2` | `-0.000002` | `-0.0077` |
+| `1e-3-1e-2 cm` | `89` | `56` | `+0.000033` | `0.126` |
+| `1e-2-5e-2 cm` | `377` | `351` | `+0.000026` | `0.0996` |
+| `5e-2-1e-1 cm` | `370` | `316` | `+0.000054` | `0.207` |
+| `1e-1-5e-1 cm` | `422` | `278` | `+0.000144` | `0.552` |
+| `>= 5e-1 cm` | `6` | `3` | `+0.000003` | `0.0115` |
+
+Interpretation: the static source-boundary margin distribution does not support
+a pure "almost on the boundary" explanation. Runtime point-location and
+stopping/annihilation location remain separate open tests.
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
@@ -457,16 +483,17 @@ raw-deposit gate shows a statistically significant W2 raw-coupling difference.
 The common parent-history event builder and analytic W2 response do not remove
 that difference. The first source-volume/material decomposition shows the
 difference is distributed and not isolated to `CuNi` or non-neutron production.
-What remains open is the physical raw-coupling mechanism inside the dominant
-source volumes, plus the complete Step05-equivalent 1 microsecond /
-1 nanosecond splitting and side-Compton/FoV topology if a final manuscript-level
-selection is required.
+The static boundary-margin audit shows the net excess is not dominated by
+source positions with static margin `< 0.01 cm`. What remains open is the
+physical raw-coupling mechanism inside the dominant source volumes, plus the
+complete Step05-equivalent 1 microsecond / 1 nanosecond splitting and
+side-Compton/FoV topology if a final manuscript-level selection is required.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
 2. Runtime point-location audit for the built Cu-64 common positions if required before interpreting boundary-near sources.
-3. Runtime point-location, boundary-near behavior, positron stopping/annihilation location, and incident TES ancestry inside the source volumes that dominate the raw-coupling difference.
+3. Runtime point-location, positron stopping/annihilation location, and incident TES ancestry inside the source volumes that dominate the raw-coupling difference.
 4. Complete common external event builder with 1 microsecond / 1 nanosecond splitting and side-Compton/FoV topology.
 5. FLUKA EM-cut/material scan only if the raw-coupling or ancestry gate points to an EM-transport threshold/material dependence.
 
@@ -486,7 +513,7 @@ delayed deficit:
 
 The next run should therefore stop treating detector response as the leading
 suspect and inspect the physical raw-coupling mechanisms inside the already
-identified source volumes: boundary-near point location, positron stopping and
+identified source volumes: runtime point location, positron stopping and
 annihilation location, and incident TES ancestry. The toy T2 W2 result no
 longer justifies an immediate FLUKA EM-cut scan for the 511-related
 deposited-energy gate, and the Phase-3 parent-history W2 response result no

@@ -13676,7 +13676,47 @@
     "summary_md": "work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.md"
   },
   "phase3_cu64_crosscode_gate": {
-    "interpretation": "The TES-vs-FLUKA W2 composition residual is not explained by the common analytic W2 response alone; the Phase-3 cross-code Cu-64 difference is already present in full-geometry raw deposits and is distributed across source volumes/materials.",
+    "boundary_margin_audit": {
+      "boundary": "Static boundary-margin audit only; runtime point-location and stopping/annihilation location remain open.",
+      "histories_by_code": {
+        "fluka": 1000000,
+        "megalib": 1000000
+      },
+      "interpretation": "Static source-boundary margin <0.01 cm contributes only 0.13 of net W2 raw difference; pure boundary-proximity explanation is weak.",
+      "key_results": {
+        "largest_margin_bin": {
+          "difference_per_parent": 0.000144,
+          "difference_share_of_total": 0.5517241379310345,
+          "fluka_sum_w": 422.0,
+          "margin_bin": "1e-1_5e-1_cm",
+          "megalib_sum_w": 278.0
+        },
+        "lt_0p01cm_fraction_of_net_w2_raw_difference": 0.13026819923371646,
+        "near_boundary_bins": {
+          "1e-3_1e-2_cm": {
+            "fluka": 89.0,
+            "megalib": 56.0,
+            "share": 0.12643678160919541
+          },
+          "1e-4_1e-3_cm": {
+            "fluka": 0.0,
+            "megalib": 2.0,
+            "share": -0.007662835249042145
+          },
+          "lt_1e-4_cm": {
+            "fluka": 5.0,
+            "megalib": 2.0,
+            "share": 0.011494252873563218
+          }
+        }
+      },
+      "margin_bin_comparison_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/margin_bin_comparison.csv",
+      "nearest_w2_raw_events_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/nearest_w2_raw_events.csv",
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/summary.json",
+      "selected_margin_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/selected_margin_summary.csv",
+      "status": "PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_PASS"
+    },
+    "interpretation": "The TES-vs-FLUKA W2 composition residual is not explained by common analytic W2 response; the Phase-3 cross-code Cu-64 difference is present in raw deposits, distributed across source volumes/materials, and not dominated by static source-boundary margins <0.01 cm.",
     "parent_history_event_builder": {
       "active_veto_threshold_keV": 50.0,
       "boundary": "Common parent-history event builder only; sub-event time splitting and side-Compton/FoV topology remain open.",

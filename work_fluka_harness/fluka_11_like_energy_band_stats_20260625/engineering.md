@@ -904,6 +904,44 @@ runtime point-location scorer, a positron stopping/annihilation locator, or the
 complete Step05-equivalent 1 microsecond / 1 nanosecond plus side-Compton/FoV
 event builder.
 
+### 17.7 Phase-3 static boundary-margin audit, 2026-06-25
+
+The first boundary-proximity discriminator is now complete:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/margin_bin_comparison.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/selected_margin_summary.csv
+```
+
+It joins the W2 raw selected histories back to the static coordinate-containment
+audit and bins them by `expected_min_boundary_margin_cm_approx`.
+
+W2 raw by static source-boundary margin:
+
+| margin bin | source histories | FLUKA W2 | MEGAlib W2 | diff / parent | share of total diff | conditional FLUKA/MEGAlib |
+|---|---:|---:|---:|---:|---:|---:|
+| `< 1e-4 cm` | `298` | `5` | `2` | `+0.000003` | `0.0115` | `2.50` |
+| `1e-4-1e-3 cm` | `3627` | `0` | `2` | `-0.000002` | `-0.0077` | `0` |
+| `1e-3-1e-2 cm` | `56235` | `89` | `56` | `+0.000033` | `0.126` | `1.589` |
+| `1e-2-5e-2 cm` | `218430` | `377` | `351` | `+0.000026` | `0.0996` | `1.074` |
+| `5e-2-1e-1 cm` | `225167` | `370` | `316` | `+0.000054` | `0.207` | `1.171` |
+| `1e-1-5e-1 cm` | `487576` | `422` | `278` | `+0.000144` | `0.552` | `1.518` |
+| `>= 5e-1 cm` | `8667` | `6` | `3` | `+0.000003` | `0.0115` | `2.00` |
+
+The W2 raw selected-event margin distributions are also not extreme:
+
+| code | events | min margin cm | p10 cm | median cm | p90 cm | events < 0.01 cm |
+|---|---:|---:|---:|---:|---:|---:|
+| FLUKA | `1269` | `2.97e-05` | `0.01377` | `0.07178` | `0.2463` | `94` |
+| MEGAlib | `1008` | `2.97e-05` | `0.01357` | `0.06295` | `0.2089` | `60` |
+
+Interpretation: the net W2 raw FLUKA excess is not dominated by very
+near-boundary source positions. Static margins `< 0.01 cm` contribute only
+about `13%` of the net W2 raw difference. This weakens a pure
+boundary-proximity explanation, although it does not replace a true runtime
+point-location scorer or positron stopping/annihilation locator.
+
 ## 18. Source-region audit
 
 For every unique source position, record in both codes:
@@ -1332,6 +1370,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Produce parent-history stage ratios and weighted uncertainties
 [x] Assign first failed phase: full-geometry raw-deposit/source-material coupling
 [x] Decompose Phase-3 raw coupling by source volume/material/production tag and local TES carrier
+[x] Audit W2 raw selected histories against static source-boundary margins
 [ ] Update manuscript delayed-background statement
 ```
 

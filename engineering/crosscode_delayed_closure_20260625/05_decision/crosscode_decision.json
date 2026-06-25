@@ -668,10 +668,47 @@
       },
       "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/summary.json",
       "status": "PHASE3_CU64_RAW_COUPLING_DECOMPOSITION_PASS"
+    },
+    {
+      "boundary": "Static boundary-margin audit only; runtime point-location and stopping/annihilation location remain open.",
+      "gate": "phase3_cu64_boundary_margin_audit_1e6",
+      "histories_by_code": {
+        "fluka": 1000000,
+        "megalib": 1000000
+      },
+      "key_results": {
+        "largest_margin_bin": {
+          "difference_per_parent": 0.000144,
+          "difference_share_of_total": 0.5517241379310345,
+          "fluka_sum_w": 422.0,
+          "margin_bin": "1e-1_5e-1_cm",
+          "megalib_sum_w": 278.0
+        },
+        "lt_0p01cm_fraction_of_net_w2_raw_difference": 0.13026819923371646,
+        "near_boundary_bins": {
+          "1e-3_1e-2_cm": {
+            "fluka": 89.0,
+            "megalib": 56.0,
+            "share": 0.12643678160919541
+          },
+          "1e-4_1e-3_cm": {
+            "fluka": 0.0,
+            "megalib": 2.0,
+            "share": -0.007662835249042145
+          },
+          "lt_1e-4_cm": {
+            "fluka": 5.0,
+            "megalib": 2.0,
+            "share": 0.011494252873563218
+          }
+        }
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/summary.json",
+      "status": "PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_PASS"
     }
   ],
   "date": "2026-06-25",
-  "next_required_gate": "Inspect physical raw-coupling mechanisms inside the dominant Phase-3 Cu-64 source volumes: runtime point location, boundary-near behavior, positron stopping/annihilation location, and incident TES ancestry; complete Step05-equivalent event building afterward if needed.",
+  "next_required_gate": "Inspect physical raw-coupling mechanisms inside the dominant Phase-3 Cu-64 source volumes: runtime point location, positron stopping/annihilation location, and incident TES ancestry; complete Step05-equivalent event building afterward if needed.",
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
     "Runtime engine point-location differences not visible in the static geometry translator",
@@ -679,7 +716,7 @@
     "Common ancestry/stopping differences for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy",
     "FLUKA EM-cut/material dependence of W2 deposited-energy efficiency only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy",
     "Complete 1 us / 1 ns and side-Compton/FoV event builder after parent-history stage",
-    "Runtime point-location, boundary-near behavior, positron stopping/annihilation location, or incident TES ancestry inside dominant source volumes"
+    "Runtime point-location, positron stopping/annihilation location, or incident TES ancestry inside dominant source volumes"
   ],
   "ruled_out": [
     "The FLUKA delayed discrepancy is not explained by the dummy HI-PROPE 53/128 card silently replacing the checked source-v2 isotope identities.",
@@ -695,7 +732,8 @@
     "The Phase-3 MEGAlib full-geometry raw-deposit plumbing path is not blocked by the common Cu-64 parent stream: a 1000-event MEGAlib smoke runs without .sim.gz replay, HTsim first-field semantics are resolved as detector type rather than .det detector id, and CC HIT volume truth gives 3/1000 any-TES and 1/1000 W2 at smoke statistics.",
     "The Phase-3 production-statistics raw-deposit comparison is no longer missing: the common 1e6-parent Cu-64 stream was run in both codes without .sim.gz replay.",
     "The analytic W2 detector-response window is not the first failure for the Phase-3 Cu-64 W2 mismatch: exact-window W2 and analytic Gaussian W2 have the same FLUKA/MEGAlib raw ratio within statistics.",
-    "The Phase-3 W2 raw-coupling difference is not isolated to CuNi or non-neutron production; the first decomposition shows distributed source-volume/material contributions."
+    "The Phase-3 W2 raw-coupling difference is not isolated to CuNi or non-neutron production; the first decomposition shows distributed source-volume/material contributions.",
+    "A pure static near-boundary source-position explanation for the Phase-3 W2 raw excess is weak: margin <0.01 cm contributes only 0.13 of the net difference."
   ],
-  "status": "PHASE3_CU64_RAW_COUPLING_DECOMPOSED__PHYSICAL_RAW_COUPLING_AUDIT_REMAINS__CROSSCODE_CLOSURE_INCOMPLETE"
+  "status": "PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_COMPLETE__PHYSICAL_RAW_COUPLING_AUDIT_REMAINS__CROSSCODE_CLOSURE_INCOMPLETE"
 }

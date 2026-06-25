@@ -346,12 +346,36 @@ slowing, annihilation, photon escape, Cu/Ta transport, or W2/TES deposition
 efficiency. That remains the next discriminator for the delayed-composition
 residual.
 
+## Phase-2 T1 Cu-Sphere Transport Smoke
+
+The next smoke gate runs the same `2048` explicit primary rows through a
+homogeneous 1 cm radius Cu sphere in vacuum. The output is escaped-particle
+response, not final detector deposited energy. FLUKA escape is scored at the
+Cu-to-vacuum boundary; MEGAlib escape is parsed from fresh `IA ESCP` records
+after vacuum flight.
+
+Key smoke-statistics escape yields:
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | escaped W2 photon yield | `0.957031` | `0.984375` | `0.972222` | `-0.44` |
+| `mono511_gamma` | escaped W2 photon yield | `0.451172` | `0.478516` | `0.942857` | `-0.64` |
+| `pair511_gamma` | escaped W2 photon yield | `0.460938` | `0.513672` | `0.897338` | `-1.21` |
+| `mono1779_gamma` | total escaped photon yield | `0.984375` | `0.984375` | `1.0` | `0.00` |
+| `mono2754_gamma` | total escaped photon yield | `0.992188` | `1.039062` | `0.954887` | `-0.53` |
+
+Interpretation: the smoke does not show a large 511-like source/escape
+mismatch in a simple Cu sphere. It is not sufficient to close the delayed
+residual, because common deposit-level truth, annihilation/stopping
+observables, T2 Ta/TES deposition, and deterministic W2 response remain open.
+
 Audit artifacts:
 
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv`
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md`
+- `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md`
 
 ## Follow-Up Checks
 
@@ -368,6 +392,6 @@ composition questions:
    on rejecting single-site events.
 4. Keep reporting energy-band-specific activation fractions; do not quote the
    W2 `6.57%` delayed fraction as a global activation fraction.
-5. Run the common T1/T2 Cu/Ta toy transport and W2/TES deposition-efficiency
-   gate before treating the full-chain high-energy deficit as a decay-kernel
-   or source-list effect.
+5. Promote the T1 smoke to production common raw-deposit truth, then run the
+   T2 Ta/TES deposition-efficiency gate before treating the full-chain
+   high-energy deficit as a decay-kernel or source-list effect.

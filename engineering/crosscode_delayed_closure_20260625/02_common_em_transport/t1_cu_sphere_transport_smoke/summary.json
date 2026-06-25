@@ -1,0 +1,61 @@
+{
+  "common_primaries_csv": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/common_primaries.csv",
+  "common_primaries_sha256": "054872ab70ac7633bfa05914a4b97f548d0367697e9ae80cb9703d3ced163e1d",
+  "comparison_csv": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/escape_yield_comparison.csv",
+  "comparison_sha256": "adbf5fd941614860ac5bd4dd9ea8466f5214b4089a6d20827aeb38a3c7ea1522",
+  "created_utc": "2026-06-25T10:44:40Z",
+  "escaped_counts": {
+    "FLUKA": 2262,
+    "MEGAlib": 2278
+  },
+  "escaped_particle_sample_csv": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/escaped_particle_sample.csv",
+  "family_summary_csv": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/family_escape_summary.csv",
+  "family_summary_sha256": "27df498993294794ab68ac92942c9b8a9eb54564f26bbfd501bba2728fc88e3b",
+  "geometry": {
+    "material": "Copper",
+    "radius_cm": 1.0,
+    "shape": "sphere",
+    "world_half_width_cm": 100.0
+  },
+  "notes": [
+    "This is a smoke gate for T1 escaped-particle response, not final Phase-2 closure.",
+    "FLUKA copper deposit totals are summarized; MEGAlib deposit-level truth is deferred to the production T1/T2 gate."
+  ],
+  "primary_count": 2048,
+  "run_type": "phase2_t1_cu_sphere_transport_smoke",
+  "runs": {
+    "FLUKA": {
+      "code": "FLUKA",
+      "elapsed_s": 2.751572847366333,
+      "finished_utc": "2026-06-25T10:44:40Z",
+      "input": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/fluka_inputs/t1_cu_sphere.inp",
+      "input_sha256": "fba907ccacc60e230048f4e914aa6d36afbc20e9dfb36db011e0cf38f90e9e64",
+      "primaries_dat": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/fluka_inputs/primaries.dat",
+      "primaries_dat_sha256": "32682a33143fc64b4fc99b39edc3930d50511dac18e0f34bede8e7733277e780",
+      "returncode": 0,
+      "rfluka_log": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/fluka_run/rfluka.log",
+      "run_products_retained": false,
+      "started_utc": "2026-06-25T10:44:38Z"
+    },
+    "MEGAlib": {
+      "code": "MEGAlib",
+      "cosima_log": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/cosima_run/cosima.log",
+      "elapsed_s": 2.172774314880371,
+      "eventlist": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/megalib_inputs/common_eventlist.dat",
+      "eventlist_sha256": "2b58c3f0cac97ccbfd5f0d0e4af827889b96f206d5a137a226479faa183da4d3",
+      "finished_utc": "2026-06-25T10:44:35Z",
+      "geometry": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/megalib_inputs/t1_cu_sphere.geo.setup",
+      "geometry_sha256": "3a8b579c41971e2b6fb8236974530f2b5ba1cd67c48a79f579a9a86b7df6d668",
+      "returncode": 0,
+      "run_products_retained": false,
+      "sim_file": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/cosima_run/t1_cu_sphere.inc1.id1.sim.gz",
+      "sim_file_generated": true,
+      "source": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/megalib_inputs/t1_cu_sphere.source",
+      "source_sha256": "67d8b2a77d6bb2f25e6674b70ea3d0cf2fd1ac7b3f6cc227a95c7102b4e60a5d",
+      "started_utc": "2026-06-25T10:44:33Z"
+    }
+  },
+  "seed": 24066601,
+  "source_csv": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/common_primaries.csv",
+  "status": "T1_CU_SPHERE_TRANSPORT_SMOKE_COMPLETE"
+}

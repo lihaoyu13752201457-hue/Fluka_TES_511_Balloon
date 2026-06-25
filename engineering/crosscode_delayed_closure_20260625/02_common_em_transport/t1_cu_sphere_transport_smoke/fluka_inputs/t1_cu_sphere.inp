@@ -1,0 +1,26 @@
+GLOBAL         20000         0         1         0         0         0
+TITLE
+TES511 common-primary T1 Cu sphere smoke
+DEFAULTS                                                              EM-CASCA
+BEAM       0.0028917                                                  PHOTON
+SOURCE
+GEOBEGIN                                                              COMBNAME
+  0 0                       Common-primary T1 Cu sphere
+RPP BIGBOX -1000000.0 +1000000.0 -1000000.0 +1000000.0 -1000000.0 +1000000.0
+RPP WORLD  -100.0 +100.0 -100.0 +100.0 -100.0 +100.0
+SPH CUSPH 0.0 0.0 0.0 1.000000
+END
+BLKHOLE 5 +BIGBOX -WORLD
+OUTER    5 +WORLD -CUSPH
+CU       5 +CUSPH
+END
+GEOEND
+ASSIGNMAT  BLCKHOLE  BLKHOLE
+ASSIGNMAT    VACUUM    OUTER
+ASSIGNMAT    COPPER       CU
+EMFCUT      -1.0E-05   1.0E-05       0.0        CU
+EMFCUT      -1.0E-05   1.0E-05       0.0     OUTER
+USERDUMP       100.0      99.0       6.0       0.0       0.0       0.0RAWDUMP
+RANDOMIZE        1.0  666801.0
+START         2048.0
+STOP

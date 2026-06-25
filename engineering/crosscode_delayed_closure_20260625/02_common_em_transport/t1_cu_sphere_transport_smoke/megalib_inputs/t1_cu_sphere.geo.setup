@@ -1,0 +1,19 @@
+Name T1CuSphereTransportSmoke
+Version 2.0
+
+SurroundingSphere 100.0 0.0 0.0 0.0 100.0
+Include $(MEGALIB)/resource/examples/geomega/materials/Materials.geo
+
+Volume WorldVolume
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0
+WorldVolume.Shape BRIK 100.0. 100.0. 100.0.
+WorldVolume.Mother 0
+
+Volume CuSphere
+CuSphere.Material Copper
+CuSphere.Visibility 1
+CuSphere.Color 4
+CuSphere.Shape SPHE 0.0 1.0 0.0 180.0 0.0 360.0
+CuSphere.Position 0.0 0.0 0.0
+CuSphere.Mother WorldVolume

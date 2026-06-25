@@ -149,6 +149,7 @@ This is the check for the photon/electron concern. `deposit_carrier` is the loca
 4. The FLUKA local TES deposit carrier table is overwhelmingly electromagnetic (`EM_BELOW_THRESHOLD`) for W2 final selections. The current scoring does not retain parent/track ancestry, so a separate boundary-crossing or ancestry scorer would be needed to count incident photons at the TES surface directly.
 5. The independent decay-kernel cross-check does not support the hypothesis that one code simply omits the important delayed photons. In fresh independent-source runs, Geant4/MEGAlib smoke and FLUKA production both emit `Na-24` 1369/2754-keV cascades and `Al-28` 1779-keV photons at approximately unit yield; Cu-64 beta-plus yield is also consistent (`0.1767` vs `0.176483`).
 6. The first Phase-2 common-source gate now also passes: FLUKA and MEGAlib both start the same `2048` explicit photon/positron primary rows with closed count, energy, direction, particle-code, and weight bookkeeping. This removes source-adapter resampling as the immediate explanation, but it does not yet test Cu/Ta transport or W2 deposition efficiency.
+7. The first T1 Cu-sphere transport smoke is complete. For 1 cm Cu sphere escape, the 511-related W2 photon yields are close at smoke statistics: Cu-64 positron rows FLUKA/MEGAlib `0.972`, mono-511 rows `0.943`, and pair-511 rows `0.897`; the largest of these approximate Poisson z-scores is `1.21 sigma`. T2/Ta deposition and common raw-deposit truth remain open.
 
 ## Decay-Kernel Cross-Code Check
 
@@ -191,6 +192,25 @@ bookkeeping check. The positron rows here are smoke-statistics source rows; a
 production T1/T2 run should replace them with the evaluated/reference Cu-64
 beta-plus generator if the positron spectrum itself becomes a precision input.
 
+## Phase-2 T1 Cu-Sphere Transport Smoke
+
+The T1 smoke reuses the same `2048` common primary rows in a homogeneous 1 cm
+radius Cu sphere in vacuum. It compares escaped-particle response, not final
+detector deposited energy.
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | escaped W2 photon yield | `0.957031` | `0.984375` | `0.972222` | `-0.44` |
+| `mono511_gamma` | escaped W2 photon yield | `0.451172` | `0.478516` | `0.942857` | `-0.64` |
+| `pair511_gamma` | escaped W2 photon yield | `0.460938` | `0.513672` | `0.897338` | `-1.21` |
+| `mono1779_gamma` | total escaped photon yield | `0.984375` | `0.984375` | `1.0` | `0.00` |
+| `mono2754_gamma` | total escaped photon yield | `0.992188` | `1.039062` | `0.954887` | `-0.53` |
+
+Interpretation: this smoke does not show a large source/escape mismatch for
+the 511-like Cu-sphere response. It also does not close the delayed discrepancy:
+MEGAlib deposit-level truth, annihilation/stopping observables, T2 Ta/TES
+deposition, and deterministic W2 response are still required.
+
 ## Artifacts
 
 - source rows CSV: `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/source_stage_rows.csv`
@@ -199,3 +219,4 @@ beta-plus generator if the positron spectrum itself becomes a precision input.
 - machine-readable summary: `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.json`
 - decay-kernel cross-code comparison: `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv`
 - Phase-2 T0 common-source gate: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md`
+- Phase-2 T1 Cu-sphere smoke: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md`

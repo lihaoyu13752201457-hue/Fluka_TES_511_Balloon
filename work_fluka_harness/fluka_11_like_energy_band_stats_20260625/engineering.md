@@ -491,6 +491,33 @@ This only closes source bookkeeping for count, particle code, kinetic energy,
 direction, and weight. It does **not** yet close positron slowing,
 annihilation, photon escape, Cu/Ta transport, or W2/TES deposition efficiency.
 
+### 14.2 T1 Cu-sphere transport smoke status, 2026-06-25
+
+The first T1 smoke is complete:
+
+```text
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md
+```
+
+It reuses the T0 `2048`-row common primary table in a homogeneous 1 cm radius
+Cu sphere in vacuum. The smoke compares escaped-particle response, especially
+511-like photons. FLUKA escape is scored at the Cu-to-vacuum boundary; MEGAlib
+escape is parsed from fresh `IA ESCP` records after vacuum flight.
+
+Key escaped-photon yields:
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | escaped W2 photon yield | `0.957031` | `0.984375` | `0.972222` | `-0.44` |
+| `mono511_gamma` | escaped W2 photon yield | `0.451172` | `0.478516` | `0.942857` | `-0.64` |
+| `pair511_gamma` | escaped W2 photon yield | `0.460938` | `0.513672` | `0.897338` | `-1.21` |
+| `mono1779_gamma` | total escaped photon yield | `0.984375` | `0.984375` | `1.0` | `0.00` |
+| `mono2754_gamma` | total escaped photon yield | `0.992188` | `1.039062` | `0.954887` | `-0.53` |
+
+This is still a smoke, not final Phase-2 closure. MEGAlib deposit-level truth,
+annihilation/stopping observables, T2 Ta/TES deposition, and deterministic W2
+response remain open.
+
 ## 15. Decision after Phase 2
 
 - Phase 1 passes, Phase 2 fails: focus on positron transport, annihilation, atomic de-excitation, and EM thresholds.
@@ -890,7 +917,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Compare first-pass branch/line yields for Cu-64, Na-24, Al-28, I-128
 [ ] Build Geant4/MEGAlib 1e6/isotope production decay-kernel outputs if low-yield-line precision is needed
 [x] Build one common external positron/511 source list and pass T0 source-bookkeeping smoke
-[ ] Run Cu/Ta toy transport in both codes
+[ ] Run Cu/Ta toy transport in both codes (T1 Cu-sphere smoke complete; T2/Ta and common raw-deposit closure open)
 [ ] Scan FLUKA effective EM cuts if needed
 [ ] Build cu64_common_positions.csv
 [ ] Audit source region/material in both geometries

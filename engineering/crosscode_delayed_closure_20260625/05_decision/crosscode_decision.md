@@ -28,6 +28,15 @@ bookkeeping. This removes source-adapter resampling/unit drift from the T0
 layer, but it does not yet test Cu/Ta transport or W2/TES deposition
 efficiency.
 
+The first T1 Cu-sphere transport smoke is complete. The same `2048` common
+primary rows were transported through a homogeneous 1 cm radius Cu sphere in
+both engines. For the 511-related rows, escaped W2-photon yields agree at smoke
+statistics: Cu-64 positron rows FLUKA/MEGAlib `0.972`, mono-511 rows `0.943`,
+and pair-511 rows `0.897` with the largest approximate z-score `1.21 sigma`.
+This is not final Phase-2 closure because common deposit-level truth,
+annihilation/stopping observables, T2 Ta/TES deposition, and deterministic W2
+response are still open.
+
 ## Evidence
 
 Manifest:
@@ -81,6 +90,14 @@ engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_
 engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/common_primaries.csv
 ```
 
+Phase-2 T1 Cu-sphere transport smoke:
+
+```text
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/family_escape_summary.csv
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/escape_yield_comparison.csv
+```
+
 Runtime identity result:
 
 | nuclide | event_id | expected Z/A/isomer | FLUKA runtime Z/A/isomer | result |
@@ -123,18 +140,30 @@ Phase-2 T0 source-bookkeeping result:
 | FLUKA | `2048 / 2048` | `4.1880789907739405e-09` | `1.1102230246251565e-16` | PASS |
 | MEGAlib | `2048 / 2048` | `5.2968580495807746e-05` | `3.354161393076538e-11` | PASS |
 
+Phase-2 T1 Cu-sphere escaped-photon smoke:
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | escaped W2 photon yield | `0.957031` | `0.984375` | `0.972222` | `-0.44` |
+| `mono511_gamma` | escaped W2 photon yield | `0.451172` | `0.478516` | `0.942857` | `-0.64` |
+| `pair511_gamma` | escaped W2 photon yield | `0.460938` | `0.513672` | `0.897338` | `-1.21` |
+| `mono1779_gamma` | total escaped photon yield | `0.984375` | `0.984375` | `1.0` | `0.00` |
+| `mono2754_gamma` | total escaped photon yield | `0.992188` | `1.039062` | `0.954887` | `-0.53` |
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
 verifies FLUKA source identity for representative source-v2 parents and gives
 a smoke-statistics cross-code decay-emission sanity check. The T0 source gate
 only verifies common source bookkeeping; it does not compare positron slowing,
-annihilation, photon escape, material coupling, or TES deposited energy.
+annihilation, photon escape, material coupling, or TES deposited energy. The
+T1 smoke adds escaped-particle evidence in a Cu sphere, but still lacks common
+deposit-level truth and T2 Ta/TES W2 response.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
-2. Common T1/T2 emitted-particle transport through Cu/Ta toy geometries.
+2. Production common T1/T2 emitted-particle transport through Cu/Ta toy geometries.
 3. Common full-geometry source positions and common external postprocessor.
 
 ## Working Hypothesis After This Gate
@@ -151,7 +180,7 @@ delayed deficit:
 | 1500-3000 keV | 0.041 |
 | 3000-10000 keV | 0.014 |
 
-The next run should therefore move from T0 source bookkeeping to T1/T2 common
-Cu/Ta toy transport, unless we first want a Geant4/MEGAlib
-production-statistics repeat to sharpen low-yield channels such as the `Cu-64`
-1346-keV line.
+The next run should therefore promote T1 from smoke to common raw-deposit truth
+and then run T2 Ta/TES W2-efficiency transport, unless we first want a
+Geant4/MEGAlib production-statistics repeat to sharpen low-yield channels such
+as the `Cu-64` 1346-keV line.

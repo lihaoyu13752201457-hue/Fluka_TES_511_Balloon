@@ -1,0 +1,14 @@
+Version 1
+Geometry /home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/megalib_inputs/t1_cu_sphere.geo.setup
+PhysicsListEM LivermorePol
+StoreSimulationInfo all
+StoreSimulationInfoIonization false
+DiscretizeHits true
+DetectorTimeConstant 1e-9
+
+Run T1CuSphere
+T1CuSphere.FileName /home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/cosima_run/t1_cu_sphere
+T1CuSphere.Triggers 2048
+T1CuSphere.Source CommonPrimaryList
+
+CommonPrimaryList.EventList /home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/megalib_inputs/common_eventlist.dat

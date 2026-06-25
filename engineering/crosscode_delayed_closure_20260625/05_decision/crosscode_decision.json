@@ -1,6 +1,6 @@
 {
   "date": "2026-06-25",
-  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_AND_T0_COMMON_SOURCE_GATES_PASS__CROSSCODE_CLOSURE_INCOMPLETE",
+  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_AND_T1_SMOKE_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
   "completed_gates": [
     {
       "gate": "manifest_freeze",
@@ -103,6 +103,29 @@
         "MEGAlib_max_energy_rel_delta": 5.2968580495807746e-05,
         "MEGAlib_max_direction_1_minus_dot": 3.354161393076538e-11
       }
+    },
+    {
+      "gate": "phase2_t1_cu_sphere_transport_smoke",
+      "status": "COMPLETE",
+      "path": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md",
+      "primary_count": 2048,
+      "geometry": {
+        "material": "Copper",
+        "shape": "sphere",
+        "radius_cm": 1.0
+      },
+      "key_results": {
+        "cu64_eplus_smoke_escaped_w2_photon_yield_fluka": 0.95703125,
+        "cu64_eplus_smoke_escaped_w2_photon_yield_megalib": 0.984375,
+        "cu64_eplus_smoke_fluka_over_megalib": 0.9722222222222222,
+        "mono511_gamma_escaped_w2_photon_yield_fluka": 0.451171875,
+        "mono511_gamma_escaped_w2_photon_yield_megalib": 0.478515625,
+        "mono511_gamma_fluka_over_megalib": 0.9428571428571428,
+        "pair511_gamma_escaped_w2_photon_yield_fluka": 0.4609375,
+        "pair511_gamma_escaped_w2_photon_yield_megalib": 0.513671875,
+        "pair511_gamma_fluka_over_megalib": 0.8973384030418251,
+        "largest_511_related_abs_poisson_z": 1.2086859987967822
+      }
     }
   ],
   "ruled_out": [
@@ -115,8 +138,10 @@
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
     "Common T1/T2 emitted-particle transport differences",
+    "Common production raw-deposit truth for T1",
+    "T2 Ta/TES deposition and W2-efficiency differences",
     "Full-geometry material/region/source-position differences",
     "Common postprocessing or event-building differences"
   ],
-  "next_required_gate": "Move from T0 source bookkeeping to common T1/T2 Cu/Ta toy transport, unless a Geant4/MEGAlib 1e6/isotope production decay-kernel repeat is needed for low-yield-line precision."
+  "next_required_gate": "Promote T1 from escaped-particle smoke to common raw-deposit truth, then run T2 Ta/TES W2-efficiency transport, unless a Geant4/MEGAlib 1e6/isotope production decay-kernel repeat is needed for low-yield-line precision."
 }

@@ -1,0 +1,92 @@
+{
+  "band_summary": [
+    {
+      "band": "all_tes_gt0",
+      "band_label": "all TES > 0",
+      "efficiency_per_parent": 1.0,
+      "events": 1000,
+      "histories": 1000,
+      "top_material_counts": "{\"Copper\": 932, \"CuNi\": 68}",
+      "top_source_volume_counts": "{\"ColdPlate_4K\": 390, \"ColdPlate_CP_100mK_intercept\": 91, \"ColdPlate_MXC_50mK_SD_anchor\": 69, \"ColdPlate_Still_0p7K\": 201, \"Cu_50mK_StillLike_Can_side_wall_rectcut_window_band\": 33}"
+    },
+    {
+      "band": "e480_550",
+      "band_label": "480-550 keV",
+      "efficiency_per_parent": 0.012,
+      "events": 12,
+      "histories": 1000,
+      "top_material_counts": "{\"Copper\": 12}",
+      "top_source_volume_counts": "{\"ColdPlate_4K\": 7, \"ColdPlate_MXC_50mK_SD_anchor\": 1, \"ColdPlate_Still_0p7K\": 3, \"DR_Still_Pot_Cu\": 1}"
+    },
+    {
+      "band": "w2_510p58_511p42",
+      "band_label": "W2 510.58-511.42 keV",
+      "efficiency_per_parent": 0.001,
+      "events": 1,
+      "histories": 1000,
+      "top_material_counts": "{\"Copper\": 1}",
+      "top_source_volume_counts": "{\"ColdPlate_4K\": 1}"
+    },
+    {
+      "band": "e1500_3000",
+      "band_label": "1500-3000 keV",
+      "efficiency_per_parent": 0.001,
+      "events": 1,
+      "histories": 1000,
+      "top_material_counts": "{\"Copper\": 1}",
+      "top_source_volume_counts": "{\"ColdPlate_Still_0p7K\": 1}"
+    },
+    {
+      "band": "e3000_10000",
+      "band_label": "3000-10000 keV",
+      "efficiency_per_parent": 0.0,
+      "events": 0,
+      "histories": 1000,
+      "top_material_counts": "{}",
+      "top_source_volume_counts": "{}"
+    }
+  ],
+  "band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/band_summary.csv",
+  "boundary": "MEGAlib-only Phase-3 common Cu-64 raw-hit smoke; native HTsim detector/readout semantics are not yet FLUKA-equivalent raw deposits, so FLUKA production comparison, common event builder, and production-statistics closure remain open",
+  "detector_hit_summary": [
+    {
+      "deposit_keV_sum": 212788.60286999986,
+      "detector_id": 4,
+      "detector_kind": "TES_PIXEL",
+      "detector_name": "D4",
+      "detector_volume": "TES_L3",
+      "histories_with_hit": 1000,
+      "hit_rows": 1349
+    },
+    {
+      "deposit_keV_sum": 727.33396,
+      "detector_id": 2,
+      "detector_kind": "TES_PIXEL",
+      "detector_name": "D2",
+      "detector_volume": "TES_L1",
+      "histories_with_hit": 3,
+      "hit_rows": 3
+    }
+  ],
+  "detector_hit_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/detector_hit_summary.csv",
+  "detector_map_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/detector_map_summary.csv",
+  "event_total_sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/event_total_sample.csv",
+  "geometry": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "geometry_sha256": "f6ee8c36f45b6a66efa5544daf58a3431c6833289e5658eb8b4452f6792205b0",
+  "histories": 1000,
+  "no_sim_gz_replay": true,
+  "parent_list": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv",
+  "parent_list_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
+  "pre_trigger_mode": "Everything",
+  "raw_hit_rows": 1352,
+  "raw_hit_sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/raw_hit_sample.csv",
+  "returncode": 0,
+  "run_manifest": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/run_manifest.csv",
+  "run_products_retained": false,
+  "seed": 24066900,
+  "sim_event_count": 1000,
+  "source_mode": "phase3_cu64_common_parent_resampling",
+  "status": "PHASE3_CU64_COMMON_MEGALIB_RAW_PASS",
+  "stop_condition": "Events",
+  "transport_code": "MEGAlib"
+}

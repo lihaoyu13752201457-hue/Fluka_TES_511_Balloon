@@ -47,7 +47,7 @@
     }
   ],
   "band_summary_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/band_summary.csv",
-  "boundary": "FLUKA-only Phase-3 common Cu-64 raw-deposit run; MEGAlib side and common event builder remain open",
+  "boundary": "FLUKA-only Phase-3 common Cu-64 raw-deposit run; MEGAlib runner/parser smoke has run separately, but detector/readout semantic calibration and common event builder remain open",
   "event_total_sample_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/event_total_sample.csv",
   "histories": 1000,
   "no_sim_gz_replay": true,

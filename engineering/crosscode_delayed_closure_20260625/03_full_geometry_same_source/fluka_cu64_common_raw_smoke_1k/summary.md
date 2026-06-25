@@ -32,4 +32,4 @@
 
 - This is the FLUKA side only.
 - It validates full-geometry raw-deposit plumbing for the Phase-3 common Cu-64 parent stream.
-- MEGAlib transport, common event building, and production-statistics closure remain open.
+- MEGAlib runner/parser smoke has run separately, but detector/readout semantic calibration, common event building, and production-statistics closure remain open.

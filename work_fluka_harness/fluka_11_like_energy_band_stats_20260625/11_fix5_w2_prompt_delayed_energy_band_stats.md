@@ -98,6 +98,31 @@ Implication:
 - raw W2 delayed/(prompt+delayed) = `3.76%`;
 - final W2 delayed/(prompt+delayed) = `6.57%`.
 
+## Independent FLUKA W2 Cross-Check
+
+The matching independent-source FLUKA statistic gives a different W2
+composition even though the final total is close:
+
+| component | TES cps | FLUKA cps | FLUKA - TES cps | FLUKA/TES |
+|---|---:|---:|---:|---:|
+| prompt | `0.036641023` | `0.031891161` | `-0.004749862` | `0.870` |
+| delayed | `0.002575203` | `0.006787802` | `+0.004212598` | `2.636` |
+| total | `0.039216227` | `0.038678963` | `-0.000537263` | `0.986` |
+
+Conclusion: the near-unity W2 total is compensation. FLUKA prompt is lower by
+about `0.00475 cps`, while FLUKA delayed is higher by about `0.00421 cps`; the
+sum leaves only a `0.00054 cps` residual. Therefore this cross-check does not
+validate the prompt and delayed components separately. It sharpens the original
+question: the TES delayed W2 fraction may be low relative to FLUKA, but the
+reason cannot be judged from the total W2 agreement.
+
+The same cross-check also answers the "why only neutron/electron?" concern:
+`eplus` and `n` are source-family tags in the final W2 prompt table, not the
+local TES depositing particle. In the FLUKA raw-deposit audit, selected W2 TES
+energy is dominated by `EM_BELOW_THRESHOLD`, consistent with photon/electromagnetic
+cascades reaching the TES. A separate ancestry or boundary-crossing scorer is
+still required to label incident photons event by event.
+
 ## Stream Classification Check
 
 The Step05 parser assigns `stream` by SIM file/mode, not by secondary particle
@@ -485,8 +510,44 @@ energy.
 Boundary: this is a FLUKA-only smoke-statistics check. It confirms the full
 geometry can be driven by the independent Phase-3 Cu-64 parent stream and that
 the raw-deposit scorer is internally closed. It does not yet answer the
-FLUKA/TES delayed-W2 discrepancy; that still requires the MEGAlib side,
-production statistics, common event building, and analytic W2 response.
+FLUKA/TES delayed-W2 discrepancy; that still requires MEGAlib detector/readout
+semantic calibration, production statistics, common event building, and
+analytic W2 response.
+
+## Phase-3 MEGAlib Common Raw-Hit Smoke
+
+The MEGAlib side now also runs from the same deterministic Cu-64 parent list,
+again without `.sim.gz` replay:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.md
+```
+
+The corrected source uses `Run.Events 1000` and `PreTriggerMode Everything`,
+so the denominator is simulated events, not requested triggered events.
+
+| band | events / histories | efficiency |
+|---|---:|---:|
+| all TES > 0 | `1000 / 1000` | `1.0` |
+| 480-550 keV | `12 / 1000` | `0.012` |
+| W2 510.58-511.42 keV | `1 / 1000` | `0.001` |
+| 1500-3000 keV | `1 / 1000` | `0.001` |
+| 3000-10000 keV | `0 / 1000` | `0.0` |
+
+Detector-hit summary:
+
+| detector/readout | histories_with_hit | hit_rows | deposit_keV_sum |
+|---|---:|---:|---:|
+| `D4 / TES_L3` | `1000` | `1349` | `212788.603` |
+| `D2 / TES_L1` | `3` | `3` | `727.334` |
+
+Boundary: this is a MEGAlib runner/parser smoke, not a physics-efficiency
+closure. The native HTsim detector/readout semantics are not yet equivalent to
+the FLUKA raw-deposit schema, as shown by the all-history D4/TES_L3 occupancy.
+Do not compare MEGAlib `1000/1000` all-TES directly to FLUKA `5/1000`. The
+next gate must align the MEGAlib detector/raw-hit semantics or bypass them with
+a common deposit-level scorer before production-statistics W2 efficiency is
+interpreted.
 
 Audit artifacts:
 
@@ -502,6 +563,7 @@ Audit artifacts:
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md`
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md`
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md`
+- `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.md`
 
 ## Follow-Up Checks
 
@@ -519,6 +581,6 @@ composition questions:
 4. Keep reporting energy-band-specific activation fractions; do not quote the
    W2 `6.57%` delayed fraction as a global activation fraction.
 5. Promote the now-passing T2 toy result into full-geometry common raw-deposit
-   truth using the built Cu-64 common positions, region/material audit, common
-   event builder, exact Ta/TES dimensions, and deterministic analytic W2
-   response.
+   truth using the built Cu-64 common positions, region/material audit, MEGAlib
+   detector/readout semantic calibration, common event builder, exact Ta/TES
+   dimensions, and deterministic analytic W2 response.

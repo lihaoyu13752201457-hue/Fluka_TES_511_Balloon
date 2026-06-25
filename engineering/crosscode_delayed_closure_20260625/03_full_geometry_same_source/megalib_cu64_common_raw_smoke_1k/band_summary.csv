@@ -1,0 +1,6 @@
+band,band_label,histories,events,efficiency_per_parent,top_material_counts,top_source_volume_counts
+all_tes_gt0,all TES > 0,1000,1000,1.0,"{""Copper"": 932, ""CuNi"": 68}","{""ColdPlate_4K"": 390, ""ColdPlate_CP_100mK_intercept"": 91, ""ColdPlate_MXC_50mK_SD_anchor"": 69, ""ColdPlate_Still_0p7K"": 201, ""Cu_50mK_StillLike_Can_side_wall_rectcut_window_band"": 33}"
+e480_550,480-550 keV,1000,12,0.012,"{""Copper"": 12}","{""ColdPlate_4K"": 7, ""ColdPlate_MXC_50mK_SD_anchor"": 1, ""ColdPlate_Still_0p7K"": 3, ""DR_Still_Pot_Cu"": 1}"
+w2_510p58_511p42,W2 510.58-511.42 keV,1000,1,0.001,"{""Copper"": 1}","{""ColdPlate_4K"": 1}"
+e1500_3000,1500-3000 keV,1000,1,0.001,"{""Copper"": 1}","{""ColdPlate_Still_0p7K"": 1}"
+e3000_10000,3000-10000 keV,1000,0,0.0,{},{}

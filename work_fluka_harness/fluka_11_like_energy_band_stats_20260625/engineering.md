@@ -48,6 +48,10 @@ The first non-statistical gate has been run on the FLUKA side:
 - Phase-3 FLUKA-only common Cu-64 raw-deposit smoke:
   `PHASE3_CU64_COMMON_FLUKA_RAW_PASS` for `1000` histories from the
   deterministic parent list, without `.sim.gz` replay.
+- Phase-3 MEGAlib-only common Cu-64 raw-hit smoke:
+  `PHASE3_CU64_COMMON_MEGALIB_RAW_PASS` for `1000` simulated events from the
+  same deterministic parent list, without `.sim.gz` replay; its native HTsim
+  detector/readout semantics are not yet a FLUKA-equivalent raw-deposit schema.
 
 Runtime identity table:
 
@@ -128,6 +132,7 @@ engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megal
 engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/particle_yields.csv
 engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.md
 engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.md
 ```
 
@@ -738,6 +743,41 @@ This is a FLUKA-side runner/scorer closure only. It does not replace the
 required production-statistics FLUKA/MEGAlib raw-deposit comparison, common
 event builder, or analytic W2 response.
 
+### 17.4 MEGAlib common raw-hit smoke status, 2026-06-25
+
+The matching Phase-3 MEGAlib raw-hit plumbing smoke now also runs directly
+from the deterministic Cu-64 parent list:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/band_summary.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/detector_hit_summary.csv
+```
+
+It uses `Run.Events 1000` and `PreTriggerMode Everything`, so the denominator
+is simulated events rather than requested triggered events. The source is the
+same parent-resampling authority and is not a `.sim.gz` replay.
+
+Smoke-statistics native HTsim band counts:
+
+| band | events / histories | efficiency |
+|---|---:|---:|
+| all TES > 0 | `1000 / 1000` | `1.0` |
+| 480-550 keV | `12 / 1000` | `0.012` |
+| W2 510.58-511.42 keV | `1 / 1000` | `0.001` |
+| 1500-3000 keV | `1 / 1000` | `0.001` |
+| 3000-10000 keV | `0 / 1000` | `0.0` |
+
+The detector-hit summary is highly concentrated in the native MEGAlib readout:
+`D4/TES_L3` has `1000` histories with hits and `1349` hit rows, while `D2/TES_L1`
+has `3` histories with hits and `3` hit rows. Therefore this gate proves the
+independent source can drive Cosima and the HTsim parser, but the native HTsim
+detector/readout semantics are not yet a FLUKA-equivalent deposit schema. Do
+not compare the `1000/1000` all-TES count directly with the FLUKA `5/1000`
+raw-deposit count; the next gate must calibrate/replace the MEGAlib detector
+readout with a common raw-deposit/event-builder schema before interpreting
+per-parent W2 efficiency.
+
 ## 18. Source-region audit
 
 For every unique source position, record in both codes:
@@ -1156,6 +1196,8 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Audit source-volume name/material translation against the FLUKA region map
 [x] Static coordinate-containment audit after inverse InstrumentFrame transform
 [x] Run FLUKA 1k Phase-3 common Cu-64 raw-deposit plumbing smoke
+[x] Run MEGAlib 1k Phase-3 common Cu-64 raw-hit plumbing smoke
+[ ] Calibrate MEGAlib HTsim detector/readout semantics against the common raw-deposit schema
 [ ] Runtime engine point-location audit in Geant4/FLUKA, if required before production transport
 [ ] Run 1e6 Cu-64 parents per code
 [ ] Save raw deposit truth

@@ -993,6 +993,41 @@ remove the W2 excess. The builder adds single/multi TES-pixel and
 active-shield-touch bookkeeping, but it does not implement the final
 side-Compton/FoV reconstruction cut.
 
+### 17.9 Manuscript delayed-background statement, 2026-06-25
+
+The manuscript-facing delayed-background statement is now drafted as a bounded
+artifact:
+
+```text
+engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.md
+engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.json
+```
+
+Recommended treatment: report delayed activation as an unresolved cross-code
+model systematic for the current analysis. Keep the W2 total agreement as a
+total-rate cross-check only; do not use it as delayed-component validation and
+do not average the TES/MEGAlib and FLUKA delayed central values.
+
+The statement quotes the current W2 final rates:
+
+| component | TES cps | FLUKA cps | FLUKA/TES |
+|---|---:|---:|---:|
+| prompt | `0.036641023` | `0.031891161` | `0.870` |
+| delayed | `0.002575203` | `0.006787802` | `2.636` |
+| total | `0.039216227` | `0.038678963` | `0.986` |
+
+It also quotes the Phase-3 Cu-64 raw-coupling evidence:
+
+| gate | FLUKA W2 | MEGAlib W2 | FLUKA/MEGAlib |
+|---|---:|---:|---:|
+| raw parent-history | `1269 / 1000000` | `1008 / 1000000` | `1.25893` |
+| active-veto parent-history | `662 / 1000000` | `563 / 1000000` | `1.17584` |
+| active-veto 1 ns split | `662 / 1000000` | `568 / 1000000` | `1.16549` |
+
+Boundary: this is a manuscript-support statement, not closure of the remaining
+physical mechanism. Runtime point-location, positron stopping/annihilation
+location, and incident TES ancestry remain the next physics diagnostics.
+
 ## 18. Source-region audit
 
 For every unique source position, record in both codes:
@@ -1423,7 +1458,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Audit W2 raw selected histories against static source-boundary margins
 [x] Run common 1 us / 1 ns time split and TES/active-shield topology builder
 [ ] Add final side-Compton/FoV reconstruction cut if manuscript-level final selection is required
-[ ] Update manuscript delayed-background statement
+[x] Update manuscript delayed-background statement
 ```
 
 ---

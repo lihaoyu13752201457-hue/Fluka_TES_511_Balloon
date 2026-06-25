@@ -49,6 +49,11 @@ nanosecond clustering only shifts MEGAlib active-veto W2 from `563` to `568`
 and leaves FLUKA at `662`. Event grouping is therefore not the source of the
 delayed-W2 difference. Final side-Compton/FoV reconstruction remains open.
 
+A manuscript-facing delayed-background statement is included under
+`engineering/crosscode_delayed_closure_20260625/05_decision/`. The recommended
+treatment is to report delayed activation as an unresolved cross-code model
+systematic, not to use the W2 total agreement as delayed-component validation.
+
 ## Key Artifacts
 
 - `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.md`
@@ -67,6 +72,7 @@ delayed-W2 difference. Final side-Compton/FoV reconstruction remains open.
     are not silently replaced by the dummy `HI-PROPE 53 128` card.
   - Phase-3 Cu-64 production raw-deposit and parent-history event-builder
     summaries.
+  - Manuscript delayed-background statement and claim boundary.
 
 ## Important Interpretation Detail
 

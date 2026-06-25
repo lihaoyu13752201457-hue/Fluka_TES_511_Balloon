@@ -256,6 +256,13 @@ engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phas
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/time_split_summary.csv
 ```
 
+Manuscript delayed-background statement:
+
+```text
+engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.md
+engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.json
+```
+
 Runtime identity result:
 
 | nuclide | event_id | expected Z/A/isomer | FLUKA runtime Z/A/isomer | result |
@@ -487,6 +494,13 @@ Interpretation: common event grouping is not the first failed phase. The 1
 microsecond split is identical to parent-history grouping, and the 1 nanosecond
 split only moves a small MEGAlib active-veto tail. The remaining final-builder
 gap is side-Compton/FoV reconstruction, not time clustering.
+
+Manuscript statement action:
+
+The current recommendation is to report delayed activation as an unresolved
+cross-code model systematic for the present analysis. Keep the W2 total as a
+total-rate cross-check, but do not use the total agreement as delayed-component
+validation and do not average the TES/MEGAlib and FLUKA delayed central values.
 
 ## What This Does Not Prove
 

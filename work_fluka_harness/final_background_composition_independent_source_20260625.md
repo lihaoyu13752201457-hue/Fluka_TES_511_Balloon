@@ -25,6 +25,13 @@ cancel. Prompt final is low (`0.870x` TES prompt), while delayed final is high
 `0.004212598 cps`; only `0.000537263 cps` remains after summing. Do not claim
 delayed composition agreement yet.
 
+Manuscript treatment: report delayed activation as an unresolved cross-code
+model systematic for this analysis. The W2 total agreement is useful as a
+total-rate cross-check, but it should not be used as delayed-component
+validation or as a reason to average the TES/MEGAlib and FLUKA delayed central
+values. The full statement and claim boundary are in
+`engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.md`.
+
 ## W2 Final Background Constituents
 
 These constituents are source/stream tags. They are not the local particle

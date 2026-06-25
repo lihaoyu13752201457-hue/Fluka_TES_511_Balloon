@@ -751,9 +751,89 @@
       "summary_md": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/summary.md",
       "time_split_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/time_split_summary.csv",
       "topology_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/topology_summary.csv"
+    },
+    {
+      "gate": "manuscript_delayed_background_statement",
+      "json": "engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.json",
+      "key_numbers": {
+        "phase3_cu64_w2_active_veto": {
+          "fluka_histories": 1000000,
+          "fluka_over_megalib": 1.1758436944937833,
+          "fluka_w2": 662,
+          "megalib_histories": 1000000,
+          "megalib_w2": 563
+        },
+        "phase3_cu64_w2_raw": {
+          "fluka_histories": 1000000,
+          "fluka_over_megalib": 1.2589285714285714,
+          "fluka_w2": 1269,
+          "megalib_histories": 1000000,
+          "megalib_w2": 1008,
+          "z": 5.47
+        },
+        "phase3_cu64_w2_time_split_1ns_active_veto": {
+          "fluka_over_megalib": 1.165492957746479,
+          "fluka_w2": 662,
+          "megalib_w2": 568
+        },
+        "w2_final_rates_cps": {
+          "fluka_delayed": 0.006787802,
+          "fluka_over_tes_delayed": 2.636,
+          "fluka_over_tes_prompt": 0.87,
+          "fluka_over_tes_total": 0.986,
+          "fluka_prompt": 0.031891161,
+          "fluka_total": 0.038678963,
+          "tes_delayed": 0.002575203,
+          "tes_prompt": 0.036641023,
+          "tes_total": 0.039216227
+        }
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.md",
+      "recommended_treatment": "Report delayed activation as an unresolved cross-code model systematic; keep the headline as a reference-model estimate and include both delayed values in validation/systematics context.",
+      "status": "MANUSCRIPT_DELAYED_BACKGROUND_STATEMENT_READY"
     }
   ],
   "date": "2026-06-25",
+  "manuscript_statement": {
+    "gate": "manuscript_delayed_background_statement",
+    "json": "engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.json",
+    "key_numbers": {
+      "phase3_cu64_w2_active_veto": {
+        "fluka_histories": 1000000,
+        "fluka_over_megalib": 1.1758436944937833,
+        "fluka_w2": 662,
+        "megalib_histories": 1000000,
+        "megalib_w2": 563
+      },
+      "phase3_cu64_w2_raw": {
+        "fluka_histories": 1000000,
+        "fluka_over_megalib": 1.2589285714285714,
+        "fluka_w2": 1269,
+        "megalib_histories": 1000000,
+        "megalib_w2": 1008,
+        "z": 5.47
+      },
+      "phase3_cu64_w2_time_split_1ns_active_veto": {
+        "fluka_over_megalib": 1.165492957746479,
+        "fluka_w2": 662,
+        "megalib_w2": 568
+      },
+      "w2_final_rates_cps": {
+        "fluka_delayed": 0.006787802,
+        "fluka_over_tes_delayed": 2.636,
+        "fluka_over_tes_prompt": 0.87,
+        "fluka_over_tes_total": 0.986,
+        "fluka_prompt": 0.031891161,
+        "fluka_total": 0.038678963,
+        "tes_delayed": 0.002575203,
+        "tes_prompt": 0.036641023,
+        "tes_total": 0.039216227
+      }
+    },
+    "path": "engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.md",
+    "recommended_treatment": "Report delayed activation as an unresolved cross-code model systematic; keep the headline as a reference-model estimate and include both delayed values in validation/systematics context.",
+    "status": "MANUSCRIPT_DELAYED_BACKGROUND_STATEMENT_READY"
+  },
   "next_required_gate": "Inspect physical raw-coupling mechanisms inside the dominant Phase-3 Cu-64 source volumes: runtime point location, positron stopping/annihilation location, and incident TES ancestry; add final side-Compton/FoV reconstruction only if a manuscript-level final selection is required.",
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
@@ -782,5 +862,5 @@
     "A pure static near-boundary source-position explanation for the Phase-3 W2 raw excess is weak: margin <0.01 cm contributes only 0.13 of the net difference.",
     "Common 1 microsecond / 1 nanosecond time clustering is not the first failure for the Phase-3 Cu-64 W2 mismatch: parent and 1us counts are identical, and 1ns clustering does not remove the active-veto excess."
   ],
-  "status": "PHASE3_CU64_TIME_TOPOLOGY_BUILDER_COMPLETE__PHYSICAL_RAW_COUPLING_AUDIT_REMAINS__CROSSCODE_CLOSURE_INCOMPLETE"
+  "status": "MANUSCRIPT_STATEMENT_READY__PHYSICAL_RAW_COUPLING_AUDIT_REMAINS__CROSSCODE_CLOSURE_INCOMPLETE"
 }

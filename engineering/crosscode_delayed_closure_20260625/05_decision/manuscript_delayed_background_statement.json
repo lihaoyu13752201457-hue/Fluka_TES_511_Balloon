@@ -1,0 +1,51 @@
+{
+  "claim_boundary": [
+    "Use W2 total agreement only as a total-rate cross-check, not delayed component validation.",
+    "Treat delayed activation as an unresolved cross-code model systematic for the current analysis.",
+    "The leading resolved failure layer is full-geometry raw coupling before common detector response.",
+    "Do not claim photons are absent from TES deposits from local carrier labels alone.",
+    "Do not average TES/MEGAlib and FLUKA delayed central values."
+  ],
+  "key_numbers": {
+    "phase3_cu64_w2_active_veto": {
+      "fluka_histories": 1000000,
+      "fluka_w2": 662,
+      "fluka_over_megalib": 1.1758436944937833,
+      "megalib_histories": 1000000,
+      "megalib_w2": 563
+    },
+    "phase3_cu64_w2_raw": {
+      "fluka_histories": 1000000,
+      "fluka_w2": 1269,
+      "fluka_over_megalib": 1.2589285714285714,
+      "megalib_histories": 1000000,
+      "megalib_w2": 1008,
+      "z": 5.47
+    },
+    "phase3_cu64_w2_time_split_1ns_active_veto": {
+      "fluka_w2": 662,
+      "fluka_over_megalib": 1.165492957746479,
+      "megalib_w2": 568
+    },
+    "w2_final_rates_cps": {
+      "fluka_delayed": 0.006787802,
+      "fluka_prompt": 0.031891161,
+      "fluka_total": 0.038678963,
+      "fluka_over_tes_delayed": 2.636,
+      "fluka_over_tes_prompt": 0.87,
+      "fluka_over_tes_total": 0.986,
+      "tes_delayed": 0.002575203,
+      "tes_prompt": 0.036641023,
+      "tes_total": 0.039216227
+    }
+  },
+  "recommended_treatment": "Report delayed activation as an unresolved cross-code model systematic; keep the headline as a reference-model estimate and include both delayed values in validation/systematics context.",
+  "remaining_work": [
+    "Runtime point-location in dominant Cu-64 source volumes",
+    "Positron stopping/annihilation location",
+    "Incident TES ancestry",
+    "Final side-Compton/FoV reconstruction only if final-selection-level cross-code statement is required"
+  ],
+  "status": "MANUSCRIPT_DELAYED_BACKGROUND_STATEMENT_READY",
+  "statement_md": "engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.md"
+}

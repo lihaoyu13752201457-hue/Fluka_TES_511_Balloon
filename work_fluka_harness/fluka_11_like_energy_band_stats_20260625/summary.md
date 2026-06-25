@@ -98,6 +98,12 @@ tail (`563` to `568`) and leaves FLUKA at `662`, so time clustering does not
 explain the delayed W2 difference. Final side-Compton/FoV reconstruction
 remains open if a manuscript-level final selection is required.
 
+The manuscript-facing delayed-background statement is now drafted in
+`engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.md`.
+It recommends treating delayed activation as an unresolved cross-code model
+systematic and not using the W2 total agreement as delayed-component
+validation.
+
 ## Inputs
 
 - TES Step05 event catalog: `/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl`

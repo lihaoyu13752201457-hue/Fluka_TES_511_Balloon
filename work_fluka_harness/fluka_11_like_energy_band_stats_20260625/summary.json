@@ -13668,6 +13668,12 @@
     "event_catalog": "/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl",
     "official_rates": "/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/step05_fix5_fullstat_v2_exactpos_m50000_s260613_l1_rates.csv"
   },
+  "manuscript_delayed_background_statement": {
+    "json": "engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.json",
+    "path": "engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.md",
+    "recommended_treatment": "Report delayed activation as an unresolved cross-code model systematic; keep the headline as a reference-model estimate and include both delayed values in validation/systematics context.",
+    "status": "MANUSCRIPT_DELAYED_BACKGROUND_STATEMENT_READY"
+  },
   "outputs": {
     "carrier_rows_csv": "work_fluka_harness/fluka_11_like_energy_band_stats_20260625/tes_deposit_carrier_rows.csv",
     "delayed_fraction_csv": "work_fluka_harness/fluka_11_like_energy_band_stats_20260625/delayed_fraction_rows.csv",

@@ -29,7 +29,7 @@
       "size_bytes": 618260
     }
   ],
-  "created_utc": "2026-06-25T09:30:21.483571+00:00",
+  "created_utc": "2026-06-25T09:39:48.367490+00:00",
   "note": "Read-only fingerprint from the FLUKA-side workspace; full Geant4/MEGAlib runtime fingerprint still must be generated on the TES side.",
   "tes_repo_commit": "455999408676e9a2c9b1e531a6c8562fe880792d",
   "tes_repo_status_short": "?? add_mass/\n?? core_md/balloon511_nima_latex_drafts/draft_introduction.docx\n?? engineering/fluka_crosscode_validation_20260624/",

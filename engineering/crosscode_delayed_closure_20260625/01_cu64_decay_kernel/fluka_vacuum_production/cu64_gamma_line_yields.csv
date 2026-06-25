@@ -1,0 +1,2 @@
+nuclide,line,window_low_keV,window_high_keV,photon_count,photon_yield_per_parent,events_with_line,event_fraction
+Cu-64,Cu-64 1346 keV,1345.0,1346.5,4785,0.004785,4785,0.004785

@@ -351,8 +351,17 @@ def run_target(target: Target, out_dir: Path, exe: Path, histories: int, seed: i
         "raw_boundary_crossings": str(raw_path),
         "raw_boundary_crossings_exists": raw_path.exists(),
         "raw_boundary_crossings_tracked": False,
+        "raw_boundary_crossings_retained": True,
         "rfluka_log": str(run_dir / "rfluka.log"),
     }
+
+
+def photon_histogram_from_counts(counts: Counter[int], bin_keV: float) -> list[dict[str, Any]]:
+    return [
+        {"e_low_keV": idx * bin_keV, "e_high_keV": (idx + 1) * bin_keV, "photon_count": count}
+        for idx, count in sorted(counts.items())
+        if count > 0
+    ]
 
 
 def photon_histogram(rows: list[dict[str, str]], bin_keV: float, max_keV: float) -> list[dict[str, Any]]:
@@ -372,20 +381,43 @@ def photon_histogram(rows: list[dict[str, str]], bin_keV: float, max_keV: float)
 
 
 def summarize_target(target: Target, raw_path: Path, histories: int, out_dir: Path, sample_rows: int) -> dict[str, Any]:
-    rows = rows_from_csv(raw_path) if raw_path.exists() else []
     by_particle: Counter[int] = Counter()
     event_particle_counts: dict[int, Counter[int]] = defaultdict(Counter)
-    photon_energies_by_event: dict[int, list[float]] = defaultdict(list)
     energy_sum_by_particle: defaultdict[int, float] = defaultdict(float)
-    for row in rows:
-        event_id = int(row["event_id"])
-        pcode = int(row["particle_code"])
-        energy = float(row["kinetic_energy_keV"])
-        by_particle[pcode] += 1
-        event_particle_counts[event_id][pcode] += 1
-        energy_sum_by_particle[pcode] += energy
-        if pcode == 7:
-            photon_energies_by_event[event_id].append(energy)
+    photon_hist_counts: Counter[int] = Counter()
+    line_defs = GAMMA_LINE_WINDOWS.get(target.nuclide, [])
+    line_counts = [0 for _ in line_defs]
+    line_event_ids = [set() for _ in line_defs]
+    na24_1369_events: set[int] = set()
+    na24_2754_events: set[int] = set()
+    sample: list[dict[str, str]] = []
+    rows_read = 0
+
+    if raw_path.exists():
+        with raw_path.open(newline="", encoding="utf-8", errors="ignore") as f:
+            for row in csv.DictReader(f):
+                clean = {k: (v or "").strip() for k, v in row.items()}
+                rows_read += 1
+                if len(sample) < sample_rows:
+                    sample.append(clean)
+                event_id = int(clean["event_id"])
+                pcode = int(clean["particle_code"])
+                energy = float(clean["kinetic_energy_keV"])
+                by_particle[pcode] += 1
+                event_particle_counts[event_id][pcode] += 1
+                energy_sum_by_particle[pcode] += energy
+                if pcode == 7:
+                    if 0.0 <= energy < 4000.0:
+                        photon_hist_counts[int(energy // 1.0)] += 1
+                    for idx, (low, high, _label) in enumerate(line_defs):
+                        if low <= energy <= high:
+                            line_counts[idx] += 1
+                            line_event_ids[idx].add(event_id)
+                    if target.nuclide == "Na-24":
+                        if 1368.1 <= energy <= 1369.1:
+                            na24_1369_events.add(event_id)
+                        if 2753.5 <= energy <= 2754.5:
+                            na24_2754_events.add(event_id)
 
     particle_rows = []
     for pcode, count in sorted(by_particle.items(), key=lambda item: (-item[1], item[0])):
@@ -418,14 +450,9 @@ def summarize_target(target: Target, raw_path: Path, histories: int, out_dir: Pa
             )
 
     line_rows = []
-    for low, high, label in GAMMA_LINE_WINDOWS.get(target.nuclide, []):
-        count = 0
-        event_count = 0
-        for event_id, energies in photon_energies_by_event.items():
-            hits = sum(1 for energy in energies if low <= energy <= high)
-            count += hits
-            if hits:
-                event_count += 1
+    for idx, (low, high, label) in enumerate(line_defs):
+        count = line_counts[idx]
+        event_count = len(line_event_ids[idx])
         line_rows.append(
             {
                 "nuclide": target.nuclide,
@@ -439,12 +466,7 @@ def summarize_target(target: Target, raw_path: Path, histories: int, out_dir: Pa
             }
         )
     if target.nuclide == "Na-24":
-        both = 0
-        for energies in photon_energies_by_event.values():
-            has_1369 = any(1368.1 <= energy <= 1369.1 for energy in energies)
-            has_2754 = any(2753.5 <= energy <= 2754.5 for energy in energies)
-            if has_1369 and has_2754:
-                both += 1
+        both = len(na24_1369_events & na24_2754_events)
         line_rows.append(
             {
                 "nuclide": target.nuclide,
@@ -463,21 +485,20 @@ def summarize_target(target: Target, raw_path: Path, histories: int, out_dir: Pa
     write_csv(out_dir / f"{target.tag}_multiplicity_distribution.csv", event_mult_rows, list(event_mult_rows[0].keys()) if event_mult_rows else ["nuclide", "particle_code", "particle", "multiplicity", "events", "fraction"])
     if line_rows:
         write_csv(out_dir / f"{target.tag}_gamma_line_yields.csv", line_rows, list(line_rows[0].keys()))
-    hist_rows = photon_histogram(rows, bin_keV=1.0, max_keV=4000.0)
+    hist_rows = photon_histogram_from_counts(photon_hist_counts, bin_keV=1.0)
     write_csv(out_dir / f"{target.tag}_photon_hist_1keV.csv", hist_rows, ["e_low_keV", "e_high_keV", "photon_count"])
-    if rows:
-        sample = rows[:sample_rows]
+    if sample:
         write_csv(out_dir / f"{target.tag}_boundary_crossing_sample.csv", sample, list(sample[0].keys()))
 
     return {
         "nuclide": target.nuclide,
         "histories": histories,
-        "boundary_crossings": len(rows),
+        "boundary_crossings": rows_read,
         "particle_yields_csv": str(out_dir / f"{target.tag}_particle_yields.csv"),
         "multiplicity_distribution_csv": str(out_dir / f"{target.tag}_multiplicity_distribution.csv"),
         "gamma_line_yields_csv": str(out_dir / f"{target.tag}_gamma_line_yields.csv") if line_rows else "",
         "photon_hist_1keV_csv": str(out_dir / f"{target.tag}_photon_hist_1keV.csv"),
-        "sample_csv": str(out_dir / f"{target.tag}_boundary_crossing_sample.csv") if rows else "",
+        "sample_csv": str(out_dir / f"{target.tag}_boundary_crossing_sample.csv") if sample else "",
         "particle_yields": particle_rows,
         "gamma_line_yields": line_rows,
     }
@@ -491,6 +512,7 @@ def main() -> int:
     ap.add_argument("--sample-rows", type=int, default=500)
     ap.add_argument("--targets", default="Cu-64,Na-24,Al-28,I-128")
     ap.add_argument("--reuse-executable", action="store_true")
+    ap.add_argument("--keep-raw-dumps", action="store_true")
     args = ap.parse_args()
 
     if args.histories < 1:
@@ -510,16 +532,23 @@ def main() -> int:
     if not (args.reuse_executable and exe.exists()):
         exe = compile_executable(out_dir)
 
+    run_type = "production" if args.histories >= 1_000_000 else "smoke"
+    pass_status = "FLUKA_DECAY_KERNEL_PRODUCTION_PASS" if run_type == "production" else "FLUKA_DECAY_KERNEL_SMOKE_PASS"
+    fail_status = "FLUKA_DECAY_KERNEL_PRODUCTION_FAILED" if run_type == "production" else "FLUKA_DECAY_KERNEL_SMOKE_FAILED"
     run_records = []
     summaries = []
-    status = "FLUKA_DECAY_KERNEL_SMOKE_PASS"
+    status = pass_status
     for offset, target in enumerate(targets):
         record = run_target(target, out_dir, exe, args.histories, args.seed + offset * 101)
         run_records.append(record)
         if record["returncode"] != 0 or not record["raw_boundary_crossings_exists"]:
-            status = "FLUKA_DECAY_KERNEL_SMOKE_FAILED"
+            status = fail_status
             continue
-        summaries.append(summarize_target(target, Path(record["raw_boundary_crossings"]), args.histories, out_dir, args.sample_rows))
+        raw_path = Path(record["raw_boundary_crossings"])
+        summaries.append(summarize_target(target, raw_path, args.histories, out_dir, args.sample_rows))
+        if not args.keep_raw_dumps and raw_path.exists():
+            raw_path.unlink()
+            record["raw_boundary_crossings_retained"] = False
 
     all_particle_rows = []
     all_line_rows = []
@@ -535,7 +564,8 @@ def main() -> int:
     summary = {
         "status": status,
         "created_utc": now_utc(),
-        "mode": "FLUKA vacuum decay-kernel boundary-crossing smoke",
+        "mode": f"FLUKA vacuum decay-kernel boundary-crossing {run_type}",
+        "run_type": run_type,
         "histories_per_isotope": args.histories,
         "targets": [target.nuclide for target in targets],
         "fluka_executable": str(exe),
@@ -545,14 +575,14 @@ def main() -> int:
         "gamma_line_yields_csv": str(out_dir / "gamma_line_yields.csv") if all_line_rows else "",
         "target_summaries": summaries,
         "limitations": [
-            "This is a FLUKA-side smoke benchmark, not the required 1e6-per-isotope production run.",
+            "This is a FLUKA-side benchmark; it is not a Geant4/MEGAlib comparison.",
             "It records boundary-crossing particles from an inner vacuum sphere; it is not a Geant4/MEGAlib comparison.",
             "Raw crossing dumps are generated in ignored fluka_run directories and are not part of the public handoff; tracked outputs are summaries and bounded samples.",
         ],
     }
     write_json(out_dir / "summary.json", summary)
     md_lines = [
-        "# FLUKA Vacuum Decay-Kernel Smoke",
+        f"# FLUKA Vacuum Decay-Kernel {run_type.title()}",
         "",
         f"- status: `{status}`",
         f"- histories_per_isotope: `{args.histories}`",
@@ -579,7 +609,7 @@ def main() -> int:
             "## Limitations",
             "",
             "- FLUKA side only; the Geant4/MEGAlib side remains open.",
-            "- Smoke statistics only; the engineering plan still calls for `1e6` parents per isotope for a production gate.",
+            "- This satisfies the FLUKA-side `1e6` production-statistics target." if run_type == "production" else "- Smoke statistics only; the engineering plan still calls for `1e6` parents per isotope for a production gate.",
             "- Raw crossing dumps are excluded from the public handoff; use the bounded samples only to audit the schema.",
             "- Use this to validate scorer/runtime behavior and to choose the next production run, not as final closure.",
             "",

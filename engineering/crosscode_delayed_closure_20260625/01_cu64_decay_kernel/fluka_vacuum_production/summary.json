@@ -1,0 +1,202 @@
+{
+  "created_utc": "2026-06-25T09:37:56.158066+00:00",
+  "fluka_executable": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/scoring_routines/fluka_decay_kernel",
+  "fluka_executable_sha256": "fda8919bb9b8be7675b5f0ce8d9a7f0c81e2d6e76990193a628d455f208959ec",
+  "gamma_line_yields_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/gamma_line_yields.csv",
+  "histories_per_isotope": 1000000,
+  "limitations": [
+    "This is a FLUKA-side benchmark; it is not a Geant4/MEGAlib comparison.",
+    "It records boundary-crossing particles from an inner vacuum sphere; it is not a Geant4/MEGAlib comparison.",
+    "Raw crossing dumps are generated in ignored fluka_run directories and are not part of the public handoff; tracked outputs are summaries and bounded samples."
+  ],
+  "mode": "FLUKA vacuum decay-kernel boundary-crossing production",
+  "particle_yields_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/particle_yields.csv",
+  "run_manifest": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/run_manifest.csv",
+  "run_type": "production",
+  "status": "FLUKA_DECAY_KERNEL_PRODUCTION_PASS",
+  "target_summaries": [
+    {
+      "boundary_crossings": 1531984,
+      "gamma_line_yields": [
+        {
+          "event_fraction": 0.004785,
+          "events_with_line": 4785,
+          "line": "Cu-64 1346 keV",
+          "nuclide": "Cu-64",
+          "photon_count": 4785,
+          "photon_yield_per_parent": 0.004785,
+          "window_high_keV": 1346.5,
+          "window_low_keV": 1345.0
+        }
+      ],
+      "gamma_line_yields_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/cu64_gamma_line_yields.csv",
+      "histories": 1000000,
+      "multiplicity_distribution_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/cu64_multiplicity_distribution.csv",
+      "nuclide": "Cu-64",
+      "particle_yields": [
+        {
+          "count": 1187039,
+          "mean_kinetic_energy_keV": 63.5543790869386,
+          "nuclide": "Cu-64",
+          "particle": "ELECTRON",
+          "particle_code": 3,
+          "yield_per_parent": 1.187039
+        },
+        {
+          "count": 176483,
+          "mean_kinetic_energy_keV": 278.5646996578988,
+          "nuclide": "Cu-64",
+          "particle": "POSITRON",
+          "particle_code": 4,
+          "yield_per_parent": 0.176483
+        },
+        {
+          "count": 168462,
+          "mean_kinetic_energy_keV": 45.373009669274744,
+          "nuclide": "Cu-64",
+          "particle": "PHOTON",
+          "particle_code": 7,
+          "yield_per_parent": 0.168462
+        }
+      ],
+      "particle_yields_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/cu64_particle_yields.csv",
+      "photon_hist_1keV_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/cu64_photon_hist_1keV.csv",
+      "sample_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/cu64_boundary_crossing_sample.csv"
+    },
+    {
+      "boundary_crossings": 2997033,
+      "gamma_line_yields": [
+        {
+          "event_fraction": 0.999939,
+          "events_with_line": 999939,
+          "line": "Na-24 1369 keV",
+          "nuclide": "Na-24",
+          "photon_count": 999939,
+          "photon_yield_per_parent": 0.999939,
+          "window_high_keV": 1369.1,
+          "window_low_keV": 1368.1
+        },
+        {
+          "event_fraction": 0.998547,
+          "events_with_line": 998547,
+          "line": "Na-24 2754 keV",
+          "nuclide": "Na-24",
+          "photon_count": 998547,
+          "photon_yield_per_parent": 0.998547,
+          "window_high_keV": 2754.5,
+          "window_low_keV": 2753.5
+        },
+        {
+          "event_fraction": 0.998547,
+          "events_with_line": 998547,
+          "line": "Na-24 1369+2754 same-parent coincidence",
+          "nuclide": "Na-24",
+          "photon_count": "",
+          "photon_yield_per_parent": "",
+          "window_high_keV": "",
+          "window_low_keV": ""
+        }
+      ],
+      "gamma_line_yields_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/na24_gamma_line_yields.csv",
+      "histories": 1000000,
+      "multiplicity_distribution_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/na24_multiplicity_distribution.csv",
+      "nuclide": "Na-24",
+      "particle_yields": [
+        {
+          "count": 1998486,
+          "mean_kinetic_energy_keV": 2060.834032151887,
+          "nuclide": "Na-24",
+          "particle": "PHOTON",
+          "particle_code": 7,
+          "yield_per_parent": 1.998486
+        },
+        {
+          "count": 998547,
+          "mean_kinetic_energy_keV": 555.5054595593317,
+          "nuclide": "Na-24",
+          "particle": "ELECTRON",
+          "particle_code": 3,
+          "yield_per_parent": 0.998547
+        }
+      ],
+      "particle_yields_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/na24_particle_yields.csv",
+      "photon_hist_1keV_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/na24_photon_hist_1keV.csv",
+      "sample_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/na24_boundary_crossing_sample.csv"
+    },
+    {
+      "boundary_crossings": 1999911,
+      "gamma_line_yields": [
+        {
+          "event_fraction": 1.0,
+          "events_with_line": 1000000,
+          "line": "Al-28 1779 keV",
+          "nuclide": "Al-28",
+          "photon_count": 1000000,
+          "photon_yield_per_parent": 1.0,
+          "window_high_keV": 1779.5,
+          "window_low_keV": 1778.5
+        }
+      ],
+      "gamma_line_yields_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/al28_gamma_line_yields.csv",
+      "histories": 1000000,
+      "multiplicity_distribution_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/al28_multiplicity_distribution.csv",
+      "nuclide": "Al-28",
+      "particle_yields": [
+        {
+          "count": 1000000,
+          "mean_kinetic_energy_keV": 1778.8499800440034,
+          "nuclide": "Al-28",
+          "particle": "PHOTON",
+          "particle_code": 7,
+          "yield_per_parent": 1.0
+        },
+        {
+          "count": 999911,
+          "mean_kinetic_energy_keV": 1241.9487985861867,
+          "nuclide": "Al-28",
+          "particle": "ELECTRON",
+          "particle_code": 3,
+          "yield_per_parent": 0.999911
+        }
+      ],
+      "particle_yields_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/al28_particle_yields.csv",
+      "photon_hist_1keV_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/al28_photon_hist_1keV.csv",
+      "sample_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/al28_boundary_crossing_sample.csv"
+    },
+    {
+      "boundary_crossings": 1193175,
+      "gamma_line_yields": [],
+      "gamma_line_yields_csv": "",
+      "histories": 1000000,
+      "multiplicity_distribution_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/i128_multiplicity_distribution.csv",
+      "nuclide": "I-128",
+      "particle_yields": [
+        {
+          "count": 993959,
+          "mean_kinetic_energy_keV": 752.6271657001746,
+          "nuclide": "I-128",
+          "particle": "ELECTRON",
+          "particle_code": 3,
+          "yield_per_parent": 0.993959
+        },
+        {
+          "count": 199216,
+          "mean_kinetic_energy_keV": 339.93910940050336,
+          "nuclide": "I-128",
+          "particle": "PHOTON",
+          "particle_code": 7,
+          "yield_per_parent": 0.199216
+        }
+      ],
+      "particle_yields_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/i128_particle_yields.csv",
+      "photon_hist_1keV_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/i128_photon_hist_1keV.csv",
+      "sample_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/i128_boundary_crossing_sample.csv"
+    }
+  ],
+  "targets": [
+    "Cu-64",
+    "Na-24",
+    "Al-28",
+    "I-128"
+  ]
+}

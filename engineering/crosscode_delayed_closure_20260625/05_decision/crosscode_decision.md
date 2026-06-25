@@ -263,6 +263,13 @@ engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_ba
 engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.json
 ```
 
+Engineering completion audit:
+
+```text
+engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.md
+engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.json
+```
+
 Runtime identity result:
 
 | nuclide | event_id | expected Z/A/isomer | FLUKA runtime Z/A/isomer | result |
@@ -501,6 +508,14 @@ The current recommendation is to report delayed activation as an unresolved
 cross-code model systematic for the present analysis. Keep the W2 total as a
 total-rate cross-check, but do not use the total agreement as delayed-component
 validation and do not average the TES/MEGAlib and FLUKA delayed central values.
+
+Completion audit action:
+
+The remaining conditional gates are not triggered for the current
+raw-coupling/systematic conclusion. Runtime point-location,
+stopping/annihilation, incident TES ancestry, and final side-Compton/FoV
+reconstruction remain future mechanism diagnostics rather than blockers for the
+current manuscript statement.
 
 ## What This Does Not Prove
 

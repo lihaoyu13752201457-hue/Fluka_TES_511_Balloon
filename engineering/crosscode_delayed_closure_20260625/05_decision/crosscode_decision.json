@@ -791,9 +791,67 @@
       "path": "engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.md",
       "recommended_treatment": "Report delayed activation as an unresolved cross-code model systematic; keep the headline as a reference-model estimate and include both delayed values in validation/systematics context.",
       "status": "MANUSCRIPT_DELAYED_BACKGROUND_STATEMENT_READY"
+    },
+    {
+      "conditional_gate_disposition": {
+        "fluka_em_cut_scan": {
+          "checklist_item": "Scan FLUKA effective EM cuts if full-geometry or ancestry observables reopen a W2 EM-transport discrepancy",
+          "disposition": "NOT_TRIGGERED",
+          "reason": "Phase-2 generated-source Cu+Ta production closes the simple W2 EM-deposition toy benchmark; no ancestry gate has yet pointed to an EM-cut/material threshold."
+        },
+        "geant4_megalib_1e6_decay_kernel": {
+          "checklist_item": "Build Geant4/MEGAlib 1e6/isotope production decay-kernel outputs if low-yield-line precision is needed",
+          "disposition": "NOT_TRIGGERED_CURRENT_CONCLUSION",
+          "reason": "The current W2 conclusion is limited by full-geometry raw coupling. Low-yield-line precision is not needed to support the delayed-W2 raw-coupling/systematic statement."
+        },
+        "runtime_point_location_before_production": {
+          "checklist_item": "Runtime engine point-location audit in Geant4/FLUKA, if required before production transport",
+          "disposition": "NOT_REQUIRED_BEFORE_PRODUCTION_TRANSPORT",
+          "reason": "Production transport has already run from the shared deterministic Cu-64 parent stream; static source mapping and boundary-margin audits are complete. Runtime point-location remains a future mechanism diagnostic."
+        },
+        "side_compton_fov_final_selection": {
+          "checklist_item": "Add final side-Compton/FoV reconstruction cut if manuscript-level final selection is required",
+          "disposition": "NOT_TRIGGERED_FOR_CURRENT_MANUSCRIPT_STATEMENT",
+          "reason": "The manuscript statement is a raw-coupling/systematic statement. The first failed phase is before final FoV reconstruction."
+        }
+      },
+      "current_objective_status": "ACTIONABLE_ENGINEERING_RUN_COMPLETE_WITH_FUTURE_MECHANISM_DIAGNOSTICS",
+      "gate": "engineering_completion_audit",
+      "json": "engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.json",
+      "path": "engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.md",
+      "status": "ENGINEERING_COMPLETION_AUDIT_PASS"
     }
   ],
   "date": "2026-06-25",
+  "engineering_completion_audit": {
+    "conditional_gate_disposition": {
+      "fluka_em_cut_scan": {
+        "checklist_item": "Scan FLUKA effective EM cuts if full-geometry or ancestry observables reopen a W2 EM-transport discrepancy",
+        "disposition": "NOT_TRIGGERED",
+        "reason": "Phase-2 generated-source Cu+Ta production closes the simple W2 EM-deposition toy benchmark; no ancestry gate has yet pointed to an EM-cut/material threshold."
+      },
+      "geant4_megalib_1e6_decay_kernel": {
+        "checklist_item": "Build Geant4/MEGAlib 1e6/isotope production decay-kernel outputs if low-yield-line precision is needed",
+        "disposition": "NOT_TRIGGERED_CURRENT_CONCLUSION",
+        "reason": "The current W2 conclusion is limited by full-geometry raw coupling. Low-yield-line precision is not needed to support the delayed-W2 raw-coupling/systematic statement."
+      },
+      "runtime_point_location_before_production": {
+        "checklist_item": "Runtime engine point-location audit in Geant4/FLUKA, if required before production transport",
+        "disposition": "NOT_REQUIRED_BEFORE_PRODUCTION_TRANSPORT",
+        "reason": "Production transport has already run from the shared deterministic Cu-64 parent stream; static source mapping and boundary-margin audits are complete. Runtime point-location remains a future mechanism diagnostic."
+      },
+      "side_compton_fov_final_selection": {
+        "checklist_item": "Add final side-Compton/FoV reconstruction cut if manuscript-level final selection is required",
+        "disposition": "NOT_TRIGGERED_FOR_CURRENT_MANUSCRIPT_STATEMENT",
+        "reason": "The manuscript statement is a raw-coupling/systematic statement. The first failed phase is before final FoV reconstruction."
+      }
+    },
+    "current_objective_status": "ACTIONABLE_ENGINEERING_RUN_COMPLETE_WITH_FUTURE_MECHANISM_DIAGNOSTICS",
+    "gate": "engineering_completion_audit",
+    "json": "engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.json",
+    "path": "engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.md",
+    "status": "ENGINEERING_COMPLETION_AUDIT_PASS"
+  },
   "manuscript_statement": {
     "gate": "manuscript_delayed_background_statement",
     "json": "engineering/crosscode_delayed_closure_20260625/05_decision/manuscript_delayed_background_statement.json",
@@ -834,7 +892,7 @@
     "recommended_treatment": "Report delayed activation as an unresolved cross-code model systematic; keep the headline as a reference-model estimate and include both delayed values in validation/systematics context.",
     "status": "MANUSCRIPT_DELAYED_BACKGROUND_STATEMENT_READY"
   },
-  "next_required_gate": "Inspect physical raw-coupling mechanisms inside the dominant Phase-3 Cu-64 source volumes: runtime point location, positron stopping/annihilation location, and incident TES ancestry; add final side-Compton/FoV reconstruction only if a manuscript-level final selection is required.",
+  "next_required_gate": "No blocking gate remains for the current raw-coupling/systematic manuscript statement; future mechanism diagnostics are runtime point-location, positron stopping/annihilation, incident TES ancestry, and final FoV reconstruction if a final-selection-level cross-code claim is later required.",
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
     "Runtime engine point-location differences not visible in the static geometry translator",
@@ -862,5 +920,5 @@
     "A pure static near-boundary source-position explanation for the Phase-3 W2 raw excess is weak: margin <0.01 cm contributes only 0.13 of the net difference.",
     "Common 1 microsecond / 1 nanosecond time clustering is not the first failure for the Phase-3 Cu-64 W2 mismatch: parent and 1us counts are identical, and 1ns clustering does not remove the active-veto excess."
   ],
-  "status": "MANUSCRIPT_STATEMENT_READY__PHYSICAL_RAW_COUPLING_AUDIT_REMAINS__CROSSCODE_CLOSURE_INCOMPLETE"
+  "status": "ENGINEERING_COMPLETION_AUDIT_PASS__CURRENT_SYSTEMATIC_STATEMENT_READY__FUTURE_MECHANISM_DIAGNOSTICS_REMAIN"
 }

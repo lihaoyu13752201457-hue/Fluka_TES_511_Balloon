@@ -13449,6 +13449,12 @@
       "stage_label": "final"
     }
   ],
+  "engineering_completion_audit": {
+    "current_objective_status": "ACTIONABLE_ENGINEERING_RUN_COMPLETE_WITH_FUTURE_MECHANISM_DIAGNOSTICS",
+    "json": "engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.json",
+    "path": "engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.md",
+    "status": "ENGINEERING_COMPLETION_AUDIT_PASS"
+  },
   "fluka_delayed": {
     "active_candidate_histories": 666,
     "histories": 254704,

@@ -1028,6 +1028,28 @@ Boundary: this is a manuscript-support statement, not closure of the remaining
 physical mechanism. Runtime point-location, positron stopping/annihilation
 location, and incident TES ancestry remain the next physics diagnostics.
 
+### 17.10 Conditional gate disposition and completion audit, 2026-06-25
+
+The remaining checklist items that were written as conditional gates are now
+dispositioned in:
+
+```text
+engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.md
+engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.json
+```
+
+The audit does not claim that runtime point-location, stopping/annihilation, or
+incident TES ancestry have been measured. It states that they are future
+mechanism diagnostics, not blockers for the current independent-source
+raw-coupling/systematic conclusion. The conditional gates are closed as follows:
+
+| conditional gate | disposition |
+|---|---|
+| Geant4/MEGAlib `1e6`/isotope decay-kernel production if low-yield precision is needed | not triggered for current conclusion |
+| FLUKA EM-cut scan if ancestry/full-geometry observables reopen EM-cut dependence | not triggered |
+| Runtime point-location audit if required before production transport | no longer required before production transport; future mechanism diagnostic |
+| Final side-Compton/FoV if manuscript-level final selection is required | not triggered for current manuscript statement |
+
 ## 18. Source-region audit
 
 For every unique source position, record in both codes:
@@ -1437,10 +1459,10 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Build FLUKA 1e6/isotope production decay-kernel outputs for Cu-64, Na-24, Al-28, I-128
 [x] Build Geant4/MEGAlib smoke decay-kernel outputs for Cu-64, Na-24, Al-28, I-128
 [x] Compare first-pass branch/line yields for Cu-64, Na-24, Al-28, I-128
-[ ] Build Geant4/MEGAlib 1e6/isotope production decay-kernel outputs if low-yield-line precision is needed
+[x] Disposition Geant4/MEGAlib 1e6/isotope production decay-kernel gate: not triggered for current conclusion
 [x] Build one common external positron/511 source list and pass T0 source-bookkeeping smoke
 [x] Run Cu/Ta toy transport in both codes (T1/T2 smoke complete; T2 production W2/broad deposited-energy acceptance pass)
-[ ] Scan FLUKA effective EM cuts if full-geometry or ancestry observables reopen a W2 EM-transport discrepancy
+[x] Disposition FLUKA effective EM-cut scan gate: not triggered by current evidence
 [x] Build cu64_common_positions.csv
 [x] Build deterministic 1e6 Cu-64 parent resampling authority
 [x] Audit source-volume name/material translation against the FLUKA region map
@@ -1448,7 +1470,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Run FLUKA 1k Phase-3 common Cu-64 raw-deposit plumbing smoke
 [x] Run MEGAlib 1k Phase-3 common Cu-64 raw-hit plumbing smoke
 [x] Calibrate MEGAlib HTsim detector/readout semantics against the common raw-deposit schema
-[ ] Runtime engine point-location audit in Geant4/FLUKA, if required before production transport
+[x] Disposition runtime engine point-location gate: not required before completed production transport; remains future mechanism diagnostic
 [x] Run 1e6 Cu-64 parents per code
 [x] Save raw deposit truth locally under `/tmp/phase3prod`; commit summaries only
 [x] Apply deterministic analytic W2 response at parent-history stage
@@ -1457,7 +1479,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Decompose Phase-3 raw coupling by source volume/material/production tag and local TES carrier
 [x] Audit W2 raw selected histories against static source-boundary margins
 [x] Run common 1 us / 1 ns time split and TES/active-shield topology builder
-[ ] Add final side-Compton/FoV reconstruction cut if manuscript-level final selection is required
+[x] Disposition final side-Compton/FoV gate: not triggered for current manuscript/systematic statement
 [x] Update manuscript delayed-background statement
 ```
 

@@ -54,6 +54,12 @@ A manuscript-facing delayed-background statement is included under
 treatment is to report delayed activation as an unresolved cross-code model
 systematic, not to use the W2 total agreement as delayed-component validation.
 
+The remaining conditional gates in `engineering.md` are dispositioned in
+`engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.md`.
+Runtime point-location, positron stopping/annihilation, incident TES ancestry,
+and final FoV reconstruction remain future mechanism diagnostics rather than
+blockers for the current raw-coupling/systematic conclusion.
+
 ## Key Artifacts
 
 - `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.md`
@@ -73,6 +79,7 @@ systematic, not to use the W2 total agreement as delayed-component validation.
   - Phase-3 Cu-64 production raw-deposit and parent-history event-builder
     summaries.
   - Manuscript delayed-background statement and claim boundary.
+  - Engineering completion audit and conditional gate disposition.
 
 ## Important Interpretation Detail
 

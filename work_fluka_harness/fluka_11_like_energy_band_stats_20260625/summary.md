@@ -104,6 +104,12 @@ It recommends treating delayed activation as an unresolved cross-code model
 systematic and not using the W2 total agreement as delayed-component
 validation.
 
+The conditional gates in `engineering.md` are dispositioned in
+`engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.md`.
+The remaining runtime point-location, stopping/annihilation, incident ancestry,
+and final FoV tasks are future mechanism diagnostics, not blockers for the
+current raw-coupling/systematic statement.
+
 ## Inputs
 
 - TES Step05 event catalog: `/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl`

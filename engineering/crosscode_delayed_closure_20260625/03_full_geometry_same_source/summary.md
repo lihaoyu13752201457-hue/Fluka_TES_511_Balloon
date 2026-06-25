@@ -16,6 +16,7 @@
 - raw_coupling_decomposition: `PHASE3_CU64_RAW_COUPLING_DECOMPOSITION_PASS`
 - boundary_margin_audit: `PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_PASS`
 - time_topology_event_builder: `PHASE3_CU64_COMMON_TIME_TOPOLOGY_BUILDER_PASS`
+- mechanism_focus_audit: `PHASE3_CU64_MECHANISM_FOCUS_AUDIT_PASS`
 
 ## Production Tags
 
@@ -40,6 +41,7 @@
 - The common time/topology builder now also applies 1 microsecond and 1 nanosecond clustering plus TES/active-shield channel bookkeeping. It does not implement the final side-Compton/FoV reconstruction cut.
 - The raw-coupling decomposition shows the W2 difference is distributed across source volumes/materials and is not isolated to `CuNi` or a non-neutron production tag.
 - The static boundary-margin audit shows the net W2 raw excess is not dominated by source positions with margin `< 0.01 cm`.
+- The mechanism-focus audit shows the excess is source-volume specific and sign-changing, not a global source-to-TES distance effect. MEGAlib W2 TES rows mostly carry gamma `phot`/`compt` ancestry into local TES electrons; FLUKA needs a dedicated TES-boundary/ancestry scorer to identify incident particles.
 - `sampling_probability` is normalized over Cu-64 rows only and is suitable for deterministic Cu-64 parent resampling.
 
 ## FLUKA Raw-Deposit Smoke
@@ -160,6 +162,34 @@ this W2 observable. The 1 nanosecond split affects only a small MEGAlib
 active-veto tail (`563` to `568`) and does not remove the raw W2 excess. The
 builder also reports single/multi TES-pixel and active-shield-touch topology;
 final side-Compton/FoV reconstruction remains open.
+
+## Mechanism Focus Audit
+
+Artifact:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/summary.md
+```
+
+Largest source-volume differences:
+
+| source volume | FLUKA W2 | MEGAlib W2 | diff | share of net | mechanism note |
+|---|---:|---:|---:|---:|---|
+| `ColdPlate_MXC_50mK_SD_anchor` | `438` | `227` | `+211` | `0.808` | FLUKA-high, median source-to-TES `4.58 cm` vs `6.57 cm` |
+| `Cu_SubstrateSupport_SolidDisk_L0_deepest` | `74` | `164` | `-90` | `-0.345` | MEGAlib-high, close TES geometry in both codes |
+| `Cu_50mK_StillLike_Can_side_wall_above_side_port` | `132` | `77` | `+55` | `0.211` | FLUKA-high side-wall coupling |
+| `ColdPlate_CP_100mK_intercept` | `88` | `42` | `+46` | `0.176` | FLUKA-high, far source-to-TES tail |
+
+Global W2 selected source-to-TES distance medians are similar: FLUKA raw
+`5.53 cm`, MEGAlib raw `5.85 cm`; after active veto, FLUKA `5.60 cm`,
+MEGAlib `6.12 cm`. This weakens a simple near/far scalar explanation. The
+working mechanism is local full-geometry coupling in specific Cu volumes:
+positron stopping/annihilation and 511-photon escape through the surrounding
+Cu/shield/Ta geometry, possibly with runtime region/material assignment in
+those locations. MEGAlib exposes gamma `phot`/`compt` ancestry feeding TES-local
+electron deposits; FLUKA currently exposes only local `EM_BELOW_THRESHOLD`
+deposit proxies, so the next decisive scorer is TES-boundary incident ancestry
+plus positron stopping/annihilation vertices.
 
 ## Raw-Coupling Decomposition
 

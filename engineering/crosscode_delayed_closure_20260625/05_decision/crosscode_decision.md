@@ -256,6 +256,14 @@ engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phas
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/time_split_summary.csv
 ```
 
+Phase-3 Cu-64 mechanism focus audit:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/w2_source_volume_mechanism_comparison.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/w2_local_carrier_ancestry_summary.csv
+```
+
 Manuscript delayed-background statement:
 
 ```text
@@ -516,6 +524,18 @@ raw-coupling/systematic conclusion. Runtime point-location,
 stopping/annihilation, incident TES ancestry, and final side-Compton/FoV
 reconstruction remain future mechanism diagnostics rather than blockers for the
 current manuscript statement.
+
+Mechanism interpretation:
+
+The best current explanation is local full-geometry Cu coupling, not detector
+response, time grouping, global source-boundary proximity, or a simple
+source-to-TES distance scalar. `ColdPlate_MXC_50mK_SD_anchor` is FLUKA-high
+(`438` versus `227` W2 raw events), while
+`Cu_SubstrateSupport_SolidDisk_L0_deepest` is MEGAlib-high (`74` versus `164`).
+This sign flip points to local positron stopping/annihilation and 511-photon
+escape/transport through specific Cu/shield/Ta structures. MEGAlib confirms
+gamma `phot`/`compt` ancestry feeding local TES electrons; FLUKA needs a
+TES-boundary/ancestry scorer to name the incident TES particle.
 
 ## What This Does Not Prove
 

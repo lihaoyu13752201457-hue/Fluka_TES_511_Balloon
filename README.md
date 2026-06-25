@@ -60,6 +60,14 @@ Runtime point-location, positron stopping/annihilation, incident TES ancestry,
 and final FoV reconstruction remain future mechanism diagnostics rather than
 blockers for the current raw-coupling/systematic conclusion.
 
+Mechanism focus audit: the observed W2 excess is source-volume specific, not a
+global distance or boundary effect. `ColdPlate_MXC_50mK_SD_anchor` is
+FLUKA-high (`438` versus `227`), while
+`Cu_SubstrateSupport_SolidDisk_L0_deepest` is MEGAlib-high (`74` versus `164`).
+MEGAlib shows gamma `phot`/`compt` ancestry feeding TES-local electron
+deposits; FLUKA currently records only local deposit proxies, so a
+TES-boundary/ancestry scorer is the next required mechanism diagnostic.
+
 ## Key Artifacts
 
 - `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.md`
@@ -80,6 +88,8 @@ blockers for the current raw-coupling/systematic conclusion.
     summaries.
   - Manuscript delayed-background statement and claim boundary.
   - Engineering completion audit and conditional gate disposition.
+  - Mechanism-focus audit over source volume, source-to-TES distance,
+    topology, and available ancestry/proxy labels.
 
 ## Important Interpretation Detail
 

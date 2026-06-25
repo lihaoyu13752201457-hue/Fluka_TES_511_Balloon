@@ -1050,6 +1050,38 @@ raw-coupling/systematic conclusion. The conditional gates are closed as follows:
 | Runtime point-location audit if required before production transport | no longer required before production transport; future mechanism diagnostic |
 | Final side-Compton/FoV if manuscript-level final selection is required | not triggered for current manuscript statement |
 
+### 17.11 Phase-3 mechanism focus audit, 2026-06-25
+
+The current raw truth can still explain the mechanism at an intermediate level:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/w2_source_volume_mechanism_comparison.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/w2_local_carrier_ancestry_summary.csv
+```
+
+The mechanism is not a single global distance or boundary scalar. W2 selected
+source-to-TES medians are similar: FLUKA raw `5.53 cm`, MEGAlib raw `5.85 cm`;
+active-veto FLUKA `5.60 cm`, MEGAlib `6.12 cm`. The sign instead flips by
+nearby Cu volume:
+
+| source volume | FLUKA W2 | MEGAlib W2 | diff | share of net | median distance note |
+|---|---:|---:|---:|---:|---|
+| `ColdPlate_MXC_50mK_SD_anchor` | `438` | `227` | `+211` | `0.808` | FLUKA `4.58 cm`, MEGAlib `6.57 cm` |
+| `Cu_SubstrateSupport_SolidDisk_L0_deepest` | `74` | `164` | `-90` | `-0.345` | FLUKA `1.73 cm`, MEGAlib `1.25 cm` |
+| `Cu_50mK_StillLike_Can_side_wall_above_side_port` | `132` | `77` | `+55` | `0.211` | FLUKA `4.57 cm`, MEGAlib `7.13 cm` |
+| `ColdPlate_CP_100mK_intercept` | `88` | `42` | `+46` | `0.176` | FLUKA `9.50 cm`, MEGAlib `11.72 cm` |
+
+Interpretation: the mechanism is local full-geometry Cu coupling. The most
+probable physical chain is Cu-64 positron/annihilation or decay photons
+escaping from particular cold Cu structures and depositing around 511 keV in
+Ta/TES after local electromagnetic cascades. MEGAlib confirms the photon
+concern directly: W2 TES rows are mostly local `e-` deposits with gamma
+`phot`/`compt` ancestry, plus smaller direct gamma rows. FLUKA currently keeps
+only local deposit proxies (`EM_BELOW_THRESHOLD`), so it cannot yet say whether
+the incident boundary particle was a photon; that requires a TES-boundary
+ancestry scorer and a positron stopping/annihilation locator.
+
 ## 18. Source-region audit
 
 For every unique source position, record in both codes:
@@ -1481,6 +1513,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Run common 1 us / 1 ns time split and TES/active-shield topology builder
 [x] Disposition final side-Compton/FoV gate: not triggered for current manuscript/systematic statement
 [x] Update manuscript delayed-background statement
+[x] Run mechanism-focus audit over source volume, source-to-TES distance, topology, and available ancestry/proxy labels
 ```
 
 ---

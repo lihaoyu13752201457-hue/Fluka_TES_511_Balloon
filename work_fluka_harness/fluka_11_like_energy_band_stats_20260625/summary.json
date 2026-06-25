@@ -13728,7 +13728,71 @@
       "selected_margin_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/selected_margin_summary.csv",
       "status": "PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_PASS"
     },
-    "interpretation": "The TES-vs-FLUKA W2 composition residual is not explained by common analytic W2 response, static source-boundary margins <0.01 cm, or common 1us/1ns time clustering; the Phase-3 Cu-64 difference is already present in raw deposits and remains a physical raw-coupling question.",
+    "interpretation": "The W2 composition residual is best explained by local full-geometry Cu raw coupling: source-volume-specific and sign-changing, with MEGAlib gamma phot/compt ancestry feeding TES-local electrons. FLUKA incident TES ancestry remains to be measured with a boundary/ancestry scorer.",
+    "mechanism_focus_audit": {
+      "gate": "phase3_cu64_mechanism_focus_audit_1e6",
+      "interpretation": {
+        "mechanism": "source-volume-specific full-geometry raw coupling before common detector response",
+        "not_supported": [
+          "pure W2 response effect",
+          "1us/1ns time grouping effect",
+          "global static boundary-margin effect",
+          "global source-to-TES distance scalar effect"
+        ],
+        "remaining_needed": [
+          "FLUKA TES-boundary incident ancestry scorer",
+          "positron stopping/annihilation locator",
+          "runtime point-location scorer in dominant source volumes"
+        ]
+      },
+      "json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/summary.json",
+      "key_results": {
+        "top_source_volume_negative": {
+          "difference_events": -90,
+          "difference_share_of_net": -0.3448275862068966,
+          "fluka_active_veto_fraction": 0.5540540540540541,
+          "fluka_median_source_to_tes_cm": 1.7269183884086223,
+          "fluka_over_megalib": 0.45121951219512196,
+          "fluka_shield_touched_fraction": 0.47297297297297297,
+          "fluka_top_carriers": "FLUKA:EM_BELOW_THRESHOLD|ENDRAW_EM_LOCAL_DEPOSITION|211|20:103",
+          "fluka_w2_raw_events": 74,
+          "megalib_active_veto_fraction": 0.49390243902439024,
+          "megalib_median_source_to_tes_cm": 1.2516872839942448,
+          "megalib_shield_touched_fraction": 0.5304878048780488,
+          "megalib_top_carriers": "MEGAlib:e-|gamma|phot|msc:742; MEGAlib:e-|gamma|phot|eIoni:532; MEGAlib:gamma|gamma|phot|phot:207",
+          "megalib_w2_raw_events": 164,
+          "source_histories": 4708,
+          "source_volume": "Cu_SubstrateSupport_SolidDisk_L0_deepest"
+        },
+        "top_source_volume_positive": {
+          "difference_events": 211,
+          "difference_share_of_net": 0.8084291187739464,
+          "fluka_active_veto_fraction": 0.545662100456621,
+          "fluka_median_source_to_tes_cm": 4.577800070690741,
+          "fluka_over_megalib": 1.9295154185022025,
+          "fluka_shield_touched_fraction": 0.4589041095890411,
+          "fluka_top_carriers": "FLUKA:EM_BELOW_THRESHOLD|ENDRAW_EM_LOCAL_DEPOSITION|211|20:651; FLUKA:ELECTRON|MGDRAW_EMFSCO_CONTINUOUS|3|2:8",
+          "fluka_w2_raw_events": 438,
+          "megalib_active_veto_fraction": 0.8237885462555066,
+          "megalib_median_source_to_tes_cm": 6.565891063417915,
+          "megalib_shield_touched_fraction": 0.18061674008810572,
+          "megalib_top_carriers": "MEGAlib:e-|gamma|phot|eIoni:728; MEGAlib:e-|gamma|phot|msc:685; MEGAlib:gamma|gamma|phot|phot:283",
+          "megalib_w2_raw_events": 227,
+          "source_histories": 84445,
+          "source_volume": "ColdPlate_MXC_50mK_SD_anchor"
+        },
+        "w2_active_veto": {
+          "fluka": 662,
+          "megalib": 563
+        },
+        "w2_raw": {
+          "fluka": 1269,
+          "megalib": 1008
+        }
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/summary.md",
+      "status": "PHASE3_CU64_MECHANISM_FOCUS_AUDIT_PASS"
+    },
     "parent_history_event_builder": {
       "active_veto_threshold_keV": 50.0,
       "boundary": "Common parent-history event builder only; sub-event time splitting and side-Compton/FoV topology remain open.",

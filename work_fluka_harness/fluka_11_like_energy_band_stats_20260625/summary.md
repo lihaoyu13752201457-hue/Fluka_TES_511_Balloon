@@ -110,6 +110,15 @@ The remaining runtime point-location, stopping/annihilation, incident ancestry,
 and final FoV tasks are future mechanism diagnostics, not blockers for the
 current raw-coupling/systematic statement.
 
+Mechanism focus audit: the current raw truth supports a local full-geometry Cu
+coupling mechanism. The largest FLUKA-high source is
+`ColdPlate_MXC_50mK_SD_anchor` (`438` versus `227` W2 raw events), while the
+largest MEGAlib-high source is `Cu_SubstrateSupport_SolidDisk_L0_deepest`
+(`74` versus `164`). Global source-to-TES distance is similar between codes
+for W2 selected events, so this is not a simple near/far effect. MEGAlib W2 TES
+rows mostly have gamma `phot`/`compt` ancestry into local TES electrons; FLUKA
+needs a TES-boundary/ancestry scorer to identify the incident TES particle.
+
 ## Inputs
 
 - TES Step05 event catalog: `/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl`

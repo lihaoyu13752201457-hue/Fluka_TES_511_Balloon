@@ -820,6 +820,70 @@
       "json": "engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.json",
       "path": "engineering/crosscode_delayed_closure_20260625/05_decision/engineering_completion_audit.md",
       "status": "ENGINEERING_COMPLETION_AUDIT_PASS"
+    },
+    {
+      "gate": "phase3_cu64_mechanism_focus_audit_1e6",
+      "interpretation": {
+        "mechanism": "source-volume-specific full-geometry raw coupling before common detector response",
+        "not_supported": [
+          "pure W2 response effect",
+          "1us/1ns time grouping effect",
+          "global static boundary-margin effect",
+          "global source-to-TES distance scalar effect"
+        ],
+        "remaining_needed": [
+          "FLUKA TES-boundary incident ancestry scorer",
+          "positron stopping/annihilation locator",
+          "runtime point-location scorer in dominant source volumes"
+        ]
+      },
+      "json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/summary.json",
+      "key_results": {
+        "top_source_volume_negative": {
+          "difference_events": -90,
+          "difference_share_of_net": -0.3448275862068966,
+          "fluka_active_veto_fraction": 0.5540540540540541,
+          "fluka_median_source_to_tes_cm": 1.7269183884086223,
+          "fluka_over_megalib": 0.45121951219512196,
+          "fluka_shield_touched_fraction": 0.47297297297297297,
+          "fluka_top_carriers": "FLUKA:EM_BELOW_THRESHOLD|ENDRAW_EM_LOCAL_DEPOSITION|211|20:103",
+          "fluka_w2_raw_events": 74,
+          "megalib_active_veto_fraction": 0.49390243902439024,
+          "megalib_median_source_to_tes_cm": 1.2516872839942448,
+          "megalib_shield_touched_fraction": 0.5304878048780488,
+          "megalib_top_carriers": "MEGAlib:e-|gamma|phot|msc:742; MEGAlib:e-|gamma|phot|eIoni:532; MEGAlib:gamma|gamma|phot|phot:207",
+          "megalib_w2_raw_events": 164,
+          "source_histories": 4708,
+          "source_volume": "Cu_SubstrateSupport_SolidDisk_L0_deepest"
+        },
+        "top_source_volume_positive": {
+          "difference_events": 211,
+          "difference_share_of_net": 0.8084291187739464,
+          "fluka_active_veto_fraction": 0.545662100456621,
+          "fluka_median_source_to_tes_cm": 4.577800070690741,
+          "fluka_over_megalib": 1.9295154185022025,
+          "fluka_shield_touched_fraction": 0.4589041095890411,
+          "fluka_top_carriers": "FLUKA:EM_BELOW_THRESHOLD|ENDRAW_EM_LOCAL_DEPOSITION|211|20:651; FLUKA:ELECTRON|MGDRAW_EMFSCO_CONTINUOUS|3|2:8",
+          "fluka_w2_raw_events": 438,
+          "megalib_active_veto_fraction": 0.8237885462555066,
+          "megalib_median_source_to_tes_cm": 6.565891063417915,
+          "megalib_shield_touched_fraction": 0.18061674008810572,
+          "megalib_top_carriers": "MEGAlib:e-|gamma|phot|eIoni:728; MEGAlib:e-|gamma|phot|msc:685; MEGAlib:gamma|gamma|phot|phot:283",
+          "megalib_w2_raw_events": 227,
+          "source_histories": 84445,
+          "source_volume": "ColdPlate_MXC_50mK_SD_anchor"
+        },
+        "w2_active_veto": {
+          "fluka": 662,
+          "megalib": 563
+        },
+        "w2_raw": {
+          "fluka": 1269,
+          "megalib": 1008
+        }
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/summary.md",
+      "status": "PHASE3_CU64_MECHANISM_FOCUS_AUDIT_PASS"
     }
   ],
   "date": "2026-06-25",
@@ -892,7 +956,71 @@
     "recommended_treatment": "Report delayed activation as an unresolved cross-code model systematic; keep the headline as a reference-model estimate and include both delayed values in validation/systematics context.",
     "status": "MANUSCRIPT_DELAYED_BACKGROUND_STATEMENT_READY"
   },
-  "next_required_gate": "No blocking gate remains for the current raw-coupling/systematic manuscript statement; future mechanism diagnostics are runtime point-location, positron stopping/annihilation, incident TES ancestry, and final FoV reconstruction if a final-selection-level cross-code claim is later required.",
+  "mechanism_focus_audit": {
+    "gate": "phase3_cu64_mechanism_focus_audit_1e6",
+    "interpretation": {
+      "mechanism": "source-volume-specific full-geometry raw coupling before common detector response",
+      "not_supported": [
+        "pure W2 response effect",
+        "1us/1ns time grouping effect",
+        "global static boundary-margin effect",
+        "global source-to-TES distance scalar effect"
+      ],
+      "remaining_needed": [
+        "FLUKA TES-boundary incident ancestry scorer",
+        "positron stopping/annihilation locator",
+        "runtime point-location scorer in dominant source volumes"
+      ]
+    },
+    "json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/summary.json",
+    "key_results": {
+      "top_source_volume_negative": {
+        "difference_events": -90,
+        "difference_share_of_net": -0.3448275862068966,
+        "fluka_active_veto_fraction": 0.5540540540540541,
+        "fluka_median_source_to_tes_cm": 1.7269183884086223,
+        "fluka_over_megalib": 0.45121951219512196,
+        "fluka_shield_touched_fraction": 0.47297297297297297,
+        "fluka_top_carriers": "FLUKA:EM_BELOW_THRESHOLD|ENDRAW_EM_LOCAL_DEPOSITION|211|20:103",
+        "fluka_w2_raw_events": 74,
+        "megalib_active_veto_fraction": 0.49390243902439024,
+        "megalib_median_source_to_tes_cm": 1.2516872839942448,
+        "megalib_shield_touched_fraction": 0.5304878048780488,
+        "megalib_top_carriers": "MEGAlib:e-|gamma|phot|msc:742; MEGAlib:e-|gamma|phot|eIoni:532; MEGAlib:gamma|gamma|phot|phot:207",
+        "megalib_w2_raw_events": 164,
+        "source_histories": 4708,
+        "source_volume": "Cu_SubstrateSupport_SolidDisk_L0_deepest"
+      },
+      "top_source_volume_positive": {
+        "difference_events": 211,
+        "difference_share_of_net": 0.8084291187739464,
+        "fluka_active_veto_fraction": 0.545662100456621,
+        "fluka_median_source_to_tes_cm": 4.577800070690741,
+        "fluka_over_megalib": 1.9295154185022025,
+        "fluka_shield_touched_fraction": 0.4589041095890411,
+        "fluka_top_carriers": "FLUKA:EM_BELOW_THRESHOLD|ENDRAW_EM_LOCAL_DEPOSITION|211|20:651; FLUKA:ELECTRON|MGDRAW_EMFSCO_CONTINUOUS|3|2:8",
+        "fluka_w2_raw_events": 438,
+        "megalib_active_veto_fraction": 0.8237885462555066,
+        "megalib_median_source_to_tes_cm": 6.565891063417915,
+        "megalib_shield_touched_fraction": 0.18061674008810572,
+        "megalib_top_carriers": "MEGAlib:e-|gamma|phot|eIoni:728; MEGAlib:e-|gamma|phot|msc:685; MEGAlib:gamma|gamma|phot|phot:283",
+        "megalib_w2_raw_events": 227,
+        "source_histories": 84445,
+        "source_volume": "ColdPlate_MXC_50mK_SD_anchor"
+      },
+      "w2_active_veto": {
+        "fluka": 662,
+        "megalib": 563
+      },
+      "w2_raw": {
+        "fluka": 1269,
+        "megalib": 1008
+      }
+    },
+    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_mechanism_focus_audit_1e6/summary.md",
+    "status": "PHASE3_CU64_MECHANISM_FOCUS_AUDIT_PASS"
+  },
+  "next_required_gate": "To uniquely name the incident TES particle and close the physical mechanism, add a FLUKA TES-boundary/ancestry scorer plus positron stopping/annihilation locator in the dominant source volumes.",
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
     "Runtime engine point-location differences not visible in the static geometry translator",
@@ -920,5 +1048,5 @@
     "A pure static near-boundary source-position explanation for the Phase-3 W2 raw excess is weak: margin <0.01 cm contributes only 0.13 of the net difference.",
     "Common 1 microsecond / 1 nanosecond time clustering is not the first failure for the Phase-3 Cu-64 W2 mismatch: parent and 1us counts are identical, and 1ns clustering does not remove the active-veto excess."
   ],
-  "status": "ENGINEERING_COMPLETION_AUDIT_PASS__CURRENT_SYSTEMATIC_STATEMENT_READY__FUTURE_MECHANISM_DIAGNOSTICS_REMAIN"
+  "status": "MECHANISM_FOCUS_AUDIT_PASS__LOCAL_FULL_GEOMETRY_CU_COUPLING_IDENTIFIED__INCIDENT_ANCESTRY_STILL_UNMEASURED"
 }

@@ -27,9 +27,19 @@
   "sampling_probability_sum": "1.0000000000000000000000000000000000000000000000000000000000000000000000000000164",
   "source_csv": "/home/ubuntu/TES_511_Balloon/engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/delayed_position_weights_v2.csv",
   "source_material_policy": "PENDING_REGION_AUDIT",
-  "source_sha256": "fa70c28c188ee8dc363c5f579d5332fae474539f40a35afe2624253cdebc5076",
-  "status": "CU64_COMMON_POSITIONS_COMPLETE",
-  "top_source_volumes": [
+    "source_sha256": "fa70c28c188ee8dc363c5f579d5332fae474539f40a35afe2624253cdebc5076",
+    "status": "CU64_COMMON_POSITIONS_COMPLETE",
+    "source_region_material_name_audit": {
+        "status": "SOURCE_REGION_MATERIAL_NAME_AUDIT_PASS",
+        "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md"
+    },
+    "source_coordinate_containment_audit": {
+        "status": "SOURCE_COORDINATE_CONTAINMENT_STATIC_PASS",
+        "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md",
+        "runtime_point_location_tested": false,
+        "coordinate_transform_policy": "source-v2 coordinates are inverse-rotated by InstrumentFrame.Rotation 0 45 0 into the MEGAlib/FLUKA-translator local frame before static containment"
+    },
+    "top_source_volumes": [
     {
       "activity_fraction": "0.39136667351115603542250747257208020931067939116759672020202725726887290858593176",
       "activity_weight_Bq": "1.8401688967658895710996982167468999999999999999999999999999999999999999999999923",

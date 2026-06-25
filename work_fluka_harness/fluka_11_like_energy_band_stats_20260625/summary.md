@@ -152,7 +152,7 @@ This is the check for the photon/electron concern. `deposit_carrier` is the loca
 7. The first T1 Cu-sphere transport smoke is complete. For 1 cm Cu sphere escape, the 511-related W2 photon yields are close at smoke statistics: Cu-64 positron rows FLUKA/MEGAlib `0.972`, mono-511 rows `0.943`, and pair-511 rows `0.897`; the largest of these approximate Poisson z-scores is `1.21 sigma`. T2/Ta deposition and common raw-deposit truth remain open.
 8. The first T2 Cu+Ta absorber smoke proved both engines can reach the same Ta deposited-energy observable, but its `9` vs `4` Cu-64 W2 counts were too low to interpret.
 9. The T2 production-statistics generated-source run now closes the toy W2 deposited-energy gate. With `100000` rows each for Cu-64 positrons, mono-511 photons, and pair-511 photons, the W2 Ta efficiencies are FLUKA/MEGAlib `1.029` for Cu-64 positrons (`1132` vs `1100`, `0.68 sigma`), `0.986` for mono-511 photons, and `1.007` for pair-511 photons. Therefore the full-chain FLUKA delayed W2 excess is not explained by a simple common-source Cu+Ta W2 EM transport/deposition mismatch in this toy geometry.
-10. Phase 3 has started: `cu64_common_positions.csv` now contains `6927` source-v2 Cu-64 positions with total Cu-64 activity weight `4.701904943 Bq`. The first name-level source-volume/material audit passes for all `6927` rows against the FLUKA translation map, with `93.75%` of Cu-64 activity in `Copper` and `6.25%` in `CuNi`. This is not yet a coordinate-containment or runtime point-location proof, so the next gate is resolving those positions inside the actual Geant4 and FLUKA geometries.
+10. Phase 3 has started: `cu64_common_positions.csv` now contains `6927` source-v2 Cu-64 positions with total Cu-64 activity weight `4.701904943 Bq`. The name-level source-volume/material audit passes for all rows, and the static coordinate-containment audit also passes after inverse `InstrumentFrame.Rotation 0 45 0`: `6927/6927` rows lie inside their declared source volume, with deepest resolved material `93.75%` `Copper` and `6.25%` `CuNi`. This still is not a runtime FLUKA/Geant4 point-location scorer.
 
 ## Decay-Kernel Cross-Code Check
 
@@ -299,6 +299,27 @@ region/material names. It does not test coordinate containment, nearest-boundary
 distance, or runtime Geant4/FLUKA point location, which remain required before
 full transport.
 
+## Phase-3 Static Coordinate Containment
+
+The coordinate audit applies the explicit geometry-frame policy before testing
+containment: source-v2 coordinates are inverse-rotated by
+`InstrumentFrame.Rotation 0 45 0` into the local frame used by the MEGAlib
+geometry parser and FLUKA translator.
+
+| audit status | rows | activity weight |
+|---|---:|---:|
+| `PASS_STATIC_CONTAINMENT` | `6927` | `4.7019049431490107524463624743796 Bq` |
+
+The resolved deepest material summary is identical to the name-level material
+split: `6494` rows in `Copper` (`93.749%` activity) and `433` rows in `CuNi`
+(`6.251%`). Minimum approximate margin to the declared source boundary is
+`2.325151502e-05 cm`.
+
+Boundary: this is a static translator containment audit. It verifies that the
+common Cu-64 coordinates match the parsed geometry authority and translated
+FLUKA region objects, but it is not a runtime point-location scorer inside
+FLUKA or Geant4.
+
 ## Artifacts
 
 - source rows CSV: `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/source_stage_rows.csv`
@@ -312,3 +333,4 @@ full transport.
 - Phase-2 T2 Cu+Ta production-statistics gate: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md`
 - Phase-3 Cu-64 common positions: `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md`
 - Phase-3 source-region/material name audit: `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md`
+- Phase-3 static coordinate containment audit: `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md`

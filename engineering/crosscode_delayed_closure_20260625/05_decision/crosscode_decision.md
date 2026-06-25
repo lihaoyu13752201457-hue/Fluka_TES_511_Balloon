@@ -155,6 +155,14 @@ engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/sour
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_region_material_name_audit.csv
 ```
 
+Phase-3 Cu-64 static coordinate-containment audit:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.json
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_coordinate_containment_audit.csv
+```
+
 Runtime identity result:
 
 | nuclide | event_id | expected Z/A/isomer | FLUKA runtime Z/A/isomer | result |
@@ -249,6 +257,19 @@ Phase-3 Cu-64 source-region/material name audit:
 | `CuNi` activity share | `6.251%` |
 | coordinate containment tested | `False` |
 
+Phase-3 Cu-64 static coordinate-containment audit:
+
+| quantity | value |
+|---|---:|
+| audit status | `SOURCE_COORDINATE_CONTAINMENT_STATIC_PASS` |
+| static containment pass rows | `6927 / 6927` |
+| failing rows | `0` |
+| coordinate transform | inverse `InstrumentFrame.Rotation 0 45 0` |
+| deepest `Copper` activity share | `93.749%` |
+| deepest `CuNi` activity share | `6.251%` |
+| minimum approximate source-boundary margin | `2.325151502e-05 cm` |
+| runtime point location tested | `False` |
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
@@ -260,16 +281,17 @@ T1 smoke adds escaped-particle evidence in a Cu sphere. The T2 smoke adds a
 first shared Ta deposited-energy observable, but with intentionally enlarged
 absorber dimensions and low event counts. The T2 production-statistics toy gate
 passes W2/broad deposited-energy efficiency for generated 511-related sources,
-but it still lacks exact full-geometry Ta/TES dimensions, coordinate-level
-source point location, ancestry/stopping truth, and the final analytic W2
-response. The Phase-3 position file and name-level source-region/material audit
-start that path, but they do not yet resolve whether those coordinates land in
-the same material/region in both full geometries at runtime.
+but it still lacks exact full-geometry Ta/TES dimensions, runtime engine point
+location, ancestry/stopping truth, and the final analytic W2 response. The
+Phase-3 position file, name-level audit, and static coordinate-containment audit
+now show that the common Cu-64 coordinates are internally consistent with the
+translated geometry authority after the explicit InstrumentFrame transform.
+They do not yet replace a FLUKA or Geant4 runtime point-location scorer.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
-2. Coordinate-level source-region/material audit for the built Cu-64 common positions in both full geometries.
+2. Runtime point-location audit for the built Cu-64 common positions if required before production transport.
 3. Full-geometry raw deposits for the common Cu-64 parents.
 4. Common external event builder and deterministic analytic W2 response.
 5. Common ancestry/stopping observables for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy.
@@ -289,8 +311,8 @@ delayed deficit:
 | 1500-3000 keV | 0.041 |
 | 3000-10000 keV | 0.014 |
 
-The next run should therefore resolve the built Cu-64 common positions at
-coordinate/runtime level in both full geometries and fail fast on any
-source-region/material mismatch before starting high-stat full transport. The
-toy T2 W2 result no longer justifies an immediate FLUKA EM-cut scan for the
-511-related deposited-energy gate.
+The next run should therefore use the built Cu-64 common positions for
+full-geometry raw-deposit truth, with a runtime point-location scorer inserted
+first if the engine-level locator is required as a hard gate. The toy T2 W2
+result no longer justifies an immediate FLUKA EM-cut scan for the 511-related
+deposited-energy gate.

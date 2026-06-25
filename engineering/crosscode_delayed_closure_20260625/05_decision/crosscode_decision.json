@@ -1,6 +1,6 @@
 {
   "date": "2026-06-25",
-  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_T2_PRODUCTION_PHASE3_POSITION_AND_NAME_AUDIT_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
+  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_T2_PRODUCTION_PHASE3_POSITION_NAME_AND_STATIC_COORDINATE_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
   "completed_gates": [
     {
       "gate": "manifest_freeze",
@@ -259,6 +259,30 @@
         }
       },
       "boundary": "name-level audit only; coordinate containment and runtime point location remain open"
+    },
+    {
+      "gate": "phase3_cu64_source_coordinate_static_containment_audit",
+      "status": "PASS_STATIC_CONTAINMENT",
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md",
+      "audit_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_coordinate_containment_audit.csv",
+      "audit_sha256": "d223ff99a03ed0425ab939789d6dadca8ef05c363fb562cfeb0a41fb288062ff",
+      "rows": 6927,
+      "pass_static_containment_rows": 6927,
+      "failing_rows": 0,
+      "coordinate_transform_policy": "source-v2 coordinates are inverse-rotated by InstrumentFrame.Rotation 0 45 0 into the MEGAlib/FLUKA-translator local frame before static containment",
+      "runtime_point_location_tested": false,
+      "min_expected_boundary_margin_cm_approx": 2.325151502e-05,
+      "resolved_material_summary": {
+        "Copper": {
+          "rows": 6494,
+          "activity_fraction": "0.93749090642112001319389791948369939349258776105825776093556586215641067691740606"
+        },
+        "CuNi": {
+          "rows": 433,
+          "activity_fraction": "0.062509093578879986806102080516300606507412238941742239064434137843589323082593945"
+        }
+      },
+      "boundary": "static translator containment only; runtime Geant4/FLUKA point location remains open"
     }
   ],
   "ruled_out": [
@@ -268,15 +292,16 @@
     "The W2 Cu-64 discrepancy is unlikely to be a simple beta-plus branching bookkeeping error: Geant4/MEGAlib smoke gives 0.1767 positrons per Cu-64 parent and FLUKA production gives 0.176483.",
     "The next common-source comparison is not already biased at T0 by source-adapter count, particle-code, kinetic-energy, direction, or weight drift for the 2048-row photon/positron smoke list.",
     "The full-chain delayed W2 excess is not explained by a simple common-source Cu+Ta W2 EM-transport/deposition mismatch in the enlarged toy geometry: the T2 production W2 ratios are 1.029 for Cu-64 positron rows, 0.986 for mono-511 rows, and 1.007 for pair-511 rows.",
-    "The built Cu-64 common-position rows are not missing from the FLUKA translation map at source-volume-name level: 6927/6927 rows map to translated FLUKA region/material names."
+    "The built Cu-64 common-position rows are not missing from the FLUKA translation map at source-volume-name level: 6927/6927 rows map to translated FLUKA region/material names.",
+    "The built Cu-64 common-position rows are not statically outside their declared source volumes after applying the explicit InstrumentFrame transform: 6927/6927 rows pass static containment and resolve to Copper/CuNi."
   ],
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
-    "Full-geometry coordinate-level material/region/source-position differences",
+    "Runtime engine point-location differences not visible in the static geometry translator",
     "Exact physical Ta/TES geometry dependence in full geometry",
     "Common postprocessing or event-building differences",
     "Common ancestry/stopping differences for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy",
     "FLUKA EM-cut/material dependence of W2 deposited-energy efficiency only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy"
   ],
-  "next_required_gate": "Resolve the built Cu-64 common positions at coordinate/runtime level in both full geometries and fail fast on any source-region/material mismatch before high-stat full transport."
+  "next_required_gate": "Use the built Cu-64 common positions for full-geometry raw-deposit truth, inserting a runtime point-location scorer first if engine-level locator validation is required as a hard gate."
 }

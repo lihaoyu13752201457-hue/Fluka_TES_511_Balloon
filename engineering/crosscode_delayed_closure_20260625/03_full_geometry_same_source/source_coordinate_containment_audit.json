@@ -1,0 +1,46 @@
+{
+  "audit_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_coordinate_containment_audit.csv",
+  "audit_sha256": "d223ff99a03ed0425ab939789d6dadca8ef05c363fb562cfeb0a41fb288062ff",
+  "boundary": "static translator containment only; runtime Geant4/FLUKA point location remains open",
+  "coordinate_transform_policy": "source-v2 coordinates are inverse-rotated by InstrumentFrame.Rotation 0 45 0 into the MEGAlib/FLUKA-translator local frame before static containment",
+  "failing_rows": 0,
+  "geometry_geo": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+  "geometry_geo_sha256": "8531d589d6bab62bf0de9ded9709735a0ee1b1d1c32d6285865a62acbd7fe63c",
+  "geometry_intro": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/Intro_DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo",
+  "geometry_intro_sha256": "f4ea834bf385f68a85690e018fd52d692e94e19dd93959e35e6f91efd3dbfd52",
+  "min_expected_boundary_margin_cm_approx": 2.325151502e-05,
+  "pass_static_containment_rows": 6927,
+  "positions_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_positions.csv",
+  "positions_sha256": "28aa15b2669e9ef7e40956ec7035aca0ed289014f23b03dd4181f7b0a569bf98",
+  "region_map_csv": "/home/ubuntu/TES_511_Balloon/engineering/fluka_crosscode_validation_20260624/02_geometry_translation/region_map.csv",
+  "region_map_sha256": "b00a289ba31f9b144862b23991adbdfea5b4d6c131ec23537f357a8c9224d9ac",
+  "resolved_material_summary": [
+    {
+      "activity_fraction": "0.93749090642112001319389791948369939349258776105825776093556586215641067691740606",
+      "activity_weight_Bq": "4.4079931270587108550100473276045999999999999999999999999999999999999999999999526",
+      "resolved_static_material": "Copper",
+      "rows": 6494
+    },
+    {
+      "activity_fraction": "0.062509093578879986806102080516300606507412238941742239064434137843589323082593945",
+      "activity_weight_Bq": "0.29391181609029989743631514677500000000000000000000000000000000000000000000000003",
+      "resolved_static_material": "CuNi",
+      "rows": 433
+    }
+  ],
+  "resolved_material_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_coordinate_resolved_material_summary.csv",
+  "resolved_material_summary_sha256": "8eb0938fa90243e17a151732defd46e306edba0b03d265402ed1094be4791594",
+  "rows": 6927,
+  "runtime_point_location_tested": false,
+  "status": "SOURCE_COORDINATE_CONTAINMENT_STATIC_PASS",
+  "status_summary": [
+    {
+      "activity_fraction": "1",
+      "activity_weight_Bq": "4.7019049431490107524463624743795999999999999999999999999999999999999999999999523",
+      "audit_status": "PASS_STATIC_CONTAINMENT",
+      "rows": 6927
+    }
+  ],
+  "status_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_coordinate_containment_status_summary.csv",
+  "status_summary_sha256": "23268749379480030596c01eb857ed32a2cf54e001f7e6181e4eb2ca0af08dd6"
+}

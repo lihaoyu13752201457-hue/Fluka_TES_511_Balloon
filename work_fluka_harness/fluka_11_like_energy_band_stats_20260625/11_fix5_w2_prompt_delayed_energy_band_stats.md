@@ -439,6 +439,15 @@ Cu-64 source table points to unmapped FLUKA regions, but it does not yet prove
 coordinate containment, nearest-boundary distance, or runtime point location in
 Geant4/FLUKA. Those coordinate-level checks remain the next full-geometry gate.
 
+The static coordinate-containment audit now also passes. The audit inverse-rotates
+source-v2 coordinates by `InstrumentFrame.Rotation 0 45 0` into the
+local frame used by the MEGAlib geometry parser and FLUKA translator; after that
+transform, `6927/6927` Cu-64 points lie inside their declared `source_volume`,
+and that source volume is the deepest translated object containing the point.
+The deepest resolved material split is `6494` rows in `Copper` (`93.75%`
+activity) and `433` rows in `CuNi` (`6.25%`). This is still a static translator
+audit, not a runtime FLUKA/Geant4 point-location scorer.
+
 Audit artifacts:
 
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md`
@@ -450,6 +459,7 @@ Audit artifacts:
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md`
+- `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md`
 
 ## Follow-Up Checks
 

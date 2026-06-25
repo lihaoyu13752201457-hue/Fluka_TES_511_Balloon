@@ -652,8 +652,10 @@ and `ColdPlate_MXC_50mK_SD_anchor` (`8.43%`). `source_material` is deliberately
 set to `PENDING_REGION_AUDIT`, because material must be resolved separately in
 both full geometries rather than inferred from source-v2 reporting names.
 
-Next Phase-3 step: resolve the positions at coordinate/runtime level in both
-full geometries before starting high-stat full transport.
+Phase-3 source mapping now has two completed layers: name-level region/material
+translation and static coordinate containment against the MEGAlib-authority
+geometry as parsed by the FLUKA translator. The remaining pre-transport locator
+gap is runtime point location inside the engines.
 
 ### Two required modes
 
@@ -737,6 +739,40 @@ coordinate containment. The audit did not test nearest-boundary distance or
 runtime Geant4/FLUKA point location. `217` rows (`3.13%` by activity) have a
 canonical reporting name that differs from `source_volume`; that field is
 reporting-only and is not used as the geometry authority.
+
+### 18.2 Static coordinate-containment audit status, 2026-06-25
+
+The second audit layer is complete:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_coordinate_containment_audit.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.json
+```
+
+It inverse-rotates source-v2 coordinates by `InstrumentFrame.Rotation 0 45 0`
+into the local coordinate frame used by `build_geometry_translation.py`, then
+checks each point against the same MEGAlib geometry authority parsed by the
+FLUKA translator. All Cu-64 rows pass:
+
+| audit status | rows | activity weight |
+|---|---:|---:|
+| `PASS_STATIC_CONTAINMENT` | `6927` | `4.7019049431490107524463624743796 Bq` |
+
+The deepest resolved static material split is unchanged from the name-level
+audit:
+
+| resolved material | rows | activity fraction |
+|---|---:|---:|
+| `Copper` | `6494` | `93.749%` |
+| `CuNi` | `433` | `6.251%` |
+
+This removes a stronger failure mode: the common Cu-64 coordinates are not just
+mapped by name; after applying the explicit InstrumentFrame transform, each
+coordinate lies inside its declared `source_volume`, and that source volume is
+the deepest translated object containing the point. Minimum approximate margin
+to the expected source boundary is `2.325151502e-05 cm`. This is still a static
+translator audit, not a FLUKA runtime or Geant4 runtime point-location scorer.
 
 ## 19. Raw outputs required from both codes
 
@@ -1051,7 +1087,8 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [ ] Scan FLUKA effective EM cuts if full-geometry or ancestry observables reopen a W2 EM-transport discrepancy
 [x] Build cu64_common_positions.csv
 [x] Audit source-volume name/material translation against the FLUKA region map
-[ ] Coordinate-level source region/material audit in both full geometries
+[x] Static coordinate-containment audit after inverse InstrumentFrame transform
+[ ] Runtime engine point-location audit in Geant4/FLUKA, if required before production transport
 [ ] Run 1e6 Cu-64 parents per code
 [ ] Save raw deposit truth
 [ ] Run common external event builder

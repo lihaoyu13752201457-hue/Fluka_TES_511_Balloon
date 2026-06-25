@@ -21,7 +21,11 @@ work_fluka_harness/**/core
 # Reproducible engineering gates keep summaries/CSVs, not local FLUKA
 # executables, run directories, logs or random seeds.
 engineering/**/fluka_run/
+engineering/**/cosima_run/
 engineering/**/scoring_routines/
+engineering/**/*.sim
+engineering/**/*.sim.gz
+engineering/**/*.tra
 engineering/**/*.err
 engineering/**/*.log
 engineering/**/*.out

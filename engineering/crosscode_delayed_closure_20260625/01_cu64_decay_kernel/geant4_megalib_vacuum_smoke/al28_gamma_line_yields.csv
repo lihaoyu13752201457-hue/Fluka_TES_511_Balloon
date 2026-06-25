@@ -1,0 +1,2 @@
+nuclide,line,window_low_keV,window_high_keV,photon_count,photon_yield_per_parent,events_with_line,event_fraction
+Al-28,Al-28 1779 keV,1778.5,1779.5,20000,1.0,20000,1.0

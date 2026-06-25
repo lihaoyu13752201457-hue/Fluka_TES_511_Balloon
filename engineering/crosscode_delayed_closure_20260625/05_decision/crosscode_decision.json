@@ -1,6 +1,6 @@
 {
   "date": "2026-06-25",
-  "status": "FLUKA_SOURCE_IDENTITY_AND_DECAY_KERNEL_PRODUCTION_PASS__CROSSCODE_CLOSURE_INCOMPLETE",
+  "status": "FLUKA_SOURCE_IDENTITY_AND_BOTH_DECAY_KERNEL_GATES_PASS__CROSSCODE_CLOSURE_INCOMPLETE",
   "completed_gates": [
     {
       "gate": "manifest_freeze",
@@ -61,18 +61,40 @@
         "Al-28_1779keV_gamma_yield_per_parent": 1.0,
         "I-128_photon_yield_per_parent": 0.199216
       }
+    },
+    {
+      "gate": "geant4_megalib_vacuum_decay_kernel_smoke",
+      "status": "PASS",
+      "path": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md",
+      "histories_per_isotope": 20000,
+      "checked_nuclides": [
+        "Cu-64",
+        "Na-24",
+        "Al-28",
+        "I-128"
+      ],
+      "key_results": {
+        "Cu-64_positron_yield_per_parent": 0.1767,
+        "Cu-64_1346keV_gamma_yield_per_parent": 0.0043,
+        "Na-24_1369keV_gamma_yield_per_parent": 0.99995,
+        "Na-24_2754keV_gamma_yield_per_parent": 0.9988,
+        "Na-24_1369_2754_same_parent_fraction": 0.9988,
+        "Al-28_1779keV_gamma_yield_per_parent": 1.0,
+        "I-128_photon_yield_per_parent": 0.20605
+      }
     }
   ],
   "ruled_out": [
     "The FLUKA delayed discrepancy is not explained by the dummy HI-PROPE 53/128 card silently replacing the checked source-v2 isotope identities.",
-    "The high-energy delayed deficit is not explained by a total absence of FLUKA Na-24 1369/2754 keV or Al-28 1779 keV decay photons in the 1e6-parent vacuum production scorer."
+    "The high-energy delayed deficit is not explained by a total absence of FLUKA Na-24 1369/2754 keV or Al-28 1779 keV decay photons in the 1e6-parent vacuum production scorer.",
+    "The high-energy delayed deficit is not explained by a total absence of Geant4/MEGAlib Na-24 1369/2754 keV or Al-28 1779 keV decay photons in the 2e4-parent independent EventList smoke scorer.",
+    "The W2 Cu-64 discrepancy is unlikely to be a simple beta-plus branching bookkeeping error: Geant4/MEGAlib smoke gives 0.1767 positrons per Cu-64 parent and FLUKA production gives 0.176483."
   ],
   "not_yet_ruled_out": [
-    "Geant4/MEGAlib decay-kernel or decay-database differences",
-    "Statistically resolved FLUKA-vs-Geant4 decay-kernel differences",
+    "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
     "Common emitted-particle transport differences",
     "Full-geometry material/region/source-position differences",
     "Common postprocessing or event-building differences"
   ],
-  "next_required_gate": "Run the same vacuum decay-kernel benchmark on the Geant4/MEGAlib side with the same isotope set and scorer schema."
+  "next_required_gate": "Move to common emitted-particle transport, unless a Geant4/MEGAlib 1e6/isotope production decay-kernel repeat is needed for low-yield-line precision."
 }

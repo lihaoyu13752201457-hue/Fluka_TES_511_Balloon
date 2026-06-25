@@ -1,0 +1,6 @@
+nuclide,line,window_low_keV,window_high_keV,photon_count,photon_yield_per_parent,events_with_line,event_fraction
+Cu-64,Cu-64 1346 keV,1345.0,1346.5,86,0.0043,86,0.0043
+Na-24,Na-24 1369 keV,1368.1,1369.1,19999,0.99995,19999,0.99995
+Na-24,Na-24 2754 keV,2753.5,2754.5,19976,0.9988,19976,0.9988
+Na-24,Na-24 1369+2754 same-parent coincidence,,,,,19976,0.9988
+Al-28,Al-28 1779 keV,1778.5,1779.5,20000,1.0,20000,1.0

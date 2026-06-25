@@ -113,6 +113,7 @@ def main() -> int:
         ROOT / "work_fluka_harness/build_raw_scoring_smoke.py",
         ROOT / "work_fluka_harness/run_fluka_delayed_source_identity_gate.py",
         ROOT / "work_fluka_harness/run_fluka_decay_kernel_benchmark.py",
+        ROOT / "work_fluka_harness/run_megalib_decay_kernel_benchmark.py",
         ROOT / "engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/summary.json",
         ROOT / "engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/runtime_identity_validation.csv",
         ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/summary.json",
@@ -121,6 +122,10 @@ def main() -> int:
         ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/summary.json",
         ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/particle_yields.csv",
         ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/gamma_line_yields.csv",
+        ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.json",
+        ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/particle_yields.csv",
+        ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/gamma_line_yields.csv",
+        ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv",
         EVENTLIST,
         WEIGHTS,
         REGION_MAP,
@@ -157,7 +162,7 @@ def main() -> int:
     source = source_authority_summary()
     summary = {
         "created_utc": now_utc(),
-        "status": "MANIFEST_SOURCE_IDENTITY_AND_FLUKA_DECAY_PRODUCTION_PRESENT",
+        "status": "MANIFEST_SOURCE_IDENTITY_AND_BOTH_DECAY_KERNEL_GATES_PRESENT",
         "engineering_plan": str(ROOT / "work_fluka_harness/fluka_11_like_energy_band_stats_20260625/engineering.md"),
         "files_hashed": len([r for r in records if r["exists"] and r["sha256"]]),
         "fluka_repo_commit": fluka_env["repo_commit"],
@@ -167,8 +172,9 @@ def main() -> int:
             "runtime source identity gate",
             "vacuum decay-kernel smoke for Cu-64, Na-24, Al-28, I-128",
             "vacuum decay-kernel production for Cu-64, Na-24, Al-28, I-128 at 1e6 parents per isotope",
+            "Geant4/MEGAlib independent EventList vacuum decay-kernel smoke for Cu-64, Na-24, Al-28, I-128 at 2e4 parents per isotope",
         ],
-        "next_gate": "Geant4/MEGAlib vacuum decay-kernel benchmark with the same isotope set and scorer schema",
+        "next_gate": "Common emitted-particle transport, unless Geant4/MEGAlib 1e6/isotope production decay-kernel precision is needed first",
     }
     for name, data in (
         ("environment_fluka.json", fluka_env),
@@ -189,7 +195,7 @@ def main() -> int:
                 f"- files_hashed: `{summary['files_hashed']}`",
                 f"- source heavy isotope rows: `{source['heavy_isotope_rows']}`",
                 f"- source heavy total activity_Bq: `{source['heavy_total_activity_Bq']:.12g}`",
-                "- completed FLUKA gates: runtime source identity; vacuum decay-kernel smoke; vacuum decay-kernel production",
+                "- completed gates: FLUKA runtime source identity; FLUKA vacuum decay-kernel smoke/production; Geant4/MEGAlib vacuum decay-kernel smoke",
                 f"- next gate: `{summary['next_gate']}`",
                 "",
             ]

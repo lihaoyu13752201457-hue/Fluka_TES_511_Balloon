@@ -147,6 +147,23 @@ This is the check for the photon/electron concern. `deposit_carrier` is the loca
 2. FLUKA reproduces the prompt/delayed total W2 final rate closely, but its delayed fraction is higher than TES (`17.55%` vs `6.57%`). The delayed-composition residual remains open.
 3. The final W2 prompt source-tag composition is narrow in both codes: `eplus` plus neutron. That statement is about the external prompt source family, not about local TES deposit physics.
 4. The FLUKA local TES deposit carrier table is overwhelmingly electromagnetic (`EM_BELOW_THRESHOLD`) for W2 final selections. The current scoring does not retain parent/track ancestry, so a separate boundary-crossing or ancestry scorer would be needed to count incident photons at the TES surface directly.
+5. The independent decay-kernel cross-check does not support the hypothesis that one code simply omits the important delayed photons. In fresh independent-source runs, Geant4/MEGAlib smoke and FLUKA production both emit `Na-24` 1369/2754-keV cascades and `Al-28` 1779-keV photons at approximately unit yield; Cu-64 beta-plus yield is also consistent (`0.1767` vs `0.176483`).
+
+## Decay-Kernel Cross-Code Check
+
+| nuclide | metric | G4/MEGAlib smoke | FLUKA production |
+|---|---|---:|---:|
+| `Cu-64` | positron yield / parent | `0.1767` | `0.176483` |
+| `Na-24` | 1369-keV gamma yield / parent | `0.99995` | `0.999939` |
+| `Na-24` | 2754-keV gamma yield / parent | `0.9988` | `0.998547` |
+| `Na-24` | same-parent 1369+2754 fraction | `0.9988` | `0.998547` |
+| `Al-28` | 1779-keV gamma yield / parent | `1.0` | `1.0` |
+
+Implication: the remaining high-energy delayed deficit is downstream of this
+emission sanity check unless a later production-stat Geant4 run reveals a
+smaller low-yield difference. The next discriminators are common
+emitted-particle transport, exact source-position/material coupling, and common
+postprocessing.
 
 ## Artifacts
 
@@ -154,3 +171,4 @@ This is the check for the photon/electron concern. `deposit_carrier` is the loca
 - deposit carrier CSV: `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/tes_deposit_carrier_rows.csv`
 - delayed fraction CSV: `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/delayed_fraction_rows.csv`
 - machine-readable summary: `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.json`
+- decay-kernel cross-code comparison: `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv`

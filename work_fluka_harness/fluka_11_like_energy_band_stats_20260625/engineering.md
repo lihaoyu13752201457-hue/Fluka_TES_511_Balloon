@@ -42,6 +42,9 @@ The first non-statistical gate has been run on the FLUKA side:
 - Gate histories: `Cu-64`, `Cu-62`, `I-128`, `Na-22`, `Na-24`, `Al-28` from the source-v2 EventList.
 - FLUKA vacuum decay-kernel smoke: `FLUKA_DECAY_KERNEL_SMOKE_PASS` for `Cu-64`, `Na-24`, `Al-28`, `I-128` with `20000` parents per isotope.
 - FLUKA vacuum decay-kernel production: `FLUKA_DECAY_KERNEL_PRODUCTION_PASS` for `Cu-64`, `Na-24`, `Al-28`, `I-128` with `1000000` parents per isotope.
+- Geant4/MEGAlib independent EventList vacuum decay-kernel smoke:
+  `GEANT4_MEGALIB_DECAY_KERNEL_SMOKE_PASS` for `Cu-64`, `Na-24`,
+  `Al-28`, `I-128` with `20000` parents per isotope.
 
 Runtime identity table:
 
@@ -82,7 +85,28 @@ FLUKA-side Phase-1 production result (`1e6` parents/isotope):
 
 Interpretation of the FLUKA-side result: FLUKA `RADDECAY` does emit the high-energy `Na-24` and `Al-28` gamma lines in this vacuum scorer, and the `Na-24` two-line coincidence appears in essentially every decay. Therefore the earlier high-energy FLUKA/TES deficit is **not explained by total absence of these FLUKA gamma lines**. The remaining possibilities include Geant4-side decay-kernel differences, common emitted-particle transport, geometry/source-position coupling, or common-postprocessing effects.
 
-This does **not** complete the cross-code closure. The Geant4/MEGAlib vacuum decay-kernel benchmark, common emitted-particle list, common EM transport test, and common full-geometry postprocessor are still open.
+Geant4/MEGAlib-side Phase-1 smoke result (`2e4` parents/isotope):
+
+| nuclide | G4/MEGAlib smoke metric | value |
+|---|---|---:|
+| Cu-64 | positron yield / parent | `0.1767` |
+| Cu-64 | 1346-keV gamma yield / parent | `0.0043` |
+| Na-24 | 1369-keV gamma yield / parent | `0.99995` |
+| Na-24 | 2754-keV gamma yield / parent | `0.9988` |
+| Na-24 | same-parent 1369+2754 coincidence fraction | `0.9988` |
+| Al-28 | 1779-keV gamma yield / parent | `1.0` |
+| I-128 | photon yield / parent | `0.20605` |
+
+Cross-code interpretation after the G4/MEGAlib smoke: both installed decay
+engines emit the high-energy `Na-24` and `Al-28` gamma lines at approximately
+unit yield, and Cu-64 beta-plus yield is consistent (`0.1767` G4/MEGAlib smoke
+vs `0.176483` FLUKA production). Therefore the leading full-chain discrepancy
+is **not** explained by either code completely omitting those decay photons.
+
+This does **not** complete the cross-code closure. The Geant4/MEGAlib side is
+smoke-statistics only, and the common emitted-particle list, common EM
+transport test, full-geometry source/material coupling, and common
+postprocessor are still open.
 
 Detailed artifacts:
 
@@ -96,6 +120,10 @@ engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum
 engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/summary.md
 engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/gamma_line_yields.csv
 engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/particle_yields.csv
+engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md
+engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/gamma_line_yields.csv
+engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/particle_yields.csv
+engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv
 engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.md
 ```
 
@@ -833,8 +861,9 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Verify actual FLUKA isotope Z/A/isomer at runtime
 [x] Build FLUKA smoke decay-kernel outputs for Cu-64, Na-24, Al-28, I-128
 [x] Build FLUKA 1e6/isotope production decay-kernel outputs for Cu-64, Na-24, Al-28, I-128
-[ ] Build Cu-64 decay-kernel outputs in both codes
-[ ] Compare branch and emitted-particle spectra
+[x] Build Geant4/MEGAlib smoke decay-kernel outputs for Cu-64, Na-24, Al-28, I-128
+[x] Compare first-pass branch/line yields for Cu-64, Na-24, Al-28, I-128
+[ ] Build Geant4/MEGAlib 1e6/isotope production decay-kernel outputs if low-yield-line precision is needed
 [ ] Build one common external positron/511 source list
 [ ] Run Cu/Ta toy transport in both codes
 [ ] Scan FLUKA effective EM cuts if needed

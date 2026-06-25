@@ -275,9 +275,57 @@ Write instead:
 > selection-conditional W2 result, not a claim that activation is negligible in
 > all balloon energy bands or all event selections.
 
+## Independent Decay-Kernel Cross-Check
+
+The follow-up FLUKA cross-check was intentionally kept on the independent
+source path, not on `.sim.gz` replay. It now includes:
+
+- FLUKA runtime source identity gate for representative delayed parents:
+  `FLUKA_SOURCE_IDENTITY_GATE_PASS`.
+- FLUKA vacuum decay-kernel production for `Cu-64`, `Na-24`, `Al-28`,
+  and `I-128`: `1000000` parents per isotope.
+- Geant4/MEGAlib independent EventList decay-kernel smoke for the same four
+  isotopes: `20000` parents per isotope, parsed from fresh `IA DECA`
+  emission records.
+
+Key cross-code line/yield comparison:
+
+| nuclide | metric | G4/MEGAlib smoke | FLUKA production |
+|---|---|---:|---:|
+| `Cu-64` | positron yield / parent | `0.1767` | `0.176483` |
+| `Cu-64` | 1346-keV gamma yield / parent | `0.0043` | `0.004785` |
+| `Na-24` | 1369-keV gamma yield / parent | `0.99995` | `0.999939` |
+| `Na-24` | 2754-keV gamma yield / parent | `0.9988` | `0.998547` |
+| `Na-24` | same-parent 1369+2754 fraction | `0.9988` | `0.998547` |
+| `Al-28` | 1779-keV gamma yield / parent | `1.0` | `1.0` |
+| `I-128` | aggregate photon yield / parent | `0.20605` | `0.199216` |
+
+Conclusion from this gate: both installed decay engines emit the high-energy
+`Na-24` and `Al-28` gamma lines that dominate the 1.5-10 MeV delayed-band
+question. Therefore the FLUKA/TES high-energy delayed deficit is **not**
+explained by either code completely failing to emit those photons in the
+decay kernel.
+
+This also narrows the W2 question. The FLUKA W2 delayed excess relative to the
+TES Step05 result is unlikely to be a simple Cu-64 beta-plus branching
+bookkeeping error: G4/MEGAlib smoke gives `0.1767` positrons per Cu-64 parent,
+and FLUKA production gives `0.176483`.
+
+What remains open is downstream of this emission sanity check: common
+emitted-particle transport, exact source-position/material coupling,
+detector-response/event-building differences, and production-stat G4 checks
+for low-yield lines such as the `Cu-64` 1346-keV gamma.
+
+Audit artifacts:
+
+- `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md`
+- `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/summary.md`
+- `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv`
+
 ## Follow-Up Checks
 
-The next targeted checks should focus on the prompt `eplus` W2 survivors:
+The next targeted checks should focus on the remaining detector-coupled
+composition questions:
 
 1. Trace the `47` final W2 prompt `eplus` events back through SIM CC/IA records
    to determine where the 511-keV photons are produced and how they enter the
@@ -289,3 +337,6 @@ The next targeted checks should focus on the prompt `eplus` W2 survivors:
    on rejecting single-site events.
 4. Keep reporting energy-band-specific activation fractions; do not quote the
    W2 `6.57%` delayed fraction as a global activation fraction.
+5. Run common emitted-particle transport for the `Na-24`, `Al-28`, `I-128`,
+   and `Cu-64` channels before treating the full-chain high-energy deficit as
+   a decay-kernel effect.

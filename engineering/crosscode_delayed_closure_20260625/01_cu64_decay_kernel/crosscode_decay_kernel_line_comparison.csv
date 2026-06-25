@@ -1,0 +1,8 @@
+nuclide,metric,geant4_megalib_smoke_histories,geant4_megalib_smoke_value,fluka_production_histories,fluka_production_value,absolute_delta_g4_minus_fluka,relative_delta_g4_minus_fluka,note
+Cu-64,positron_yield_per_parent,20000,0.1767,1000000,0.176483,0.000217,0.00122958,G4 smoke from IA DECA; FLUKA production from boundary scorer
+Cu-64,1346keV_gamma_yield_per_parent,20000,0.0043,1000000,0.004785,-0.000485,-0.101358,Low-yield line; G4 smoke has only 86 line photons
+Na-24,1369keV_gamma_yield_per_parent,20000,0.99995,1000000,0.999939,0.000011,0.0000110,High-yield cascade sanity check
+Na-24,2754keV_gamma_yield_per_parent,20000,0.9988,1000000,0.998547,0.000253,0.0002534,High-yield cascade sanity check
+Na-24,1369_2754_same_parent_fraction,20000,0.9988,1000000,0.998547,0.000253,0.0002534,Same-parent coincidence check
+Al-28,1779keV_gamma_yield_per_parent,20000,1.0,1000000,1.0,0.0,0.0,High-yield line sanity check
+I-128,photon_yield_per_parent,20000,0.20605,1000000,0.199216,0.006834,0.0343045,Aggregate photon yield; G4 production still open

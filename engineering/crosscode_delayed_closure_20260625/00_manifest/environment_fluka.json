@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-06-25T09:39:48.289528+00:00",
+  "created_utc": "2026-06-25T10:18:10.416763+00:00",
   "environment_subset": {
     "FLUKADATA": "",
     "FLUKA_HOME": "",
@@ -39,6 +39,6 @@
   "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
   "python": "3.13.2",
   "repo": "/home/ubuntu/Fluka_TES_511_Balloon",
-  "repo_commit": "27549dc924d79c8abd9377dbe9ae5f9456460c79",
-  "repo_status_short": "M engineering/crosscode_delayed_closure_20260625/00_manifest/file_hashes.sha256\n M engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.json\n M engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.md\n M work_fluka_harness/build_delayed_closure_manifest.py\n M work_fluka_harness/fluka_11_like_energy_band_stats_20260625/engineering.md\n M work_fluka_harness/run_fluka_decay_kernel_benchmark.py\n?? engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/"
+  "repo_commit": "e0750ae55e0a630b52f7027e37cd7137c2069ea7",
+  "repo_status_short": "M .gitignore\n M engineering/crosscode_delayed_closure_20260625/00_manifest/file_hashes.sha256\n M engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.json\n M engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.md\n M work_fluka_harness/build_delayed_closure_manifest.py\n M work_fluka_harness/fluka_11_like_energy_band_stats_20260625/11_fix5_w2_prompt_delayed_energy_band_stats.md\n M work_fluka_harness/fluka_11_like_energy_band_stats_20260625/engineering.md\n M work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.md\n?? engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv\n?? engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/\n?? work_fluka_harness/run_megalib_decay_kernel_benchmark.py"
 }

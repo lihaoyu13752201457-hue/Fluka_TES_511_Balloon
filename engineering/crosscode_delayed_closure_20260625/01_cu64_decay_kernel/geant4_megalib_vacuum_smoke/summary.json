@@ -1,0 +1,325 @@
+{
+  "cosima": "/home/ubuntu/MEGAlib_Install/megalib-main/bin/cosima",
+  "cosima_sha256": "3fb7613de58ebb365f2a55c3336e54d2aabea2a4ddb282003a5d25eac6f1c74a",
+  "created_utc": "2026-06-25T10:14:49Z",
+  "gamma_line_yields_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/gamma_line_yields.csv",
+  "geometry": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+  "geometry_sha256": "f6ee8c36f45b6a66efa5544daf58a3431c6833289e5658eb8b4452f6792205b0",
+  "histories_per_isotope": 20000,
+  "limitations": [
+    "This is an independent EventList source run, not replay of any prior sim.gz.",
+    "It parses decay-emission `IA DECA` records, not detector-selected event rates.",
+    "The TES fix5 geometry is used as a valid MEGAlib world; this gate is not a full transport-response comparison.",
+    "Raw Cosima products are generated in ignored cosima_run directories and deleted by default after parsing."
+  ],
+  "mode": "Geant4/MEGAlib decay-kernel `IA DECA` smoke",
+  "particle_yields_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/particle_yields.csv",
+  "run_manifest": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/run_manifest.csv",
+  "run_type": "smoke",
+  "status": "GEANT4_MEGALIB_DECAY_KERNEL_SMOKE_PASS",
+  "target_summaries": [
+    {
+      "deca_rows": 76071,
+      "gamma_line_yields": [
+        {
+          "event_fraction": 0.0043,
+          "events_with_line": 86,
+          "line": "Cu-64 1346 keV",
+          "nuclide": "Cu-64",
+          "photon_count": 86,
+          "photon_yield_per_parent": 0.0043,
+          "window_high_keV": 1346.5,
+          "window_low_keV": 1345.0
+        }
+      ],
+      "gamma_line_yields_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/cu64_gamma_line_yields.csv",
+      "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "histories": 20000,
+      "multiplicity_distribution_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/cu64_multiplicity_distribution.csv",
+      "nuclide": "Cu-64",
+      "particle_yields": [
+        {
+          "count": 29263,
+          "mean_kinetic_energy_keV": 51.92905481324661,
+          "nuclide": "Cu-64",
+          "particle": "ELECTRON",
+          "particle_code": 3,
+          "yield_per_parent": 1.46315
+        },
+        {
+          "count": 12384,
+          "mean_kinetic_energy_keV": 0.01748934108526979,
+          "nuclide": "Cu-64",
+          "particle": "ION_ZA_28064",
+          "particle_code": 28064,
+          "yield_per_parent": 0.6192
+        },
+        {
+          "count": 12298,
+          "mean_kinetic_energy_keV": 1303.1915887137764,
+          "nuclide": "Cu-64",
+          "particle": "NEUTRINO_OR_ANTINEUTRINO",
+          "particle_code": 12,
+          "yield_per_parent": 0.6149
+        },
+        {
+          "count": 7702,
+          "mean_kinetic_energy_keV": 387.92580290833473,
+          "nuclide": "Cu-64",
+          "particle": "NEUTRINO_OR_ANTINEUTRINO",
+          "particle_code": 13,
+          "yield_per_parent": 0.3851
+        },
+        {
+          "count": 7702,
+          "mean_kinetic_energy_keV": 0.0034875357050117577,
+          "nuclide": "Cu-64",
+          "particle": "ION_ZA_30064",
+          "particle_code": 30064,
+          "yield_per_parent": 0.3851
+        },
+        {
+          "count": 3534,
+          "mean_kinetic_energy_keV": 218.3738155065086,
+          "nuclide": "Cu-64",
+          "particle": "POSITRON",
+          "particle_code": 2,
+          "yield_per_parent": 0.1767
+        },
+        {
+          "count": 3188,
+          "mean_kinetic_energy_keV": 43.48602195734127,
+          "nuclide": "Cu-64",
+          "particle": "PHOTON",
+          "particle_code": 1,
+          "yield_per_parent": 0.1594
+        }
+      ],
+      "particle_yields_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/cu64_particle_yields.csv",
+      "photon_hist_1keV_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/cu64_photon_hist_1keV.csv",
+      "sample_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/cu64_deca_sample.csv",
+      "sim_events": 20000,
+      "sim_id_records": 20000,
+      "sim_te_s": 2e-05
+    },
+    {
+      "deca_rows": 139982,
+      "gamma_line_yields": [
+        {
+          "event_fraction": 0.99995,
+          "events_with_line": 19999,
+          "line": "Na-24 1369 keV",
+          "nuclide": "Na-24",
+          "photon_count": 19999,
+          "photon_yield_per_parent": 0.99995,
+          "window_high_keV": 1369.1,
+          "window_low_keV": 1368.1
+        },
+        {
+          "event_fraction": 0.9988,
+          "events_with_line": 19976,
+          "line": "Na-24 2754 keV",
+          "nuclide": "Na-24",
+          "photon_count": 19976,
+          "photon_yield_per_parent": 0.9988,
+          "window_high_keV": 2754.5,
+          "window_low_keV": 2753.5
+        },
+        {
+          "event_fraction": 0.9988,
+          "events_with_line": 19976,
+          "line": "Na-24 1369+2754 same-parent coincidence",
+          "nuclide": "Na-24",
+          "photon_count": "",
+          "photon_yield_per_parent": "",
+          "window_high_keV": "",
+          "window_low_keV": ""
+        }
+      ],
+      "gamma_line_yields_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/na24_gamma_line_yields.csv",
+      "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "histories": 20000,
+      "multiplicity_distribution_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/na24_multiplicity_distribution.csv",
+      "nuclide": "Na-24",
+      "particle_yields": [
+        {
+          "count": 59991,
+          "mean_kinetic_energy_keV": 0.08381493890752681,
+          "nuclide": "Na-24",
+          "particle": "ION_ZA_12024",
+          "particle_code": 12024,
+          "yield_per_parent": 2.99955
+        },
+        {
+          "count": 39991,
+          "mean_kinetic_energy_keV": 2061.599722937763,
+          "nuclide": "Na-24",
+          "particle": "PHOTON",
+          "particle_code": 1,
+          "yield_per_parent": 1.99955
+        },
+        {
+          "count": 20000,
+          "mean_kinetic_energy_keV": 555.5894606499977,
+          "nuclide": "Na-24",
+          "particle": "ELECTRON",
+          "particle_code": 3,
+          "yield_per_parent": 1.0
+        },
+        {
+          "count": 20000,
+          "mean_kinetic_energy_keV": 837.4984280999981,
+          "nuclide": "Na-24",
+          "particle": "NEUTRINO_OR_ANTINEUTRINO",
+          "particle_code": 13,
+          "yield_per_parent": 1.0
+        }
+      ],
+      "particle_yields_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/na24_particle_yields.csv",
+      "photon_hist_1keV_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/na24_photon_hist_1keV.csv",
+      "sample_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/na24_deca_sample.csv",
+      "sim_events": 20000,
+      "sim_id_records": 20000,
+      "sim_te_s": 2e-05
+    },
+    {
+      "deca_rows": 100000,
+      "gamma_line_yields": [
+        {
+          "event_fraction": 1.0,
+          "events_with_line": 20000,
+          "line": "Al-28 1779 keV",
+          "nuclide": "Al-28",
+          "photon_count": 20000,
+          "photon_yield_per_parent": 1.0,
+          "window_high_keV": 1779.5,
+          "window_low_keV": 1778.5
+        }
+      ],
+      "gamma_line_yields_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/al28_gamma_line_yields.csv",
+      "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "histories": 20000,
+      "multiplicity_distribution_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/al28_multiplicity_distribution.csv",
+      "nuclide": "Al-28",
+      "particle_yields": [
+        {
+          "count": 40000,
+          "mean_kinetic_energy_keV": 0.08942770000002266,
+          "nuclide": "Al-28",
+          "particle": "ION_ZA_14028",
+          "particle_code": 14028,
+          "yield_per_parent": 2.0
+        },
+        {
+          "count": 20000,
+          "mean_kinetic_energy_keV": 1778.9690000001292,
+          "nuclide": "Al-28",
+          "particle": "PHOTON",
+          "particle_code": 1,
+          "yield_per_parent": 1.0
+        },
+        {
+          "count": 20000,
+          "mean_kinetic_energy_keV": 1247.7263164499982,
+          "nuclide": "Al-28",
+          "particle": "ELECTRON",
+          "particle_code": 3,
+          "yield_per_parent": 1.0
+        },
+        {
+          "count": 20000,
+          "mean_kinetic_energy_keV": 1615.3898613500112,
+          "nuclide": "Al-28",
+          "particle": "NEUTRINO_OR_ANTINEUTRINO",
+          "particle_code": 13,
+          "yield_per_parent": 1.0
+        }
+      ],
+      "particle_yields_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/al28_particle_yields.csv",
+      "photon_hist_1keV_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/al28_photon_hist_1keV.csv",
+      "sample_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/al28_deca_sample.csv",
+      "sim_events": 20000,
+      "sim_id_records": 20000,
+      "sim_te_s": 2e-05
+    },
+    {
+      "deca_rows": 70160,
+      "gamma_line_yields": [],
+      "gamma_line_yields_csv": "",
+      "geometry": "  /home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
+      "histories": 20000,
+      "multiplicity_distribution_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/i128_multiplicity_distribution.csv",
+      "nuclide": "I-128",
+      "particle_yields": [
+        {
+          "count": 23063,
+          "mean_kinetic_energy_keV": 644.8680775267804,
+          "nuclide": "I-128",
+          "particle": "ELECTRON",
+          "particle_code": 3,
+          "yield_per_parent": 1.15315
+        },
+        {
+          "count": 21567,
+          "mean_kinetic_energy_keV": 0.012530625492650348,
+          "nuclide": "I-128",
+          "particle": "ION_ZA_54128",
+          "particle_code": 54128,
+          "yield_per_parent": 1.07835
+        },
+        {
+          "count": 18611,
+          "mean_kinetic_energy_keV": 1250.3594263607504,
+          "nuclide": "I-128",
+          "particle": "NEUTRINO_OR_ANTINEUTRINO",
+          "particle_code": 13,
+          "yield_per_parent": 0.93055
+        },
+        {
+          "count": 4121,
+          "mean_kinetic_energy_keV": 338.17342853675575,
+          "nuclide": "I-128",
+          "particle": "PHOTON",
+          "particle_code": 1,
+          "yield_per_parent": 0.20605
+        },
+        {
+          "count": 1407,
+          "mean_kinetic_energy_keV": 0.00600426439232414,
+          "nuclide": "I-128",
+          "particle": "ION_ZA_52128",
+          "particle_code": 52128,
+          "yield_per_parent": 0.07035
+        },
+        {
+          "count": 1389,
+          "mean_kinetic_energy_keV": 1215.698730021624,
+          "nuclide": "I-128",
+          "particle": "NEUTRINO_OR_ANTINEUTRINO",
+          "particle_code": 12,
+          "yield_per_parent": 0.06945
+        },
+        {
+          "count": 2,
+          "mean_kinetic_energy_keV": 108.7655,
+          "nuclide": "I-128",
+          "particle": "POSITRON",
+          "particle_code": 2,
+          "yield_per_parent": 0.0001
+        }
+      ],
+      "particle_yields_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/i128_particle_yields.csv",
+      "photon_hist_1keV_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/i128_photon_hist_1keV.csv",
+      "sample_csv": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/i128_deca_sample.csv",
+      "sim_events": 20000,
+      "sim_id_records": 20000,
+      "sim_te_s": 2e-05
+    }
+  ],
+  "targets": [
+    "Cu-64",
+    "Na-24",
+    "Al-28",
+    "I-128"
+  ]
+}

@@ -2,13 +2,14 @@
   "completed_fluka_gates": [
     "runtime source identity gate",
     "vacuum decay-kernel smoke for Cu-64, Na-24, Al-28, I-128",
-    "vacuum decay-kernel production for Cu-64, Na-24, Al-28, I-128 at 1e6 parents per isotope"
+    "vacuum decay-kernel production for Cu-64, Na-24, Al-28, I-128 at 1e6 parents per isotope",
+    "Geant4/MEGAlib independent EventList vacuum decay-kernel smoke for Cu-64, Na-24, Al-28, I-128 at 2e4 parents per isotope"
   ],
-  "created_utc": "2026-06-25T09:39:50.122754+00:00",
+  "created_utc": "2026-06-25T10:18:12.254301+00:00",
   "engineering_plan": "/home/ubuntu/Fluka_TES_511_Balloon/work_fluka_harness/fluka_11_like_energy_band_stats_20260625/engineering.md",
-  "files_hashed": 28,
-  "fluka_repo_commit": "27549dc924d79c8abd9377dbe9ae5f9456460c79",
-  "next_gate": "Geant4/MEGAlib vacuum decay-kernel benchmark with the same isotope set and scorer schema",
+  "files_hashed": 33,
+  "fluka_repo_commit": "e0750ae55e0a630b52f7027e37cd7137c2069ea7",
+  "next_gate": "Common emitted-particle transport, unless Geant4/MEGAlib 1e6/isotope production decay-kernel precision is needed first",
   "source_authority_target_isotopes": [
     {
       "ZA": 13028,
@@ -47,6 +48,6 @@
       "rows": 728
     }
   ],
-  "status": "MANIFEST_SOURCE_IDENTITY_AND_FLUKA_DECAY_PRODUCTION_PRESENT",
+  "status": "MANIFEST_SOURCE_IDENTITY_AND_BOTH_DECAY_KERNEL_GATES_PRESENT",
   "tes_repo_commit": "455999408676e9a2c9b1e531a6c8562fe880792d"
 }

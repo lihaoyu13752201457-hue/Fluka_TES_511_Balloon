@@ -1,0 +1,5 @@
+nuclide,particle_code,particle,multiplicity,events,fraction
+Al-28,1,PHOTON,1,20000,1.0
+Al-28,3,ELECTRON,1,20000,1.0
+Al-28,13,NEUTRINO_OR_ANTINEUTRINO,1,20000,1.0
+Al-28,14028,ION_ZA_14028,2,20000,1.0

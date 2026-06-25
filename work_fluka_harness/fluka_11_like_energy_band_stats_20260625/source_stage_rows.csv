@@ -1,0 +1,607 @@
+code,stream,source_tag,band,band_label,stage,stage_label,events,rate_s-1,mc_sigma_s-1,side_compton_class_counts
+FLUKA,delayed,Ag-108,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Ag-108,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Ag-108,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,0.0006787801777182261,0.0006787801777182261,"{""single"": 1}"
+FLUKA,delayed,Ag-108,e100_300,100-300 keV,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Ag-108,e100_300,100-300 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Ag-108,e100_300,100-300 keV,side_compton_fov_pass,final,1,0.0006787801777182261,0.0006787801777182261,"{""single"": 1}"
+FLUKA,delayed,Ag-110,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,4,0.0027151207108729045,0.0013575603554364522,{}
+FLUKA,delayed,Ag-110,all_tes_gt0,all TES > 0,raw,raw,4,0.0027151207108729045,0.0013575603554364522,{}
+FLUKA,delayed,Ag-110,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,4,0.0027151207108729045,0.0013575603554364522,"{""keep"": 1, ""single"": 3}"
+FLUKA,delayed,Ag-110,e100_300,100-300 keV,active_veto_pass,active-veto,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Ag-110,e100_300,100-300 keV,raw,raw,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Ag-110,e100_300,100-300 keV,side_compton_fov_pass,final,2,0.0013575603554364522,0.0009599401331991352,"{""keep"": 1, ""single"": 1}"
+FLUKA,delayed,Ag-110,e300_480,300-480 keV,active_veto_pass,active-veto,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Ag-110,e300_480,300-480 keV,raw,raw,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Ag-110,e300_480,300-480 keV,side_compton_fov_pass,final,2,0.0013575603554364522,0.0009599401331991352,"{""single"": 2}"
+FLUKA,delayed,Al-25,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Al-25,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Al-25,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,0.0006787801777182261,0.0006787801777182261,"{""single"": 1}"
+FLUKA,delayed,Al-25,e300_480,300-480 keV,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Al-25,e300_480,300-480 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Al-25,e300_480,300-480 keV,side_compton_fov_pass,final,1,0.0006787801777182261,0.0006787801777182261,"{""single"": 1}"
+FLUKA,delayed,Al-26,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,2.6939291195725483e-11,2.6939291195725483e-11,{}
+FLUKA,delayed,Al-26,all_tes_gt0,all TES > 0,raw,raw,8,2.155702842878121e-10,7.621560577694355e-11,{}
+FLUKA,delayed,Al-26,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,2.6939291195725483e-11,2.6939291195725483e-11,"{""single"": 1}"
+FLUKA,delayed,Al-26,e100_300,100-300 keV,raw,raw,1,2.6939291195725483e-11,2.6939291195725483e-11,{}
+FLUKA,delayed,Al-26,e1500_3000,1500-3000 keV,raw,raw,1,2.6948616982726857e-11,2.6948616982726857e-11,{}
+FLUKA,delayed,Al-26,e300_480,300-480 keV,raw,raw,3,8.084585094818057e-11,4.667637380779641e-11,{}
+FLUKA,delayed,Al-26,e480_550,480-550 keV,raw,raw,1,2.6948616982726857e-11,2.6948616982726857e-11,{}
+FLUKA,delayed,Al-26,e800_1500,800-1500 keV,raw,raw,1,2.6948616982726857e-11,2.6948616982726857e-11,{}
+FLUKA,delayed,Al-26,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,1,2.6948616982726857e-11,2.6948616982726857e-11,{}
+FLUKA,delayed,Al-28,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,8,0.005430241421745808,0.0019198802663982703,{}
+FLUKA,delayed,Al-28,all_tes_gt0,all TES > 0,raw,raw,18,0.012218043198928068,0.0028798203995974063,{}
+FLUKA,delayed,Al-28,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,7,0.004751461244027582,0.0017958835451226526,"{""keep"": 2, ""single"": 5, ""veto"": 1}"
+FLUKA,delayed,Al-28,e100_300,100-300 keV,active_veto_pass,active-veto,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Al-28,e100_300,100-300 keV,raw,raw,3,0.0020363405331546786,0.0011756817549785996,{}
+FLUKA,delayed,Al-28,e100_300,100-300 keV,side_compton_fov_pass,final,2,0.0013575603554364522,0.0009599401331991352,"{""single"": 2}"
+FLUKA,delayed,Al-28,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Al-28,e1500_3000,1500-3000 keV,raw,raw,6,0.004072681066309356,0.0016626650829253376,{}
+FLUKA,delayed,Al-28,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,2,0.0013575603554364522,0.0009599401331991352,"{""keep"": 2}"
+FLUKA,delayed,Al-28,e300_480,300-480 keV,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Al-28,e300_480,300-480 keV,raw,raw,5,0.0033939008885911304,0.0015177986191573418,{}
+FLUKA,delayed,Al-28,e300_480,300-480 keV,side_compton_fov_pass,final,1,0.0006787801777182261,0.0006787801777182261,"{""single"": 1}"
+FLUKA,delayed,Al-28,e480_550,480-550 keV,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Al-28,e480_550,480-550 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Al-28,e480_550,480-550 keV,side_compton_fov_pass,final,0,0.0,0.0,"{""veto"": 1}"
+FLUKA,delayed,Al-28,e550_800,550-800 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Al-28,e800_1500,800-1500 keV,active_veto_pass,active-veto,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Al-28,e800_1500,800-1500 keV,raw,raw,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Al-28,e800_1500,800-1500 keV,side_compton_fov_pass,final,2,0.0013575603554364522,0.0009599401331991352,"{""single"": 2}"
+FLUKA,delayed,Co-56,all_tes_gt0,all TES > 0,raw,raw,1,8.546182038617397e-05,8.546182038617397e-05,{}
+FLUKA,delayed,Co-56,e800_1500,800-1500 keV,raw,raw,1,8.546182038617397e-05,8.546182038617397e-05,{}
+FLUKA,delayed,Co-58,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,2,0.0001853077232820125,0.0001310323477389513,{}
+FLUKA,delayed,Co-58,all_tes_gt0,all TES > 0,raw,raw,3,0.00027796158492301873,0.00016048119587967988,{}
+FLUKA,delayed,Co-58,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,9.265386164100625e-05,9.265386164100625e-05,"{""single"": 1, ""veto"": 1}"
+FLUKA,delayed,Co-58,e100_300,100-300 keV,raw,raw,1,9.265386164100625e-05,9.265386164100625e-05,{}
+FLUKA,delayed,Co-58,e800_1500,800-1500 keV,active_veto_pass,active-veto,2,0.0001853077232820125,0.0001310323477389513,{}
+FLUKA,delayed,Co-58,e800_1500,800-1500 keV,raw,raw,2,0.0001853077232820125,0.0001310323477389513,{}
+FLUKA,delayed,Co-58,e800_1500,800-1500 keV,side_compton_fov_pass,final,1,9.265386164100625e-05,9.265386164100625e-05,"{""single"": 1, ""veto"": 1}"
+FLUKA,delayed,Co-60,all_tes_gt0,all TES > 0,raw,raw,1,3.6555909104610392e-06,3.6555909104610392e-06,{}
+FLUKA,delayed,Co-60,e800_1500,800-1500 keV,raw,raw,1,3.6555909104610392e-06,3.6555909104610392e-06,{}
+FLUKA,delayed,Cs-130,all_tes_gt0,all TES > 0,raw,raw,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Cs-130,e1500_3000,1500-3000 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Cs-130,e300_480,300-480 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Cs-132,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,3,0.0016270594121938259,0.0009393831896176196,{}
+FLUKA,delayed,Cs-132,all_tes_gt0,all TES > 0,raw,raw,3,0.0016270594121938259,0.0009393831896176196,{}
+FLUKA,delayed,Cs-132,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,3,0.0016270594121938259,0.0009393831896176196,"{""single"": 3}"
+FLUKA,delayed,Cs-132,e100_300,100-300 keV,active_veto_pass,active-veto,1,0.000542353137397942,0.000542353137397942,{}
+FLUKA,delayed,Cs-132,e100_300,100-300 keV,raw,raw,1,0.000542353137397942,0.000542353137397942,{}
+FLUKA,delayed,Cs-132,e100_300,100-300 keV,side_compton_fov_pass,final,1,0.000542353137397942,0.000542353137397942,"{""single"": 1}"
+FLUKA,delayed,Cs-132,e300_480,300-480 keV,active_veto_pass,active-veto,1,0.000542353137397942,0.000542353137397942,{}
+FLUKA,delayed,Cs-132,e300_480,300-480 keV,raw,raw,1,0.000542353137397942,0.000542353137397942,{}
+FLUKA,delayed,Cs-132,e300_480,300-480 keV,side_compton_fov_pass,final,1,0.000542353137397942,0.000542353137397942,"{""single"": 1}"
+FLUKA,delayed,Cs-132,e550_800,550-800 keV,active_veto_pass,active-veto,1,0.000542353137397942,0.000542353137397942,{}
+FLUKA,delayed,Cs-132,e550_800,550-800 keV,raw,raw,1,0.000542353137397942,0.000542353137397942,{}
+FLUKA,delayed,Cs-132,e550_800,550-800 keV,side_compton_fov_pass,final,1,0.000542353137397942,0.000542353137397942,"{""single"": 1}"
+FLUKA,delayed,Cs-134,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,111,0.0010314985829790871,9.790551276419716e-05,{}
+FLUKA,delayed,Cs-134,all_tes_gt0,all TES > 0,raw,raw,556,0.005166785694922203,0.0002191205214230957,{}
+FLUKA,delayed,Cs-134,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,105,0.0009757419028180555,9.522265941390792e-05,"{""keep"": 21, ""reject_kept"": 1, ""single"": 83, ""veto"": 6}"
+FLUKA,delayed,Cs-134,e100_300,100-300 keV,active_veto_pass,active-veto,40,0.0003717112010735445,5.877270135946125e-05,{}
+FLUKA,delayed,Cs-134,e100_300,100-300 keV,raw,raw,209,0.001942191025609273,0.00013434416240048195,{}
+FLUKA,delayed,Cs-134,e100_300,100-300 keV,side_compton_fov_pass,final,36,0.00033454008096619,5.5756680161031615e-05,"{""keep"": 4, ""reject_kept"": 1, ""single"": 31, ""veto"": 4}"
+FLUKA,delayed,Cs-134,e300_480,300-480 keV,active_veto_pass,active-veto,23,0.0002137339406172879,4.456660739192341e-05,{}
+FLUKA,delayed,Cs-134,e300_480,300-480 keV,raw,raw,119,0.0011058408231937962,0.00010137226205741916,{}
+FLUKA,delayed,Cs-134,e300_480,300-480 keV,side_compton_fov_pass,final,22,0.0002044411605904493,4.35870018904562e-05,"{""keep"": 3, ""single"": 19, ""veto"": 1}"
+FLUKA,delayed,Cs-134,e480_550,480-550 keV,active_veto_pass,active-veto,4,3.717112010735442e-05,1.858556005367721e-05,{}
+FLUKA,delayed,Cs-134,e480_550,480-550 keV,raw,raw,41,0.00038100398110038316,5.9502825022982136e-05,{}
+FLUKA,delayed,Cs-134,e480_550,480-550 keV,side_compton_fov_pass,final,4,3.717112010735442e-05,1.858556005367721e-05,"{""keep"": 2, ""single"": 2}"
+FLUKA,delayed,Cs-134,e550_800,550-800 keV,active_veto_pass,active-veto,42,0.0003902967611272218,6.0224097721284615e-05,{}
+FLUKA,delayed,Cs-134,e550_800,550-800 keV,raw,raw,150,0.0013939170040257937,0.0001138128467884079,{}
+FLUKA,delayed,Cs-134,e550_800,550-800 keV,side_compton_fov_pass,final,41,0.00038100398110038316,5.9502825022982136e-05,"{""keep"": 12, ""single"": 29, ""veto"": 1}"
+FLUKA,delayed,Cs-134,e800_1500,800-1500 keV,active_veto_pass,active-veto,1,9.292780026838605e-06,9.292780026838605e-06,{}
+FLUKA,delayed,Cs-134,e800_1500,800-1500 keV,raw,raw,11,0.00010222058029522465,3.082066460833244e-05,{}
+FLUKA,delayed,Cs-134,e800_1500,800-1500 keV,side_compton_fov_pass,final,1,9.292780026838605e-06,9.292780026838605e-06,"{""single"": 1}"
+FLUKA,delayed,Cs-134,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,1,9.292780026838605e-06,9.292780026838605e-06,{}
+FLUKA,delayed,Cu-62,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,3,0.0020363405331546786,0.0011756817549785996,{}
+FLUKA,delayed,Cu-62,all_tes_gt0,all TES > 0,raw,raw,5,0.00339366599121728,0.0015176935844004788,{}
+FLUKA,delayed,Cu-62,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,2,0.0013575603554364522,0.0009599401331991352,"{""keep"": 1, ""single"": 1, ""veto"": 1}"
+FLUKA,delayed,Cu-62,e100_300,100-300 keV,active_veto_pass,active-veto,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Cu-62,e100_300,100-300 keV,raw,raw,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Cu-62,e100_300,100-300 keV,side_compton_fov_pass,final,2,0.0013575603554364522,0.0009599401331991352,"{""keep"": 1, ""single"": 1}"
+FLUKA,delayed,Cu-62,e300_480,300-480 keV,raw,raw,2,0.0013573254580626015,0.0009597740500455373,{}
+FLUKA,delayed,Cu-62,e480_550,480-550 keV,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Cu-62,e480_550,480-550 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Cu-62,e480_550,480-550 keV,side_compton_fov_pass,final,0,0.0,0.0,"{""veto"": 1}"
+FLUKA,delayed,Cu-62,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Cu-62,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Cu-62,w2_510p58_511p42,W2 510.58-511.42 keV,side_compton_fov_pass,final,0,0.0,0.0,"{""veto"": 1}"
+FLUKA,delayed,Cu-64,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,25,0.016969504393204382,0.0033939008786408754,{}
+FLUKA,delayed,Cu-64,all_tes_gt0,all TES > 0,raw,raw,37,0.025114866501942487,0.004128858619228585,{}
+FLUKA,delayed,Cu-64,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,23,0.015611944041748033,0.0032553153641569294,"{""single"": 23, ""veto"": 2}"
+FLUKA,delayed,Cu-64,e100_300,100-300 keV,active_veto_pass,active-veto,4,0.0027151207029127013,0.0013575603514563506,{}
+FLUKA,delayed,Cu-64,e100_300,100-300 keV,raw,raw,5,0.0033939008786408767,0.0015177986147074528,{}
+FLUKA,delayed,Cu-64,e100_300,100-300 keV,side_compton_fov_pass,final,4,0.0027151207029127013,0.0013575603514563506,"{""single"": 4}"
+FLUKA,delayed,Cu-64,e300_480,300-480 keV,active_veto_pass,active-veto,1,0.0006787801757281753,0.0006787801757281753,{}
+FLUKA,delayed,Cu-64,e300_480,300-480 keV,raw,raw,2,0.0013575603514563506,0.0009599401303847782,{}
+FLUKA,delayed,Cu-64,e300_480,300-480 keV,side_compton_fov_pass,final,0,0.0,0.0,"{""veto"": 1}"
+FLUKA,delayed,Cu-64,e480_550,480-550 keV,active_veto_pass,active-veto,11,0.007466581933009929,0.0022512591580218606,{}
+FLUKA,delayed,Cu-64,e480_550,480-550 keV,raw,raw,16,0.010860482811650805,0.0027151207029127004,{}
+FLUKA,delayed,Cu-64,e480_550,480-550 keV,side_compton_fov_pass,final,10,0.006787801757281753,0.0021464913858703755,"{""single"": 10, ""veto"": 1}"
+FLUKA,delayed,Cu-64,e550_800,550-800 keV,raw,raw,1,0.0006787801757281753,0.0006787801757281753,{}
+FLUKA,delayed,Cu-64,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto_pass,active-veto,11,0.007466581933009929,0.0022512591580218606,{}
+FLUKA,delayed,Cu-64,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,16,0.010860482811650805,0.0027151207029127004,{}
+FLUKA,delayed,Cu-64,w2_510p58_511p42,W2 510.58-511.42 keV,side_compton_fov_pass,final,10,0.006787801757281753,0.0021464913858703755,"{""single"": 10, ""veto"": 1}"
+FLUKA,delayed,Cu-66,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,7,0.004751461244027582,0.0017958835451226526,{}
+FLUKA,delayed,Cu-66,all_tes_gt0,all TES > 0,raw,raw,7,0.004751461244027582,0.0017958835451226526,{}
+FLUKA,delayed,Cu-66,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,4,0.0027151207108729045,0.0013575603554364522,"{""keep"": 2, ""single"": 2, ""veto"": 3}"
+FLUKA,delayed,Cu-66,e100_300,100-300 keV,active_veto_pass,active-veto,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Cu-66,e100_300,100-300 keV,raw,raw,2,0.0013575603554364522,0.0009599401331991352,{}
+FLUKA,delayed,Cu-66,e100_300,100-300 keV,side_compton_fov_pass,final,2,0.0013575603554364522,0.0009599401331991352,"{""single"": 2}"
+FLUKA,delayed,Cu-66,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Cu-66,e1500_3000,1500-3000 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Cu-66,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,0,0.0,0.0,"{""veto"": 1}"
+FLUKA,delayed,Cu-66,e800_1500,800-1500 keV,active_veto_pass,active-veto,4,0.0027151207108729045,0.0013575603554364522,{}
+FLUKA,delayed,Cu-66,e800_1500,800-1500 keV,raw,raw,4,0.0027151207108729045,0.0013575603554364522,{}
+FLUKA,delayed,Cu-66,e800_1500,800-1500 keV,side_compton_fov_pass,final,2,0.0013575603554364522,0.0009599401331991352,"{""keep"": 2, ""veto"": 2}"
+FLUKA,delayed,Fe-53,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Fe-53,e480_550,480-550 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Fe-53,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Fe-60,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,7.374869695943743e-12,7.374869695943743e-12,{}
+FLUKA,delayed,Fe-60,all_tes_gt0,all TES > 0,raw,raw,1,7.374869695943743e-12,7.374869695943743e-12,{}
+FLUKA,delayed,Fe-60,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,7.374869695943743e-12,7.374869695943743e-12,"{""single"": 1}"
+FLUKA,delayed,Fe-60,e100_300,100-300 keV,active_veto_pass,active-veto,1,7.374869695943743e-12,7.374869695943743e-12,{}
+FLUKA,delayed,Fe-60,e100_300,100-300 keV,raw,raw,1,7.374869695943743e-12,7.374869695943743e-12,{}
+FLUKA,delayed,Fe-60,e100_300,100-300 keV,side_compton_fov_pass,final,1,7.374869695943743e-12,7.374869695943743e-12,"{""single"": 1}"
+FLUKA,delayed,Hf-170,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,0.0006787800621642647,0.0006787800621642647,{}
+FLUKA,delayed,Hf-170,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787800621642647,0.0006787800621642647,{}
+FLUKA,delayed,Hf-170,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,0.0006787800621642647,0.0006787800621642647,"{""reject_kept"": 1}"
+FLUKA,delayed,Hf-172,all_tes_gt0,all TES > 0,raw,raw,1,1.025445816856931e-05,1.025445816856931e-05,{}
+FLUKA,delayed,Hf-172,e100_300,100-300 keV,raw,raw,1,1.025445816856931e-05,1.025445816856931e-05,{}
+FLUKA,delayed,I-119,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,I-119,e480_550,480-550 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,I-128,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,11,0.007466581954900486,0.002251259164622113,{}
+FLUKA,delayed,I-128,all_tes_gt0,all TES > 0,raw,raw,28,0.01900584497611033,0.0035917670902453065,{}
+FLUKA,delayed,I-128,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,11,0.007466581954900486,0.002251259164622113,"{""keep"": 3, ""single"": 8}"
+FLUKA,delayed,I-128,e100_300,100-300 keV,active_veto_pass,active-veto,3,0.0020363405331546786,0.0011756817549785996,{}
+FLUKA,delayed,I-128,e100_300,100-300 keV,raw,raw,10,0.00678780177718226,0.002146491392163469,{}
+FLUKA,delayed,I-128,e100_300,100-300 keV,side_compton_fov_pass,final,3,0.0020363405331546786,0.0011756817549785996,"{""single"": 3}"
+FLUKA,delayed,I-128,e300_480,300-480 keV,active_veto_pass,active-veto,7,0.004751461244027582,0.0017958835451226526,{}
+FLUKA,delayed,I-128,e300_480,300-480 keV,raw,raw,11,0.007466581954900486,0.002251259164622113,{}
+FLUKA,delayed,I-128,e300_480,300-480 keV,side_compton_fov_pass,final,7,0.004751461244027582,0.0017958835451226526,"{""keep"": 3, ""single"": 4}"
+FLUKA,delayed,I-128,e480_550,480-550 keV,raw,raw,5,0.0033939008885911304,0.0015177986191573418,{}
+FLUKA,delayed,I-128,e800_1500,800-1500 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,In-108,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,In-108,e300_480,300-480 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Mg-27,all_tes_gt0,all TES > 0,raw,raw,5,0.003383536065338341,0.0015131680623878259,{}
+FLUKA,delayed,Mg-27,e100_300,100-300 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Mg-27,e300_480,300-480 keV,raw,raw,3,0.0020259757099018887,0.0011696976214834985,{}
+FLUKA,delayed,Mn-51,all_tes_gt0,all TES > 0,raw,raw,1,0.0006785452803443753,0.0006785452803443753,{}
+FLUKA,delayed,Mn-52,all_tes_gt0,all TES > 0,raw,raw,1,0.0005730738874627298,0.0005730738874627298,{}
+FLUKA,delayed,Mn-52,e550_800,550-800 keV,raw,raw,1,0.0005730738874627298,0.0005730738874627298,{}
+FLUKA,delayed,Na-22,all_tes_gt0,all TES > 0,raw,raw,5,3.692848776152781e-05,1.6514921788209044e-05,{}
+FLUKA,delayed,Na-22,e100_300,100-300 keV,raw,raw,2,1.4771395104611124e-05,1.0444953646056297e-05,{}
+FLUKA,delayed,Na-22,e300_480,300-480 keV,raw,raw,2,1.4771395104611124e-05,1.0444953646056297e-05,{}
+FLUKA,delayed,Na-22,e800_1500,800-1500 keV,raw,raw,1,7.385697552305562e-06,7.385697552305562e-06,{}
+FLUKA,delayed,Na-24,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,0.000678780139192184,0.000678780139192184,{}
+FLUKA,delayed,Na-24,all_tes_gt0,all TES > 0,raw,raw,4,0.002715120556768736,0.001357560278384368,{}
+FLUKA,delayed,Na-24,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,0.000678780139192184,0.000678780139192184,"{""single"": 1}"
+FLUKA,delayed,Na-24,e100_300,100-300 keV,active_veto_pass,active-veto,1,0.000678780139192184,0.000678780139192184,{}
+FLUKA,delayed,Na-24,e100_300,100-300 keV,raw,raw,1,0.000678780139192184,0.000678780139192184,{}
+FLUKA,delayed,Na-24,e100_300,100-300 keV,side_compton_fov_pass,final,1,0.000678780139192184,0.000678780139192184,"{""single"": 1}"
+FLUKA,delayed,Na-24,e1500_3000,1500-3000 keV,raw,raw,1,0.000678780139192184,0.000678780139192184,{}
+FLUKA,delayed,Na-24,e800_1500,800-1500 keV,raw,raw,1,0.000678780139192184,0.000678780139192184,{}
+FLUKA,delayed,Nb-90,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787801520691502,0.0006787801520691502,{}
+FLUKA,delayed,Nb-91,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,2.841434464760902e-08,2.841434464760902e-08,{}
+FLUKA,delayed,Nb-91,all_tes_gt0,all TES > 0,raw,raw,1,2.841434464760902e-08,2.841434464760902e-08,{}
+FLUKA,delayed,Nb-91,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,2.841434464760902e-08,2.841434464760902e-08,"{""single"": 1}"
+FLUKA,delayed,Nb-92,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,2,1.113669074733392e-12,7.874829547417295e-13,{}
+FLUKA,delayed,Nb-92,all_tes_gt0,all TES > 0,raw,raw,4,2.227338149466784e-12,1.113669074733392e-12,{}
+FLUKA,delayed,Nb-92,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,5.56834537366696e-13,5.56834537366696e-13,"{""single"": 1, ""veto"": 1}"
+FLUKA,delayed,Nb-92,e300_480,300-480 keV,active_veto_pass,active-veto,1,5.56834537366696e-13,5.56834537366696e-13,{}
+FLUKA,delayed,Nb-92,e300_480,300-480 keV,raw,raw,1,5.56834537366696e-13,5.56834537366696e-13,{}
+FLUKA,delayed,Nb-92,e300_480,300-480 keV,side_compton_fov_pass,final,1,5.56834537366696e-13,5.56834537366696e-13,"{""single"": 1}"
+FLUKA,delayed,Nb-92,e550_800,550-800 keV,active_veto_pass,active-veto,1,5.56834537366696e-13,5.56834537366696e-13,{}
+FLUKA,delayed,Nb-92,e550_800,550-800 keV,raw,raw,1,5.56834537366696e-13,5.56834537366696e-13,{}
+FLUKA,delayed,Nb-92,e550_800,550-800 keV,side_compton_fov_pass,final,0,0.0,0.0,"{""veto"": 1}"
+FLUKA,delayed,Nb-92,e800_1500,800-1500 keV,raw,raw,1,5.56834537366696e-13,5.56834537366696e-13,{}
+FLUKA,delayed,Nb-94,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,32,3.030924753489277e-08,5.3579686161460815e-09,{}
+FLUKA,delayed,Nb-94,all_tes_gt0,all TES > 0,raw,raw,86,8.145610275002446e-08,8.783637453879357e-09,{}
+FLUKA,delayed,Nb-94,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,21,1.989044369477338e-08,4.340450658931244e-09,"{""keep"": 8, ""single"": 13, ""veto"": 11}"
+FLUKA,delayed,Nb-94,e100_300,100-300 keV,active_veto_pass,active-veto,12,1.1365967825584788e-08,3.2810722918510013e-09,{}
+FLUKA,delayed,Nb-94,e100_300,100-300 keV,raw,raw,28,2.652059159303117e-08,5.011920712676484e-09,{}
+FLUKA,delayed,Nb-94,e100_300,100-300 keV,side_compton_fov_pass,final,9,8.524475869188591e-09,2.841491956396197e-09,"{""keep"": 2, ""single"": 7, ""veto"": 3}"
+FLUKA,delayed,Nb-94,e300_480,300-480 keV,active_veto_pass,active-veto,4,3.788655941861596e-09,1.894327970930798e-09,{}
+FLUKA,delayed,Nb-94,e300_480,300-480 keV,raw,raw,7,6.630147898257793e-09,2.505960356338242e-09,{}
+FLUKA,delayed,Nb-94,e300_480,300-480 keV,side_compton_fov_pass,final,3,2.8414919563961973e-09,1.6405361459255008e-09,"{""keep"": 2, ""single"": 1, ""veto"": 1}"
+FLUKA,delayed,Nb-94,e480_550,480-550 keV,active_veto_pass,active-veto,1,9.47163985465399e-10,9.47163985465399e-10,{}
+FLUKA,delayed,Nb-94,e480_550,480-550 keV,raw,raw,2,1.894327970930798e-09,1.3394921540365204e-09,{}
+FLUKA,delayed,Nb-94,e480_550,480-550 keV,side_compton_fov_pass,final,1,9.47163985465399e-10,9.47163985465399e-10,"{""single"": 1}"
+FLUKA,delayed,Nb-94,e550_800,550-800 keV,active_veto_pass,active-veto,5,4.735819927326995e-09,2.117923057340255e-09,{}
+FLUKA,delayed,Nb-94,e550_800,550-800 keV,raw,raw,14,1.3260295796515585e-08,3.543963122702856e-09,{}
+FLUKA,delayed,Nb-94,e550_800,550-800 keV,side_compton_fov_pass,final,3,2.8414919563961973e-09,1.6405361459255008e-09,"{""keep"": 2, ""single"": 1, ""veto"": 2}"
+FLUKA,delayed,Nb-94,e800_1500,800-1500 keV,active_veto_pass,active-veto,7,6.630147898257793e-09,2.505960356338242e-09,{}
+FLUKA,delayed,Nb-94,e800_1500,800-1500 keV,raw,raw,16,1.5154623767446385e-08,3.788655941861596e-09,{}
+FLUKA,delayed,Nb-94,e800_1500,800-1500 keV,side_compton_fov_pass,final,2,1.894327970930798e-09,1.3394921540365204e-09,"{""keep"": 2, ""veto"": 5}"
+FLUKA,delayed,Ne-24,all_tes_gt0,all TES > 0,raw,raw,1,0.0006753252366339629,0.0006753252366339629,{}
+FLUKA,delayed,Ne-24,e100_300,100-300 keV,raw,raw,1,0.0006753252366339629,0.0006753252366339629,{}
+FLUKA,delayed,Ni-59,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,4,9.541805131252822e-10,4.770902565626411e-10,{}
+FLUKA,delayed,Ni-59,all_tes_gt0,all TES > 0,raw,raw,4,9.541805131252822e-10,4.770902565626411e-10,{}
+FLUKA,delayed,Ni-59,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,4,9.541805131252822e-10,4.770902565626411e-10,"{""single"": 4}"
+FLUKA,delayed,Ni-63,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,3,5.727107171849269e-07,3.306546867345012e-07,{}
+FLUKA,delayed,Ni-63,all_tes_gt0,all TES > 0,raw,raw,3,5.727107171849269e-07,3.306546867345012e-07,{}
+FLUKA,delayed,Ni-63,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,3,5.727107171849269e-07,3.306546867345012e-07,"{""single"": 3}"
+FLUKA,delayed,Ta-174,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Ta-174,e300_480,300-480 keV,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Ta-175,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787801776858146,0.0006787801776858146,{}
+FLUKA,delayed,Ta-175,e300_480,300-480 keV,raw,raw,1,0.0006787801776858146,0.0006787801776858146,{}
+FLUKA,delayed,Ta-178,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Ta-178,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Ta-178,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,0.0006787801777182261,0.0006787801777182261,"{""single"": 1}"
+FLUKA,delayed,Ta-179,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,1.0533976836335454e-05,1.0533976836335454e-05,{}
+FLUKA,delayed,Ta-179,all_tes_gt0,all TES > 0,raw,raw,1,1.0533976836335454e-05,1.0533976836335454e-05,{}
+FLUKA,delayed,Ta-179,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,1.0533976836335454e-05,1.0533976836335454e-05,"{""reject_kept"": 1}"
+FLUKA,delayed,Ta-179,e100_300,100-300 keV,active_veto_pass,active-veto,1,1.0533976836335454e-05,1.0533976836335454e-05,{}
+FLUKA,delayed,Ta-179,e100_300,100-300 keV,raw,raw,1,1.0533976836335454e-05,1.0533976836335454e-05,{}
+FLUKA,delayed,Ta-179,e100_300,100-300 keV,side_compton_fov_pass,final,1,1.0533976836335454e-05,1.0533976836335454e-05,"{""reject_kept"": 1}"
+FLUKA,delayed,Ta-182,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,439,0.025814709584867597,0.0012320688667324634,{}
+FLUKA,delayed,Ta-182,all_tes_gt0,all TES > 0,raw,raw,653,0.03839864546450652,0.0015026551149040993,{}
+FLUKA,delayed,Ta-182,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,388,0.02281573421168252,0.001158293411826984,"{""keep"": 43, ""reject_kept"": 48, ""single"": 297, ""veto"": 51}"
+FLUKA,delayed,Ta-182,e100_300,100-300 keV,active_veto_pass,active-veto,117,0.006880002326718679,0.0006360564401101451,{}
+FLUKA,delayed,Ta-182,e100_300,100-300 keV,raw,raw,159,0.009349746751694624,0.0007414831487494451,{}
+FLUKA,delayed,Ta-182,e100_300,100-300 keV,side_compton_fov_pass,final,102,0.0059979507463701264,0.0005938856194413476,"{""keep"": 13, ""reject_kept"": 12, ""single"": 77, ""veto"": 15}"
+FLUKA,delayed,Ta-182,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,9,0.0005292309482091279,0.00017641031606970925,{}
+FLUKA,delayed,Ta-182,e1500_3000,1500-3000 keV,raw,raw,33,0.001940513476766801,0.0003378000373860065,{}
+FLUKA,delayed,Ta-182,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,7,0.00041162407082932166,0.00015557927500891737,"{""keep"": 1, ""reject_kept"": 4, ""single"": 2, ""veto"": 2}"
+FLUKA,delayed,Ta-182,e3000_10000,3000-10000 keV,active_veto_pass,active-veto,1,5.880343868990309e-05,5.880343868990309e-05,{}
+FLUKA,delayed,Ta-182,e3000_10000,3000-10000 keV,raw,raw,7,0.00041162407082932166,0.00015557927500891737,{}
+FLUKA,delayed,Ta-182,e3000_10000,3000-10000 keV,side_compton_fov_pass,final,1,5.880343868990309e-05,5.880343868990309e-05,"{""reject_kept"": 1}"
+FLUKA,delayed,Ta-182,e300_480,300-480 keV,active_veto_pass,active-veto,20,0.0011760687737980614,0.00026297697244272893,{}
+FLUKA,delayed,Ta-182,e300_480,300-480 keV,raw,raw,36,0.00211692379283651,0.00035282063213941866,{}
+FLUKA,delayed,Ta-182,e300_480,300-480 keV,side_compton_fov_pass,final,15,0.0008820515803485461,0.00022774473874572352,"{""keep"": 3, ""single"": 12, ""veto"": 5}"
+FLUKA,delayed,Ta-182,e480_550,480-550 keV,active_veto_pass,active-veto,3,0.00017641031606970925,0.0001018505434706736,{}
+FLUKA,delayed,Ta-182,e480_550,480-550 keV,raw,raw,6,0.00035282063213941856,0.0001440384199112971,{}
+FLUKA,delayed,Ta-182,e480_550,480-550 keV,side_compton_fov_pass,final,3,0.00017641031606970925,0.0001018505434706736,"{""single"": 3}"
+FLUKA,delayed,Ta-182,e550_800,550-800 keV,active_veto_pass,active-veto,1,5.880343868990309e-05,5.880343868990309e-05,{}
+FLUKA,delayed,Ta-182,e550_800,550-800 keV,raw,raw,15,0.0008820515803485461,0.00022774473874572352,{}
+FLUKA,delayed,Ta-182,e550_800,550-800 keV,side_compton_fov_pass,final,1,5.880343868990309e-05,5.880343868990309e-05,"{""single"": 1}"
+FLUKA,delayed,Ta-182,e800_1500,800-1500 keV,active_veto_pass,active-veto,21,0.0012348722124879644,0.0002694712089201758,{}
+FLUKA,delayed,Ta-182,e800_1500,800-1500 keV,raw,raw,70,0.004116240708293215,0.0004919848657458922,{}
+FLUKA,delayed,Ta-182,e800_1500,800-1500 keV,side_compton_fov_pass,final,9,0.0005292309482091279,0.00017641031606970925,"{""keep"": 7, ""single"": 2, ""veto"": 12}"
+FLUKA,delayed,Ti-45,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Ti-45,all_tes_gt0,all TES > 0,raw,raw,1,0.0006787801777182261,0.0006787801777182261,{}
+FLUKA,delayed,Ti-45,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,0.0006787801777182261,0.0006787801777182261,"{""single"": 1}"
+FLUKA,delayed,V-49,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,2.105272431732538e-05,2.105272431732538e-05,{}
+FLUKA,delayed,V-49,all_tes_gt0,all TES > 0,raw,raw,1,2.105272431732538e-05,2.105272431732538e-05,{}
+FLUKA,delayed,V-49,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,2.105272431732538e-05,2.105272431732538e-05,"{""single"": 1}"
+FLUKA,delayed,W-187,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,0.0006787611206767161,0.0006787611206767161,{}
+FLUKA,delayed,W-187,all_tes_gt0,all TES > 0,raw,raw,4,0.0027150444827068643,0.0013575222413534321,{}
+FLUKA,delayed,W-187,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,0.0006787611206767161,0.0006787611206767161,"{""keep"": 1}"
+FLUKA,delayed,W-187,e100_300,100-300 keV,active_veto_pass,active-veto,1,0.0006787611206767161,0.0006787611206767161,{}
+FLUKA,delayed,W-187,e100_300,100-300 keV,raw,raw,3,0.0020362833620301483,0.0011756487472144622,{}
+FLUKA,delayed,W-187,e100_300,100-300 keV,side_compton_fov_pass,final,1,0.0006787611206767161,0.0006787611206767161,"{""keep"": 1}"
+FLUKA,delayed,activation,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,666,0.07281148671920441,0.005689989631589996,{}
+FLUKA,delayed,activation,all_tes_gt0,all TES > 0,raw,raw,1460,0.13240281327689737,0.007876908679488228,{}
+FLUKA,delayed,activation,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,589,0.0649126291448093,0.005381944942882936,"{""keep"": 82, ""reject_kept"": 51, ""single"": 456, ""veto"": 77}"
+FLUKA,delayed,activation,e100_300,100-300 keV,active_veto_pass,active-veto,190,0.020022636110769536,0.002999269830452657,{}
+FLUKA,delayed,activation,e100_300,100-300 keV,raw,raw,435,0.03300120450993804,0.003892192811307435,{}
+FLUKA,delayed,activation,e100_300,100-300 keV,side_compton_fov_pass,final,168,0.01910341056882167,0.002990552863065948,"{""keep"": 22, ""reject_kept"": 14, ""single"": 132, ""veto"": 22}"
+FLUKA,delayed,activation,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,12,0.0025655714813638056,0.0011888432144758932,{}
+FLUKA,delayed,activation,e1500_3000,1500-3000 keV,raw,raw,43,0.008049535064653423,0.0020641684960112238,{}
+FLUKA,delayed,activation,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,9,0.0017691844262657736,0.0009724659223534127,"{""keep"": 3, ""reject_kept"": 4, ""single"": 2, ""veto"": 3}"
+FLUKA,delayed,activation,e3000_10000,3000-10000 keV,active_veto_pass,active-veto,1,5.880343868990309e-05,5.880343868990309e-05,{}
+FLUKA,delayed,activation,e3000_10000,3000-10000 keV,raw,raw,7,0.00041162407082932166,0.00015557927500891737,{}
+FLUKA,delayed,activation,e3000_10000,3000-10000 keV,side_compton_fov_pass,final,1,5.880343868990309e-05,5.880343868990309e-05,"{""reject_kept"": 1}"
+FLUKA,delayed,activation,e300_480,300-480 keV,active_veto_pass,active-veto,61,0.010077521771654732,0.002427797427594644,{}
+FLUKA,delayed,activation,e300_480,300-480 keV,raw,raw,199,0.02413270146699112,0.003773186550604631,{}
+FLUKA,delayed,activation,e300_480,300-480 keV,side_compton_fov_pass,final,53,0.009095430675286217,0.0023272477832631594,"{""keep"": 11, ""single"": 42, ""veto"": 8}"
+FLUKA,delayed,activation,e480_550,480-550 keV,active_veto_pass,active-veto,21,0.009037724671787432,0.0024495656374452076,{}
+FLUKA,delayed,activation,e480_550,480-550 keV,raw,raw,75,0.01770333094563126,0.0033974771303059413,{}
+FLUKA,delayed,activation,e480_550,480-550 keV,side_compton_fov_pass,final,18,0.007001384140622803,0.002148986790528132,"{""keep"": 2, ""single"": 16, ""veto"": 3}"
+FLUKA,delayed,activation,e550_800,550-800 keV,active_veto_pass,active-veto,50,0.0009914580735918292,0.0005488457998363267,{}
+FLUKA,delayed,activation,e550_800,550-800 keV,raw,raw,184,0.004748969223534048,0.0012684110898659,{}
+FLUKA,delayed,activation,e550_800,550-800 keV,side_compton_fov_pass,final,46,0.000982163398680185,0.0005487671238654478,"{""keep"": 14, ""single"": 32, ""veto"": 4}"
+FLUKA,delayed,activation,e800_1500,800-1500 keV,active_veto_pass,active-veto,37,0.005502160412254077,0.0016894749901483915,{}
+FLUKA,delayed,activation,e800_1500,800-1500 keV,raw,raw,112,0.009930528686068404,0.0019883360674894106,{}
+FLUKA,delayed,activation,e800_1500,800-1500 keV,side_compton_fov_pass,final,17,0.0033463001950778475,0.0013721376797202146,"{""keep"": 11, ""single"": 6, ""veto"": 20}"
+FLUKA,delayed,activation,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto_pass,active-veto,12,0.008145362110728156,0.002351363503637939,{}
+FLUKA,delayed,activation,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,20,0.012227335974062713,0.0028798353853080145,{}
+FLUKA,delayed,activation,w2_510p58_511p42,W2 510.58-511.42 keV,side_compton_fov_pass,final,10,0.006787801757281753,0.0021464913858703755,"{""single"": 10, ""veto"": 2}"
+FLUKA,prompt,all_prompt,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,2577,1.8578320309360024,0.04305364127471861,{}
+FLUKA,prompt,all_prompt,all_tes_gt0,all TES > 0,raw,raw,6779,4.77078632932914,0.06453944009091014,{}
+FLUKA,prompt,all_prompt,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,2429,1.7574086730978025,0.042254883069672844,"{""keep"": 158, ""reject_kept"": 411, ""single"": 1860, ""veto"": 148}"
+FLUKA,prompt,all_prompt,e100_300,100-300 keV,active_veto_pass,active-veto,213,0.17777637311144892,0.01735248892816139,{}
+FLUKA,prompt,all_prompt,e100_300,100-300 keV,raw,raw,1217,0.8827747919245448,0.0301395176367577,{}
+FLUKA,prompt,all_prompt,e100_300,100-300 keV,side_compton_fov_pass,final,201,0.16963393850977604,0.017192554645303653,"{""keep"": 24, ""reject_kept"": 6, ""single"": 171, ""veto"": 12}"
+FLUKA,prompt,all_prompt,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,54,0.036640960665191,0.004986203184172628,{}
+FLUKA,prompt,all_prompt,e1500_3000,1500-3000 keV,raw,raw,496,0.33655392062937856,0.015111717140797131,{}
+FLUKA,prompt,all_prompt,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,21,0.014249262480907611,0.0031094439960025417,"{""keep"": 15, ""reject_kept"": 4, ""single"": 2, ""veto"": 33}"
+FLUKA,prompt,all_prompt,e3000_10000,3000-10000 keV,active_veto_pass,active-veto,62,0.042069251134108185,0.005342800236834652,{}
+FLUKA,prompt,all_prompt,e3000_10000,3000-10000 keV,raw,raw,347,0.24020176217704492,0.01373930820418783,{}
+FLUKA,prompt,all_prompt,e3000_10000,3000-10000 keV,side_compton_fov_pass,final,32,0.02171316187566874,0.003838381000821646,"{""keep"": 16, ""reject_kept"": 15, ""single"": 1, ""veto"": 30}"
+FLUKA,prompt,all_prompt,e300_480,300-480 keV,active_veto_pass,active-veto,142,0.13909981549406075,0.0180674154454281,{}
+FLUKA,prompt,all_prompt,e300_480,300-480 keV,raw,raw,799,0.5848977967222999,0.025078304647656903,{}
+FLUKA,prompt,all_prompt,e300_480,300-480 keV,side_compton_fov_pass,final,126,0.12824324667495743,0.017862388781177737,"{""keep"": 36, ""single"": 90, ""veto"": 16}"
+FLUKA,prompt,all_prompt,e480_550,480-550 keV,active_veto_pass,active-veto,103,0.08413842112730044,0.011594827411722944,{}
+FLUKA,prompt,all_prompt,e480_550,480-550 keV,raw,raw,396,0.2924489791229902,0.018092880062190946,{}
+FLUKA,prompt,all_prompt,e480_550,480-550 keV,side_compton_fov_pass,final,90,0.07531745421377434,0.011333784885871652,"{""keep"": 25, ""single"": 65, ""veto"": 13}"
+FLUKA,prompt,all_prompt,e550_800,550-800 keV,active_veto_pass,active-veto,35,0.028498523851793422,0.006717165854404839,{}
+FLUKA,prompt,all_prompt,e550_800,550-800 keV,raw,raw,382,0.26395031282245407,0.014313723989250588,{}
+FLUKA,prompt,all_prompt,e550_800,550-800 keV,side_compton_fov_pass,final,23,0.020356088148417644,0.006292485903860378,"{""keep"": 15, ""single"": 8, ""veto"": 12}"
+FLUKA,prompt,all_prompt,e800_1500,800-1500 keV,active_veto_pass,active-veto,58,0.04410485674652469,0.007463898387163127,{}
+FLUKA,prompt,all_prompt,e800_1500,800-1500 keV,raw,raw,486,0.3392679472051382,0.016786052227747338,{}
+FLUKA,prompt,all_prompt,e800_1500,800-1500 keV,side_compton_fov_pass,final,32,0.02646291272254384,0.006613552718401666,"{""keep"": 21, ""reject_kept"": 2, ""single"": 9, ""veto"": 26}"
+FLUKA,prompt,all_prompt,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto_pass,active-veto,54,0.03664090998686131,0.004986196287726301,{}
+FLUKA,prompt,all_prompt,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,181,0.12756475365619752,0.01059907083889894,{}
+FLUKA,prompt,all_prompt,w2_510p58_511p42,W2 510.58-511.42 keV,side_compton_fov_pass,final,47,0.03189116133507287,0.0046518039769990705,"{""keep"": 13, ""single"": 34, ""veto"": 7}"
+FLUKA,prompt,alpha,all_tes_gt0,all TES > 0,raw,raw,1,0.0006785400918650751,0.0006785400918650751,{}
+FLUKA,prompt,eplus,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,271,0.1838830410731056,0.011170099253010985,{}
+FLUKA,prompt,eplus,all_tes_gt0,all TES > 0,raw,raw,407,0.2761638292131133,0.01368893279246722,{}
+FLUKA,prompt,eplus,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,254,0.1723479425556045,0.010814071706013216,"{""keep"": 46, ""reject_kept"": 3, ""single"": 205, ""veto"": 17}"
+FLUKA,prompt,eplus,e100_300,100-300 keV,active_veto_pass,active-veto,101,0.0685320558980947,0.006819194434015413,{}
+FLUKA,prompt,eplus,e100_300,100-300 keV,raw,raw,144,0.09770906979530335,0.008142422482941957,{}
+FLUKA,prompt,eplus,e100_300,100-300 keV,side_compton_fov_pass,final,100,0.06785352069118288,0.006785352069118293,"{""keep"": 12, ""reject_kept"": 3, ""single"": 85, ""veto"": 1}"
+FLUKA,prompt,eplus,e1500_3000,1500-3000 keV,raw,raw,4,0.002714140827647315,0.0013570704138236576,{}
+FLUKA,prompt,eplus,e3000_10000,3000-10000 keV,raw,raw,5,0.003392676034559144,0.0015172508477817343,{}
+FLUKA,prompt,eplus,e300_480,300-480 keV,active_veto_pass,active-veto,87,0.05903256300132911,0.0063289550757326795,{}
+FLUKA,prompt,eplus,e300_480,300-480 keV,raw,raw,133,0.09024518251927323,0.007825249746398576,{}
+FLUKA,prompt,eplus,e300_480,300-480 keV,side_compton_fov_pass,final,76,0.05156867572529899,0.005915332793126246,"{""keep"": 18, ""single"": 58, ""veto"": 11}"
+FLUKA,prompt,eplus,e480_550,480-550 keV,active_veto_pass,active-veto,71,0.048175999690739844,0.005717439279812279,{}
+FLUKA,prompt,eplus,e480_550,480-550 keV,raw,raw,74,0.05021160531147533,0.005836980554995622,{}
+FLUKA,prompt,eplus,e480_550,480-550 keV,side_compton_fov_pass,final,66,0.0447833236561807,0.005512446079849302,"{""keep"": 15, ""single"": 51, ""veto"": 5}"
+FLUKA,prompt,eplus,e550_800,550-800 keV,raw,raw,5,0.003392676034559144,0.0015172508477817343,{}
+FLUKA,prompt,eplus,e800_1500,800-1500 keV,active_veto_pass,active-veto,2,0.0013570704138236576,0.0009595936921623425,{}
+FLUKA,prompt,eplus,e800_1500,800-1500 keV,raw,raw,12,0.008142422482941945,0.0023505149061910967,{}
+FLUKA,prompt,eplus,e800_1500,800-1500 keV,side_compton_fov_pass,final,2,0.0013570704138236576,0.0009595936921623425,"{""keep"": 1, ""single"": 1}"
+FLUKA,prompt,eplus,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto_pass,active-veto,46,0.031212619517944126,0.004602049678444203,{}
+FLUKA,prompt,eplus,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,47,0.03189115472485595,0.004651803012799152,{}
+FLUKA,prompt,eplus,w2_510p58_511p42,W2 510.58-511.42 keV,side_compton_fov_pass,final,41,0.02781994348338498,0.0043447452293286426,"{""keep"": 11, ""single"": 30, ""veto"": 5}"
+FLUKA,prompt,gamma,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,23,0.1248506552545939,0.02603316122505348,{}
+FLUKA,prompt,gamma,all_tes_gt0,all TES > 0,raw,raw,36,0.19541841692023396,0.03256973615337231,{}
+FLUKA,prompt,gamma,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,23,0.1248506552545939,0.02603316122505348,"{""keep"": 5, ""single"": 18}"
+FLUKA,prompt,gamma,e100_300,100-300 keV,active_veto_pass,active-veto,7,0.03799802551226769,0.014361903688135431,{}
+FLUKA,prompt,gamma,e100_300,100-300 keV,raw,raw,12,0.06513947230674463,0.01880414593558459,{}
+FLUKA,prompt,gamma,e100_300,100-300 keV,side_compton_fov_pass,final,7,0.03799802551226769,0.014361903688135431,"{""keep"": 1, ""single"": 6}"
+FLUKA,prompt,gamma,e3000_10000,3000-10000 keV,raw,raw,1,0.005428289358895385,0.005428289358895385,{}
+FLUKA,prompt,gamma,e300_480,300-480 keV,active_veto_pass,active-veto,9,0.04885460423005847,0.016284868076686155,{}
+FLUKA,prompt,gamma,e300_480,300-480 keV,raw,raw,9,0.04885460423005847,0.016284868076686155,{}
+FLUKA,prompt,gamma,e300_480,300-480 keV,side_compton_fov_pass,final,9,0.04885460423005847,0.016284868076686155,"{""keep"": 3, ""single"": 6}"
+FLUKA,prompt,gamma,e480_550,480-550 keV,active_veto_pass,active-veto,3,0.016284868076686155,0.009402072967792295,{}
+FLUKA,prompt,gamma,e480_550,480-550 keV,raw,raw,5,0.027141446794476925,0.012138024008028834,{}
+FLUKA,prompt,gamma,e480_550,480-550 keV,side_compton_fov_pass,final,3,0.016284868076686155,0.009402072967792295,"{""keep"": 1, ""single"": 2}"
+FLUKA,prompt,gamma,e550_800,550-800 keV,active_veto_pass,active-veto,1,0.005428289358895385,0.005428289358895385,{}
+FLUKA,prompt,gamma,e550_800,550-800 keV,raw,raw,1,0.005428289358895385,0.005428289358895385,{}
+FLUKA,prompt,gamma,e550_800,550-800 keV,side_compton_fov_pass,final,1,0.005428289358895385,0.005428289358895385,"{""single"": 1}"
+FLUKA,prompt,gamma,e800_1500,800-1500 keV,active_veto_pass,active-veto,1,0.005428289358895385,0.005428289358895385,{}
+FLUKA,prompt,gamma,e800_1500,800-1500 keV,raw,raw,2,0.01085657871779077,0.007676760431835406,{}
+FLUKA,prompt,gamma,e800_1500,800-1500 keV,side_compton_fov_pass,final,1,0.005428289358895385,0.005428289358895385,"{""single"": 1}"
+FLUKA,prompt,gamma,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,1,0.005428289358895385,0.005428289358895385,{}
+FLUKA,prompt,muminus,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,3,0.002035543125042851,0.0011752213711905821,{}
+FLUKA,prompt,muminus,all_tes_gt0,all TES > 0,raw,raw,93,0.06310183687632832,0.006543355668951152,{}
+FLUKA,prompt,muminus,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,3,0.002035543125042851,0.0011752213711905821,"{""keep"": 1, ""single"": 2}"
+FLUKA,prompt,muminus,e100_300,100-300 keV,active_veto_pass,active-veto,1,0.0006785143750142837,0.0006785143750142837,{}
+FLUKA,prompt,muminus,e100_300,100-300 keV,raw,raw,36,0.024426517500514226,0.004071086250085704,{}
+FLUKA,prompt,muminus,e100_300,100-300 keV,side_compton_fov_pass,final,1,0.0006785143750142837,0.0006785143750142837,"{""single"": 1}"
+FLUKA,prompt,muminus,e1500_3000,1500-3000 keV,raw,raw,4,0.0027140575000571348,0.0013570287500285674,{}
+FLUKA,prompt,muminus,e3000_10000,3000-10000 keV,raw,raw,4,0.0027140575000571348,0.0013570287500285674,{}
+FLUKA,prompt,muminus,e300_480,300-480 keV,active_veto_pass,active-veto,1,0.0006785143750142837,0.0006785143750142837,{}
+FLUKA,prompt,muminus,e300_480,300-480 keV,raw,raw,16,0.010856230000228536,0.002714057500057135,{}
+FLUKA,prompt,muminus,e300_480,300-480 keV,side_compton_fov_pass,final,1,0.0006785143750142837,0.0006785143750142837,"{""keep"": 1}"
+FLUKA,prompt,muminus,e480_550,480-550 keV,raw,raw,4,0.0027140575000571348,0.0013570287500285674,{}
+FLUKA,prompt,muminus,e550_800,550-800 keV,raw,raw,14,0.009499201250199969,0.0025387683233044993,{}
+FLUKA,prompt,muminus,e800_1500,800-1500 keV,raw,raw,9,0.006106629375128552,0.002035543125042851,{}
+FLUKA,prompt,muminus,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,1,0.0006785143750142837,0.0006785143750142837,{}
+FLUKA,prompt,muplus,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,5,0.003392683593322399,0.0015172542281634272,{}
+FLUKA,prompt,muplus,all_tes_gt0,all TES > 0,raw,raw,111,0.0753175757717574,0.00714882792644581,{}
+FLUKA,prompt,muplus,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,4,0.002714146874657919,0.0013570734373289596,"{""keep"": 1, ""single"": 3, ""veto"": 1}"
+FLUKA,prompt,muplus,e100_300,100-300 keV,active_veto_pass,active-veto,3,0.0020356101559934393,0.0011752600715279483,{}
+FLUKA,prompt,muplus,e100_300,100-300 keV,raw,raw,39,0.026462932027914693,0.004237460449899494,{}
+FLUKA,prompt,muplus,e100_300,100-300 keV,side_compton_fov_pass,final,3,0.0020356101559934393,0.0011752600715279483,"{""keep"": 1, ""single"": 2}"
+FLUKA,prompt,muplus,e1500_3000,1500-3000 keV,raw,raw,7,0.0047497570306513585,0.0017952394130120127,{}
+FLUKA,prompt,muplus,e3000_10000,3000-10000 keV,raw,raw,8,0.005428293749315838,0.0019191916602068892,{}
+FLUKA,prompt,muplus,e300_480,300-480 keV,raw,raw,15,0.010178050779967194,0.0026279614111777575,{}
+FLUKA,prompt,muplus,e480_550,480-550 keV,active_veto_pass,active-veto,1,0.0006785367186644798,0.0006785367186644798,{}
+FLUKA,prompt,muplus,e480_550,480-550 keV,raw,raw,12,0.008142440623973757,0.0023505201430558966,{}
+FLUKA,prompt,muplus,e480_550,480-550 keV,side_compton_fov_pass,final,0,0.0,0.0,"{""veto"": 1}"
+FLUKA,prompt,muplus,e550_800,550-800 keV,raw,raw,6,0.004071220311986879,0.0016620687324703984,{}
+FLUKA,prompt,muplus,e800_1500,800-1500 keV,raw,raw,14,0.009499514061302715,0.0025388519255883026,{}
+FLUKA,prompt,muplus,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,6,0.004071220311986879,0.0016620687324703984,{}
+FLUKA,prompt,n,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,2268,1.5389203479380038,0.032314289906197946,{}
+FLUKA,prompt,n,all_tes_gt0,all TES > 0,raw,raw,6104,4.141785627783647,0.05301275253134362,{}
+FLUKA,prompt,n,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,2141,1.4527462367439514,0.0313965136413909,"{""keep"": 104, ""reject_kept"": 406, ""single"": 1631, ""veto"": 127}"
+FLUKA,prompt,n,e100_300,100-300 keV,active_veto_pass,active-veto,101,0.0685321671700794,0.006819205505991722,{}
+FLUKA,prompt,n,e100_300,100-300 keV,raw,raw,986,0.6690368002940508,0.021306472274848404,{}
+FLUKA,prompt,n,e100_300,100-300 keV,side_compton_fov_pass,final,90,0.06106826777531833,0.006437160631035664,"{""keep"": 10, ""reject_kept"": 3, ""single"": 77, ""veto"": 11}"
+FLUKA,prompt,n,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,54,0.036640960665191,0.004986203184172628,{}
+FLUKA,prompt,n,e1500_3000,1500-3000 keV,raw,raw,480,0.32569742813502844,0.014865985692581137,{}
+FLUKA,prompt,n,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,21,0.014249262480907611,0.0031094439960025417,"{""keep"": 15, ""reject_kept"": 4, ""single"": 2, ""veto"": 33}"
+FLUKA,prompt,n,e3000_10000,3000-10000 keV,active_veto_pass,active-veto,62,0.042069251134108185,0.005342800236834652,{}
+FLUKA,prompt,n,e3000_10000,3000-10000 keV,raw,raw,329,0.2232384455342176,0.012307533903006746,{}
+FLUKA,prompt,n,e3000_10000,3000-10000 keV,side_compton_fov_pass,final,32,0.02171316187566874,0.003838381000821646,"{""keep"": 16, ""reject_kept"": 15, ""single"": 1, ""veto"": 30}"
+FLUKA,prompt,n,e300_480,300-480 keV,active_veto_pass,active-veto,45,0.030534133887659166,0.00455175993379239,{}
+FLUKA,prompt,n,e300_480,300-480 keV,raw,raw,626,0.42476372919276606,0.01697697301758633,{}
+FLUKA,prompt,n,e300_480,300-480 keV,side_compton_fov_pass,final,40,0.027141452344585926,0.004291440420690439,"{""keep"": 14, ""single"": 26, ""veto"": 5}"
+FLUKA,prompt,n,e480_550,480-550 keV,active_veto_pass,active-veto,28,0.018999016641210148,0.003590476656244266,{}
+FLUKA,prompt,n,e480_550,480-550 keV,raw,raw,301,0.20423942889300764,0.011772164973131561,{}
+FLUKA,prompt,n,e480_550,480-550 keV,side_compton_fov_pass,final,21,0.014249262480907611,0.0031094439960025417,"{""keep"": 9, ""single"": 12, ""veto"": 7}"
+FLUKA,prompt,n,e550_800,550-800 keV,active_veto_pass,active-veto,34,0.023070234492898037,0.003956512574437918,{}
+FLUKA,prompt,n,e550_800,550-800 keV,raw,raw,356,0.2415589258668129,0.012802597465771818,{}
+FLUKA,prompt,n,e550_800,550-800 keV,side_compton_fov_pass,final,22,0.01492779878952226,0.0031826173955385602,"{""keep"": 15, ""single"": 7, ""veto"": 12}"
+FLUKA,prompt,n,e800_1500,800-1500 keV,active_veto_pass,active-veto,55,0.03731949697380565,0.005032159945387433,{}
+FLUKA,prompt,n,e800_1500,800-1500 keV,raw,raw,449,0.30466280256797457,0.014377926603883713,{}
+FLUKA,prompt,n,e800_1500,800-1500 keV,side_compton_fov_pass,final,29,0.019677552949824796,0.00365402984951456,"{""keep"": 20, ""reject_kept"": 2, ""single"": 7, ""veto"": 26}"
+FLUKA,prompt,n,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto_pass,active-veto,8,0.005428290468917185,0.001919190500410823,{}
+FLUKA,prompt,n,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,126,0.08549557488544543,0.007616551173966973,{}
+FLUKA,prompt,n,w2_510p58_511p42,W2 510.58-511.42 keV,side_compton_fov_pass,final,6,0.004071217851687889,0.0016620677280575417,"{""keep"": 2, ""single"": 4, ""veto"": 2}"
+FLUKA,prompt,p,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,7,0.004749759951960755,0.0017952405171631793,{}
+FLUKA,prompt,p,all_tes_gt0,all TES > 0,raw,raw,27,0.018320502671848614,0.003525782383093687,{}
+FLUKA,prompt,p,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,4,0.0027141485439775744,0.0013570742719887872,"{""keep"": 1, ""reject_kept"": 2, ""single"": 1, ""veto"": 3}"
+FLUKA,prompt,p,e1500_3000,1500-3000 keV,raw,raw,1,0.0006785371359943936,0.0006785371359943936,{}
+TES_511_BALLOON,delayed,activation,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1491,0.127987613400322,0.003314584682729847,{}
+TES_511_BALLOON,delayed,activation,all_tes_gt0,all TES > 0,raw,raw,2217,0.19030753783267196,0.004041784405425796,{}
+TES_511_BALLOON,delayed,activation,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1320,0.11330895351336355,0.003118726302064994,"{""keep"": 197, ""reject_kept"": 16, ""single"": 1107, ""veto"": 171}"
+TES_511_BALLOON,delayed,activation,e100_300,100-300 keV,active_veto_pass,active-veto,524,0.04498022094015341,0.00196497007524608,{}
+TES_511_BALLOON,delayed,activation,e100_300,100-300 keV,raw,raw,720,0.06180488373456194,0.0023033320228658468,{}
+TES_511_BALLOON,delayed,activation,e100_300,100-300 keV,side_compton_fov_pass,final,496,0.04257669768380933,0.001911750161700806,"{""keep"": 24, ""reject_kept"": 15, ""single"": 457, ""veto"": 28}"
+TES_511_BALLOON,delayed,activation,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,559,0.0479846250105835,0.002029533392537431,{}
+TES_511_BALLOON,delayed,activation,e1500_3000,1500-3000 keV,raw,raw,713,0.06120400292047592,0.0022921079225457276,{}
+TES_511_BALLOON,delayed,activation,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,506,0.04343509884678936,0.001930925668280269,"{""keep"": 40, ""single"": 466, ""veto"": 53}"
+TES_511_BALLOON,delayed,activation,e3000_10000,3000-10000 keV,active_veto_pass,active-veto,78,0.006695529071244205,0.0007581193798817298,{}
+TES_511_BALLOON,delayed,activation,e3000_10000,3000-10000 keV,raw,raw,85,0.007296409885330224,0.0007914067684286261,{}
+TES_511_BALLOON,delayed,activation,e3000_10000,3000-10000 keV,side_compton_fov_pass,final,48,0.004120325582304124,0.0005947177710230461,"{""keep"": 37, ""single"": 11, ""veto"": 30}"
+TES_511_BALLOON,delayed,activation,e300_480,300-480 keV,active_veto_pass,active-veto,69,0.005922968024562181,0.0007130415584366502,{}
+TES_511_BALLOON,delayed,activation,e300_480,300-480 keV,raw,raw,220,0.018884825585560587,0.0012732146812427225,{}
+TES_511_BALLOON,delayed,activation,e300_480,300-480 keV,side_compton_fov_pass,final,63,0.005407927326774165,0.0006813348007121308,"{""keep"": 21, ""single"": 42, ""veto"": 6}"
+TES_511_BALLOON,delayed,activation,e480_550,480-550 keV,active_veto_pass,active-veto,43,0.0036911250008141113,0.0005628912855430854,{}
+TES_511_BALLOON,delayed,activation,e480_550,480-550 keV,raw,raw,86,0.007382250001628227,0.0007960484901566585,{}
+TES_511_BALLOON,delayed,activation,e480_550,480-550 keV,side_compton_fov_pass,final,37,0.003176084303026095,0.000522145043013931,"{""keep"": 14, ""single"": 23, ""veto"": 6}"
+TES_511_BALLOON,delayed,activation,e550_800,550-800 keV,active_veto_pass,active-veto,27,0.002317683140046068,0.00044603832826728467,{}
+TES_511_BALLOON,delayed,activation,e550_800,550-800 keV,raw,raw,73,0.006266328489754192,0.0007334182751486258,{}
+TES_511_BALLOON,delayed,activation,e550_800,550-800 keV,side_compton_fov_pass,final,22,0.0018884825585560548,0.00040262583430922694,"{""keep"": 12, ""single"": 10, ""veto"": 5}"
+TES_511_BALLOON,delayed,activation,e800_1500,800-1500 keV,active_veto_pass,active-veto,102,0.00875569186239627,0.000866942678461252,{}
+TES_511_BALLOON,delayed,activation,e800_1500,800-1500 keV,raw,raw,125,0.010730014537250332,0.0009597216761941071,{}
+TES_511_BALLOON,delayed,activation,e800_1500,800-1500 keV,side_compton_fov_pass,final,61,0.0052362470941781595,0.0006704327404962633,"{""keep"": 45, ""single"": 16, ""veto"": 41}"
+TES_511_BALLOON,delayed,activation,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto_pass,active-veto,33,0.0028327238378340843,0.0004931139256599853,{}
+TES_511_BALLOON,delayed,activation,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,54,0.004635366280092141,0.0006307934531738164,{}
+TES_511_BALLOON,delayed,activation,w2_510p58_511p42,W2 510.58-511.42 keV,side_compton_fov_pass,final,30,0.0025752034889400762,0.00047016568035282815,"{""keep"": 11, ""single"": 19, ""veto"": 3}"
+TES_511_BALLOON,prompt,all_prompt,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,3112,2.2736774782539038,0.04918963159823071,{}
+TES_511_BALLOON,prompt,all_prompt,all_tes_gt0,all TES > 0,raw,raw,7270,5.176611083332601,0.06948495629852937,{}
+TES_511_BALLOON,prompt,all_prompt,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,2878,2.1006060125397816,0.047167999364535196,"{""keep"": 213, ""reject_kept"": 600, ""single"": 2065, ""veto"": 234}"
+TES_511_BALLOON,prompt,all_prompt,e100_300,100-300 keV,active_veto_pass,active-veto,235,0.20697190719724234,0.019955717723461112,{}
+TES_511_BALLOON,prompt,all_prompt,e100_300,100-300 keV,raw,raw,1236,0.9101350072344477,0.03169192633869129,{}
+TES_511_BALLOON,prompt,all_prompt,e100_300,100-300 keV,side_compton_fov_pass,final,210,0.1900038053586786,0.019665045397736284,"{""keep"": 30, ""reject_kept"": 11, ""single"": 169, ""veto"": 25}"
+TES_511_BALLOON,prompt,all_prompt,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,114,0.08687567649280309,0.010512848384916118,{}
+TES_511_BALLOON,prompt,all_prompt,e1500_3000,1500-3000 keV,raw,raw,564,0.39231627877099784,0.017828066934849725,{}
+TES_511_BALLOON,prompt,all_prompt,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,53,0.04547168759178735,0.0090783732872508,"{""keep"": 36, ""reject_kept"": 11, ""single"": 6, ""veto"": 61}"
+TES_511_BALLOON,prompt,all_prompt,e3000_10000,3000-10000 keV,active_veto_pass,active-veto,60,0.04072523498460587,0.005257605228858738,{}
+TES_511_BALLOON,prompt,all_prompt,e3000_10000,3000-10000 keV,raw,raw,282,0.19616085589255786,0.012606494326423424,{}
+TES_511_BALLOON,prompt,all_prompt,e3000_10000,3000-10000 keV,side_compton_fov_pass,final,35,0.023756387074353423,0.004015562322573467,"{""keep"": 18, ""reject_kept"": 15, ""single"": 2, ""veto"": 25}"
+TES_511_BALLOON,prompt,all_prompt,e300_480,300-480 keV,active_veto_pass,active-veto,173,0.14589783422367697,0.01592713501315601,{}
+TES_511_BALLOON,prompt,all_prompt,e300_480,300-480 keV,raw,raw,806,0.5945262408134107,0.02571527386311467,{}
+TES_511_BALLOON,prompt,all_prompt,e300_480,300-480 keV,side_compton_fov_pass,final,141,0.12417870366080544,0.015457437036847823,"{""keep"": 43, ""single"": 98, ""veto"": 32}"
+TES_511_BALLOON,prompt,all_prompt,e480_550,480-550 keV,active_veto_pass,active-veto,101,0.07328549652769867,0.00868949493139349,{}
+TES_511_BALLOON,prompt,all_prompt,e480_550,480-550 keV,raw,raw,343,0.24704205674026264,0.01565242403569278,{}
+TES_511_BALLOON,prompt,all_prompt,e480_550,480-550 keV,side_compton_fov_pass,final,86,0.06310592861548728,0.008282456262478097,"{""keep"": 30, ""single"": 56, ""veto"": 15}"
+TES_511_BALLOON,prompt,all_prompt,e550_800,550-800 keV,active_veto_pass,active-veto,56,0.07600228332089487,0.016056111782894962,{}
+TES_511_BALLOON,prompt,all_prompt,e550_800,550-800 keV,raw,raw,365,0.29048213914650933,0.020715973607470847,{}
+TES_511_BALLOON,prompt,all_prompt,e550_800,550-800 keV,side_compton_fov_pass,final,31,0.05428442741040136,0.014740460001776045,"{""keep"": 19, ""single"": 12, ""veto"": 25}"
+TES_511_BALLOON,prompt,all_prompt,e800_1500,800-1500 keV,active_veto_pass,active-veto,91,0.09500904827882314,0.01565000823028814,{}
+TES_511_BALLOON,prompt,all_prompt,e800_1500,800-1500 keV,raw,raw,540,0.40926365754995875,0.022578190583394504,{}
+TES_511_BALLOON,prompt,all_prompt,e800_1500,800-1500 keV,side_compton_fov_pass,final,50,0.057682614764167806,0.012962818349633953,"{""keep"": 34, ""reject_kept"": 3, ""single"": 13, ""veto"": 41}"
+TES_511_BALLOON,prompt,all_prompt,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto_pass,active-veto,60,0.040712303075337755,0.005255935767343598,{}
+TES_511_BALLOON,prompt,all_prompt,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,161,0.11877136917846487,0.011496323101246243,{}
+TES_511_BALLOON,prompt,all_prompt,w2_510p58_511p42,W2 510.58-511.42 keV,side_compton_fov_pass,final,54,0.036641023029691425,0.004986211708691235,"{""keep"": 17, ""single"": 37, ""veto"": 6}"
+TES_511_BALLOON,prompt,alpha,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,1,0.0006784679379798889,0.0006784679379798889,{}
+TES_511_BALLOON,prompt,alpha,all_tes_gt0,all TES > 0,raw,raw,9,0.006106211441819,0.002035403813939667,{}
+TES_511_BALLOON,prompt,alpha,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,1,0.0006784679379798889,0.0006784679379798889,"{""keep"": 1}"
+TES_511_BALLOON,prompt,alpha,e100_300,100-300 keV,raw,raw,2,0.0013569358759597779,0.0009594985595264669,{}
+TES_511_BALLOON,prompt,alpha,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,1,0.0006784679379798889,0.0006784679379798889,{}
+TES_511_BALLOON,prompt,alpha,e1500_3000,1500-3000 keV,raw,raw,1,0.0006784679379798889,0.0006784679379798889,{}
+TES_511_BALLOON,prompt,alpha,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,1,0.0006784679379798889,0.0006784679379798889,"{""keep"": 1}"
+TES_511_BALLOON,prompt,alpha,e3000_10000,3000-10000 keV,raw,raw,1,0.0006784679379798889,0.0006784679379798889,{}
+TES_511_BALLOON,prompt,alpha,e800_1500,800-1500 keV,raw,raw,3,0.002035403813939667,0.0011751409398876576,{}
+TES_511_BALLOON,prompt,eminus,all_tes_gt0,all TES > 0,raw,raw,1,0.0006784845098593978,0.0006784845098593978,{}
+TES_511_BALLOON,prompt,eminus,e800_1500,800-1500 keV,raw,raw,1,0.0006784845098593978,0.0006784845098593978,{}
+TES_511_BALLOON,prompt,eplus,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,247,0.1675907907842711,0.01066354665910926,{}
+TES_511_BALLOON,prompt,eplus,all_tes_gt0,all TES > 0,raw,raw,367,0.24901141788594153,0.012998290207994393,{}
+TES_511_BALLOON,prompt,eplus,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,233,0.15809171762240956,0.010356932778094678,"{""keep"": 44, ""reject_kept"": 4, ""single"": 185, ""veto"": 14}"
+TES_511_BALLOON,prompt,eplus,e100_300,100-300 keV,active_veto_pass,active-veto,79,0.05360191284193263,0.0060306863604949745,{}
+TES_511_BALLOON,prompt,eplus,e100_300,100-300 keV,raw,raw,128,0.08684866890844796,0.007676410340273607,{}
+TES_511_BALLOON,prompt,eplus,e100_300,100-300 keV,side_compton_fov_pass,final,76,0.05156639716439089,0.005915071424264802,"{""keep"": 10, ""reject_kept"": 4, ""single"": 62, ""veto"": 3}"
+TES_511_BALLOON,prompt,eplus,e1500_3000,1500-3000 keV,raw,raw,2,0.0013570104516944987,0.0009595512925342,{}
+TES_511_BALLOON,prompt,eplus,e3000_10000,3000-10000 keV,raw,raw,5,0.0033925261292362466,0.001517183808083297,{}
+TES_511_BALLOON,prompt,eplus,e300_480,300-480 keV,active_veto_pass,active-veto,83,0.056315933745321616,0.006181476793183667,{}
+TES_511_BALLOON,prompt,eplus,e300_480,300-480 keV,raw,raw,115,0.07802810097243366,0.007276157933465516,{}
+TES_511_BALLOON,prompt,eplus,e300_480,300-480 keV,side_compton_fov_pass,final,79,0.05360191284193263,0.0060306863604949745,"{""keep"": 16, ""single"": 63, ""veto"": 4}"
+TES_511_BALLOON,prompt,eplus,e480_550,480-550 keV,active_veto_pass,active-veto,71,0.04817387103515466,0.005717186654871772,{}
+TES_511_BALLOON,prompt,eplus,e480_550,480-550 keV,raw,raw,78,0.05292340761608538,0.005992395901236674,{}
+TES_511_BALLOON,prompt,eplus,e480_550,480-550 keV,side_compton_fov_pass,final,64,0.04342433445422393,0.005428041806777992,"{""keep"": 18, ""single"": 46, ""veto"": 7}"
+TES_511_BALLOON,prompt,eplus,e550_800,550-800 keV,raw,raw,3,0.0020355156775417483,0.0011752055243684318,{}
+TES_511_BALLOON,prompt,eplus,e800_1500,800-1500 keV,raw,raw,6,0.004071031355083496,0.001661991591137621,{}
+TES_511_BALLOON,prompt,eplus,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto_pass,active-veto,52,0.03528227174405697,0.004892770764925063,{}
+TES_511_BALLOON,prompt,eplus,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,57,0.038674797873293205,0.005122602118612718,{}
+TES_511_BALLOON,prompt,eplus,w2_510p58_511p42,W2 510.58-511.42 keV,side_compton_fov_pass,final,47,0.03188974561482074,0.004651597472975844,"{""keep"": 14, ""single"": 33, ""veto"": 5}"
+TES_511_BALLOON,prompt,gamma,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,34,0.18454390516614375,0.031649018632666996,{}
+TES_511_BALLOON,prompt,gamma,all_tes_gt0,all TES > 0,raw,raw,51,0.27681585774921563,0.03876197325493573,{}
+TES_511_BALLOON,prompt,gamma,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,31,0.1682606194161899,0.030220499369457025,"{""keep"": 8, ""reject_kept"": 1, ""single"": 22, ""veto"": 3}"
+TES_511_BALLOON,prompt,gamma,e100_300,100-300 keV,active_veto_pass,active-veto,10,0.05427761916651287,0.01716409025373907,{}
+TES_511_BALLOON,prompt,gamma,e100_300,100-300 keV,raw,raw,15,0.0814164287497693,0.021021631510369284,{}
+TES_511_BALLOON,prompt,gamma,e100_300,100-300 keV,side_compton_fov_pass,final,10,0.05427761916651287,0.01716409025373907,"{""keep"": 1, ""reject_kept"": 1, ""single"": 8}"
+TES_511_BALLOON,prompt,gamma,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,2,0.010855523833302577,0.007676014515860437,{}
+TES_511_BALLOON,prompt,gamma,e1500_3000,1500-3000 keV,raw,raw,2,0.010855523833302577,0.007676014515860437,{}
+TES_511_BALLOON,prompt,gamma,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,2,0.010855523833302577,0.007676014515860437,"{""keep"": 2}"
+TES_511_BALLOON,prompt,gamma,e3000_10000,3000-10000 keV,raw,raw,1,0.005427761916651288,0.005427761916651288,{}
+TES_511_BALLOON,prompt,gamma,e300_480,300-480 keV,active_veto_pass,active-veto,6,0.03256657149990773,0.013295247141106492,{}
+TES_511_BALLOON,prompt,gamma,e300_480,300-480 keV,raw,raw,10,0.05427761916651287,0.01716409025373907,{}
+TES_511_BALLOON,prompt,gamma,e300_480,300-480 keV,side_compton_fov_pass,final,6,0.03256657149990773,0.013295247141106492,"{""single"": 6}"
+TES_511_BALLOON,prompt,gamma,e480_550,480-550 keV,active_veto_pass,active-veto,1,0.005427761916651288,0.005427761916651288,{}
+TES_511_BALLOON,prompt,gamma,e480_550,480-550 keV,raw,raw,3,0.016283285749953864,0.009401159411027461,{}
+TES_511_BALLOON,prompt,gamma,e480_550,480-550 keV,side_compton_fov_pass,final,1,0.005427761916651288,0.005427761916651288,"{""keep"": 1}"
+TES_511_BALLOON,prompt,gamma,e550_800,550-800 keV,active_veto_pass,active-veto,8,0.0434220953332103,0.015352029031720872,{}
+TES_511_BALLOON,prompt,gamma,e550_800,550-800 keV,raw,raw,9,0.048849857249861586,0.016283285749953864,{}
+TES_511_BALLOON,prompt,gamma,e550_800,550-800 keV,side_compton_fov_pass,final,7,0.037994333416559015,0.0143605082071266,"{""keep"": 3, ""single"": 4, ""veto"": 1}"
+TES_511_BALLOON,prompt,gamma,e800_1500,800-1500 keV,active_veto_pass,active-veto,7,0.037994333416559015,0.0143605082071266,{}
+TES_511_BALLOON,prompt,gamma,e800_1500,800-1500 keV,raw,raw,9,0.048849857249861586,0.016283285749953864,{}
+TES_511_BALLOON,prompt,gamma,e800_1500,800-1500 keV,side_compton_fov_pass,final,5,0.027138809583256443,0.012136844611316828,"{""keep"": 1, ""single"": 4, ""veto"": 2}"
+TES_511_BALLOON,prompt,gamma,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,2,0.010855523833302577,0.007676014515860437,{}
+TES_511_BALLOON,prompt,muminus,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,3,0.0020259757099018887,0.0011696976214834985,{}
+TES_511_BALLOON,prompt,muminus,all_tes_gt0,all TES > 0,raw,raw,64,0.04322081514457359,0.005402601893071702,{}
+TES_511_BALLOON,prompt,muminus,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,3,0.0020259757099018887,0.0011696976214834985,"{""keep"": 1, ""single"": 2}"
+TES_511_BALLOON,prompt,muminus,e100_300,100-300 keV,active_veto_pass,active-veto,2,0.0013506504732679258,0.0009550541086605701,{}
+TES_511_BALLOON,prompt,muminus,e100_300,100-300 keV,raw,raw,19,0.0128311794960453,0.0029436744605101364,{}
+TES_511_BALLOON,prompt,muminus,e100_300,100-300 keV,side_compton_fov_pass,final,2,0.0013506504732679258,0.0009550541086605701,"{""keep"": 1, ""single"": 1}"
+TES_511_BALLOON,prompt,muminus,e1500_3000,1500-3000 keV,raw,raw,4,0.0027013009465358517,0.0013506504732679258,{}
+TES_511_BALLOON,prompt,muminus,e3000_10000,3000-10000 keV,raw,raw,3,0.0020259757099018887,0.0011696976214834985,{}
+TES_511_BALLOON,prompt,muminus,e300_480,300-480 keV,raw,raw,15,0.010129878549509447,0.002615523394756921,{}
+TES_511_BALLOON,prompt,muminus,e480_550,480-550 keV,raw,raw,4,0.0027013009465358517,0.0013506504732679258,{}
+TES_511_BALLOON,prompt,muminus,e550_800,550-800 keV,raw,raw,6,0.0040519514198037775,0.0016542022401775146,{}
+TES_511_BALLOON,prompt,muminus,e800_1500,800-1500 keV,active_veto_pass,active-veto,1,0.0006753252366339629,0.0006753252366339629,{}
+TES_511_BALLOON,prompt,muminus,e800_1500,800-1500 keV,raw,raw,5,0.0033766261831698146,0.0015100731360346723,{}
+TES_511_BALLOON,prompt,muminus,e800_1500,800-1500 keV,side_compton_fov_pass,final,1,0.0006753252366339629,0.0006753252366339629,"{""single"": 1}"
+TES_511_BALLOON,prompt,muminus,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,1,0.0006753252366339629,0.0006753252366339629,{}
+TES_511_BALLOON,prompt,muplus,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,3,0.0020412231825799295,0.0011785007539386269,{}
+TES_511_BALLOON,prompt,muplus,all_tes_gt0,all TES > 0,raw,raw,129,0.08777259685093707,0.00772794624479611,{}
+TES_511_BALLOON,prompt,muplus,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,3,0.0020412231825799295,0.0011785007539386269,"{""keep"": 1, ""single"": 2}"
+TES_511_BALLOON,prompt,muplus,e100_300,100-300 keV,active_veto_pass,active-veto,1,0.0006804077275266432,0.0006804077275266432,{}
+TES_511_BALLOON,prompt,muplus,e100_300,100-300 keV,raw,raw,39,0.026535901373539107,0.0042491448964986885,{}
+TES_511_BALLOON,prompt,muplus,e100_300,100-300 keV,side_compton_fov_pass,final,1,0.0006804077275266432,0.0006804077275266432,"{""single"": 1}"
+TES_511_BALLOON,prompt,muplus,e1500_3000,1500-3000 keV,raw,raw,10,0.0068040772752664316,0.002151638156563437,{}
+TES_511_BALLOON,prompt,muplus,e3000_10000,3000-10000 keV,raw,raw,10,0.0068040772752664316,0.002151638156563437,{}
+TES_511_BALLOON,prompt,muplus,e300_480,300-480 keV,raw,raw,26,0.017690600915692734,0.003469412279857675,{}
+TES_511_BALLOON,prompt,muplus,e480_550,480-550 keV,raw,raw,10,0.0068040772752664316,0.002151638156563437,{}
+TES_511_BALLOON,prompt,muplus,e550_800,550-800 keV,raw,raw,11,0.007484485002793075,0.0022566571366642468,{}
+TES_511_BALLOON,prompt,muplus,e800_1500,800-1500 keV,active_veto_pass,active-veto,2,0.0013608154550532863,0.0009622418362116362,{}
+TES_511_BALLOON,prompt,muplus,e800_1500,800-1500 keV,raw,raw,11,0.007484485002793075,0.0022566571366642468,{}
+TES_511_BALLOON,prompt,muplus,e800_1500,800-1500 keV,side_compton_fov_pass,final,2,0.0013608154550532863,0.0009622418362116362,"{""keep"": 1, ""single"": 1}"
+TES_511_BALLOON,prompt,muplus,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,7,0.004762854092686502,0.0018001896371620948,{}
+TES_511_BALLOON,prompt,n,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,2816,1.911371028610932,0.03601875305146563,{}
+TES_511_BALLOON,prompt,n,all_tes_gt0,all TES > 0,raw,raw,6590,4.472988309142016,0.05510043859070033,{}
+TES_511_BALLOON,prompt,n,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,2600,1.7647601826663404,0.03460979464702674,"{""keep"": 158, ""reject_kept"": 593, ""single"": 1849, ""veto"": 216}"
+TES_511_BALLOON,prompt,n,e100_300,100-300 keV,active_veto_pass,active-veto,142,0.09638305613023354,0.008088286396015575,{}
+TES_511_BALLOON,prompt,n,e100_300,100-300 keV,raw,raw,1019,0.691650240821899,0.021667032785867124,{}
+TES_511_BALLOON,prompt,n,e100_300,100-300 keV,side_compton_fov_pass,final,120,0.08145046996921154,0.007435376620255736,"{""keep"": 18, ""reject_kept"": 6, ""single"": 96, ""veto"": 22}"
+TES_511_BALLOON,prompt,n,e1500_3000,1500-3000 keV,active_veto_pass,active-veto,111,0.07534168472152072,0.007151116246689545,{}
+TES_511_BALLOON,prompt,n,e1500_3000,1500-3000 keV,raw,raw,543,0.36856337661068,0.01581656838001939,{}
+TES_511_BALLOON,prompt,n,e1500_3000,1500-3000 keV,side_compton_fov_pass,final,50,0.03393769582050489,0.004799514970505071,"{""keep"": 33, ""reject_kept"": 11, ""single"": 6, ""veto"": 61}"
+TES_511_BALLOON,prompt,n,e3000_10000,3000-10000 keV,active_veto_pass,active-veto,60,0.04072523498460587,0.005257605228858738,{}
+TES_511_BALLOON,prompt,n,e3000_10000,3000-10000 keV,raw,raw,259,0.17579726435021417,0.010923510501294418,{}
+TES_511_BALLOON,prompt,n,e3000_10000,3000-10000 keV,side_compton_fov_pass,final,35,0.023756387074353423,0.004015562322573467,"{""keep"": 18, ""reject_kept"": 15, ""single"": 2, ""veto"": 25}"
+TES_511_BALLOON,prompt,n,e300_480,300-480 keV,active_veto_pass,active-veto,84,0.057015328978448215,0.006220882400394005,{}
+TES_511_BALLOON,prompt,n,e300_480,300-480 keV,raw,raw,635,0.43100873692040836,0.01710405999146685,{}
+TES_511_BALLOON,prompt,n,e300_480,300-480 keV,side_compton_fov_pass,final,56,0.03801021931896548,0.0050793292102751676,"{""keep"": 27, ""single"": 29, ""veto"": 28}"
+TES_511_BALLOON,prompt,n,e480_550,480-550 keV,active_veto_pass,active-veto,29,0.019683863575892836,0.0036552017033563747,{}
+TES_511_BALLOON,prompt,n,e480_550,480-550 keV,raw,raw,246,0.166973463436883,0.010645839198688984,{}
+TES_511_BALLOON,prompt,n,e480_550,480-550 keV,side_compton_fov_pass,final,21,0.014253832244612054,0.003110441200197003,"{""keep"": 11, ""single"": 10, ""veto"": 8}"
+TES_511_BALLOON,prompt,n,e550_800,550-800 keV,active_veto_pass,active-veto,48,0.032580187987684694,0.004702545076234592,{}
+TES_511_BALLOON,prompt,n,e550_800,550-800 keV,raw,raw,334,0.226703808080971,0.012404680471501173,{}
+TES_511_BALLOON,prompt,n,e550_800,550-800 keV,side_compton_fov_pass,final,24,0.016290093993842347,0.0033252015122408915,"{""keep"": 16, ""single"": 8, ""veto"": 24}"
+TES_511_BALLOON,prompt,n,e800_1500,800-1500 keV,active_veto_pass,active-veto,80,0.054300313312807824,0.006070959588348755,{}
+TES_511_BALLOON,prompt,n,e800_1500,800-1500 keV,raw,raw,499,0.338698204288636,0.015162213975603278,{}
+TES_511_BALLOON,prompt,n,e800_1500,800-1500 keV,side_compton_fov_pass,final,42,0.028507664489224108,0.004398828130282648,"{""keep"": 32, ""reject_kept"": 3, ""single"": 7, ""veto"": 38}"
+TES_511_BALLOON,prompt,n,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto_pass,active-veto,8,0.005430031331280782,0.0019198059882020288,{}
+TES_511_BALLOON,prompt,n,w2_510p58_511p42,W2 510.58-511.42 keV,raw,raw,94,0.06380286814254918,0.006580763377447358,{}
+TES_511_BALLOON,prompt,n,w2_510p58_511p42,W2 510.58-511.42 keV,side_compton_fov_pass,final,7,0.004751277414870685,0.0017958140642322419,"{""keep"": 3, ""single"": 4, ""veto"": 1}"
+TES_511_BALLOON,prompt,p,all_tes_gt0,all TES > 0,active_veto_pass,active-veto,8,0.005426086862155011,0.0019184114077685215,{}
+TES_511_BALLOON,prompt,p,all_tes_gt0,all TES > 0,raw,raw,59,0.040017390608393204,0.005209820503600962,{}
+TES_511_BALLOON,prompt,p,all_tes_gt0,all TES > 0,side_compton_fov_pass,final,7,0.004747826004385634,0.0017945095536871212,"{""reject_kept"": 2, ""single"": 5, ""veto"": 1}"
+TES_511_BALLOON,prompt,p,e100_300,100-300 keV,active_veto_pass,active-veto,1,0.0006782608577693763,0.0006782608577693763,{}
+TES_511_BALLOON,prompt,p,e100_300,100-300 keV,raw,raw,14,0.009495652008771269,0.0025378197486324167,{}
+TES_511_BALLOON,prompt,p,e100_300,100-300 keV,side_compton_fov_pass,final,1,0.0006782608577693763,0.0006782608577693763,"{""single"": 1}"
+TES_511_BALLOON,prompt,p,e1500_3000,1500-3000 keV,raw,raw,2,0.0013565217155387527,0.0009592057038842609,{}
+TES_511_BALLOON,prompt,p,e3000_10000,3000-10000 keV,raw,raw,3,0.002034782573308129,0.0011747822664418077,{}
+TES_511_BALLOON,prompt,p,e300_480,300-480 keV,raw,raw,5,0.0033913042888468817,0.0015166373844496418,{}
+TES_511_BALLOON,prompt,p,e480_550,480-550 keV,raw,raw,2,0.0013565217155387527,0.0009592057038842609,{}
+TES_511_BALLOON,prompt,p,e550_800,550-800 keV,raw,raw,2,0.0013565217155387527,0.0009592057038842609,{}
+TES_511_BALLOON,prompt,p,e800_1500,800-1500 keV,active_veto_pass,active-veto,1,0.0006782608577693763,0.0006782608577693763,{}
+TES_511_BALLOON,prompt,p,e800_1500,800-1500 keV,raw,raw,6,0.004069565146616258,0.0016613930140374072,{}
+TES_511_BALLOON,prompt,p,e800_1500,800-1500 keV,side_compton_fov_pass,final,0,0.0,0.0,"{""veto"": 1}"

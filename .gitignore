@@ -1,0 +1,20 @@
+.agents/
+.claude/
+.codex/
+__pycache__/
+*.pyc
+
+# Local FLUKA/Cosima raw simulation products are too large for GitHub and are
+# intentionally excluded from this reduced cross-check handoff.
+work_fluka_harness/independent_source_runs/
+work_fluka_harness/prompt_raw_runs/
+work_fluka_harness/eplus_raw_runs/
+work_fluka_harness/**/fluka_run/
+work_fluka_harness/**/raw_events/
+work_fluka_harness/**/scoring_routines/
+work_fluka_harness/**/*.err
+work_fluka_harness/**/*.log
+work_fluka_harness/**/*.out
+work_fluka_harness/**/ran*
+work_fluka_harness/**/core
+

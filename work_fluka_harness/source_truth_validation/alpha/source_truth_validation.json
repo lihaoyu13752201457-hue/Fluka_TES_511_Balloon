@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-06-25T03:13:58.184959+00:00",
+  "metrics": {
+    "dz": {
+      "median_abs_delta": -0.004232526578685336,
+      "median_ratio": 1.0097242224218885,
+      "sampled": {
+        "max": 0.9985840771076624,
+        "median": -0.43948857020415866,
+        "min": -0.999889544597022,
+        "n": 50000.0,
+        "p10": -0.9026913010895417,
+        "p90": 0.3367813729787466
+      },
+      "sim_ia_init": {
+        "max": 0.9990994554097203,
+        "median": -0.4352560436254733,
+        "min": -0.9999974810218273,
+        "n": 50000.0,
+        "p10": -0.9028996991496342,
+        "p90": 0.3393766067372646
+      },
+      "status": "PASS"
+    },
+    "energy_keV": {
+      "median_ratio": 1.011014051418551,
+      "sampled": {
+        "max": 3562757.8446422685,
+        "median": 32794.433141731206,
+        "min": 0.0881874938109027,
+        "n": 50000.0,
+        "p10": 19573.107781966813,
+        "p90": 90699.49821640387
+      },
+      "sim_ia_init": {
+        "max": 3552780.151,
+        "median": 32437.1685,
+        "min": 0.242,
+        "n": 50000.0,
+        "p10": 20100.837799999998,
+        "p90": 91350.6946
+      },
+      "status": "PASS"
+    },
+    "radius_cm": {
+      "median_ratio": 1.000144944339887,
+      "sampled": {
+        "max": 91.17188844077891,
+        "median": 75.37733165324224,
+        "min": 53.88305148242915,
+        "n": 50000.0,
+        "p10": 65.0740055715365,
+        "p90": 85.34745980771352
+      },
+      "sim_ia_init": {
+        "max": 91.1819924966816,
+        "median": 75.36640771902574,
+        "min": 53.98587201643315,
+        "n": 50000.0,
+        "p10": 65.03689051607724,
+        "p90": 85.27877338216219
+      },
+      "status": "PASS"
+    }
+  },
+  "primary_tag": "alpha",
+  "sampled_source_energy_policy": "LEGACY_CDF_ENERGY_MEV_COLUMN_USED_AS_KEV_TO_MATCH_TES_COSIMA_SOURCE",
+  "samples_compared": 50000,
+  "sim_paths": [
+    "/home/ubuntu/TES_511_Balloon/runs/step02_instant_fix5_fullstat_v2/Background_alpha_fullsphere20_rep01_part01.inc1.id1.sim.gz",
+    "/home/ubuntu/TES_511_Balloon/runs/step02_instant_fix5_fullstat_v2/Background_alpha_fullsphere20_rep02_part01.inc1.id1.sim.gz",
+    "/home/ubuntu/TES_511_Balloon/runs/step02_instant_fix5_fullstat_v2/Background_alpha_fullsphere20_rep03_part01.inc1.id1.sim.gz",
+    "/home/ubuntu/TES_511_Balloon/runs/step02_instant_fix5_fullstat_v2/Background_alpha_fullsphere20_rep04_part01.inc1.id1.sim.gz",
+    "/home/ubuntu/TES_511_Balloon/runs/step02_instant_fix5_fullstat_v2/Background_alpha_fullsphere20_rep05_part01.inc1.id1.sim.gz",
+    "/home/ubuntu/TES_511_Balloon/runs/step02_instant_fix5_fullstat_v2/Background_alpha_fullsphere20_rep06_part01.inc1.id1.sim.gz",
+    "/home/ubuntu/TES_511_Balloon/runs/step02_instant_fix5_fullstat_v2/Background_alpha_fullsphere20_rep07_part01.inc1.id1.sim.gz",
+    "/home/ubuntu/TES_511_Balloon/runs/step02_instant_fix5_fullstat_v2/Background_alpha_fullsphere20_rep08_part01.inc1.id1.sim.gz"
+  ],
+  "source_rotation_y_deg": -45.0,
+  "status": "PASS"
+}

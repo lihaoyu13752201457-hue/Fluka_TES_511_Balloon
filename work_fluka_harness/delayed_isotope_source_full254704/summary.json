@@ -1,0 +1,29 @@
+{
+  "histories": 254704,
+  "no_sim_gz_replay": true,
+  "raw_event_rows": 209200,
+  "raw_events_csv": "/home/ubuntu/Fluka_TES_511_Balloon/work_fluka_harness/delayed_isotope_source_full254704/raw_events/raw_events.csv",
+  "run_manifest": "/home/ubuntu/Fluka_TES_511_Balloon/work_fluka_harness/delayed_isotope_source_full254704/run_manifest.csv",
+  "scoring_closure": {
+    "created_at_utc": "2026-06-25T04:47:28.525683+00:00",
+    "event_totals_file": "/home/ubuntu/Fluka_TES_511_Balloon/work_fluka_harness/delayed_isotope_source_full254704/fluka_run/delayed_isotope_raw001_event_totals_tmp.csv",
+    "histories": 254704,
+    "normalization": "SCORE ENERGY output is per unit source weight and per region volume; no region volumes were supplied, so volume=1 and totals are multiplied by sum(fluka_transport_weight).",
+    "raw_deposits_file": "/home/ubuntu/Fluka_TES_511_Balloon/work_fluka_harness/delayed_isotope_source_full254704/fluka_run/delayed_isotope_raw001_raw_deposits_tmp.csv",
+    "raw_dump_shield_total_keV": 138968110.44748184,
+    "raw_dump_tes_total_keV": 579972.4291024829,
+    "raw_event_rows": 209200,
+    "score_output": "/home/ubuntu/Fluka_TES_511_Balloon/work_fluka_harness/delayed_isotope_source_full254704/fluka_run/delayed_isotope_raw001.out",
+    "score_rows_parsed": 3110,
+    "score_shield_total_keV": 138968110.44594127,
+    "score_tes_total_keV": 579972.4292262733,
+    "score_weight_sum": 254704.0,
+    "shield_relative_delta": 1.1085791166235503e-11,
+    "status": "PASS",
+    "tes_relative_delta": 2.1344198285504803e-10
+  },
+  "selected_activity_Bq": 86.9998420669958,
+  "source_mode": "delayed_source_v2_weighted_exact_position_isotope_eventlist",
+  "sources_csv": "/home/ubuntu/Fluka_TES_511_Balloon/work_fluka_harness/delayed_isotope_source_full254704/raw_events/delayed_sources.csv",
+  "status": "DELAYED_ISOTOPE_RAW_MVP_PASS"
+}

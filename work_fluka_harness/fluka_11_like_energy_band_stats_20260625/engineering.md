@@ -850,6 +850,60 @@ builder requested in Section 22. It does not perform 1 microsecond / 1
 nanosecond sub-event splitting or side-Compton/FoV topology. Those remain open
 if the next manuscript statement needs final Step05-equivalent selection.
 
+### 17.6 Phase-3 Cu-64 raw-coupling decomposition, 2026-06-25
+
+The first decomposition of the Phase-3 raw-coupling difference is now complete:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/dimension_comparison.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/local_tes_carrier_summary.csv
+```
+
+It joins the existing `/tmp/phase3prod` raw truth back to the shared
+`1,000,000`-parent Cu-64 authority and decomposes the W2 raw difference by
+source volume, static material, and original production tag.
+
+Top W2 raw source-volume contributions:
+
+| source volume | source histories | FLUKA W2 | MEGAlib W2 | diff / parent | share of total diff | conditional FLUKA/MEGAlib |
+|---|---:|---:|---:|---:|---:|---:|
+| `ColdPlate_MXC_50mK_SD_anchor` | `84445` | `438` | `227` | `+0.000211` | `0.808` | `1.9295` |
+| `Cu_SubstrateSupport_SolidDisk_L0_deepest` | `4708` | `74` | `164` | `-0.000090` | `-0.345` | `0.4512` |
+| `Cu_50mK_StillLike_Can_side_wall_above_side_port` | `26299` | `132` | `77` | `+0.000055` | `0.211` | `1.7143` |
+| `ColdPlate_CP_100mK_intercept` | `95876` | `88` | `42` | `+0.000046` | `0.176` | `2.0952` |
+| `Cu_50mK_StillLike_Can_side_wall_rectcut_window_band` | `31280` | `150` | `107` | `+0.000043` | `0.165` | `1.4019` |
+
+Material and production-tag rollups show the same thing:
+
+| dimension | key | histories | FLUKA W2 | MEGAlib W2 | diff / parent | share of total diff |
+|---|---|---:|---:|---:|---:|---:|
+| material | `Copper` | `937427` | `1210` | `989` | `+0.000221` | `0.847` |
+| material | `CuNi` | `62573` | `59` | `19` | `+0.000040` | `0.153` |
+| production tag | `n` | `998695` | `1267` | `1002` | `+0.000265` | `1.015` |
+| production tag | `p` | `1140` | `2` | `6` | `-0.000004` | `-0.015` |
+
+Interpretation: the W2 raw excess is not isolated to `CuNi`, not isolated to a
+non-neutron production tag, and not a single-source-volume monotonic effect.
+The largest positive contributor is `ColdPlate_MXC_50mK_SD_anchor`, but several
+volumes pull in opposite directions: `Cu_SubstrateSupport_SolidDisk_L0_deepest`
+and `Cu_50mK_StillLike_Can_bottom_cap_2mm` are MEGAlib-high. The remaining
+physics question is therefore a distributed full-geometry coupling problem:
+source-volume geometry, local containment/boundary behavior, positron stopping
+and annihilation location, or incident TES ancestry.
+
+The local TES carrier check is also consistent with the earlier photon concern.
+FLUKA W2 raw TES rows are mostly local `EM_BELOW_THRESHOLD` deposits
+(`1269` histories, `640735 keV` summed deposit) with a small `ELECTRON` tail.
+MEGAlib W2 raw TES energy is mostly `e-` secondaries with gamma
+`phot`/`compt` ancestry, plus smaller direct gamma rows. So the local carrier
+label still must not be read as absence of photon-driven TES deposition.
+
+Boundary: this decomposition reuses existing raw truth only. It does not add a
+runtime point-location scorer, a positron stopping/annihilation locator, or the
+complete Step05-equivalent 1 microsecond / 1 nanosecond plus side-Compton/FoV
+event builder.
+
 ## 18. Source-region audit
 
 For every unique source position, record in both codes:
@@ -1277,6 +1331,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Apply deterministic analytic W2 response at parent-history stage
 [x] Produce parent-history stage ratios and weighted uncertainties
 [x] Assign first failed phase: full-geometry raw-deposit/source-material coupling
+[x] Decompose Phase-3 raw coupling by source volume/material/production tag and local TES carrier
 [ ] Update manuscript delayed-background statement
 ```
 

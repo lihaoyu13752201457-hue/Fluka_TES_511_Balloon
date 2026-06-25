@@ -299,6 +299,84 @@
       "rows": 8
     }
   ],
+  "raw_coupling_decomposition": {
+    "boundary": "Decomposition of existing raw truth only; no new transport and no runtime point-location/stopping locator.",
+    "dimension_comparison_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/dimension_comparison.csv",
+    "histories_per_code": {
+      "fluka": 1000000,
+      "megalib": 1000000
+    },
+    "interpretation": "W2 raw excess is distributed across source volumes/materials; not isolated to CuNi or non-neutron production.",
+    "key_results": {
+      "material_copper": {
+        "contribution_difference_per_parent": 0.00022099999999999984,
+        "difference_share_of_total": 0.8467432950191565,
+        "fluka_over_megalib_conditional": 1.2234580384226492,
+        "fluka_sum_w": 1210.0,
+        "key": "Copper",
+        "megalib_sum_w": 989.0,
+        "source_histories": 937427
+      },
+      "material_cuni": {
+        "contribution_difference_per_parent": 3.9999999999999996e-05,
+        "difference_share_of_total": 0.1532567049808429,
+        "fluka_over_megalib_conditional": 3.105263157894737,
+        "fluka_sum_w": 59.0,
+        "key": "CuNi",
+        "megalib_sum_w": 19.0,
+        "source_histories": 62573
+      },
+      "production_tag_n": {
+        "contribution_difference_per_parent": 0.00026499999999999983,
+        "difference_share_of_total": 1.0153256704980835,
+        "fluka_over_megalib_conditional": 1.2644710578842315,
+        "fluka_sum_w": 1267.0,
+        "key": "n",
+        "megalib_sum_w": 1002.0,
+        "source_histories": 998695
+      },
+      "production_tag_p": {
+        "contribution_difference_per_parent": -4.000000000000001e-06,
+        "difference_share_of_total": -0.015325670498084294,
+        "fluka_over_megalib_conditional": 0.33333333333333337,
+        "fluka_sum_w": 2.0,
+        "key": "p",
+        "megalib_sum_w": 6.0,
+        "source_histories": 1140
+      },
+      "side_wall_above_side_port": {
+        "contribution_difference_per_parent": 5.500000000000001e-05,
+        "difference_share_of_total": 0.21072796934865903,
+        "fluka_over_megalib_conditional": 1.7142857142857142,
+        "fluka_sum_w": 132.0,
+        "key": "Cu_50mK_StillLike_Can_side_wall_above_side_port",
+        "megalib_sum_w": 77.0,
+        "source_histories": 26299
+      },
+      "top_source_volume_negative": {
+        "contribution_difference_per_parent": -9e-05,
+        "difference_share_of_total": -0.3448275862068966,
+        "fluka_over_megalib_conditional": 0.4512195121951219,
+        "fluka_sum_w": 74.0,
+        "key": "Cu_SubstrateSupport_SolidDisk_L0_deepest",
+        "megalib_sum_w": 164.0,
+        "source_histories": 4708
+      },
+      "top_source_volume_positive": {
+        "contribution_difference_per_parent": 0.00021100000000000003,
+        "difference_share_of_total": 0.8084291187739465,
+        "fluka_over_megalib_conditional": 1.9295154185022028,
+        "fluka_sum_w": 438.0,
+        "key": "ColdPlate_MXC_50mK_SD_anchor",
+        "megalib_sum_w": 227.0,
+        "source_histories": 84445
+      }
+    },
+    "local_carrier_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/local_tes_carrier_summary.csv",
+    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/summary.json",
+    "status": "PHASE3_CU64_RAW_COUPLING_DECOMPOSITION_PASS",
+    "top_source_volume_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/top_source_volume_contributors.csv"
+  },
   "raw_production_1e6": {
     "boundary": "Production raw-deposit gate only; full raw truth is local/ignored and committed outputs are bounded summaries.",
     "chunk_manifest_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_raw_production_1e6/chunk_manifest.csv",
@@ -337,7 +415,7 @@
     "status": "SOURCE_REGION_MATERIAL_NAME_AUDIT_PASS"
   },
   "source_sha256": "fa70c28c188ee8dc363c5f579d5332fae474539f40a35afe2624253cdebc5076",
-  "status": "CU64_COMMON_POSITIONS_AND_PHASE3_RAW_PRODUCTION_PARENT_EVENT_BUILDER_COMPLETE",
+  "status": "CU64_COMMON_POSITIONS_PHASE3_RAW_PRODUCTION_PARENT_EVENT_BUILDER_AND_DECOMPOSITION_COMPLETE",
   "top_source_volumes": [
     {
       "activity_fraction": "0.39136667351115603542250747257208020931067939116759672020202725726887290858593176",

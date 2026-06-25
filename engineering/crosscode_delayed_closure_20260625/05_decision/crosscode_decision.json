@@ -593,18 +593,93 @@
       "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/summary.json",
       "status": "PHASE3_CU64_COMMON_PARENT_EVENT_BUILDER_PASS",
       "w2_sigma_keV": 0.14
+    },
+    {
+      "boundary": "Decomposition of existing raw truth only; no new transport and no runtime point-location/stopping locator.",
+      "gate": "phase3_cu64_raw_coupling_decomposition_1e6",
+      "histories_per_code": {
+        "fluka": 1000000,
+        "megalib": 1000000
+      },
+      "key_results": {
+        "material_copper": {
+          "contribution_difference_per_parent": 0.00022099999999999984,
+          "difference_share_of_total": 0.8467432950191565,
+          "fluka_over_megalib_conditional": 1.2234580384226492,
+          "fluka_sum_w": 1210.0,
+          "key": "Copper",
+          "megalib_sum_w": 989.0,
+          "source_histories": 937427
+        },
+        "material_cuni": {
+          "contribution_difference_per_parent": 3.9999999999999996e-05,
+          "difference_share_of_total": 0.1532567049808429,
+          "fluka_over_megalib_conditional": 3.105263157894737,
+          "fluka_sum_w": 59.0,
+          "key": "CuNi",
+          "megalib_sum_w": 19.0,
+          "source_histories": 62573
+        },
+        "production_tag_n": {
+          "contribution_difference_per_parent": 0.00026499999999999983,
+          "difference_share_of_total": 1.0153256704980835,
+          "fluka_over_megalib_conditional": 1.2644710578842315,
+          "fluka_sum_w": 1267.0,
+          "key": "n",
+          "megalib_sum_w": 1002.0,
+          "source_histories": 998695
+        },
+        "production_tag_p": {
+          "contribution_difference_per_parent": -4.000000000000001e-06,
+          "difference_share_of_total": -0.015325670498084294,
+          "fluka_over_megalib_conditional": 0.33333333333333337,
+          "fluka_sum_w": 2.0,
+          "key": "p",
+          "megalib_sum_w": 6.0,
+          "source_histories": 1140
+        },
+        "side_wall_above_side_port": {
+          "contribution_difference_per_parent": 5.500000000000001e-05,
+          "difference_share_of_total": 0.21072796934865903,
+          "fluka_over_megalib_conditional": 1.7142857142857142,
+          "fluka_sum_w": 132.0,
+          "key": "Cu_50mK_StillLike_Can_side_wall_above_side_port",
+          "megalib_sum_w": 77.0,
+          "source_histories": 26299
+        },
+        "top_source_volume_negative": {
+          "contribution_difference_per_parent": -9e-05,
+          "difference_share_of_total": -0.3448275862068966,
+          "fluka_over_megalib_conditional": 0.4512195121951219,
+          "fluka_sum_w": 74.0,
+          "key": "Cu_SubstrateSupport_SolidDisk_L0_deepest",
+          "megalib_sum_w": 164.0,
+          "source_histories": 4708
+        },
+        "top_source_volume_positive": {
+          "contribution_difference_per_parent": 0.00021100000000000003,
+          "difference_share_of_total": 0.8084291187739465,
+          "fluka_over_megalib_conditional": 1.9295154185022028,
+          "fluka_sum_w": 438.0,
+          "key": "ColdPlate_MXC_50mK_SD_anchor",
+          "megalib_sum_w": 227.0,
+          "source_histories": 84445
+        }
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/summary.json",
+      "status": "PHASE3_CU64_RAW_COUPLING_DECOMPOSITION_PASS"
     }
   ],
   "date": "2026-06-25",
-  "next_required_gate": "Decompose the Phase-3 Cu-64 full-geometry raw-coupling difference by source volume/material, parent decay channel, positron stopping/annihilation location, TES incident ancestry, and boundary-near point location; run complete 1 us / 1 ns and side-Compton/FoV event building only after the raw-coupling origin is understood.",
+  "next_required_gate": "Inspect physical raw-coupling mechanisms inside the dominant Phase-3 Cu-64 source volumes: runtime point location, boundary-near behavior, positron stopping/annihilation location, and incident TES ancestry; complete Step05-equivalent event building afterward if needed.",
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
     "Runtime engine point-location differences not visible in the static geometry translator",
     "Exact physical Ta/TES geometry dependence in full geometry",
     "Common ancestry/stopping differences for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy",
     "FLUKA EM-cut/material dependence of W2 deposited-energy efficiency only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy",
-    "Raw-coupling differences by source volume/material, decay channel, positron stopping/annihilation location, TES incident ancestry, or boundary-near point location",
-    "Complete 1 us / 1 ns and side-Compton/FoV event builder after parent-history stage"
+    "Complete 1 us / 1 ns and side-Compton/FoV event builder after parent-history stage",
+    "Runtime point-location, boundary-near behavior, positron stopping/annihilation location, or incident TES ancestry inside dominant source volumes"
   ],
   "ruled_out": [
     "The FLUKA delayed discrepancy is not explained by the dummy HI-PROPE 53/128 card silently replacing the checked source-v2 isotope identities.",
@@ -619,7 +694,8 @@
     "The Phase-3 FLUKA full-geometry raw-deposit plumbing path is not blocked by the common Cu-64 parent stream: a 1000-history FLUKA smoke runs without .sim.gz replay and closes raw dump versus score output at 1.337e-10 TES relative delta.",
     "The Phase-3 MEGAlib full-geometry raw-deposit plumbing path is not blocked by the common Cu-64 parent stream: a 1000-event MEGAlib smoke runs without .sim.gz replay, HTsim first-field semantics are resolved as detector type rather than .det detector id, and CC HIT volume truth gives 3/1000 any-TES and 1/1000 W2 at smoke statistics.",
     "The Phase-3 production-statistics raw-deposit comparison is no longer missing: the common 1e6-parent Cu-64 stream was run in both codes without .sim.gz replay.",
-    "The analytic W2 detector-response window is not the first failure for the Phase-3 Cu-64 W2 mismatch: exact-window W2 and analytic Gaussian W2 have the same FLUKA/MEGAlib raw ratio within statistics."
+    "The analytic W2 detector-response window is not the first failure for the Phase-3 Cu-64 W2 mismatch: exact-window W2 and analytic Gaussian W2 have the same FLUKA/MEGAlib raw ratio within statistics.",
+    "The Phase-3 W2 raw-coupling difference is not isolated to CuNi or non-neutron production; the first decomposition shows distributed source-volume/material contributions."
   ],
-  "status": "PHASE3_CU64_RAW_PRODUCTION_AND_PARENT_HISTORY_EVENT_BUILDER_COMPLETE__FIRST_FAILURE_RAW_GEOMETRY_COUPLING__CROSSCODE_CLOSURE_INCOMPLETE"
+  "status": "PHASE3_CU64_RAW_COUPLING_DECOMPOSED__PHYSICAL_RAW_COUPLING_AUDIT_REMAINS__CROSSCODE_CLOSURE_INCOMPLETE"
 }

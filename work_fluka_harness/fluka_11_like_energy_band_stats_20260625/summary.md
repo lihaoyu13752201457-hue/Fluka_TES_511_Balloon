@@ -71,6 +71,17 @@ coupling, before the common detector response. That makes the TES-vs-FLUKA W2
 composition residual a real upstream coupling question, not evidence that the
 W2 detector-response window alone manufactured the low TES delayed fraction.
 
+The first raw-coupling decomposition localizes the next question but does not
+collapse it to one material class. W2 raw source-volume differences are led by
+`ColdPlate_MXC_50mK_SD_anchor` (`438` FLUKA versus `227` MEGAlib), while
+`Cu_SubstrateSupport_SolidDisk_L0_deepest` pulls in the opposite direction
+(`74` versus `164`). The material rollup is mostly Copper (`1210` versus
+`989`) with a smaller CuNi contribution (`59` versus `19`), and the production
+tag rollup is overwhelmingly neutron-produced (`1267` versus `1002`). The next
+step is therefore a physical raw-coupling audit of boundary/point-location,
+positron stopping/annihilation, and incident TES ancestry in the dominant
+volumes.
+
 ## Inputs
 
 - TES Step05 event catalog: `/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl`

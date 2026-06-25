@@ -75,9 +75,15 @@ and `1008/1000000` W2 histories. The raw W2 ratio is FLUKA/MEGAlib `1.25893`
 veto and analytic W2 response preserves the discrepancy: analytic W2 is
 FLUKA/MEGAlib `1.25946` raw (`5.48 sigma`) and `1.17707` after active veto
 (`2.85 sigma`). The first failed phase is therefore full-geometry
-raw-deposit/source-material coupling before common detector response. The
-full Step05-equivalent 1 microsecond / 1 nanosecond splitting and
-side-Compton/FoV topology remain open.
+raw-deposit/source-material coupling before common detector response. The first
+raw-coupling decomposition is also complete: the W2 raw excess is distributed
+across multiple source volumes and materials, dominated by neutron-produced
+Copper parents but not isolated to a single source class.
+`ColdPlate_MXC_50mK_SD_anchor` is the largest positive W2 contributor (`438`
+FLUKA versus `227` MEGAlib), while `Cu_SubstrateSupport_SolidDisk_L0_deepest`
+pulls the other way (`74` versus `164`). The full Step05-equivalent
+1 microsecond / 1 nanosecond splitting and side-Compton/FoV topology remain
+open.
 
 ## Evidence
 
@@ -219,6 +225,14 @@ Phase-3 Cu-64 common parent-history event builder:
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/summary.md
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/comparison_stage_ratios.csv
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/stage_rows.csv
+```
+
+Phase-3 Cu-64 raw-coupling decomposition:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/dimension_comparison.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/local_tes_carrier_summary.csv
 ```
 
 Runtime identity result:
@@ -403,6 +417,24 @@ Interpretation: the common parent-history builder and analytic W2 response do
 not remove the raw discrepancy. The first failed phase is full-geometry
 raw-deposit/source-material coupling, before common detector response.
 
+Phase-3 raw-coupling decomposition:
+
+| dimension | key | FLUKA W2 | MEGAlib W2 | diff / parent | share of total diff |
+|---|---|---:|---:|---:|---:|
+| source volume | `ColdPlate_MXC_50mK_SD_anchor` | `438` | `227` | `+0.000211` | `0.808` |
+| source volume | `Cu_SubstrateSupport_SolidDisk_L0_deepest` | `74` | `164` | `-0.000090` | `-0.345` |
+| source volume | `Cu_50mK_StillLike_Can_side_wall_above_side_port` | `132` | `77` | `+0.000055` | `0.211` |
+| source volume | `ColdPlate_CP_100mK_intercept` | `88` | `42` | `+0.000046` | `0.176` |
+| material | `Copper` | `1210` | `989` | `+0.000221` | `0.847` |
+| material | `CuNi` | `59` | `19` | `+0.000040` | `0.153` |
+| production tag | `n` | `1267` | `1002` | `+0.000265` | `1.015` |
+| production tag | `p` | `2` | `6` | `-0.000004` | `-0.015` |
+
+Interpretation: the raw W2 difference is distributed across source volumes and
+is not isolated to `CuNi` or to non-neutron production. The next useful
+discriminator is a physical raw-coupling audit, not another response-window
+check.
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
@@ -423,16 +455,18 @@ the explicit InstrumentFrame transform. The FLUKA and MEGAlib smokes prove the
 parent stream can drive both full geometries without replay, and the production
 raw-deposit gate shows a statistically significant W2 raw-coupling difference.
 The common parent-history event builder and analytic W2 response do not remove
-that difference. What remains open is the physical/source-material detail
-inside the full-geometry raw coupling, plus the complete Step05-equivalent
-1 microsecond / 1 nanosecond splitting and side-Compton/FoV topology if a final
-manuscript-level selection is required.
+that difference. The first source-volume/material decomposition shows the
+difference is distributed and not isolated to `CuNi` or non-neutron production.
+What remains open is the physical raw-coupling mechanism inside the dominant
+source volumes, plus the complete Step05-equivalent 1 microsecond /
+1 nanosecond splitting and side-Compton/FoV topology if a final manuscript-level
+selection is required.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
 2. Runtime point-location audit for the built Cu-64 common positions if required before interpreting boundary-near sources.
-3. Raw-coupling decomposition by source volume/material, parent decay channel, annihilation/stopping location, and TES incident ancestry.
+3. Runtime point-location, boundary-near behavior, positron stopping/annihilation location, and incident TES ancestry inside the source volumes that dominate the raw-coupling difference.
 4. Complete common external event builder with 1 microsecond / 1 nanosecond splitting and side-Compton/FoV topology.
 5. FLUKA EM-cut/material scan only if the raw-coupling or ancestry gate points to an EM-transport threshold/material dependence.
 
@@ -451,9 +485,9 @@ delayed deficit:
 | 3000-10000 keV | 0.014 |
 
 The next run should therefore stop treating detector response as the leading
-suspect and decompose the Phase-3 raw-coupling difference itself: source
-volume/material, positron stopping and annihilation location, incident TES
-ancestry, and boundary-near point-location behavior. The toy T2 W2 result no
+suspect and inspect the physical raw-coupling mechanisms inside the already
+identified source volumes: boundary-near point location, positron stopping and
+annihilation location, and incident TES ancestry. The toy T2 W2 result no
 longer justifies an immediate FLUKA EM-cut scan for the 511-related
 deposited-energy gate, and the Phase-3 parent-history W2 response result no
 longer supports blaming the analytic W2 detector-response window as the first

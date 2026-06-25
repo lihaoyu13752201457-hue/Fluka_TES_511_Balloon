@@ -151,6 +151,15 @@ source-material coupling for Cu-64 already differs before the common detector
 response is applied. The remaining open task is to isolate which full-geometry
 coupling detail causes that raw Cu-64 difference.
 
+The first raw-coupling decomposition narrows that open task. The W2 raw
+excess is not isolated to `CuNi` or to a non-neutron source class: Copper
+contributes `1210` FLUKA versus `989` MEGAlib W2 histories, CuNi contributes
+`59` versus `19`, and the neutron-produced rollup is `1267` versus `1002`.
+At source-volume level, `ColdPlate_MXC_50mK_SD_anchor` is the largest positive
+contributor (`438` versus `227`), while `Cu_SubstrateSupport_SolidDisk_L0_deepest`
+pulls in the opposite direction (`74` versus `164`). That points to distributed
+geometry/raw-coupling behavior, not a single source-class bookkeeping mistake.
+
 ## Stream Classification Check
 
 The Step05 parser assigns `stream` by SIM file/mode, not by secondary particle

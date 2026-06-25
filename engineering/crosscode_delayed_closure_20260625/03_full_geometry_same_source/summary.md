@@ -13,6 +13,7 @@
 - megalib_common_raw_smoke: `PHASE3_CU64_COMMON_MEGALIB_RAW_PASS`
 - raw_production_1e6: `PHASE3_CU64_COMMON_RAW_PRODUCTION_PASS`
 - parent_history_event_builder: `PHASE3_CU64_COMMON_PARENT_EVENT_BUILDER_PASS`
+- raw_coupling_decomposition: `PHASE3_CU64_RAW_COUPLING_DECOMPOSITION_PASS`
 
 ## Production Tags
 
@@ -34,6 +35,7 @@
 - MEGAlib HTsim semantics are calibrated: HTsim first field is detector type, not `.det` detector id. Comparable MEGAlib TES/W2 counts now use `CC HIT` volume-deposit truth.
 - Production-statistics FLUKA/MEGAlib transport has now run for the shared `1,000,000`-parent Cu-64 stream. Full raw truth is retained locally under `/tmp/phase3prod`; committed outputs are bounded summaries only.
 - The common parent-history builder applies identical active-veto and analytic W2 response calculations to both codes. It does not yet perform 1 microsecond / 1 nanosecond sub-event splitting or side-Compton/FoV topology.
+- The raw-coupling decomposition shows the W2 difference is distributed across source volumes/materials and is not isolated to `CuNi` or a non-neutron production tag.
 - `sampling_probability` is normalized over Cu-64 rows only and is suitable for deterministic Cu-64 parent resampling.
 
 ## FLUKA Raw-Deposit Smoke
@@ -129,3 +131,37 @@ engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phas
 Interpretation: the common parent-history event builder and analytic W2 response
 do not remove the discrepancy. The first failed phase is full-geometry
 raw-deposit/source-material coupling, before common detector response.
+
+## Raw-Coupling Decomposition
+
+Artifact:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_raw_coupling_decomposition_1e6/summary.md
+```
+
+Top W2 raw source-volume contributors:
+
+| source volume | FLUKA W2 | MEGAlib W2 | diff / parent | share of total diff | conditional FLUKA/MEGAlib |
+|---|---:|---:|---:|---:|---:|
+| `ColdPlate_MXC_50mK_SD_anchor` | `438` | `227` | `+0.000211` | `0.808` | `1.9295` |
+| `Cu_SubstrateSupport_SolidDisk_L0_deepest` | `74` | `164` | `-0.000090` | `-0.345` | `0.4512` |
+| `Cu_50mK_StillLike_Can_side_wall_above_side_port` | `132` | `77` | `+0.000055` | `0.211` | `1.7143` |
+| `ColdPlate_CP_100mK_intercept` | `88` | `42` | `+0.000046` | `0.176` | `2.0952` |
+| `Cu_50mK_StillLike_Can_side_wall_rectcut_window_band` | `150` | `107` | `+0.000043` | `0.165` | `1.4019` |
+
+Rollup:
+
+| dimension | key | FLUKA W2 | MEGAlib W2 | diff / parent | share of total diff |
+|---|---|---:|---:|---:|---:|
+| material | `Copper` | `1210` | `989` | `+0.000221` | `0.847` |
+| material | `CuNi` | `59` | `19` | `+0.000040` | `0.153` |
+| production tag | `n` | `1267` | `1002` | `+0.000265` | `1.015` |
+| production tag | `p` | `2` | `6` | `-0.000004` | `-0.015` |
+
+Interpretation: the raw W2 excess is a distributed full-geometry coupling
+difference. It is not explained by a single CuNi source class or by non-neutron
+production. Several source volumes pull in opposite directions, so the next
+discriminator is a more physical raw-coupling audit: runtime point location,
+boundary-near behavior, positron stopping/annihilation location, and incident
+TES ancestry.

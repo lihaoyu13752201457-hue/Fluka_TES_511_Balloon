@@ -30,6 +30,14 @@ Gaussian response gives FLUKA/MEGAlib `1.25946` raw and `1.17707` after active
 veto, so the first failed phase is full-geometry raw-deposit/source-material
 coupling, not the common W2 response.
 
+The first raw-coupling decomposition shows this is not a single CuNi or
+non-neutron source-class problem. The largest positive W2 source-volume
+contributor is `ColdPlate_MXC_50mK_SD_anchor` (`438` FLUKA versus `227`
+MEGAlib), while `Cu_SubstrateSupport_SolidDisk_L0_deepest` pulls the opposite
+way (`74` versus `164`). The next discriminator is boundary/point-location,
+positron stopping/annihilation, and incident TES ancestry inside those source
+volumes.
+
 ## Key Artifacts
 
 - `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.md`

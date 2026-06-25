@@ -152,7 +152,7 @@ This is the check for the photon/electron concern. `deposit_carrier` is the loca
 7. The first T1 Cu-sphere transport smoke is complete. For 1 cm Cu sphere escape, the 511-related W2 photon yields are close at smoke statistics: Cu-64 positron rows FLUKA/MEGAlib `0.972`, mono-511 rows `0.943`, and pair-511 rows `0.897`; the largest of these approximate Poisson z-scores is `1.21 sigma`. T2/Ta deposition and common raw-deposit truth remain open.
 8. The first T2 Cu+Ta absorber smoke proved both engines can reach the same Ta deposited-energy observable, but its `9` vs `4` Cu-64 W2 counts were too low to interpret.
 9. The T2 production-statistics generated-source run now closes the toy W2 deposited-energy gate. With `100000` rows each for Cu-64 positrons, mono-511 photons, and pair-511 photons, the W2 Ta efficiencies are FLUKA/MEGAlib `1.029` for Cu-64 positrons (`1132` vs `1100`, `0.68 sigma`), `0.986` for mono-511 photons, and `1.007` for pair-511 photons. Therefore the full-chain FLUKA delayed W2 excess is not explained by a simple common-source Cu+Ta W2 EM transport/deposition mismatch in this toy geometry.
-10. Phase 3 has started: `cu64_common_positions.csv` now contains `6927` source-v2 Cu-64 positions with total Cu-64 activity weight `4.701904943 Bq`. Material is intentionally marked `PENDING_REGION_AUDIT`, so the next gate is resolving those positions into Geant4 logical volumes and FLUKA regions/materials.
+10. Phase 3 has started: `cu64_common_positions.csv` now contains `6927` source-v2 Cu-64 positions with total Cu-64 activity weight `4.701904943 Bq`. The first name-level source-volume/material audit passes for all `6927` rows against the FLUKA translation map, with `93.75%` of Cu-64 activity in `Copper` and `6.25%` in `CuNi`. This is not yet a coordinate-containment or runtime point-location proof, so the next gate is resolving those positions inside the actual Geant4 and FLUKA geometries.
 
 ## Decay-Kernel Cross-Code Check
 
@@ -277,8 +277,27 @@ weight `4.7019049431490107524463624743796 Bq`. Production-tag composition:
 | `p` | `8` | `0.0054283622268401050116675860957 Bq` |
 | `muminus` | `1` | `0.0006753252346540412812810649609 Bq` |
 
-Boundary: `source_material` is `PENDING_REGION_AUDIT`; material and region must
-be resolved from the actual Geant4 and FLUKA geometries before full transport.
+## Phase-3 Source Region/Material Name Audit
+
+The first audit layer maps the `source_volume` authority in
+`cu64_common_positions.csv` to the FLUKA geometry-translation `region_map.csv`.
+It passes at name level:
+
+| audit status | rows | activity weight |
+|---|---:|---:|
+| `PASS_NAME_LEVEL` | `6927` | `4.7019049431490107524463624743796 Bq` |
+
+Translated material split:
+
+| material | rows | activity fraction |
+|---|---:|---:|
+| `Copper` | `6494` | `93.749%` |
+| `CuNi` | `433` | `6.251%` |
+
+Boundary: this confirms that the Cu-64 source rows have translated FLUKA
+region/material names. It does not test coordinate containment, nearest-boundary
+distance, or runtime Geant4/FLUKA point location, which remain required before
+full transport.
 
 ## Artifacts
 
@@ -292,3 +311,4 @@ be resolved from the actual Geant4 and FLUKA geometries before full transport.
 - Phase-2 T2 Cu+Ta absorber smoke: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/summary.md`
 - Phase-2 T2 Cu+Ta production-statistics gate: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md`
 - Phase-3 Cu-64 common positions: `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md`
+- Phase-3 source-region/material name audit: `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md`

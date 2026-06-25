@@ -1,6 +1,6 @@
 {
   "date": "2026-06-25",
-  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_T2_PRODUCTION_AND_PHASE3_POSITION_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
+  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_T2_PRODUCTION_PHASE3_POSITION_AND_NAME_AUDIT_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
   "completed_gates": [
     {
       "gate": "manifest_freeze",
@@ -234,6 +234,31 @@
           "activity_weight_Bq": "0.0054283622268401050116675860957"
         }
       }
+    },
+    {
+      "gate": "phase3_cu64_source_region_material_name_audit",
+      "status": "PASS_NAME_LEVEL",
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md",
+      "audit_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_region_material_name_audit.csv",
+      "audit_sha256": "e20e19e2e284f97aaf2e4e4f7f0cc4452bf43d60d4512b9861c139a590ccfa59",
+      "region_map_csv": "/home/ubuntu/TES_511_Balloon/engineering/fluka_crosscode_validation_20260624/02_geometry_translation/region_map.csv",
+      "region_map_sha256": "b00a289ba31f9b144862b23991adbdfea5b4d6c131ec23537f357a8c9224d9ac",
+      "rows": 6927,
+      "pass_name_level_rows": 6927,
+      "missing_region_map_rows": 0,
+      "not_translated_rows": 0,
+      "coordinate_containment_tested": false,
+      "material_summary": {
+        "Copper": {
+          "rows": 6494,
+          "activity_fraction": "0.93749090642112001319389791948369939349258776105825776093556586215641067691740606"
+        },
+        "CuNi": {
+          "rows": 433,
+          "activity_fraction": "0.062509093578879986806102080516300606507412238941742239064434137843589323082593945"
+        }
+      },
+      "boundary": "name-level audit only; coordinate containment and runtime point location remain open"
     }
   ],
   "ruled_out": [
@@ -242,15 +267,16 @@
     "The high-energy delayed deficit is not explained by a total absence of Geant4/MEGAlib Na-24 1369/2754 keV or Al-28 1779 keV decay photons in the 2e4-parent independent EventList smoke scorer.",
     "The W2 Cu-64 discrepancy is unlikely to be a simple beta-plus branching bookkeeping error: Geant4/MEGAlib smoke gives 0.1767 positrons per Cu-64 parent and FLUKA production gives 0.176483.",
     "The next common-source comparison is not already biased at T0 by source-adapter count, particle-code, kinetic-energy, direction, or weight drift for the 2048-row photon/positron smoke list.",
-    "The full-chain delayed W2 excess is not explained by a simple common-source Cu+Ta W2 EM-transport/deposition mismatch in the enlarged toy geometry: the T2 production W2 ratios are 1.029 for Cu-64 positron rows, 0.986 for mono-511 rows, and 1.007 for pair-511 rows."
+    "The full-chain delayed W2 excess is not explained by a simple common-source Cu+Ta W2 EM-transport/deposition mismatch in the enlarged toy geometry: the T2 production W2 ratios are 1.029 for Cu-64 positron rows, 0.986 for mono-511 rows, and 1.007 for pair-511 rows.",
+    "The built Cu-64 common-position rows are not missing from the FLUKA translation map at source-volume-name level: 6927/6927 rows map to translated FLUKA region/material names."
   ],
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
-    "Full-geometry material/region/source-position differences",
+    "Full-geometry coordinate-level material/region/source-position differences",
     "Exact physical Ta/TES geometry dependence in full geometry",
     "Common postprocessing or event-building differences",
     "Common ancestry/stopping differences for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy",
     "FLUKA EM-cut/material dependence of W2 deposited-energy efficiency only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy"
   ],
-  "next_required_gate": "Resolve the built Cu-64 common positions in both full geometries and fail fast on any source-region/material mismatch before high-stat full transport."
+  "next_required_gate": "Resolve the built Cu-64 common positions at coordinate/runtime level in both full geometries and fail fast on any source-region/material mismatch before high-stat full transport."
 }

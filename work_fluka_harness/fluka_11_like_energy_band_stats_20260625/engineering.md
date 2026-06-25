@@ -652,9 +652,8 @@ and `ColdPlate_MXC_50mK_SD_anchor` (`8.43%`). `source_material` is deliberately
 set to `PENDING_REGION_AUDIT`, because material must be resolved separately in
 both full geometries rather than inferred from source-v2 reporting names.
 
-Next Phase-3 step: build the deterministic parent resampling list and run the
-source-region/material audit in both codes before starting high-stat full
-transport.
+Next Phase-3 step: resolve the positions at coordinate/runtime level in both
+full geometries before starting high-stat full transport.
 
 ### Two required modes
 
@@ -706,6 +705,38 @@ Cu_50mK_StillLike_Can_side_wall_above_side_port
 DR_MixingChamber_Cu
 ColdPlate_Still_0p7K
 ```
+
+### 18.1 Source-volume/material name audit status, 2026-06-25
+
+The first source-region/material audit layer is complete:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_region_material_name_audit.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.json
+```
+
+It checks the `source_volume` names from `cu64_common_positions.csv` against
+the FLUKA geometry-translation `region_map.csv`. All `6927` Cu-64 rows pass
+this name-level translation audit:
+
+| audit status | rows | activity weight |
+|---|---:|---:|
+| `PASS_NAME_LEVEL` | `6927` | `4.7019049431490107524463624743796 Bq` |
+
+The translated material split is:
+
+| material | rows | activity fraction |
+|---|---:|---:|
+| `Copper` | `6494` | `93.749%` |
+| `CuNi` | `433` | `6.251%` |
+
+This removes one simple failure mode: the built Cu-64 source rows are not
+pointing at unmapped or untranslated FLUKA region names. It does **not** prove
+coordinate containment. The audit did not test nearest-boundary distance or
+runtime Geant4/FLUKA point location. `217` rows (`3.13%` by activity) have a
+canonical reporting name that differs from `source_volume`; that field is
+reporting-only and is not used as the geometry authority.
 
 ## 19. Raw outputs required from both codes
 
@@ -1019,7 +1050,8 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Run Cu/Ta toy transport in both codes (T1/T2 smoke complete; T2 production W2/broad deposited-energy acceptance pass)
 [ ] Scan FLUKA effective EM cuts if full-geometry or ancestry observables reopen a W2 EM-transport discrepancy
 [x] Build cu64_common_positions.csv
-[ ] Audit source region/material in both geometries
+[x] Audit source-volume name/material translation against the FLUKA region map
+[ ] Coordinate-level source region/material audit in both full geometries
 [ ] Run 1e6 Cu-64 parents per code
 [ ] Save raw deposit truth
 [ ] Run common external event builder

@@ -431,6 +431,14 @@ neutron-produced (`6918` rows, `4.6958012557 Bq`), with small proton and
 mu-minus tails. `source_material` is deliberately `PENDING_REGION_AUDIT`; this
 file is the position/weight authority, not the geometry-material verdict.
 
+The first Phase-3 source-region/material audit layer now passes at name level.
+All `6927` Cu-64 `source_volume` rows map to translated FLUKA region/material
+names in the geometry-translation table. The mapped activity is `93.75%`
+`Copper` and `6.25%` `CuNi`. This removes the simple failure mode where the
+Cu-64 source table points to unmapped FLUKA regions, but it does not yet prove
+coordinate containment, nearest-boundary distance, or runtime point location in
+Geant4/FLUKA. Those coordinate-level checks remain the next full-geometry gate.
+
 Audit artifacts:
 
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md`
@@ -441,6 +449,7 @@ Audit artifacts:
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md`
+- `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md`
 
 ## Follow-Up Checks
 

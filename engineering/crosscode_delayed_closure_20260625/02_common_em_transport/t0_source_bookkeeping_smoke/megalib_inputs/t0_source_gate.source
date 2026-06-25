@@ -1,0 +1,13 @@
+Version 1
+Geometry /home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/megalib_inputs/t0_vacuum_source_gate.geo.setup
+PhysicsListEM LivermorePol
+StoreSimulationInfo all
+StoreSimulationInfoIonization false
+DiscretizeHits true
+
+Run T0SourceGate
+T0SourceGate.FileName /home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/cosima_run/t0_source_gate
+T0SourceGate.Triggers 2048
+T0SourceGate.Source CommonPrimaryList
+
+CommonPrimaryList.EventList /home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/megalib_inputs/common_eventlist.dat

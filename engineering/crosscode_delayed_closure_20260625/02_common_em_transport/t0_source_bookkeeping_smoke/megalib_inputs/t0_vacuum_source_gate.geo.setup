@@ -1,0 +1,11 @@
+Name T0VacuumSourceGate
+Version 2.0
+
+SurroundingSphere 100 0.0 0.0 0.0 100
+Include $(MEGALIB)/resource/examples/geomega/materials/Materials.geo
+
+Volume WorldVolume
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0
+WorldVolume.Shape BRIK 100. 100. 100.
+WorldVolume.Mother 0

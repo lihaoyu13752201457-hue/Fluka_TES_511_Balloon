@@ -287,6 +287,8 @@ source path, not on `.sim.gz` replay. It now includes:
 - Geant4/MEGAlib independent EventList decay-kernel smoke for the same four
   isotopes: `20000` parents per isotope, parsed from fresh `IA DECA`
   emission records.
+- Phase-2 T0 common-source bookkeeping: one explicit photon/positron source
+  table was read by both FLUKA and MEGAlib without source-level resampling.
 
 Key cross-code line/yield comparison:
 
@@ -316,11 +318,40 @@ emitted-particle transport, exact source-position/material coupling,
 detector-response/event-building differences, and production-stat G4 checks
 for low-yield lines such as the `Cu-64` 1346-keV gamma.
 
+## Phase-2 T0 Common-Source Bookkeeping
+
+The first common-transport gate now passes. The common source table has `2048`
+explicit primary rows:
+
+| family | particle | count |
+|---|---|---:|
+| `mono511_gamma` | gamma | `512` |
+| `pair511_gamma` | gamma | `512` |
+| `mono1779_gamma` | gamma | `256` |
+| `mono2754_gamma` | gamma | `256` |
+| `cu64_eplus_smoke` | eplus | `512` |
+
+Both engines started the same row count, particle code, kinetic energy,
+direction, and weight:
+
+| code | observed / expected | max energy relative delta | max direction 1-dot | status |
+|---|---:|---:|---:|---|
+| FLUKA | `2048 / 2048` | `4.1880789907739405e-09` | `1.1102230246251565e-16` | PASS |
+| MEGAlib | `2048 / 2048` | `5.2968580495807746e-05` | `3.354161393076538e-11` | PASS |
+
+This is deliberately only a T0 source-bookkeeping result. It rules out the
+immediate concern that the next comparison is already biased by source
+resampling or source-adapter unit drift, but it does **not** yet test positron
+slowing, annihilation, photon escape, Cu/Ta transport, or W2/TES deposition
+efficiency. That remains the next discriminator for the delayed-composition
+residual.
+
 Audit artifacts:
 
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv`
+- `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md`
 
 ## Follow-Up Checks
 
@@ -337,6 +368,6 @@ composition questions:
    on rejecting single-site events.
 4. Keep reporting energy-band-specific activation fractions; do not quote the
    W2 `6.57%` delayed fraction as a global activation fraction.
-5. Run common emitted-particle transport for the `Na-24`, `Al-28`, `I-128`,
-   and `Cu-64` channels before treating the full-chain high-energy deficit as
-   a decay-kernel effect.
+5. Run the common T1/T2 Cu/Ta toy transport and W2/TES deposition-efficiency
+   gate before treating the full-chain high-energy deficit as a decay-kernel
+   or source-list effect.

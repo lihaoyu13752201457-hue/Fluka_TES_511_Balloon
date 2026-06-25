@@ -466,6 +466,31 @@ W2 efficiency difference <= 10%: provisional PASS
 >20% and >5 sigma: FAIL — EM transport/cut discrepancy
 ```
 
+### 14.1 T0 source-bookkeeping status, 2026-06-25
+
+The first Phase-2 gate is complete:
+
+```text
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md
+```
+
+It uses one explicit common primary table with `2048` rows: `512` mono
+511-keV photons, `256` back-to-back 511-keV pairs represented as `512`
+primary rows with retained `pair_id`, `256` 1779-keV photons, `256`
+2754-keV photons, and `512` Cu-64 positron smoke rows. Both FLUKA and
+MEGAlib read this same list without source-level resampling.
+
+Result:
+
+| code | observed / expected | max energy relative delta | max direction 1-dot | status |
+|---|---:|---:|---:|---|
+| FLUKA | `2048 / 2048` | `4.1880789907739405e-09` | `1.1102230246251565e-16` | PASS |
+| MEGAlib | `2048 / 2048` | `5.2968580495807746e-05` | `3.354161393076538e-11` | PASS |
+
+This only closes source bookkeeping for count, particle code, kinetic energy,
+direction, and weight. It does **not** yet close positron slowing,
+annihilation, photon escape, Cu/Ta transport, or W2/TES deposition efficiency.
+
 ## 15. Decision after Phase 2
 
 - Phase 1 passes, Phase 2 fails: focus on positron transport, annihilation, atomic de-excitation, and EM thresholds.
@@ -864,7 +889,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Build Geant4/MEGAlib smoke decay-kernel outputs for Cu-64, Na-24, Al-28, I-128
 [x] Compare first-pass branch/line yields for Cu-64, Na-24, Al-28, I-128
 [ ] Build Geant4/MEGAlib 1e6/isotope production decay-kernel outputs if low-yield-line precision is needed
-[ ] Build one common external positron/511 source list
+[x] Build one common external positron/511 source list and pass T0 source-bookkeeping smoke
 [ ] Run Cu/Ta toy transport in both codes
 [ ] Scan FLUKA effective EM cuts if needed
 [ ] Build cu64_common_positions.csv

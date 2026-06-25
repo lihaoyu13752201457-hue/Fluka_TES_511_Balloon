@@ -1,0 +1,26 @@
+GLOBAL         20000         0         1         0         0         0
+TITLE
+TES511 common-primary T0 source gate
+DEFAULTS                                                              EM-CASCA
+BEAM       0.0028917                                                  PHOTON
+SOURCE
+GEOBEGIN                                                              COMBNAME
+  0 0                       Common-primary T0 vacuum sphere
+RPP BIGBOX -1000000.0 +1000000.0 -1000000.0 +1000000.0 -1000000.0 +1000000.0
+RPP WORLD  -100.0 +100.0 -100.0 +100.0 -100.0 +100.0
+SPH SPHIN 0.0 0.0 0.0 1.0
+END
+BLKHOLE 5 +BIGBOX -WORLD
+OUTER    5 +WORLD -SPHIN
+INNER    5 +SPHIN
+END
+GEOEND
+ASSIGNMAT  BLCKHOLE  BLKHOLE
+ASSIGNMAT    VACUUM    INNER
+ASSIGNMAT    VACUUM    OUTER
+EMFCUT      -1.0E-05   1.0E-05       0.0     INNER
+EMFCUT      -1.0E-05   1.0E-05       0.0     OUTER
+USERDUMP       100.0      99.0       6.0       0.0       0.0       0.0RAWDUMP
+RANDOMIZE        1.0  666701.0
+START         2048.0
+STOP

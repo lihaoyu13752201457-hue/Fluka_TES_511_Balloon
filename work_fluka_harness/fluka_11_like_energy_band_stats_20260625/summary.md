@@ -148,6 +148,7 @@ This is the check for the photon/electron concern. `deposit_carrier` is the loca
 3. The final W2 prompt source-tag composition is narrow in both codes: `eplus` plus neutron. That statement is about the external prompt source family, not about local TES deposit physics.
 4. The FLUKA local TES deposit carrier table is overwhelmingly electromagnetic (`EM_BELOW_THRESHOLD`) for W2 final selections. The current scoring does not retain parent/track ancestry, so a separate boundary-crossing or ancestry scorer would be needed to count incident photons at the TES surface directly.
 5. The independent decay-kernel cross-check does not support the hypothesis that one code simply omits the important delayed photons. In fresh independent-source runs, Geant4/MEGAlib smoke and FLUKA production both emit `Na-24` 1369/2754-keV cascades and `Al-28` 1779-keV photons at approximately unit yield; Cu-64 beta-plus yield is also consistent (`0.1767` vs `0.176483`).
+6. The first Phase-2 common-source gate now also passes: FLUKA and MEGAlib both start the same `2048` explicit photon/positron primary rows with closed count, energy, direction, particle-code, and weight bookkeeping. This removes source-adapter resampling as the immediate explanation, but it does not yet test Cu/Ta transport or W2 deposition efficiency.
 
 ## Decay-Kernel Cross-Code Check
 
@@ -165,6 +166,31 @@ smaller low-yield difference. The next discriminators are common
 emitted-particle transport, exact source-position/material coupling, and common
 postprocessing.
 
+## Phase-2 T0 Common-Source Bookkeeping
+
+One explicit common primary table was generated and read by both engines:
+
+| family | particle | count |
+|---|---|---:|
+| `mono511_gamma` | gamma | `512` |
+| `pair511_gamma` | gamma | `512` |
+| `mono1779_gamma` | gamma | `256` |
+| `mono2754_gamma` | gamma | `256` |
+| `cu64_eplus_smoke` | eplus | `512` |
+
+Source-closure result:
+
+| code | observed / expected | max energy relative delta | max direction 1-dot | status |
+|---|---:|---:|---:|---|
+| FLUKA | `2048 / 2048` | `4.1880789907739405e-09` | `1.1102230246251565e-16` | PASS |
+| MEGAlib | `2048 / 2048` | `5.2968580495807746e-05` | `3.354161393076538e-11` | PASS |
+
+Implication: the next cross-code discriminator should be the T1/T2 Cu/Ta toy
+transport and W2/TES energy-deposition efficiency, not another source-list
+bookkeeping check. The positron rows here are smoke-statistics source rows; a
+production T1/T2 run should replace them with the evaluated/reference Cu-64
+beta-plus generator if the positron spectrum itself becomes a precision input.
+
 ## Artifacts
 
 - source rows CSV: `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/source_stage_rows.csv`
@@ -172,3 +198,4 @@ postprocessing.
 - delayed fraction CSV: `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/delayed_fraction_rows.csv`
 - machine-readable summary: `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.json`
 - decay-kernel cross-code comparison: `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv`
+- Phase-2 T0 common-source gate: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md`

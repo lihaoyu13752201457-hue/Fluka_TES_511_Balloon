@@ -21,6 +21,13 @@ engines emit the expected high-energy `Na-24` and `Al-28` gamma lines; the
 high-energy delayed deficit is therefore not explained by a total absence of
 those decay photons in either decay kernel.
 
+The first Phase-2 common-source bookkeeping gate also passes. FLUKA and
+MEGAlib both start the same explicit photon/positron primary table (`2048`
+rows) with closed count, particle-code, kinetic-energy, direction, and weight
+bookkeeping. This removes source-adapter resampling/unit drift from the T0
+layer, but it does not yet test Cu/Ta transport or W2/TES deposition
+efficiency.
+
 ## Evidence
 
 Manifest:
@@ -66,6 +73,14 @@ Cross-code line comparison:
 engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv
 ```
 
+Phase-2 T0 common-source bookkeeping:
+
+```text
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/closure_comparison.csv
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/common_primaries.csv
+```
+
 Runtime identity result:
 
 | nuclide | event_id | expected Z/A/isomer | FLUKA runtime Z/A/isomer | result |
@@ -101,16 +116,25 @@ Geant4/MEGAlib decay-kernel smoke line result:
 | Al-28 | 1779-keV gamma yield / parent | `1.0` |
 | I-128 | photon yield / parent | `0.20605` |
 
+Phase-2 T0 source-bookkeeping result:
+
+| code | observed / expected | max energy relative delta | max direction 1-dot | status |
+|---|---:|---:|---:|---|
+| FLUKA | `2048 / 2048` | `4.1880789907739405e-09` | `1.1102230246251565e-16` | PASS |
+| MEGAlib | `2048 / 2048` | `5.2968580495807746e-05` | `3.354161393076538e-11` | PASS |
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
 verifies FLUKA source identity for representative source-v2 parents and gives
-a smoke-statistics cross-code decay-emission sanity check.
+a smoke-statistics cross-code decay-emission sanity check. The T0 source gate
+only verifies common source bookkeeping; it does not compare positron slowing,
+annihilation, photon escape, material coupling, or TES deposited energy.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
-2. Common emitted-particle list through a common toy geometry.
+2. Common T1/T2 emitted-particle transport through Cu/Ta toy geometries.
 3. Common full-geometry source positions and common external postprocessor.
 
 ## Working Hypothesis After This Gate
@@ -127,6 +151,7 @@ delayed deficit:
 | 1500-3000 keV | 0.041 |
 | 3000-10000 keV | 0.014 |
 
-The next run should therefore move to common emitted-particle transport, unless
-we first want a Geant4/MEGAlib production-statistics repeat to sharpen
-low-yield channels such as the `Cu-64` 1346-keV line.
+The next run should therefore move from T0 source bookkeeping to T1/T2 common
+Cu/Ta toy transport, unless we first want a Geant4/MEGAlib
+production-statistics repeat to sharpen low-yield channels such as the `Cu-64`
+1346-keV line.

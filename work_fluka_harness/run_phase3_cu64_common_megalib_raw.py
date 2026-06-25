@@ -8,6 +8,7 @@ import csv
 import gzip
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 import time
@@ -39,6 +40,21 @@ BANDS = [
     ("e1500_3000", "1500-3000 keV", 1500.0, 3000.0),
     ("e3000_10000", "3000-10000 keV", 3000.0, 10000.0),
 ]
+
+MEGALIB_DETECTOR_TYPE_NAMES = {
+    0: "NoDetectorType",
+    1: "Strip2D",
+    2: "Calorimeter",
+    3: "Strip3D",
+    4: "Scintillator",
+    5: "DriftChamber",
+    6: "Strip3DDirectional",
+    7: "AngerCamera",
+    8: "Voxel3D",
+    9: "GuardRing",
+}
+CC_HIT_RE = re.compile(r"^CC HIT\s+(?P<volume>\S+)\s+(?P<kv>.*)$")
+KV_RE = re.compile(r"(\w+)=([^\s]+)")
 
 
 def now_utc() -> str:
@@ -210,7 +226,7 @@ def region_kind_by_volume() -> dict[str, str]:
     return out
 
 
-def detector_kind(detector_name: str, detector_volume: str, sensitive_volume: str, region_kind: dict[str, str]) -> str:
+def detector_instance_kind(detector_name: str, detector_volume: str, sensitive_volume: str, region_kind: dict[str, str]) -> str:
     if detector_name in {"D1", "D2", "D3", "D4", "D5", "D6"}:
         return "TES_PIXEL"
     for name in (detector_volume, sensitive_volume):
@@ -221,7 +237,7 @@ def detector_kind(detector_name: str, detector_volume: str, sensitive_volume: st
     return "OTHER"
 
 
-def detector_map() -> dict[int, dict[str, Any]]:
+def detector_instance_map() -> dict[int, dict[str, Any]]:
     region_kind = region_kind_by_volume()
     out: dict[int, dict[str, Any]] = {}
     current_id = 0
@@ -253,7 +269,7 @@ def detector_map() -> dict[int, dict[str, Any]]:
             out[current_id]["detector_volume"] = value.strip()
         elif prop == "SensitiveVolume":
             out[current_id]["sensitive_volume"] = value.strip()
-        out[current_id]["detector_kind"] = detector_kind(
+        out[current_id]["detector_kind"] = detector_instance_kind(
             str(out[current_id]["detector_name"]),
             str(out[current_id]["detector_volume"]),
             str(out[current_id]["sensitive_volume"]),
@@ -262,37 +278,101 @@ def detector_map() -> dict[int, dict[str, Any]]:
     return out
 
 
-def parse_htsim(line: str, history_id: int, detectors: dict[int, dict[str, Any]]) -> dict[str, Any] | None:
+def detector_type_name(detector_type: int) -> str:
+    return MEGALIB_DETECTOR_TYPE_NAMES.get(detector_type, f"UnknownDetectorType{detector_type}")
+
+
+def cc_volume_kind(volume: str, region_kind: dict[str, str]) -> str:
+    mapped = region_kind.get(volume, "")
+    if mapped == "TES_PIXEL":
+        return "TES_PIXEL"
+    if volume.startswith("TP_L") or volume.startswith("TES_Pixel"):
+        return "TES_PIXEL"
+    if mapped == "ACTIVE_SHIELD":
+        return "ACTIVE_SHIELD"
+    return "OTHER"
+
+
+def parse_float(value: str, default: float = 0.0) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def parse_int(value: str, default: int = 0) -> int:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def parse_htsim(line: str, history_id: int) -> dict[str, Any] | None:
     fields = [field.strip() for field in line[len("HTsim") :].split(";")]
     if len(fields) < 5:
         return None
     try:
-        detector_id = int(fields[0])
-        det = detectors.get(detector_id, {})
+        detector_type = int(fields[0])
         return {
             "history_id": history_id,
-            "detector_id": detector_id,
-            "detector_name": det.get("detector_name", f"DET_{detector_id}"),
-            "detector_volume": det.get("detector_volume", ""),
-            "detector_kind": det.get("detector_kind", "OTHER"),
+            "megalib_detector_type": detector_type,
+            "megalib_detector_type_name": detector_type_name(detector_type),
             "x_cm": float(fields[1]),
             "y_cm": float(fields[2]),
             "z_cm": float(fields[3]),
             "deposit_keV": float(fields[4]),
             "time_s": float(fields[5]) if len(fields) > 5 else 0.0,
-            "pixel_ids": ";".join(fields[6:]) if len(fields) > 6 else "",
+            "origin_ids": ";".join(fields[6:]) if len(fields) > 6 else "",
         }
     except ValueError:
         return None
 
 
-def parse_megalib_hits(sim_path: Path, detectors: dict[int, dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[int, dict[str, float]], int]:
-    hits: list[dict[str, Any]] = []
-    totals: dict[int, dict[str, float]] = defaultdict(lambda: {"tes_total_keV": 0.0, "shield_total_keV": 0.0})
+def parse_cc_hit(line: str, history_id: int, region_kind: dict[str, str]) -> dict[str, Any] | None:
+    match = CC_HIT_RE.match(line)
+    if match is None:
+        return None
+    volume = match.group("volume")
+    kv = {key: value for key, value in KV_RE.findall(match.group("kv"))}
+    return {
+        "history_id": history_id,
+        "volume": volume,
+        "region_kind": cc_volume_kind(volume, region_kind),
+        "x_cm": parse_float(kv.get("x", "")),
+        "y_cm": parse_float(kv.get("y", "")),
+        "z_cm": parse_float(kv.get("z", "")),
+        "deposit_keV": parse_float(kv.get("edep_keV", "")),
+        "time_s": parse_float(kv.get("t", "")),
+        "secondary": kv.get("sec", ""),
+        "track_id": parse_int(kv.get("tid", "")),
+        "parent_track_id": parse_int(kv.get("pid", "")),
+        "step_process": kv.get("sproc", ""),
+        "primary": kv.get("prim", ""),
+        "parent": kv.get("par", ""),
+        "creator_process": kv.get("cproc", ""),
+        "primary_id": parse_int(kv.get("primid", "")),
+    }
+
+
+def parse_megalib_hits(
+    sim_path: Path,
+    region_kind: dict[str, str],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[int, dict[str, float]], int]:
+    htsim_hits: list[dict[str, Any]] = []
+    cc_hits: list[dict[str, Any]] = []
+    totals: dict[int, dict[str, float]] = defaultdict(
+        lambda: {
+            "tes_total_keV": 0.0,
+            "active_shield_total_keV": 0.0,
+            "other_total_keV": 0.0,
+            "all_total_keV": 0.0,
+            "cc_hit_rows": 0.0,
+        }
+    )
     history_id = 0
     event_count = 0
     if not sim_path.exists():
-        return hits, {}, 0
+        return htsim_hits, cc_hits, {}, 0
     for raw in open_sim(sim_path):
         line = raw.strip()
         if line.startswith("ID "):
@@ -303,29 +383,51 @@ def parse_megalib_hits(sim_path: Path, detectors: dict[int, dict[str, Any]]) -> 
                     history_id = int(parts[1])
                 except ValueError:
                     history_id = event_count
-        elif line.startswith("HTsim"):
-            hit = parse_htsim(line, history_id, detectors)
+        elif line.startswith("CC HIT"):
+            hit = parse_cc_hit(line, history_id, region_kind)
             if hit is None:
                 continue
-            hits.append(hit)
-            kind = str(hit["detector_kind"])
+            cc_hits.append(hit)
+            deposit = float(hit["deposit_keV"])
+            totals[history_id]["all_total_keV"] += deposit
+            totals[history_id]["cc_hit_rows"] += 1.0
+            kind = str(hit["region_kind"])
             if kind == "TES_PIXEL":
-                totals[history_id]["tes_total_keV"] += float(hit["deposit_keV"])
+                totals[history_id]["tes_total_keV"] += deposit
             elif kind == "ACTIVE_SHIELD":
-                totals[history_id]["shield_total_keV"] += float(hit["deposit_keV"])
-    return hits, dict(totals), event_count
+                totals[history_id]["active_shield_total_keV"] += deposit
+            else:
+                totals[history_id]["other_total_keV"] += deposit
+        elif line.startswith("HTsim"):
+            hit = parse_htsim(line, history_id)
+            if hit is None:
+                continue
+            htsim_hits.append(hit)
+    return htsim_hits, cc_hits, dict(totals), event_count
 
 
 def event_total_rows(sources: list[dict[str, Any]], totals: dict[int, dict[str, float]]) -> list[dict[str, Any]]:
     out = []
     for row in sources:
         history_id = int(row["history_id"])
-        vals = totals.get(history_id, {"tes_total_keV": 0.0, "shield_total_keV": 0.0})
+        vals = totals.get(
+            history_id,
+            {
+                "tes_total_keV": 0.0,
+                "active_shield_total_keV": 0.0,
+                "other_total_keV": 0.0,
+                "all_total_keV": 0.0,
+                "cc_hit_rows": 0.0,
+            },
+        )
         out.append(
             {
                 "history_id": history_id,
                 "tes_total_keV": vals["tes_total_keV"],
-                "shield_total_keV": vals["shield_total_keV"],
+                "active_shield_total_keV": vals["active_shield_total_keV"],
+                "other_total_keV": vals["other_total_keV"],
+                "all_total_keV": vals["all_total_keV"],
+                "cc_hit_rows": int(vals["cc_hit_rows"]),
             }
         )
     return out
@@ -364,29 +466,82 @@ def sample_rows(rows: list[dict[str, Any]], limit: int) -> list[dict[str, Any]]:
     return rows[: max(0, limit)]
 
 
-def hit_detector_summary(hits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def htsim_detector_type_summary(hits: list[dict[str, Any]]) -> list[dict[str, Any]]:
     grouped: dict[int, dict[str, Any]] = {}
-    histories_by_detector: dict[int, set[int]] = defaultdict(set)
+    histories_by_type: dict[int, set[int]] = defaultdict(set)
     for hit in hits:
-        detector_id = int(hit["detector_id"])
-        if detector_id not in grouped:
-            grouped[detector_id] = {
-                "detector_id": detector_id,
-                "detector_name": hit["detector_name"],
-                "detector_volume": hit["detector_volume"],
-                "detector_kind": hit["detector_kind"],
+        detector_type = int(hit["megalib_detector_type"])
+        if detector_type not in grouped:
+            grouped[detector_type] = {
+                "megalib_detector_type": detector_type,
+                "megalib_detector_type_name": hit["megalib_detector_type_name"],
                 "hit_rows": 0,
                 "histories_with_hit": 0,
                 "deposit_keV_sum": 0.0,
             }
-        grouped[detector_id]["hit_rows"] += 1
-        grouped[detector_id]["deposit_keV_sum"] += float(hit["deposit_keV"])
-        histories_by_detector[detector_id].add(int(hit["history_id"]))
+        grouped[detector_type]["hit_rows"] += 1
+        grouped[detector_type]["deposit_keV_sum"] += float(hit["deposit_keV"])
+        histories_by_type[detector_type].add(int(hit["history_id"]))
     out = []
-    for detector_id, row in grouped.items():
-        row["histories_with_hit"] = len(histories_by_detector[detector_id])
+    for detector_type, row in grouped.items():
+        row["histories_with_hit"] = len(histories_by_type[detector_type])
         out.append(row)
-    return sorted(out, key=lambda row: (-float(row["deposit_keV_sum"]), int(row["detector_id"])))
+    return sorted(out, key=lambda row: (-float(row["deposit_keV_sum"]), int(row["megalib_detector_type"])))
+
+
+def cc_volume_summary(hits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    grouped: dict[str, dict[str, Any]] = {}
+    histories_by_volume: dict[str, set[int]] = defaultdict(set)
+    for hit in hits:
+        volume = str(hit["volume"])
+        if volume not in grouped:
+            grouped[volume] = {
+                "volume": volume,
+                "region_kind": hit["region_kind"],
+                "hit_rows": 0,
+                "histories_with_hit": 0,
+                "deposit_keV_sum": 0.0,
+            }
+        grouped[volume]["hit_rows"] += 1
+        grouped[volume]["deposit_keV_sum"] += float(hit["deposit_keV"])
+        histories_by_volume[volume].add(int(hit["history_id"]))
+    out = []
+    for volume, row in grouped.items():
+        row["histories_with_hit"] = len(histories_by_volume[volume])
+        out.append(row)
+    return sorted(out, key=lambda row: (-float(row["deposit_keV_sum"]), str(row["volume"])))
+
+
+def cc_particle_summary(hits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    grouped: dict[tuple[str, str, str, str, str], dict[str, Any]] = {}
+    histories_by_group: dict[tuple[str, str, str, str, str], set[int]] = defaultdict(set)
+    for hit in hits:
+        key = (
+            str(hit["region_kind"]),
+            str(hit["secondary"]),
+            str(hit["parent"]),
+            str(hit["creator_process"]),
+            str(hit["step_process"]),
+        )
+        if key not in grouped:
+            grouped[key] = {
+                "region_kind": key[0],
+                "secondary": key[1],
+                "parent": key[2],
+                "creator_process": key[3],
+                "step_process": key[4],
+                "hit_rows": 0,
+                "histories_with_hit": 0,
+                "deposit_keV_sum": 0.0,
+            }
+        grouped[key]["hit_rows"] += 1
+        grouped[key]["deposit_keV_sum"] += float(hit["deposit_keV"])
+        histories_by_group[key].add(int(hit["history_id"]))
+    out = []
+    for key, row in grouped.items():
+        row["histories_with_hit"] = len(histories_by_group[key])
+        out.append(row)
+    return sorted(out, key=lambda row: (str(row["region_kind"]), -float(row["deposit_keV_sum"]), str(row["secondary"])))
 
 
 def main() -> int:
@@ -396,7 +551,7 @@ def main() -> int:
     ap.add_argument("--seed", type=int, default=24066900)
     ap.add_argument("--max-events", type=int, default=1000)
     ap.add_argument("--start-index", type=int, default=1)
-    ap.add_argument("--sample-rows", type=int, default=1000)
+    ap.add_argument("--sample-rows", type=int, default=50)
     ap.add_argument("--keep-run-products", action="store_true")
     args = ap.parse_args()
 
@@ -443,22 +598,62 @@ def main() -> int:
 
     sim_file = find_sim_file(out_prefix)
     sim_file_generated = sim_file.exists()
-    detectors = detector_map()
-    hits, totals, event_count = parse_megalib_hits(sim_file, detectors)
-    total_rows = event_total_rows(sources, totals)
+    region_kind = region_kind_by_volume()
+    detector_instances = detector_instance_map()
+    htsim_hits, cc_hits, totals, event_count = parse_megalib_hits(sim_file, region_kind)
     bands = band_summary(sources, totals)
-    hit_summary = hit_detector_summary(hits)
+    htsim_type_summary = htsim_detector_type_summary(htsim_hits)
+    volume_summary = cc_volume_summary(cc_hits)
+    tes_hits = [hit for hit in cc_hits if hit["region_kind"] == "TES_PIXEL"]
+    particle_summary = cc_particle_summary(cc_hits)
+    tes_particle_summary = cc_particle_summary(tes_hits)
 
-    write_csv(out_dir / "event_total_sample.csv", sample_rows(total_rows, args.sample_rows), ["history_id", "tes_total_keV", "shield_total_keV"])
     write_csv(
-        out_dir / "raw_hit_sample.csv",
-        sample_rows(hits, args.sample_rows),
-        ["history_id", "detector_id", "detector_name", "detector_volume", "detector_kind", "x_cm", "y_cm", "z_cm", "deposit_keV", "time_s", "pixel_ids"],
-    )
-    write_csv(
-        out_dir / "band_summary.csv",
+        out_dir / "cc_band_summary.csv",
         bands,
         ["band", "band_label", "histories", "events", "efficiency_per_parent", "top_material_counts", "top_source_volume_counts"],
+    )
+    write_csv(
+        out_dir / "cc_volume_summary.csv",
+        volume_summary,
+        ["volume", "region_kind", "hit_rows", "histories_with_hit", "deposit_keV_sum"],
+    )
+    write_csv(
+        out_dir / "cc_particle_summary.csv",
+        particle_summary,
+        ["region_kind", "secondary", "parent", "creator_process", "step_process", "hit_rows", "histories_with_hit", "deposit_keV_sum"],
+    )
+    write_csv(
+        out_dir / "cc_tes_hit_sample.csv",
+        sample_rows(tes_hits, args.sample_rows),
+        [
+            "history_id",
+            "volume",
+            "region_kind",
+            "x_cm",
+            "y_cm",
+            "z_cm",
+            "deposit_keV",
+            "time_s",
+            "secondary",
+            "track_id",
+            "parent_track_id",
+            "step_process",
+            "primary",
+            "parent",
+            "creator_process",
+            "primary_id",
+        ],
+    )
+    write_csv(
+        out_dir / "cc_tes_particle_summary.csv",
+        tes_particle_summary,
+        ["region_kind", "secondary", "parent", "creator_process", "step_process", "hit_rows", "histories_with_hit", "deposit_keV_sum"],
+    )
+    write_csv(
+        out_dir / "htsim_detector_type_summary.csv",
+        htsim_type_summary,
+        ["megalib_detector_type", "megalib_detector_type_name", "hit_rows", "histories_with_hit", "deposit_keV_sum"],
     )
     detector_rows = [
         {
@@ -469,17 +664,12 @@ def main() -> int:
             "sensitive_volume": value["sensitive_volume"],
             "detector_kind": value["detector_kind"],
         }
-        for key, value in sorted(detectors.items())
+        for key, value in sorted(detector_instances.items())
     ]
     write_csv(
-        out_dir / "detector_map_summary.csv",
+        out_dir / "detector_instance_summary.csv",
         detector_rows,
         ["detector_id", "detector_type", "detector_name", "detector_volume", "sensitive_volume", "detector_kind"],
-    )
-    write_csv(
-        out_dir / "detector_hit_summary.csv",
-        hit_summary,
-        ["detector_id", "detector_name", "detector_volume", "detector_kind", "hit_rows", "histories_with_hit", "deposit_keV_sum"],
     )
 
     manifest = {
@@ -505,7 +695,12 @@ def main() -> int:
         "sim_file": str(sim_file),
         "sim_file_generated": sim_file_generated,
         "sim_event_count": event_count,
-        "raw_hit_rows": len(hits),
+        "raw_schema": "CC HIT volume energy deposits",
+        "raw_hit_rows": len(cc_hits),
+        "cc_hit_rows": len(cc_hits),
+        "cc_tes_hit_rows": len(tes_hits),
+        "htsim_hit_rows": len(htsim_hits),
+        "htsim_first_field": "MEGAlib detector type, not .det detector instance id",
         "run_products_retained": bool(args.keep_run_products),
         "cosima_log": str(log_path),
         "no_sim_gz_replay": True,
@@ -535,22 +730,31 @@ def main() -> int:
         "geometry": str(FIX5_GEOMETRY),
         "geometry_sha256": sha256_path(FIX5_GEOMETRY),
         "sim_event_count": event_count,
-        "raw_hit_rows": len(hits),
+        "raw_schema": "CC HIT volume energy deposits",
+        "raw_hit_rows": len(cc_hits),
+        "cc_hit_rows": len(cc_hits),
+        "cc_tes_hit_rows": len(tes_hits),
+        "htsim_hit_rows": len(htsim_hits),
+        "htsim_first_field": "MEGAlib detector type, not .det detector instance id",
         "run_products_retained": bool(args.keep_run_products),
         "run_manifest": rel(out_dir / "run_manifest.csv"),
-        "band_summary_csv": rel(out_dir / "band_summary.csv"),
-        "raw_hit_sample_csv": rel(out_dir / "raw_hit_sample.csv"),
-        "event_total_sample_csv": rel(out_dir / "event_total_sample.csv"),
-        "detector_map_summary_csv": rel(out_dir / "detector_map_summary.csv"),
-        "detector_hit_summary_csv": rel(out_dir / "detector_hit_summary.csv"),
-        "detector_hit_summary": hit_summary,
-        "band_summary": bands,
-        "boundary": "MEGAlib-only Phase-3 common Cu-64 raw-hit smoke; native HTsim detector/readout semantics are not yet FLUKA-equivalent raw deposits, so FLUKA production comparison, common event builder, and production-statistics closure remain open",
+        "cc_band_summary_csv": rel(out_dir / "cc_band_summary.csv"),
+        "cc_volume_summary_csv": rel(out_dir / "cc_volume_summary.csv"),
+        "cc_particle_summary_csv": rel(out_dir / "cc_particle_summary.csv"),
+        "cc_tes_hit_sample_csv": rel(out_dir / "cc_tes_hit_sample.csv"),
+        "cc_tes_particle_summary_csv": rel(out_dir / "cc_tes_particle_summary.csv"),
+        "htsim_detector_type_summary_csv": rel(out_dir / "htsim_detector_type_summary.csv"),
+        "detector_instance_summary_csv": rel(out_dir / "detector_instance_summary.csv"),
+        "htsim_detector_type_summary": htsim_type_summary,
+        "cc_volume_summary": volume_summary[:20],
+        "cc_tes_particle_summary": tes_particle_summary,
+        "cc_band_summary": bands,
+        "boundary": "MEGAlib-only Phase-3 common Cu-64 raw-hit smoke; CC HIT volume deposits now provide the common raw-deposit schema, while native HTsim is retained only as a MEGAlib detector-type/readout summary. FLUKA production comparison, common event building, and production-statistics closure remain open.",
     }
     write_json(out_dir / "summary.json", summary)
 
     band_lines = [
-        "## Smoke Band Counts",
+        "## CC HIT Volume-Truth Band Counts",
         "",
         "| band | events / histories | efficiency_per_parent | top_material_counts |",
         "|---|---:|---:|---|",
@@ -560,17 +764,40 @@ def main() -> int:
             f"| `{row['band_label']}` | `{row['events']} / {row['histories']}` | "
             f"`{row['efficiency_per_parent']:.6g}` | `{row['top_material_counts']}` |"
         )
-    detector_lines = [
-        "## Detector Hit Summary",
+    volume_lines = [
+        "## CC HIT Volume Summary",
         "",
-        "| detector | histories_with_hit | hit_rows | deposit_keV_sum |",
-        "|---|---:|---:|---:|",
+        "| volume | region_kind | histories_with_hit | hit_rows | deposit_keV_sum |",
+        "|---|---|---:|---:|---:|",
     ]
-    for row in hit_summary[:10]:
-        detector_lines.append(
-            f"| `{row['detector_name']}` / `{row['detector_volume']}` | "
+    for row in volume_summary[:10]:
+        volume_lines.append(
+            f"| `{row['volume']}` | `{row['region_kind']}` | "
             f"`{row['histories_with_hit']}` | `{row['hit_rows']}` | "
             f"`{float(row['deposit_keV_sum']):.6g}` |"
+        )
+    htsim_lines = [
+        "## Native HTsim Detector-Type Summary",
+        "",
+        "| detector_type | type_name | histories_with_hit | hit_rows | deposit_keV_sum |",
+        "|---:|---|---:|---:|---:|",
+    ]
+    for row in htsim_type_summary[:10]:
+        htsim_lines.append(
+            f"| `{row['megalib_detector_type']}` | `{row['megalib_detector_type_name']}` | "
+            f"`{row['histories_with_hit']}` | `{row['hit_rows']}` | "
+            f"`{float(row['deposit_keV_sum']):.6g}` |"
+        )
+    tes_particle_lines = [
+        "## CC HIT TES Particle/Ancestry Summary",
+        "",
+        "| secondary | parent | creator_process | step_process | histories_with_hit | hit_rows | deposit_keV_sum |",
+        "|---|---|---|---|---:|---:|---:|",
+    ]
+    for row in tes_particle_summary:
+        tes_particle_lines.append(
+            f"| `{row['secondary']}` | `{row['parent']}` | `{row['creator_process']}` | `{row['step_process']}` | "
+            f"`{row['histories_with_hit']}` | `{row['hit_rows']}` | `{float(row['deposit_keV_sum']):.6g}` |"
         )
     (out_dir / "summary.md").write_text(
         "\n".join(
@@ -584,20 +811,31 @@ def main() -> int:
                 "- no `.sim.gz` replay: `True`",
                 f"- histories: `{len(sources)}`",
                 f"- sim_event_count: `{event_count}`",
-                f"- raw_hit_rows: `{len(hits)}`",
+                "- raw_schema: `CC HIT volume energy deposits`",
+                f"- cc_hit_rows: `{len(cc_hits)}`",
+                f"- cc_tes_hit_rows: `{len(tes_hits)}`",
+                f"- htsim_hit_rows: `{len(htsim_hits)}`",
+                "- htsim_first_field: `MEGAlib detector type, not .det detector instance id`",
                 f"- run_products_retained: `{bool(args.keep_run_products)}`",
                 f"- elapsed_s: `{elapsed_s:.3f}`",
-                f"- band_summary_csv: `{rel(out_dir / 'band_summary.csv')}`",
+                f"- cc_band_summary_csv: `{rel(out_dir / 'cc_band_summary.csv')}`",
+                f"- cc_tes_hit_sample_csv: `{rel(out_dir / 'cc_tes_hit_sample.csv')}`",
+                f"- cc_tes_particle_summary_csv: `{rel(out_dir / 'cc_tes_particle_summary.csv')}`",
                 "",
                 *band_lines,
                 "",
-                *detector_lines,
+                *volume_lines,
+                "",
+                *tes_particle_lines,
+                "",
+                *htsim_lines,
                 "",
                 "## Boundary",
                 "",
                 "- This is the MEGAlib side only.",
-                "- It validates full-geometry raw-hit plumbing for the Phase-3 common Cu-64 parent stream.",
-                "- The native HTsim detector/readout semantics are not yet a FLUKA-equivalent raw-deposit schema.",
+                "- It validates full-geometry raw-hit plumbing for the Phase-3 common Cu-64 parent stream without `.sim.gz` replay.",
+                "- `CC HIT` comments provide the common volume-deposit schema for TES/W2 band counts.",
+                "- Native `HTsim` is retained only as a MEGAlib detector-type/readout summary; its first field is not a `.det` detector-instance id.",
                 "- Cosima `.sim.gz` run products are deleted by default after parsing.",
                 "- FLUKA production comparison, common event building, and production-statistics closure remain open.",
                 "",

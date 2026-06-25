@@ -29,7 +29,7 @@
 - The FLUKA-side `1000`-history raw-deposit smoke runs directly from that parent list, without `.sim.gz` replay, and closes raw dump versus score output at `1.34e-10` TES relative delta and `2.28e-10` shield relative delta.
 - The MEGAlib-side `1000`-event raw-hit smoke also runs directly from that parent list, without `.sim.gz` replay, using `Run.Events` and `PreTriggerMode Everything`.
 - Runtime Geant4/FLUKA point-location has not been tested by these static artifacts.
-- MEGAlib native HTsim detector/readout semantics are not yet calibrated to the FLUKA raw-deposit schema; production-statistics FLUKA/MEGAlib transport has not yet been run from the resampled parent list.
+- MEGAlib HTsim semantics are calibrated: HTsim first field is detector type, not `.det` detector id. Comparable MEGAlib TES/W2 counts now use `CC HIT` volume-deposit truth. Production-statistics FLUKA/MEGAlib transport has not yet been run from the resampled parent list.
 - `sampling_probability` is normalized over Cu-64 rows only and is suitable for deterministic Cu-64 parent resampling.
 
 ## FLUKA Raw-Deposit Smoke
@@ -64,23 +64,25 @@ engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/mega
 
 | band | events / histories | efficiency |
 |---|---:|---:|
-| all TES > 0 | `1000 / 1000` | `1.0` |
-| 480-550 keV | `12 / 1000` | `0.012` |
+| all TES > 0 | `3 / 1000` | `0.003` |
+| 480-550 keV | `1 / 1000` | `0.001` |
 | W2 510.58-511.42 keV | `1 / 1000` | `0.001` |
-| 1500-3000 keV | `1 / 1000` | `0.001` |
+| 1500-3000 keV | `0 / 1000` | `0.0` |
 | 3000-10000 keV | `0 / 1000` | `0.0` |
 
-Detector-hit summary:
+`CC HIT` TES particle/ancestry summary:
 
-| detector/readout | histories_with_hit | hit_rows | deposit_keV_sum |
-|---|---:|---:|---:|
-| `D4 / TES_L3` | `1000` | `1349` | `212788.603` |
-| `D2 / TES_L1` | `3` | `3` | `727.334` |
+| TES local secondary | parent | creator/step process | histories | hit_rows | deposit_keV_sum |
+|---|---|---|---:|---:|---:|
+| `e-` | `gamma` | `phot -> eIoni` | `2` | `5` | `605.294` |
+| `e-` | `gamma` | `compt -> eIoni` | `1` | `1` | `76.360` |
+| `gamma` | `gamma` | `phot -> phot` | `2` | `2` | `23.312` |
+| `gamma` | `e+` | `annihil -> phot` | `2` | `2` | `22.326` |
+| `gamma` | `e+` | `annihil -> compt` | `1` | `1` | `0.0419` |
 
-Boundary: this is a MEGAlib-only runner/parser smoke. It proves the same
-independent parent stream can drive Cosima and be parsed without replay, but
-the native HTsim detector/readout semantics are not yet a FLUKA-equivalent
-raw-deposit schema. Do not compare the MEGAlib `1000/1000` all-TES count
-directly to the FLUKA `5/1000` raw-deposit count; detector/readout semantic
-calibration or a common deposit-level scorer is required before interpreting
-per-parent W2 efficiency.
+Boundary: this is a MEGAlib-only smoke-statistics raw-deposit plumbing result.
+It proves the same independent parent stream can drive Cosima and be parsed
+without replay. It also calibrates the HTsim ambiguity: native HTsim type `4`
+means `Scintillator`, not `.det` detector `D4`. The comparable smoke counts are
+FLUKA `5/1000` any-TES and `2/1000` W2 versus MEGAlib `3/1000` any-TES and
+`1/1000` W2, too small for an efficiency conclusion.

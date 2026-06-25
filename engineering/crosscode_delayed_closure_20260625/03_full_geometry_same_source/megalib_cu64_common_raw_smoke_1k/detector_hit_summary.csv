@@ -1,3 +1,0 @@
-detector_id,detector_name,detector_volume,detector_kind,hit_rows,histories_with_hit,deposit_keV_sum
-4,D4,TES_L3,TES_PIXEL,1349,1000,212788.60286999986
-2,D2,TES_L1,TES_PIXEL,3,3,727.33396

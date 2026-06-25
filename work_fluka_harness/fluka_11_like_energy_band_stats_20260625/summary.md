@@ -152,7 +152,7 @@ This is the check for the photon/electron concern. `deposit_carrier` is the loca
 7. The first T1 Cu-sphere transport smoke is complete. For 1 cm Cu sphere escape, the 511-related W2 photon yields are close at smoke statistics: Cu-64 positron rows FLUKA/MEGAlib `0.972`, mono-511 rows `0.943`, and pair-511 rows `0.897`; the largest of these approximate Poisson z-scores is `1.21 sigma`. T2/Ta deposition and common raw-deposit truth remain open.
 8. The first T2 Cu+Ta absorber smoke proved both engines can reach the same Ta deposited-energy observable, but its `9` vs `4` Cu-64 W2 counts were too low to interpret.
 9. The T2 production-statistics generated-source run now closes the toy W2 deposited-energy gate. With `100000` rows each for Cu-64 positrons, mono-511 photons, and pair-511 photons, the W2 Ta efficiencies are FLUKA/MEGAlib `1.029` for Cu-64 positrons (`1132` vs `1100`, `0.68 sigma`), `0.986` for mono-511 photons, and `1.007` for pair-511 photons. Therefore the full-chain FLUKA delayed W2 excess is not explained by a simple common-source Cu+Ta W2 EM transport/deposition mismatch in this toy geometry.
-10. Phase 3 has started: `cu64_common_positions.csv` now contains `6927` source-v2 Cu-64 positions with total Cu-64 activity weight `4.701904943 Bq`. The name-level source-volume/material audit passes for all rows, and the static coordinate-containment audit also passes after inverse `InstrumentFrame.Rotation 0 45 0`: `6927/6927` rows lie inside their declared source volume, with deepest resolved material `93.75%` `Copper` and `6.25%` `CuNi`. A deterministic `1,000,000`-history Cu-64 parent resampling authority is also built; it represents all `6927` source rows at least once and records the full selected-index stream hash. A `1000`-history FLUKA raw-deposit smoke from that list passes without `.sim.gz` replay and closes raw dump versus score output at `1.337e-10` TES relative delta. A `1000`-event MEGAlib raw-hit smoke also runs without replay, using `Run.Events` and `PreTriggerMode Everything`, but native HTsim hits are dominated by `D4/TES_L3` and are not yet a FLUKA-equivalent raw-deposit schema. This still is not a runtime Geant4 point-location scorer, detector/readout semantic calibration, common event-builder result, or production-statistics transport run.
+10. Phase 3 has started: `cu64_common_positions.csv` now contains `6927` source-v2 Cu-64 positions with total Cu-64 activity weight `4.701904943 Bq`. The name-level source-volume/material audit passes for all rows, and the static coordinate-containment audit also passes after inverse `InstrumentFrame.Rotation 0 45 0`: `6927/6927` rows lie inside their declared source volume, with deepest resolved material `93.75%` `Copper` and `6.25%` `CuNi`. A deterministic `1,000,000`-history Cu-64 parent resampling authority is also built; it represents all `6927` source rows at least once and records the full selected-index stream hash. A `1000`-history FLUKA raw-deposit smoke from that list passes without `.sim.gz` replay and closes raw dump versus score output at `1.337e-10` TES relative delta. A `1000`-event MEGAlib raw-hit smoke also runs without replay, using `Run.Events` and `PreTriggerMode Everything`. The HTsim semantics are now calibrated: the first field is a MEGAlib detector type (`4 = Scintillator`), not a `.det` detector id, so the comparable MEGAlib raw-deposit statistic is from `CC HIT` volume truth: `3/1000` any-TES and `1/1000` W2. This still is not a runtime Geant4 point-location scorer, common event-builder result, or production-statistics transport run.
 
 ## Decay-Kernel Cross-Code Check
 
@@ -362,16 +362,17 @@ engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/mega
 ```
 
 The corrected source uses `Run.Events 1000` and `PreTriggerMode Everything`.
-Native HTsim band counts are `1000/1000` all-TES, `12/1000` for 480-550 keV,
-`1/1000` for W2, `1/1000` for 1500-3000 keV, and `0/1000` for 3000-10000 keV.
-The detector-hit summary is dominated by `D4/TES_L3` (`1000` histories,
-`1349` hit rows, `212788.603 keV` summed deposit).
+The corrected comparable MEGAlib band counts come from `CC HIT` volume-deposit
+truth, not native HTsim: `3/1000` any-TES, `1/1000` for 480-550 keV, `1/1000`
+for W2, and zero in the higher bands. Native HTsim still records `1000/1000`
+type-4 (`Scintillator`) histories, but that field is detector type, not `.det`
+detector id; the previous `D4/TES_L3` reading was a parser mistake.
 
-Boundary: the FLUKA smoke is a raw-deposit scorer closure, while the MEGAlib
-smoke is a runner/parser closure with native HTsim detector/readout semantics.
-Do not compare MEGAlib `1000/1000` all-TES directly to FLUKA `5/1000`.
-MEGAlib detector/readout semantic calibration, common event building, and
-production statistics remain open.
+Boundary: the two smoke raw-deposit counts are FLUKA `5/1000` any-TES and
+`2/1000` W2 versus MEGAlib `3/1000` any-TES and `1/1000` W2. This is consistent
+at smoke statistics but far too low to close the delayed-W2 efficiency.
+Common event building, analytic W2 response, runtime point-location if needed,
+and production statistics remain open.
 
 ## Artifacts
 

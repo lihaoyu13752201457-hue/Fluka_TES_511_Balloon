@@ -31,8 +31,6 @@ is not yet evidence that the prompt and activation components are each correct.
   - Prompt same-statistic comparison artifacts.
 - `work_fluka_harness/delayed_final_same_stat_isotope_source_full254704/`
   - Delayed isotope-source same-statistic comparison artifacts.
-- `work_fluka_harness/source_truth_validation/`
-  - Source-truth gate summaries for the eight prompt species.
 - `engineering/crosscode_delayed_closure_20260625/`
   - Current delayed closure engineering status.
   - FLUKA runtime source-identity gate showing that checked delayed parents
@@ -43,14 +41,15 @@ is not yet evidence that the prompt and activation components are each correct.
 `eplus` and `n` in the final W2 prompt decomposition are source tags, not the
 identity of the particle locally depositing energy in the TES. The FLUKA local
 TES deposit carrier table is dominated by `EM_BELOW_THRESHOLD`, consistent
-with electromagnetic/photon-induced local deposits. The current raw-deposit CSV
-does not retain full parent/track ancestry, so a dedicated boundary-crossing or
-ancestry scorer would be needed to count incident photons at the TES surface
-event by event.
+with electromagnetic/photon-induced local deposits. The MEGAlib `CC HIT`
+cross-check makes this explicit at smoke statistics: most TES-local `e-`
+deposits carry `gamma phot/compt` ancestry, with smaller direct `gamma` rows.
+So "electron" in a local-deposit table is a carrier label, not evidence that
+photons are absent from the TES background.
 
 ## Excluded Data
 
-Raw FLUKA chunks, replay runs, smoke runs, local temporary FLUKA outputs, and
-old `.sim.gz` replay comparison artifacts were removed from this reduced
-handoff. Replay is transport-only side evidence and is not used for the final
+Raw FLUKA chunks, replay runs, local temporary FLUKA/Cosima outputs, and old
+`.sim.gz` replay/source-truth validation artifacts were removed from this
+reduced handoff. Replay-derived checks are not used for the final
 independent-source conclusion.

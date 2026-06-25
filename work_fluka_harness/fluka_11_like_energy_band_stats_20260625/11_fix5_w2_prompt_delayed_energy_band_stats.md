@@ -524,30 +524,44 @@ engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/mega
 ```
 
 The corrected source uses `Run.Events 1000` and `PreTriggerMode Everything`,
-so the denominator is simulated events, not requested triggered events.
+so the denominator is simulated events, not requested triggered events. The
+important parser correction is that native `HTsim` first field is the MEGAlib
+detector type (`4 = Scintillator`, `2 = Calorimeter`), not the `.det`
+detector-instance id. The previous `D4/TES_L3` interpretation was therefore a
+semantic error. For FLUKA comparison, use the patched `CC HIT <volume>
+edep_keV=...` volume-deposit truth.
 
 | band | events / histories | efficiency |
 |---|---:|---:|
-| all TES > 0 | `1000 / 1000` | `1.0` |
-| 480-550 keV | `12 / 1000` | `0.012` |
+| all TES > 0 | `3 / 1000` | `0.003` |
+| 480-550 keV | `1 / 1000` | `0.001` |
 | W2 510.58-511.42 keV | `1 / 1000` | `0.001` |
-| 1500-3000 keV | `1 / 1000` | `0.001` |
+| 1500-3000 keV | `0 / 1000` | `0.0` |
 | 3000-10000 keV | `0 / 1000` | `0.0` |
 
-Detector-hit summary:
+`CC HIT` TES particle/ancestry summary:
 
-| detector/readout | histories_with_hit | hit_rows | deposit_keV_sum |
-|---|---:|---:|---:|
-| `D4 / TES_L3` | `1000` | `1349` | `212788.603` |
-| `D2 / TES_L1` | `3` | `3` | `727.334` |
+| TES local secondary | parent | creator/step process | histories | hit_rows | deposit_keV_sum |
+|---|---|---|---:|---:|---:|
+| `e-` | `gamma` | `phot -> eIoni` | `2` | `5` | `605.294` |
+| `e-` | `gamma` | `compt -> eIoni` | `1` | `1` | `76.360` |
+| `gamma` | `gamma` | `phot -> phot` | `2` | `2` | `23.312` |
+| `gamma` | `e+` | `annihil -> phot` | `2` | `2` | `22.326` |
+| `gamma` | `e+` | `annihil -> compt` | `1` | `1` | `0.0419` |
 
-Boundary: this is a MEGAlib runner/parser smoke, not a physics-efficiency
-closure. The native HTsim detector/readout semantics are not yet equivalent to
-the FLUKA raw-deposit schema, as shown by the all-history D4/TES_L3 occupancy.
-Do not compare MEGAlib `1000/1000` all-TES directly to FLUKA `5/1000`. The
-next gate must align the MEGAlib detector/raw-hit semantics or bypass them with
-a common deposit-level scorer before production-statistics W2 efficiency is
-interpreted.
+This answers the photon/electron concern. The dominant TES energy is deposited
+locally by electrons, but those electrons are created by gamma photoelectric or
+Compton interactions in the TES. Thus "electron" is a local carrier label, not a
+statement that photon backgrounds are absent. The corrected MEGAlib `CC HIT`
+volume-truth smoke is also qualitatively close to the FLUKA smoke at this
+statistics level: FLUKA has `5/1000` any-TES and `2/1000` W2, while MEGAlib has
+`3/1000` any-TES and `1/1000` W2. These counts are too small for a production
+ratio, but they remove the false contradiction created by the old `1000/1000`
+HTsim reading.
+
+Boundary: this is still a smoke-statistics raw-deposit plumbing result, not a
+delayed-W2 closure. Production-statistics full-geometry transport, common event
+building, and deterministic analytic W2 response remain open.
 
 Audit artifacts:
 

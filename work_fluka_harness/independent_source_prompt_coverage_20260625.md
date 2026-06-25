@@ -2,26 +2,21 @@
 
 ## Scope
 
-This is the prompt-only independent-source coverage artifact for TES_511_BALLOON cross-code validation. It uses `sampled_source_authority` for FLUKA primary generation. Geant4 `.sim.gz` IA INIT is used only as source-truth validation data, not as replay input.
+This is the prompt-only independent-source coverage artifact for TES_511_BALLOON
+cross-code validation. It uses `sampled_source_authority` for FLUKA primary
+generation. The old Geant4 `.sim.gz` IA INIT source-truth diagnostic has been
+removed from the reduced handoff and is not used as final evidence.
 
 Delayed activation/source construction is reported separately in `work_fluka_harness/delayed_final_same_stat_isotope_source_full254704/summary.md`.
 
-## Source Truth
+## Source Authority
 
-Each prompt species was validated against 50,000 TES `.sim.gz` IA INIT rows before transport.
+The retained prompt evidence is the independent-source FLUKA same-statistic
+transport result below. The temporary `.sim.gz` IA INIT source-truth comparison
+used during debugging was removed because it is replay-derived side evidence.
 
-| particle | energy median ratio | radius median ratio | dz median delta | status |
-|---|---:|---:|---:|---|
-| eplus | `1.00105` | `1.00041` | `-0.0172275` | `PASS` |
-| muplus | `1.00692` | `1.00011` | `-0.00512925` | `PASS` |
-| muminus | `1.00215` | `0.999197` | `-0.00509305` | `PASS` |
-| alpha | `1.01101` | `1.00014` | `-0.00423253` | `PASS` |
-| p | `0.997442` | `1.00016` | `-0.000641899` | `PASS` |
-| eminus | `0.990438` | `0.999920` | `-0.00453309` | `PASS` |
-| gamma | `0.997544` | `0.998854` | `-0.00352954` | `PASS` |
-| n | `0.985641` | `1.00111` | `-0.00464143` | `PASS` |
-
-Energy policy for the legacy source CDFs: `LEGACY_CDF_ENERGY_MEV_COLUMN_USED_AS_KEV_TO_MATCH_TES_COSIMA_SOURCE`.
+Energy policy for the legacy source CDFs:
+`LEGACY_CDF_ENERGY_MEV_COLUMN_USED_AS_KEV_TO_MATCH_TES_COSIMA_SOURCE`.
 
 ## Full-Stat Runs
 

@@ -1,16 +1,11 @@
 {
-  "date": "2026-06-25",
-  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_T2_PRODUCTION_PHASE3_POSITION_NAME_STATIC_COORDINATE_PARENT_RESAMPLING_FLUKA_RAW_SMOKE_AND_MEGALIB_RAW_SMOKE_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
   "completed_gates": [
     {
       "gate": "manifest_freeze",
-      "status": "PASS",
-      "path": "engineering/crosscode_delayed_closure_20260625/00_manifest/summary.md"
+      "path": "engineering/crosscode_delayed_closure_20260625/00_manifest/summary.md",
+      "status": "PASS"
     },
     {
-      "gate": "fluka_runtime_source_identity",
-      "status": "PASS",
-      "path": "engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/summary.md",
       "checked_nuclides": [
         "Cu-64",
         "Cu-62",
@@ -18,282 +13,281 @@
         "Na-22",
         "Na-24",
         "Al-28"
-      ]
+      ],
+      "gate": "fluka_runtime_source_identity",
+      "path": "engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/summary.md",
+      "status": "PASS"
     },
     {
+      "checked_nuclides": [
+        "Cu-64",
+        "Na-24",
+        "Al-28",
+        "I-128"
+      ],
       "gate": "fluka_vacuum_decay_kernel_smoke",
-      "status": "PASS",
-      "path": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/summary.md",
       "histories_per_isotope": 20000,
-      "checked_nuclides": [
-        "Cu-64",
-        "Na-24",
-        "Al-28",
-        "I-128"
-      ],
       "key_results": {
-        "Cu-64_positron_yield_per_parent": 0.1778,
+        "Al-28_1779keV_gamma_yield_per_parent": 1.0,
         "Cu-64_1346keV_gamma_yield_per_parent": 0.0047,
-        "Na-24_1369keV_gamma_yield_per_parent": 0.9999,
-        "Na-24_2754keV_gamma_yield_per_parent": 0.99855,
+        "Cu-64_positron_yield_per_parent": 0.1778,
+        "I-128_photon_yield_per_parent": 0.2038,
         "Na-24_1369_2754_same_parent_fraction": 0.99855,
-        "Al-28_1779keV_gamma_yield_per_parent": 1.0,
-        "I-128_photon_yield_per_parent": 0.2038
-      }
+        "Na-24_1369keV_gamma_yield_per_parent": 0.9999,
+        "Na-24_2754keV_gamma_yield_per_parent": 0.99855
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/summary.md",
+      "status": "PASS"
     },
     {
+      "checked_nuclides": [
+        "Cu-64",
+        "Na-24",
+        "Al-28",
+        "I-128"
+      ],
       "gate": "fluka_vacuum_decay_kernel_production",
-      "status": "PASS",
-      "path": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/summary.md",
       "histories_per_isotope": 1000000,
-      "checked_nuclides": [
-        "Cu-64",
-        "Na-24",
-        "Al-28",
-        "I-128"
-      ],
       "key_results": {
-        "Cu-64_positron_yield_per_parent": 0.176483,
-        "Cu-64_1346keV_gamma_yield_per_parent": 0.004785,
-        "Na-24_1369keV_gamma_yield_per_parent": 0.999939,
-        "Na-24_2754keV_gamma_yield_per_parent": 0.998547,
-        "Na-24_1369_2754_same_parent_fraction": 0.998547,
         "Al-28_1779keV_gamma_yield_per_parent": 1.0,
-        "I-128_photon_yield_per_parent": 0.199216
-      }
+        "Cu-64_1346keV_gamma_yield_per_parent": 0.004785,
+        "Cu-64_positron_yield_per_parent": 0.176483,
+        "I-128_photon_yield_per_parent": 0.199216,
+        "Na-24_1369_2754_same_parent_fraction": 0.998547,
+        "Na-24_1369keV_gamma_yield_per_parent": 0.999939,
+        "Na-24_2754keV_gamma_yield_per_parent": 0.998547
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_production/summary.md",
+      "status": "PASS"
     },
     {
-      "gate": "geant4_megalib_vacuum_decay_kernel_smoke",
-      "status": "PASS",
-      "path": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md",
-      "histories_per_isotope": 20000,
       "checked_nuclides": [
         "Cu-64",
         "Na-24",
         "Al-28",
         "I-128"
       ],
+      "gate": "geant4_megalib_vacuum_decay_kernel_smoke",
+      "histories_per_isotope": 20000,
       "key_results": {
-        "Cu-64_positron_yield_per_parent": 0.1767,
-        "Cu-64_1346keV_gamma_yield_per_parent": 0.0043,
-        "Na-24_1369keV_gamma_yield_per_parent": 0.99995,
-        "Na-24_2754keV_gamma_yield_per_parent": 0.9988,
-        "Na-24_1369_2754_same_parent_fraction": 0.9988,
         "Al-28_1779keV_gamma_yield_per_parent": 1.0,
-        "I-128_photon_yield_per_parent": 0.20605
-      }
+        "Cu-64_1346keV_gamma_yield_per_parent": 0.0043,
+        "Cu-64_positron_yield_per_parent": 0.1767,
+        "I-128_photon_yield_per_parent": 0.20605,
+        "Na-24_1369_2754_same_parent_fraction": 0.9988,
+        "Na-24_1369keV_gamma_yield_per_parent": 0.99995,
+        "Na-24_2754keV_gamma_yield_per_parent": 0.9988
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md",
+      "status": "PASS"
     },
     {
       "gate": "phase2_t0_common_source_bookkeeping_smoke",
-      "status": "PASS",
+      "key_results": {
+        "FLUKA_max_direction_1_minus_dot": 1.1102230246251565e-16,
+        "FLUKA_max_energy_rel_delta": 4.1880789907739405e-09,
+        "FLUKA_observed_over_expected": "2048/2048",
+        "MEGAlib_max_direction_1_minus_dot": 3.354161393076538e-11,
+        "MEGAlib_max_energy_rel_delta": 5.2968580495807746e-05,
+        "MEGAlib_observed_over_expected": "2048/2048"
+      },
       "path": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md",
       "primary_count": 2048,
       "source_families": {
-        "mono511_gamma": 512,
-        "pair511_gamma": 512,
+        "cu64_eplus_smoke": 512,
         "mono1779_gamma": 256,
         "mono2754_gamma": 256,
-        "cu64_eplus_smoke": 512
+        "mono511_gamma": 512,
+        "pair511_gamma": 512
       },
-      "key_results": {
-        "FLUKA_observed_over_expected": "2048/2048",
-        "FLUKA_max_energy_rel_delta": 4.1880789907739405e-09,
-        "FLUKA_max_direction_1_minus_dot": 1.1102230246251565e-16,
-        "MEGAlib_observed_over_expected": "2048/2048",
-        "MEGAlib_max_energy_rel_delta": 5.2968580495807746e-05,
-        "MEGAlib_max_direction_1_minus_dot": 3.354161393076538e-11
-      }
+      "status": "PASS"
     },
     {
       "gate": "phase2_t1_cu_sphere_transport_smoke",
-      "status": "COMPLETE",
-      "path": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md",
-      "primary_count": 2048,
       "geometry": {
         "material": "Copper",
-        "shape": "sphere",
-        "radius_cm": 1.0
+        "radius_cm": 1.0,
+        "shape": "sphere"
       },
       "key_results": {
         "cu64_eplus_smoke_escaped_w2_photon_yield_fluka": 0.95703125,
         "cu64_eplus_smoke_escaped_w2_photon_yield_megalib": 0.984375,
         "cu64_eplus_smoke_fluka_over_megalib": 0.9722222222222222,
+        "largest_511_related_abs_poisson_z": 1.2086859987967822,
         "mono511_gamma_escaped_w2_photon_yield_fluka": 0.451171875,
         "mono511_gamma_escaped_w2_photon_yield_megalib": 0.478515625,
         "mono511_gamma_fluka_over_megalib": 0.9428571428571428,
         "pair511_gamma_escaped_w2_photon_yield_fluka": 0.4609375,
         "pair511_gamma_escaped_w2_photon_yield_megalib": 0.513671875,
-        "pair511_gamma_fluka_over_megalib": 0.8973384030418251,
-        "largest_511_related_abs_poisson_z": 1.2086859987967822
-      }
+        "pair511_gamma_fluka_over_megalib": 0.8973384030418251
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md",
+      "primary_count": 2048,
+      "status": "COMPLETE"
     },
     {
       "gate": "phase2_t2_cu_ta_absorber_transport_smoke",
-      "status": "COMPLETE",
-      "path": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/summary.md",
-      "primary_count": 2048,
       "geometry": {
         "cu_material": "Copper",
-        "cu_shape": "sphere",
         "cu_radius_cm": 1.0,
+        "cu_shape": "sphere",
+        "ta_center_z_cm": 3.0,
         "ta_material": "Tantalum",
         "ta_slab_cm": [
           4.0,
           4.0,
           0.1
-        ],
-        "ta_center_z_cm": 3.0
+        ]
       },
       "key_results": {
-        "cu64_eplus_smoke_w2_ta_deposit_eff_fluka": 0.017578125,
-        "cu64_eplus_smoke_w2_ta_deposit_eff_megalib": 0.0078125,
-        "cu64_eplus_smoke_w2_fluka_over_megalib": 2.25,
-        "cu64_eplus_smoke_w2_poisson_z": 1.386750490563073,
-        "cu64_eplus_smoke_480_550_ta_deposit_eff_fluka": 0.01953125,
-        "cu64_eplus_smoke_480_550_ta_deposit_eff_megalib": 0.0078125,
         "cu64_eplus_smoke_480_550_fluka_over_megalib": 2.5,
         "cu64_eplus_smoke_480_550_poisson_z": 1.6035674514745464,
+        "cu64_eplus_smoke_480_550_ta_deposit_eff_fluka": 0.01953125,
+        "cu64_eplus_smoke_480_550_ta_deposit_eff_megalib": 0.0078125,
+        "cu64_eplus_smoke_w2_fluka_over_megalib": 2.25,
+        "cu64_eplus_smoke_w2_poisson_z": 1.386750490563073,
+        "cu64_eplus_smoke_w2_ta_deposit_eff_fluka": 0.017578125,
+        "cu64_eplus_smoke_w2_ta_deposit_eff_megalib": 0.0078125,
+        "largest_511_related_abs_poisson_z": 1.386750490563073,
         "mono511_gamma_w2_ta_deposit_eff_fluka": 0.001953125,
         "mono511_gamma_w2_ta_deposit_eff_megalib": 0.001953125,
         "pair511_gamma_w2_ta_deposit_eff_fluka": 0.005859375,
-        "pair511_gamma_w2_ta_deposit_eff_megalib": 0.00390625,
-        "largest_511_related_abs_poisson_z": 1.386750490563073
-      }
+        "pair511_gamma_w2_ta_deposit_eff_megalib": 0.00390625
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/summary.md",
+      "primary_count": 2048,
+      "status": "COMPLETE"
     },
     {
+      "common_primaries_sha256": "276bf6b64aac96669d6379866e85d05a9a34795fb0cff1c472970f5ffc6ed548",
       "gate": "phase2_t2_cu_ta_absorber_transport_production_100k",
-      "status": "PASS",
+      "geometry": {
+        "cu_material": "Copper",
+        "cu_radius_cm": 1.0,
+        "cu_shape": "sphere",
+        "ta_center_z_cm": 3.0,
+        "ta_material": "Tantalum",
+        "ta_slab_cm": [
+          4.0,
+          4.0,
+          0.1
+        ]
+      },
+      "key_results": {
+        "cu64_eplus_smoke_480_550_fluka_over_megalib": 1.0165016501650164,
+        "cu64_eplus_smoke_480_550_poisson_z": 0.4045566970313675,
+        "cu64_eplus_smoke_480_550_ta_deposit_eff_fluka": 0.01232,
+        "cu64_eplus_smoke_480_550_ta_deposit_eff_megalib": 0.01212,
+        "cu64_eplus_smoke_w2_fluka_over_megalib": 1.0290909090909093,
+        "cu64_eplus_smoke_w2_poisson_z": 0.6773340106676827,
+        "cu64_eplus_smoke_w2_ta_deposit_eff_fluka": 0.01132,
+        "cu64_eplus_smoke_w2_ta_deposit_eff_megalib": 0.011,
+        "largest_511_related_abs_poisson_z": 0.6773340106676827,
+        "mono511_gamma_w2_fluka_over_megalib": 0.9856887298747764,
+        "mono511_gamma_w2_poisson_z": -0.24012009007506566,
+        "mono511_gamma_w2_ta_deposit_eff_fluka": 0.00551,
+        "mono511_gamma_w2_ta_deposit_eff_megalib": 0.00559,
+        "pair511_gamma_w2_fluka_over_megalib": 1.0073937153419594,
+        "pair511_gamma_w2_poisson_z": 0.1213794258068809,
+        "pair511_gamma_w2_ta_deposit_eff_fluka": 0.00545,
+        "pair511_gamma_w2_ta_deposit_eff_megalib": 0.00541
+      },
+      "large_input_tables_retained": false,
       "path": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md",
       "primary_count": 300000,
-      "source_mode": "generated",
       "source_families": {
         "cu64_eplus_smoke": 100000,
         "mono511_gamma": 100000,
         "pair511_gamma": 100000
       },
-      "large_input_tables_retained": false,
-      "common_primaries_sha256": "276bf6b64aac96669d6379866e85d05a9a34795fb0cff1c472970f5ffc6ed548",
-      "geometry": {
-        "cu_material": "Copper",
-        "cu_shape": "sphere",
-        "cu_radius_cm": 1.0,
-        "ta_material": "Tantalum",
-        "ta_slab_cm": [
-          4.0,
-          4.0,
-          0.1
-        ],
-        "ta_center_z_cm": 3.0
-      },
-      "key_results": {
-        "cu64_eplus_smoke_w2_ta_deposit_eff_fluka": 0.01132,
-        "cu64_eplus_smoke_w2_ta_deposit_eff_megalib": 0.011,
-        "cu64_eplus_smoke_w2_fluka_over_megalib": 1.0290909090909093,
-        "cu64_eplus_smoke_w2_poisson_z": 0.6773340106676827,
-        "cu64_eplus_smoke_480_550_ta_deposit_eff_fluka": 0.01232,
-        "cu64_eplus_smoke_480_550_ta_deposit_eff_megalib": 0.01212,
-        "cu64_eplus_smoke_480_550_fluka_over_megalib": 1.0165016501650164,
-        "cu64_eplus_smoke_480_550_poisson_z": 0.4045566970313675,
-        "mono511_gamma_w2_ta_deposit_eff_fluka": 0.00551,
-        "mono511_gamma_w2_ta_deposit_eff_megalib": 0.00559,
-        "mono511_gamma_w2_fluka_over_megalib": 0.9856887298747764,
-        "mono511_gamma_w2_poisson_z": -0.24012009007506566,
-        "pair511_gamma_w2_ta_deposit_eff_fluka": 0.00545,
-        "pair511_gamma_w2_ta_deposit_eff_megalib": 0.00541,
-        "pair511_gamma_w2_fluka_over_megalib": 1.0073937153419594,
-        "pair511_gamma_w2_poisson_z": 0.1213794258068809,
-        "largest_511_related_abs_poisson_z": 0.6773340106676827
-      }
+      "source_mode": "generated",
+      "status": "PASS"
     },
     {
-      "gate": "phase3_cu64_common_positions",
-      "status": "COMPLETE",
-      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md",
-      "positions_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_positions.csv",
-      "positions_sha256": "28aa15b2669e9ef7e40956ec7035aca0ed289014f23b03dd4181f7b0a569bf98",
-      "rows": 6927,
-      "Z": 29,
       "A": 64,
+      "Z": 29,
+      "gate": "phase3_cu64_common_positions",
       "isomer_values": [
         0
       ],
-      "total_activity_weight_Bq": "4.7019049431490107524463624743795999999999999999999999999999999999999999999999523",
-      "sampling_probability_sum": "1.0000000000000000000000000000000000000000000000000000000000000000000000000000164",
-      "source_material_policy": "PENDING_REGION_AUDIT",
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md",
+      "positions_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_positions.csv",
+      "positions_sha256": "28aa15b2669e9ef7e40956ec7035aca0ed289014f23b03dd4181f7b0a569bf98",
       "production_tag_summary": {
         "muminus": {
-          "rows": 1,
-          "activity_weight_Bq": "0.0006753252346540412812810649609"
+          "activity_weight_Bq": "0.0006753252346540412812810649609",
+          "rows": 1
         },
         "n": {
-          "rows": 6918,
-          "activity_weight_Bq": "4.6958012556875166061534138233229999999999999999999999999999999999999999999999523"
+          "activity_weight_Bq": "4.6958012556875166061534138233229999999999999999999999999999999999999999999999523",
+          "rows": 6918
         },
         "p": {
-          "rows": 8,
-          "activity_weight_Bq": "0.0054283622268401050116675860957"
+          "activity_weight_Bq": "0.0054283622268401050116675860957",
+          "rows": 8
         }
-      }
+      },
+      "rows": 6927,
+      "sampling_probability_sum": "1.0000000000000000000000000000000000000000000000000000000000000000000000000000164",
+      "source_material_policy": "PENDING_REGION_AUDIT",
+      "status": "COMPLETE",
+      "total_activity_weight_Bq": "4.7019049431490107524463624743795999999999999999999999999999999999999999999999523"
     },
     {
-      "gate": "phase3_cu64_source_region_material_name_audit",
-      "status": "PASS_NAME_LEVEL",
-      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md",
       "audit_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_region_material_name_audit.csv",
       "audit_sha256": "e20e19e2e284f97aaf2e4e4f7f0cc4452bf43d60d4512b9861c139a590ccfa59",
+      "boundary": "name-level audit only; coordinate containment and runtime point location remain open",
+      "coordinate_containment_tested": false,
+      "gate": "phase3_cu64_source_region_material_name_audit",
+      "material_summary": {
+        "Copper": {
+          "activity_fraction": "0.93749090642112001319389791948369939349258776105825776093556586215641067691740606",
+          "rows": 6494
+        },
+        "CuNi": {
+          "activity_fraction": "0.062509093578879986806102080516300606507412238941742239064434137843589323082593945",
+          "rows": 433
+        }
+      },
+      "missing_region_map_rows": 0,
+      "not_translated_rows": 0,
+      "pass_name_level_rows": 6927,
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md",
       "region_map_csv": "/home/ubuntu/TES_511_Balloon/engineering/fluka_crosscode_validation_20260624/02_geometry_translation/region_map.csv",
       "region_map_sha256": "b00a289ba31f9b144862b23991adbdfea5b4d6c131ec23537f357a8c9224d9ac",
       "rows": 6927,
-      "pass_name_level_rows": 6927,
-      "missing_region_map_rows": 0,
-      "not_translated_rows": 0,
-      "coordinate_containment_tested": false,
-      "material_summary": {
-        "Copper": {
-          "rows": 6494,
-          "activity_fraction": "0.93749090642112001319389791948369939349258776105825776093556586215641067691740606"
-        },
-        "CuNi": {
-          "rows": 433,
-          "activity_fraction": "0.062509093578879986806102080516300606507412238941742239064434137843589323082593945"
-        }
-      },
-      "boundary": "name-level audit only; coordinate containment and runtime point location remain open"
+      "status": "PASS_NAME_LEVEL"
     },
     {
-      "gate": "phase3_cu64_source_coordinate_static_containment_audit",
-      "status": "PASS_STATIC_CONTAINMENT",
-      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md",
       "audit_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_coordinate_containment_audit.csv",
       "audit_sha256": "d223ff99a03ed0425ab939789d6dadca8ef05c363fb562cfeb0a41fb288062ff",
-      "rows": 6927,
-      "pass_static_containment_rows": 6927,
-      "failing_rows": 0,
+      "boundary": "static translator containment only; runtime Geant4/FLUKA point location remains open",
       "coordinate_transform_policy": "source-v2 coordinates are inverse-rotated by InstrumentFrame.Rotation 0 45 0 into the MEGAlib/FLUKA-translator local frame before static containment",
-      "runtime_point_location_tested": false,
+      "failing_rows": 0,
+      "gate": "phase3_cu64_source_coordinate_static_containment_audit",
       "min_expected_boundary_margin_cm_approx": 2.325151502e-05,
+      "pass_static_containment_rows": 6927,
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md",
       "resolved_material_summary": {
         "Copper": {
-          "rows": 6494,
-          "activity_fraction": "0.93749090642112001319389791948369939349258776105825776093556586215641067691740606"
+          "activity_fraction": "0.93749090642112001319389791948369939349258776105825776093556586215641067691740606",
+          "rows": 6494
         },
         "CuNi": {
-          "rows": 433,
-          "activity_fraction": "0.062509093578879986806102080516300606507412238941742239064434137843589323082593945"
+          "activity_fraction": "0.062509093578879986806102080516300606507412238941742239064434137843589323082593945",
+          "rows": 433
         }
       },
-      "boundary": "static translator containment only; runtime Geant4/FLUKA point location remains open"
+      "rows": 6927,
+      "runtime_point_location_tested": false,
+      "status": "PASS_STATIC_CONTAINMENT"
     },
     {
-      "gate": "phase3_cu64_parent_resampling_authority",
-      "status": "COMPLETE",
-      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md",
-      "histories": 1000000,
-      "seed": "20260625_phase3_cu64",
-      "selected_unique_positions": 6927,
-      "selection_stream_sha256": "3be6695480c8b130ea9a396cbe34efdc47e97be4aa3575bcf4b2968be147a98e",
+      "boundary": "parent resampling authority only; full transport and raw deposits remain open",
       "full_list_csv_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
-      "sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_sample.csv",
+      "full_list_policy": "full 1e6-row selected-index CSV is local and ignored under full_untracked; repository stores hashes, summaries and bounded sample",
+      "gate": "phase3_cu64_parent_resampling_authority",
+      "histories": 1000000,
       "material_summary": {
         "Copper": {
           "selected_histories": 937427,
@@ -304,37 +298,22 @@
           "selection_fraction": 0.062573
         }
       },
-      "full_list_policy": "full 1e6-row selected-index CSV is local and ignored under full_untracked; repository stores hashes, summaries and bounded sample",
-      "transport_run_performed": false,
-      "boundary": "parent resampling authority only; full transport and raw deposits remain open"
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md",
+      "sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_sample.csv",
+      "seed": "20260625_phase3_cu64",
+      "selected_unique_positions": 6927,
+      "selection_stream_sha256": "3be6695480c8b130ea9a396cbe34efdc47e97be4aa3575bcf4b2968be147a98e",
+      "status": "COMPLETE",
+      "transport_run_performed": false
     },
     {
-      "gate": "phase3_cu64_common_fluka_raw_smoke",
-      "status": "PHASE3_CU64_COMMON_FLUKA_RAW_PASS",
-      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md",
-      "summary_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.json",
-      "band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/band_summary.csv",
-      "scoring_closure_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/scoring_closure.json",
-      "run_manifest_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/run_manifest.csv",
-      "summary_sha256": "71ff74636371adda6472d8f3a3985b0f65a8bb5618333bbbf6b2e5d5cba06b84",
-      "summary_json_sha256": "d14bf6a19b2af10729e8145f48f8b809d44468fc432a5d8e153beaa92f5bc9a2",
-      "band_summary_sha256": "9080a43d269ced1402128fdff06e824dd74db36dd03acfbb1aef2385c9fc3582",
-      "scoring_closure_sha256": "76055fbad09aeb7755c1972186eded369b6739eccdb68e1c9df681085b33b26d",
-      "transport_code": "FLUKA",
-      "source_mode": "phase3_cu64_common_parent_resampling",
-      "no_sim_gz_replay": true,
-      "histories": 1000,
-      "seed": 24066800,
-      "parent_list": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv",
-      "parent_list_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
-      "raw_event_rows": 107,
       "band_summary": [
         {
           "band": "all_tes_gt0",
           "band_label": "all TES > 0",
-          "histories": 1000,
-          "events": 5,
           "efficiency_per_parent": 0.005,
+          "events": 5,
+          "histories": 1000,
           "top_material_counts": {
             "Copper": 5
           },
@@ -349,9 +328,9 @@
         {
           "band": "e480_550",
           "band_label": "480-550 keV",
-          "histories": 1000,
-          "events": 2,
           "efficiency_per_parent": 0.002,
+          "events": 2,
+          "histories": 1000,
           "top_material_counts": {
             "Copper": 2
           },
@@ -363,9 +342,9 @@
         {
           "band": "w2_510p58_511p42",
           "band_label": "W2 510.58-511.42 keV",
-          "histories": 1000,
-          "events": 2,
           "efficiency_per_parent": 0.002,
+          "events": 2,
+          "histories": 1000,
           "top_material_counts": {
             "Copper": 2
           },
@@ -377,130 +356,215 @@
         {
           "band": "e1500_3000",
           "band_label": "1500-3000 keV",
-          "histories": 1000,
-          "events": 0,
           "efficiency_per_parent": 0.0,
+          "events": 0,
+          "histories": 1000,
           "top_material_counts": {},
           "top_source_volume_counts": {}
         },
         {
           "band": "e3000_10000",
           "band_label": "3000-10000 keV",
-          "histories": 1000,
-          "events": 0,
           "efficiency_per_parent": 0.0,
+          "events": 0,
+          "histories": 1000,
           "top_material_counts": {},
           "top_source_volume_counts": {}
         }
       ],
-      "scoring_closure": {
-        "status": "PASS",
-        "raw_event_rows": 107,
-        "score_rows_parsed": 3110,
-        "raw_dump_tes_total_keV": 1458.19986065,
-        "score_tes_total_keV": 1458.1998604550001,
-        "tes_relative_delta": 1.3372635812717172e-10,
-        "raw_dump_shield_total_keV": 33465.141153662,
-        "score_shield_total_keV": 33465.141161299995,
-        "shield_relative_delta": 2.282373373635355e-10
-      },
-      "boundary": "FLUKA-only 1000-history full-geometry raw-deposit plumbing smoke; MEGAlib runner/parser smoke has run, but detector/readout semantic calibration, common event building, and production-statistics closure remain open."
-    },
-    {
-      "gate": "phase3_cu64_common_megalib_raw_smoke",
-      "status": "PHASE3_CU64_COMMON_MEGALIB_RAW_PASS",
-      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.md",
-      "summary_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.json",
-      "band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/band_summary.csv",
-      "detector_hit_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/detector_hit_summary.csv",
-      "run_manifest_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/run_manifest.csv",
-      "summary_sha256": "5b0931046b1895d0ff36210849e80c19480df591bf84302a5a4e5a3689076bea",
-      "summary_json_sha256": "ba4b1ede73310ba05335d44bda4352241c2a072385f7ef41214251621f73bc9d",
-      "band_summary_sha256": "3b85a4cdd430ce25b73f45eb83d3e5b4e4b9f471acbcf0c90ea19478b7f59e7a",
-      "detector_hit_summary_sha256": "43f5d689ebc0785b3b788d922747ae0831cfd4af2fb9b47bff75eff3239100ed",
-      "transport_code": "MEGAlib",
-      "source_mode": "phase3_cu64_common_parent_resampling",
-      "stop_condition": "Events",
-      "pre_trigger_mode": "Everything",
-      "no_sim_gz_replay": true,
+      "band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/band_summary.csv",
+      "band_summary_sha256": "9080a43d269ced1402128fdff06e824dd74db36dd03acfbb1aef2385c9fc3582",
+      "boundary": "FLUKA-only 1000-history full-geometry raw-deposit plumbing smoke; MEGAlib runner/parser smoke has run, but detector/readout semantic calibration, common event building, and production-statistics closure remain open.",
+      "gate": "phase3_cu64_common_fluka_raw_smoke",
       "histories": 1000,
-      "seed": 24066900,
+      "no_sim_gz_replay": true,
       "parent_list": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv",
       "parent_list_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
-      "raw_hit_rows": 1352,
-      "band_summary": [
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md",
+      "raw_event_rows": 107,
+      "run_manifest_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/run_manifest.csv",
+      "scoring_closure": {
+        "raw_dump_shield_total_keV": 33465.141153662,
+        "raw_dump_tes_total_keV": 1458.19986065,
+        "raw_event_rows": 107,
+        "score_rows_parsed": 3110,
+        "score_shield_total_keV": 33465.141161299995,
+        "score_tes_total_keV": 1458.1998604550001,
+        "shield_relative_delta": 2.282373373635355e-10,
+        "status": "PASS",
+        "tes_relative_delta": 1.3372635812717172e-10
+      },
+      "scoring_closure_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/scoring_closure.json",
+      "scoring_closure_sha256": "76055fbad09aeb7755c1972186eded369b6739eccdb68e1c9df681085b33b26d",
+      "seed": 24066800,
+      "source_mode": "phase3_cu64_common_parent_resampling",
+      "status": "PHASE3_CU64_COMMON_FLUKA_RAW_PASS",
+      "summary_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.json",
+      "summary_json_sha256": "d14bf6a19b2af10729e8145f48f8b809d44468fc432a5d8e153beaa92f5bc9a2",
+      "summary_sha256": "71ff74636371adda6472d8f3a3985b0f65a8bb5618333bbbf6b2e5d5cba06b84",
+      "transport_code": "FLUKA"
+    },
+    {
+      "boundary": "MEGAlib-only Phase-3 common Cu-64 raw-hit smoke; CC HIT volume deposits now provide the common raw-deposit schema, while native HTsim is retained only as a MEGAlib detector-type/readout summary. FLUKA production comparison, common event building, and production-statistics closure remain open.",
+      "cc_band_summary": [
         {
           "band": "all_tes_gt0",
           "band_label": "all TES > 0",
+          "efficiency_per_parent": 0.003,
+          "events": 3,
           "histories": 1000,
-          "events": 1000,
-          "efficiency_per_parent": 1.0,
-          "top_material_counts": {
-            "Copper": 932,
-            "CuNi": 68
-          }
+          "top_material_counts": "{\"Copper\": 3}",
+          "top_source_volume_counts": "{\"ColdPlate_MXC_50mK_SD_anchor\": 1, \"Cu_50mK_StillLike_Can_side_wall_above_side_port\": 1, \"DR_MixingChamber_Cu\": 1}"
         },
         {
           "band": "e480_550",
           "band_label": "480-550 keV",
+          "efficiency_per_parent": 0.001,
+          "events": 1,
           "histories": 1000,
-          "events": 12,
-          "efficiency_per_parent": 0.012,
-          "top_material_counts": {
-            "Copper": 12
-          }
+          "top_material_counts": "{\"Copper\": 1}",
+          "top_source_volume_counts": "{\"Cu_50mK_StillLike_Can_side_wall_above_side_port\": 1}"
         },
         {
           "band": "w2_510p58_511p42",
           "band_label": "W2 510.58-511.42 keV",
-          "histories": 1000,
-          "events": 1,
           "efficiency_per_parent": 0.001,
-          "top_material_counts": {
-            "Copper": 1
-          }
+          "events": 1,
+          "histories": 1000,
+          "top_material_counts": "{\"Copper\": 1}",
+          "top_source_volume_counts": "{\"Cu_50mK_StillLike_Can_side_wall_above_side_port\": 1}"
         },
         {
           "band": "e1500_3000",
           "band_label": "1500-3000 keV",
+          "efficiency_per_parent": 0.0,
+          "events": 0,
           "histories": 1000,
-          "events": 1,
-          "efficiency_per_parent": 0.001,
-          "top_material_counts": {
-            "Copper": 1
-          }
+          "top_material_counts": "{}",
+          "top_source_volume_counts": "{}"
         },
         {
           "band": "e3000_10000",
           "band_label": "3000-10000 keV",
-          "histories": 1000,
-          "events": 0,
           "efficiency_per_parent": 0.0,
-          "top_material_counts": {}
+          "events": 0,
+          "histories": 1000,
+          "top_material_counts": "{}",
+          "top_source_volume_counts": "{}"
         }
       ],
-      "detector_hit_summary": [
+      "cc_band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_band_summary.csv",
+      "cc_band_summary_sha256": "fd9c40c8ace6687489b5d4979ece35ca2afd6a176aa85c4b04d6a9aabefeb566",
+      "cc_hit_rows": 6477,
+      "cc_tes_hit_rows": 11,
+      "cc_tes_hit_sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_hit_sample.csv",
+      "cc_tes_hit_sample_sha256": "218fd696d56e78d5cf2e95ec7c484218a1e203cb79a84aba9985d9aecaa2a97e",
+      "cc_tes_particle_summary": [
         {
-          "detector_id": 4,
-          "detector_name": "D4",
-          "detector_volume": "TES_L3",
-          "detector_kind": "TES_PIXEL",
-          "hit_rows": 1349,
-          "histories_with_hit": 1000,
-          "deposit_keV_sum": 212788.60286999986
+          "creator_process": "phot",
+          "deposit_keV_sum": 605.2936900000001,
+          "histories_with_hit": 2,
+          "hit_rows": 5,
+          "parent": "gamma",
+          "region_kind": "TES_PIXEL",
+          "secondary": "e-",
+          "step_process": "eIoni"
         },
         {
-          "detector_id": 2,
-          "detector_name": "D2",
-          "detector_volume": "TES_L1",
-          "detector_kind": "TES_PIXEL",
-          "hit_rows": 3,
-          "histories_with_hit": 3,
-          "deposit_keV_sum": 727.33396
+          "creator_process": "compt",
+          "deposit_keV_sum": 76.36037,
+          "histories_with_hit": 1,
+          "hit_rows": 1,
+          "parent": "gamma",
+          "region_kind": "TES_PIXEL",
+          "secondary": "e-",
+          "step_process": "eIoni"
+        },
+        {
+          "creator_process": "phot",
+          "deposit_keV_sum": 23.312,
+          "histories_with_hit": 2,
+          "hit_rows": 2,
+          "parent": "gamma",
+          "region_kind": "TES_PIXEL",
+          "secondary": "gamma",
+          "step_process": "phot"
+        },
+        {
+          "creator_process": "annihil",
+          "deposit_keV_sum": 22.326,
+          "histories_with_hit": 2,
+          "hit_rows": 2,
+          "parent": "e+",
+          "region_kind": "TES_PIXEL",
+          "secondary": "gamma",
+          "step_process": "phot"
+        },
+        {
+          "creator_process": "annihil",
+          "deposit_keV_sum": 0.04189,
+          "histories_with_hit": 1,
+          "hit_rows": 1,
+          "parent": "e+",
+          "region_kind": "TES_PIXEL",
+          "secondary": "gamma",
+          "step_process": "compt"
         }
       ],
-      "boundary": "MEGAlib-only 1000-event full-geometry raw-hit runner/parser smoke; native HTsim detector/readout semantics are not yet a FLUKA-equivalent raw-deposit schema, so common event building and production-statistics closure remain open."
+      "cc_tes_particle_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_particle_summary.csv",
+      "cc_tes_particle_summary_sha256": "9ac5a221c2c44e17402024aefc75aa8f19683168cc714f230efe38e79c0d0023",
+      "cc_volume_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_volume_summary.csv",
+      "cc_volume_summary_sha256": "bc7dbb04cec9dd81e4e4987b2d4dd2526951f75476b63204a92dfb29953d1e93",
+      "gate": "phase3_cu64_common_megalib_raw_smoke",
+      "histories": 1000,
+      "htsim_detector_type_summary": [
+        {
+          "deposit_keV_sum": 212788.60286999986,
+          "histories_with_hit": 1000,
+          "hit_rows": 1349,
+          "megalib_detector_type": 4,
+          "megalib_detector_type_name": "Scintillator"
+        },
+        {
+          "deposit_keV_sum": 727.33396,
+          "histories_with_hit": 3,
+          "hit_rows": 3,
+          "megalib_detector_type": 2,
+          "megalib_detector_type_name": "Calorimeter"
+        }
+      ],
+      "htsim_detector_type_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/htsim_detector_type_summary.csv",
+      "htsim_detector_type_summary_sha256": "e69bb240ae254103302113b2cb0dffb18b716eceb24da0742b9ec9fc6c1ca60a",
+      "htsim_first_field": "MEGAlib detector type, not .det detector instance id",
+      "htsim_hit_rows": 1352,
+      "no_sim_gz_replay": true,
+      "parent_list": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv",
+      "parent_list_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.md",
+      "pre_trigger_mode": "Everything",
+      "raw_hit_rows": 6477,
+      "raw_schema": "CC HIT volume energy deposits",
+      "run_manifest_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/run_manifest.csv",
+      "seed": 24066900,
+      "source_mode": "phase3_cu64_common_parent_resampling",
+      "status": "PHASE3_CU64_COMMON_MEGALIB_RAW_PASS",
+      "stop_condition": "Events",
+      "summary_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.json",
+      "summary_json_sha256": "579b91cbc37de7706b3806d4be1028c51004124a35a52a6970717aef60b1f0fc",
+      "summary_sha256": "c711dd2d52b485ddb7b1c90afe11e45566a76f57dad13d9e7dbef4046b3905e6",
+      "transport_code": "MEGAlib"
     }
+  ],
+  "date": "2026-06-25",
+  "next_required_gate": "Scale the built Cu-64 common parent stream to production-statistics full-geometry raw-deposit truth in both codes, using FLUKA raw scoring and MEGAlib CC HIT volume deposits; insert runtime point-location scoring first if required as a hard gate, then run the common event builder and deterministic analytic W2 response.",
+  "not_yet_ruled_out": [
+    "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
+    "Runtime engine point-location differences not visible in the static geometry translator",
+    "Exact physical Ta/TES geometry dependence in full geometry",
+    "Common postprocessing or event-building differences",
+    "Common ancestry/stopping differences for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy",
+    "FLUKA EM-cut/material dependence of W2 deposited-energy efficiency only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy",
+    "Production-statistics full-geometry raw-deposit comparison for the common Cu-64 parents using FLUKA raw scoring and MEGAlib CC HIT volume truth"
   ],
   "ruled_out": [
     "The FLUKA delayed discrepancy is not explained by the dummy HI-PROPE 53/128 card silently replacing the checked source-v2 isotope identities.",
@@ -513,17 +577,7 @@
     "The built Cu-64 common-position rows are not statically outside their declared source volumes after applying the explicit InstrumentFrame transform: 6927/6927 rows pass static containment and resolve to Copper/CuNi.",
     "The Phase-3 Cu-64 parent stream is no longer undefined: a deterministic 1e6-history selected-index authority exists, covers 6927/6927 source rows, and has a recorded full-list SHA256.",
     "The Phase-3 FLUKA full-geometry raw-deposit plumbing path is not blocked by the common Cu-64 parent stream: a 1000-history FLUKA smoke runs without .sim.gz replay and closes raw dump versus score output at 1.337e-10 TES relative delta.",
-    "The Phase-3 MEGAlib full-geometry runner/parser path is not blocked by the common Cu-64 parent stream: a 1000-event MEGAlib smoke runs without .sim.gz replay using Run.Events and PreTriggerMode Everything."
+    "The Phase-3 MEGAlib full-geometry raw-deposit plumbing path is not blocked by the common Cu-64 parent stream: a 1000-event MEGAlib smoke runs without .sim.gz replay, HTsim first-field semantics are resolved as detector type rather than .det detector id, and CC HIT volume truth gives 3/1000 any-TES and 1/1000 W2 at smoke statistics."
   ],
-  "not_yet_ruled_out": [
-    "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
-    "Runtime engine point-location differences not visible in the static geometry translator",
-    "Exact physical Ta/TES geometry dependence in full geometry",
-    "MEGAlib native HTsim detector/readout semantics relative to a FLUKA-equivalent common raw-deposit schema",
-    "Common postprocessing or event-building differences",
-    "Common ancestry/stopping differences for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy",
-    "FLUKA EM-cut/material dependence of W2 deposited-energy efficiency only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy",
-    "Production-statistics full-geometry raw-deposit comparison for the common Cu-64 parents"
-  ],
-  "next_required_gate": "Calibrate or replace MEGAlib native HTsim detector/readout with a common raw-deposit schema, then scale the built Cu-64 common parent stream to production-statistics full-geometry raw-deposit truth in both codes; insert runtime point-location scoring first if required as a hard gate."
+  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_T2_PRODUCTION_PHASE3_POSITION_NAME_STATIC_COORDINATE_PARENT_RESAMPLING_FLUKA_RAW_SMOKE_MEGALIB_CC_RAW_SMOKE_AND_HTSIM_SEMANTICS_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE"
 }

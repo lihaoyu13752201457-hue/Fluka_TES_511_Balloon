@@ -1,0 +1,6 @@
+band,band_label,histories,events,efficiency_per_parent,top_material_counts,top_source_volume_counts
+all_tes_gt0,all TES > 0,1000,3,0.003,"{""Copper"": 3}","{""ColdPlate_MXC_50mK_SD_anchor"": 1, ""Cu_50mK_StillLike_Can_side_wall_above_side_port"": 1, ""DR_MixingChamber_Cu"": 1}"
+e480_550,480-550 keV,1000,1,0.001,"{""Copper"": 1}","{""Cu_50mK_StillLike_Can_side_wall_above_side_port"": 1}"
+w2_510p58_511p42,W2 510.58-511.42 keV,1000,1,0.001,"{""Copper"": 1}","{""Cu_50mK_StillLike_Can_side_wall_above_side_port"": 1}"
+e1500_3000,1500-3000 keV,1000,0,0.0,{},{}
+e3000_10000,3000-10000 keV,1000,0,0.0,{},{}

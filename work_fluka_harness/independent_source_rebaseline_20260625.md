@@ -2,32 +2,24 @@
 
 ## Mainline Correction
 
-The cross-code mainline is now constrained back to independent source reproduction. Geant4 `.sim.gz` IA INIT replay is demoted to a transport-only side check and is not used as evidence that the FLUKA source adapter is correct.
+The cross-code mainline is now constrained back to independent source
+reproduction. Geant4 `.sim.gz` IA INIT replay/source-truth checks are not used
+as evidence that the FLUKA source adapter is correct, and the old replay-derived
+validation artifacts have been removed from the reduced public handoff.
 
 ## Code Changes
 
 - `work_fluka_harness/build_source_authority.py`: future source authority builds now treat the TES/Cosima spectrum DP energy axis as keV and derive `energy_MeV = energy_keV / 1000`.
 - `work_fluka_harness/run_eplus_raw_mvp.py`: legacy source CDFs with the old `energy_MeV` label are interpreted as the source-axis keV values when running `sampled_source_authority`.
-- `work_fluka_harness/validate_independent_source_against_sim.py`: added a source-truth gate comparing independent sampled primaries against TES `.sim.gz` IA INIT distributions.
 
-## Source Truth Gate
+## Source Authority Status
 
-Artifacts: `work_fluka_harness/source_truth_validation/<particle>/source_truth_validation.md`
-
-All eight prompt species pass the source-truth gate against 50,000 TES `.sim.gz` IA INIT rows each. The gate compares independent sampled primaries to the TES/Cosima primary distribution and blocks transport if energy, source radius, or direction drift out of tolerance.
-
-| particle | energy median ratio | radius median ratio | dz median delta | status |
-|---|---:|---:|---:|---|
-| eplus | `1.00105` | `1.00041` | `-0.0172275` | `PASS` |
-| muplus | `1.00692` | `1.00011` | `-0.00512925` | `PASS` |
-| muminus | `1.00215` | `0.999197` | `-0.00509305` | `PASS` |
-| alpha | `1.01101` | `1.00014` | `-0.00423253` | `PASS` |
-| p | `0.997442` | `1.00016` | `-0.000641899` | `PASS` |
-| eminus | `0.990438` | `0.999920` | `-0.00453309` | `PASS` |
-| gamma | `0.997544` | `0.998854` | `-0.00352954` | `PASS` |
-| n | `0.985641` | `1.00111` | `-0.00464143` | `PASS` |
-
-This closes the previous independent-source 1000x energy overheating bug for the prompt source path.
+The retained evidence is the independent-source FLUKA same-statistic transport
+path, not replay of TES/Cosima generated primaries. The previous
+`validate_independent_source_against_sim.py` gate and
+`work_fluka_harness/source_truth_validation/` outputs were useful temporary
+diagnostics for the prompt 1000x energy-axis bug, but they depended on TES
+`.sim.gz` IA INIT truth and are not part of the final mainline handoff.
 
 ## Independent-Source Prompt Full Statistics
 

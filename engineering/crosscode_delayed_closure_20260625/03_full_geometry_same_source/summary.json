@@ -1,11 +1,266 @@
 {
   "A": 64,
   "Z": 29,
+  "fluka_common_raw_smoke": {
+    "band_summary": [
+      {
+        "band": "all_tes_gt0",
+        "band_label": "all TES > 0",
+        "efficiency_per_parent": 0.005,
+        "events": 5,
+        "histories": 1000,
+        "top_material_counts": {
+          "Copper": 5
+        },
+        "top_source_volume_counts": {
+          "ColdPlate_MXC_50mK_SD_anchor": 1,
+          "Cu_50mK_StillLike_Can_side_wall_above_side_port": 1,
+          "Cu_50mK_StillLike_Can_side_wall_rectcut_window_band": 1,
+          "Cu_SubstrateSupport_OpenRing_L5_ZP_panel": 1,
+          "Cu_SubstrateSupport_SolidDisk_L0_deepest": 1
+        }
+      },
+      {
+        "band": "e480_550",
+        "band_label": "480-550 keV",
+        "efficiency_per_parent": 0.002,
+        "events": 2,
+        "histories": 1000,
+        "top_material_counts": {
+          "Copper": 2
+        },
+        "top_source_volume_counts": {
+          "ColdPlate_MXC_50mK_SD_anchor": 1,
+          "Cu_50mK_StillLike_Can_side_wall_above_side_port": 1
+        }
+      },
+      {
+        "band": "w2_510p58_511p42",
+        "band_label": "W2 510.58-511.42 keV",
+        "efficiency_per_parent": 0.002,
+        "events": 2,
+        "histories": 1000,
+        "top_material_counts": {
+          "Copper": 2
+        },
+        "top_source_volume_counts": {
+          "ColdPlate_MXC_50mK_SD_anchor": 1,
+          "Cu_50mK_StillLike_Can_side_wall_above_side_port": 1
+        }
+      },
+      {
+        "band": "e1500_3000",
+        "band_label": "1500-3000 keV",
+        "efficiency_per_parent": 0.0,
+        "events": 0,
+        "histories": 1000,
+        "top_material_counts": {},
+        "top_source_volume_counts": {}
+      },
+      {
+        "band": "e3000_10000",
+        "band_label": "3000-10000 keV",
+        "efficiency_per_parent": 0.0,
+        "events": 0,
+        "histories": 1000,
+        "top_material_counts": {},
+        "top_source_volume_counts": {}
+      }
+    ],
+    "band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/band_summary.csv",
+    "band_summary_sha256": "9080a43d269ced1402128fdff06e824dd74db36dd03acfbb1aef2385c9fc3582",
+    "boundary": "FLUKA-only 1000-history full-geometry raw-deposit plumbing smoke; MEGAlib runner/parser smoke has run, but detector/readout semantic calibration, common event building, and production-statistics closure remain open.",
+    "histories": 1000,
+    "no_sim_gz_replay": true,
+    "parent_list": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv",
+    "parent_list_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
+    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md",
+    "raw_event_rows": 107,
+    "run_manifest_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/run_manifest.csv",
+    "scoring_closure": {
+      "raw_dump_shield_total_keV": 33465.141153662,
+      "raw_dump_tes_total_keV": 1458.19986065,
+      "raw_event_rows": 107,
+      "score_rows_parsed": 3110,
+      "score_shield_total_keV": 33465.141161299995,
+      "score_tes_total_keV": 1458.1998604550001,
+      "shield_relative_delta": 2.282373373635355e-10,
+      "status": "PASS",
+      "tes_relative_delta": 1.3372635812717172e-10
+    },
+    "scoring_closure_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/scoring_closure.json",
+    "scoring_closure_sha256": "76055fbad09aeb7755c1972186eded369b6739eccdb68e1c9df681085b33b26d",
+    "seed": 24066800,
+    "source_mode": "phase3_cu64_common_parent_resampling",
+    "status": "PHASE3_CU64_COMMON_FLUKA_RAW_PASS",
+    "summary_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.json",
+    "summary_json_sha256": "d14bf6a19b2af10729e8145f48f8b809d44468fc432a5d8e153beaa92f5bc9a2",
+    "summary_sha256": "71ff74636371adda6472d8f3a3985b0f65a8bb5618333bbbf6b2e5d5cba06b84",
+    "transport_code": "FLUKA"
+  },
   "isomer_values": [
     0
   ],
+  "megalib_common_raw_smoke": {
+    "boundary": "MEGAlib-only Phase-3 common Cu-64 raw-hit smoke; CC HIT volume deposits now provide the common raw-deposit schema, while native HTsim is retained only as a MEGAlib detector-type/readout summary. FLUKA production comparison, common event building, and production-statistics closure remain open.",
+    "cc_band_summary": [
+      {
+        "band": "all_tes_gt0",
+        "band_label": "all TES > 0",
+        "efficiency_per_parent": 0.003,
+        "events": 3,
+        "histories": 1000,
+        "top_material_counts": "{\"Copper\": 3}",
+        "top_source_volume_counts": "{\"ColdPlate_MXC_50mK_SD_anchor\": 1, \"Cu_50mK_StillLike_Can_side_wall_above_side_port\": 1, \"DR_MixingChamber_Cu\": 1}"
+      },
+      {
+        "band": "e480_550",
+        "band_label": "480-550 keV",
+        "efficiency_per_parent": 0.001,
+        "events": 1,
+        "histories": 1000,
+        "top_material_counts": "{\"Copper\": 1}",
+        "top_source_volume_counts": "{\"Cu_50mK_StillLike_Can_side_wall_above_side_port\": 1}"
+      },
+      {
+        "band": "w2_510p58_511p42",
+        "band_label": "W2 510.58-511.42 keV",
+        "efficiency_per_parent": 0.001,
+        "events": 1,
+        "histories": 1000,
+        "top_material_counts": "{\"Copper\": 1}",
+        "top_source_volume_counts": "{\"Cu_50mK_StillLike_Can_side_wall_above_side_port\": 1}"
+      },
+      {
+        "band": "e1500_3000",
+        "band_label": "1500-3000 keV",
+        "efficiency_per_parent": 0.0,
+        "events": 0,
+        "histories": 1000,
+        "top_material_counts": "{}",
+        "top_source_volume_counts": "{}"
+      },
+      {
+        "band": "e3000_10000",
+        "band_label": "3000-10000 keV",
+        "efficiency_per_parent": 0.0,
+        "events": 0,
+        "histories": 1000,
+        "top_material_counts": "{}",
+        "top_source_volume_counts": "{}"
+      }
+    ],
+    "cc_band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_band_summary.csv",
+    "cc_band_summary_sha256": "fd9c40c8ace6687489b5d4979ece35ca2afd6a176aa85c4b04d6a9aabefeb566",
+    "cc_hit_rows": 6477,
+    "cc_tes_hit_rows": 11,
+    "cc_tes_hit_sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_hit_sample.csv",
+    "cc_tes_hit_sample_sha256": "218fd696d56e78d5cf2e95ec7c484218a1e203cb79a84aba9985d9aecaa2a97e",
+    "cc_tes_particle_summary": [
+      {
+        "creator_process": "phot",
+        "deposit_keV_sum": 605.2936900000001,
+        "histories_with_hit": 2,
+        "hit_rows": 5,
+        "parent": "gamma",
+        "region_kind": "TES_PIXEL",
+        "secondary": "e-",
+        "step_process": "eIoni"
+      },
+      {
+        "creator_process": "compt",
+        "deposit_keV_sum": 76.36037,
+        "histories_with_hit": 1,
+        "hit_rows": 1,
+        "parent": "gamma",
+        "region_kind": "TES_PIXEL",
+        "secondary": "e-",
+        "step_process": "eIoni"
+      },
+      {
+        "creator_process": "phot",
+        "deposit_keV_sum": 23.312,
+        "histories_with_hit": 2,
+        "hit_rows": 2,
+        "parent": "gamma",
+        "region_kind": "TES_PIXEL",
+        "secondary": "gamma",
+        "step_process": "phot"
+      },
+      {
+        "creator_process": "annihil",
+        "deposit_keV_sum": 22.326,
+        "histories_with_hit": 2,
+        "hit_rows": 2,
+        "parent": "e+",
+        "region_kind": "TES_PIXEL",
+        "secondary": "gamma",
+        "step_process": "phot"
+      },
+      {
+        "creator_process": "annihil",
+        "deposit_keV_sum": 0.04189,
+        "histories_with_hit": 1,
+        "hit_rows": 1,
+        "parent": "e+",
+        "region_kind": "TES_PIXEL",
+        "secondary": "gamma",
+        "step_process": "compt"
+      }
+    ],
+    "cc_tes_particle_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_particle_summary.csv",
+    "cc_tes_particle_summary_sha256": "9ac5a221c2c44e17402024aefc75aa8f19683168cc714f230efe38e79c0d0023",
+    "cc_volume_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_volume_summary.csv",
+    "cc_volume_summary_sha256": "bc7dbb04cec9dd81e4e4987b2d4dd2526951f75476b63204a92dfb29953d1e93",
+    "histories": 1000,
+    "htsim_detector_type_summary": [
+      {
+        "deposit_keV_sum": 212788.60286999986,
+        "histories_with_hit": 1000,
+        "hit_rows": 1349,
+        "megalib_detector_type": 4,
+        "megalib_detector_type_name": "Scintillator"
+      },
+      {
+        "deposit_keV_sum": 727.33396,
+        "histories_with_hit": 3,
+        "hit_rows": 3,
+        "megalib_detector_type": 2,
+        "megalib_detector_type_name": "Calorimeter"
+      }
+    ],
+    "htsim_detector_type_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/htsim_detector_type_summary.csv",
+    "htsim_detector_type_summary_sha256": "e69bb240ae254103302113b2cb0dffb18b716eceb24da0742b9ec9fc6c1ca60a",
+    "htsim_first_field": "MEGAlib detector type, not .det detector instance id",
+    "htsim_hit_rows": 1352,
+    "no_sim_gz_replay": true,
+    "parent_list": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv",
+    "parent_list_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
+    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.md",
+    "pre_trigger_mode": "Everything",
+    "raw_hit_rows": 6477,
+    "raw_schema": "CC HIT volume energy deposits",
+    "run_manifest_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/run_manifest.csv",
+    "seed": 24066900,
+    "source_mode": "phase3_cu64_common_parent_resampling",
+    "status": "PHASE3_CU64_COMMON_MEGALIB_RAW_PASS",
+    "stop_condition": "Events",
+    "summary_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.json",
+    "summary_json_sha256": "579b91cbc37de7706b3806d4be1028c51004124a35a52a6970717aef60b1f0fc",
+    "summary_sha256": "c711dd2d52b485ddb7b1c90afe11e45566a76f57dad13d9e7dbef4046b3905e6",
+    "transport_code": "MEGAlib"
+  },
   "output_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_positions.csv",
   "output_sha256": "28aa15b2669e9ef7e40956ec7035aca0ed289014f23b03dd4181f7b0a569bf98",
+  "parent_resampling_authority": {
+    "full_list_csv_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
+    "histories": 1000000,
+    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md",
+    "selected_unique_positions": 6927,
+    "selection_stream_sha256": "3be6695480c8b130ea9a396cbe34efdc47e97be4aa3575bcf4b2968be147a98e",
+    "status": "CU64_PARENT_RESAMPLING_AUTHORITY_COMPLETE",
+    "transport_run_performed": false
+  },
   "production_tag_summary": [
     {
       "activity_weight_Bq": "0.0006753252346540412812810649609",
@@ -25,29 +280,20 @@
   ],
   "rows": 6927,
   "sampling_probability_sum": "1.0000000000000000000000000000000000000000000000000000000000000000000000000000164",
-  "source_csv": "/home/ubuntu/TES_511_Balloon/engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/delayed_position_weights_v2.csv",
-  "source_material_policy": "PENDING_REGION_AUDIT",
-  "source_sha256": "fa70c28c188ee8dc363c5f579d5332fae474539f40a35afe2624253cdebc5076",
-  "status": "CU64_COMMON_POSITIONS_COMPLETE",
-  "source_region_material_name_audit": {
-    "status": "SOURCE_REGION_MATERIAL_NAME_AUDIT_PASS",
-    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md"
-  },
   "source_coordinate_containment_audit": {
-    "status": "SOURCE_COORDINATE_CONTAINMENT_STATIC_PASS",
+    "coordinate_transform_policy": "source-v2 coordinates are inverse-rotated by InstrumentFrame.Rotation 0 45 0 into the MEGAlib/FLUKA-translator local frame before static containment",
     "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md",
     "runtime_point_location_tested": false,
-    "coordinate_transform_policy": "source-v2 coordinates are inverse-rotated by InstrumentFrame.Rotation 0 45 0 into the MEGAlib/FLUKA-translator local frame before static containment"
+    "status": "SOURCE_COORDINATE_CONTAINMENT_STATIC_PASS"
   },
-  "parent_resampling_authority": {
-    "status": "CU64_PARENT_RESAMPLING_AUTHORITY_COMPLETE",
-    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md",
-    "histories": 1000000,
-    "selected_unique_positions": 6927,
-    "selection_stream_sha256": "3be6695480c8b130ea9a396cbe34efdc47e97be4aa3575bcf4b2968be147a98e",
-    "full_list_csv_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
-    "transport_run_performed": false
+  "source_csv": "/home/ubuntu/TES_511_Balloon/engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/delayed_position_weights_v2.csv",
+  "source_material_policy": "PENDING_REGION_AUDIT",
+  "source_region_material_name_audit": {
+    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md",
+    "status": "SOURCE_REGION_MATERIAL_NAME_AUDIT_PASS"
   },
+  "source_sha256": "fa70c28c188ee8dc363c5f579d5332fae474539f40a35afe2624253cdebc5076",
+  "status": "CU64_COMMON_POSITIONS_COMPLETE",
   "top_source_volumes": [
     {
       "activity_fraction": "0.39136667351115603542250747257208020931067939116759672020202725726887290858593176",
@@ -172,196 +418,5 @@
   ],
   "total_activity_weight_Bq": "4.7019049431490107524463624743795999999999999999999999999999999999999999999999523",
   "volume_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_position_volume_summary.csv",
-  "volume_summary_sha256": "c8e1953203a9d8f762068520d892a3d9798deffd9033288ad2647ce868a31a34",
-  "fluka_common_raw_smoke": {
-    "status": "PHASE3_CU64_COMMON_FLUKA_RAW_PASS",
-    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md",
-    "summary_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.json",
-    "band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/band_summary.csv",
-    "scoring_closure_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/scoring_closure.json",
-    "run_manifest_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/run_manifest.csv",
-    "summary_sha256": "71ff74636371adda6472d8f3a3985b0f65a8bb5618333bbbf6b2e5d5cba06b84",
-    "summary_json_sha256": "d14bf6a19b2af10729e8145f48f8b809d44468fc432a5d8e153beaa92f5bc9a2",
-    "band_summary_sha256": "9080a43d269ced1402128fdff06e824dd74db36dd03acfbb1aef2385c9fc3582",
-    "scoring_closure_sha256": "76055fbad09aeb7755c1972186eded369b6739eccdb68e1c9df681085b33b26d",
-    "transport_code": "FLUKA",
-    "source_mode": "phase3_cu64_common_parent_resampling",
-    "no_sim_gz_replay": true,
-    "histories": 1000,
-    "seed": 24066800,
-    "parent_list": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv",
-    "parent_list_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
-    "raw_event_rows": 107,
-    "band_summary": [
-      {
-        "band": "all_tes_gt0",
-        "band_label": "all TES > 0",
-        "histories": 1000,
-        "events": 5,
-        "efficiency_per_parent": 0.005,
-        "top_material_counts": {
-          "Copper": 5
-        },
-        "top_source_volume_counts": {
-          "ColdPlate_MXC_50mK_SD_anchor": 1,
-          "Cu_50mK_StillLike_Can_side_wall_above_side_port": 1,
-          "Cu_50mK_StillLike_Can_side_wall_rectcut_window_band": 1,
-          "Cu_SubstrateSupport_OpenRing_L5_ZP_panel": 1,
-          "Cu_SubstrateSupport_SolidDisk_L0_deepest": 1
-        }
-      },
-      {
-        "band": "e480_550",
-        "band_label": "480-550 keV",
-        "histories": 1000,
-        "events": 2,
-        "efficiency_per_parent": 0.002,
-        "top_material_counts": {
-          "Copper": 2
-        },
-        "top_source_volume_counts": {
-          "ColdPlate_MXC_50mK_SD_anchor": 1,
-          "Cu_50mK_StillLike_Can_side_wall_above_side_port": 1
-        }
-      },
-      {
-        "band": "w2_510p58_511p42",
-        "band_label": "W2 510.58-511.42 keV",
-        "histories": 1000,
-        "events": 2,
-        "efficiency_per_parent": 0.002,
-        "top_material_counts": {
-          "Copper": 2
-        },
-        "top_source_volume_counts": {
-          "ColdPlate_MXC_50mK_SD_anchor": 1,
-          "Cu_50mK_StillLike_Can_side_wall_above_side_port": 1
-        }
-      },
-      {
-        "band": "e1500_3000",
-        "band_label": "1500-3000 keV",
-        "histories": 1000,
-        "events": 0,
-        "efficiency_per_parent": 0.0,
-        "top_material_counts": {},
-        "top_source_volume_counts": {}
-      },
-      {
-        "band": "e3000_10000",
-        "band_label": "3000-10000 keV",
-        "histories": 1000,
-        "events": 0,
-        "efficiency_per_parent": 0.0,
-        "top_material_counts": {},
-        "top_source_volume_counts": {}
-      }
-    ],
-    "scoring_closure": {
-      "status": "PASS",
-      "raw_event_rows": 107,
-      "score_rows_parsed": 3110,
-      "raw_dump_tes_total_keV": 1458.19986065,
-      "score_tes_total_keV": 1458.1998604550001,
-      "tes_relative_delta": 1.3372635812717172e-10,
-      "raw_dump_shield_total_keV": 33465.141153662,
-      "score_shield_total_keV": 33465.141161299995,
-      "shield_relative_delta": 2.282373373635355e-10
-    },
-    "boundary": "FLUKA-only 1000-history full-geometry raw-deposit plumbing smoke; MEGAlib runner/parser smoke has run, but detector/readout semantic calibration, common event building, and production-statistics closure remain open."
-  },
-  "megalib_common_raw_smoke": {
-    "status": "PHASE3_CU64_COMMON_MEGALIB_RAW_PASS",
-    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.md",
-    "summary_json": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.json",
-    "band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/band_summary.csv",
-    "detector_hit_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/detector_hit_summary.csv",
-    "run_manifest_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/run_manifest.csv",
-    "summary_sha256": "5b0931046b1895d0ff36210849e80c19480df591bf84302a5a4e5a3689076bea",
-    "summary_json_sha256": "ba4b1ede73310ba05335d44bda4352241c2a072385f7ef41214251621f73bc9d",
-    "band_summary_sha256": "3b85a4cdd430ce25b73f45eb83d3e5b4e4b9f471acbcf0c90ea19478b7f59e7a",
-    "detector_hit_summary_sha256": "43f5d689ebc0785b3b788d922747ae0831cfd4af2fb9b47bff75eff3239100ed",
-    "transport_code": "MEGAlib",
-    "source_mode": "phase3_cu64_common_parent_resampling",
-    "stop_condition": "Events",
-    "pre_trigger_mode": "Everything",
-    "no_sim_gz_replay": true,
-    "histories": 1000,
-    "seed": 24066900,
-    "parent_list": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv",
-    "parent_list_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
-    "raw_hit_rows": 1352,
-    "band_summary": [
-      {
-        "band": "all_tes_gt0",
-        "band_label": "all TES > 0",
-        "histories": 1000,
-        "events": 1000,
-        "efficiency_per_parent": 1.0,
-        "top_material_counts": {
-          "Copper": 932,
-          "CuNi": 68
-        }
-      },
-      {
-        "band": "e480_550",
-        "band_label": "480-550 keV",
-        "histories": 1000,
-        "events": 12,
-        "efficiency_per_parent": 0.012,
-        "top_material_counts": {
-          "Copper": 12
-        }
-      },
-      {
-        "band": "w2_510p58_511p42",
-        "band_label": "W2 510.58-511.42 keV",
-        "histories": 1000,
-        "events": 1,
-        "efficiency_per_parent": 0.001,
-        "top_material_counts": {
-          "Copper": 1
-        }
-      },
-      {
-        "band": "e1500_3000",
-        "band_label": "1500-3000 keV",
-        "histories": 1000,
-        "events": 1,
-        "efficiency_per_parent": 0.001,
-        "top_material_counts": {
-          "Copper": 1
-        }
-      },
-      {
-        "band": "e3000_10000",
-        "band_label": "3000-10000 keV",
-        "histories": 1000,
-        "events": 0,
-        "efficiency_per_parent": 0.0,
-        "top_material_counts": {}
-      }
-    ],
-    "detector_hit_summary": [
-      {
-        "detector_id": 4,
-        "detector_name": "D4",
-        "detector_volume": "TES_L3",
-        "detector_kind": "TES_PIXEL",
-        "hit_rows": 1349,
-        "histories_with_hit": 1000,
-        "deposit_keV_sum": 212788.60286999986
-      },
-      {
-        "detector_id": 2,
-        "detector_name": "D2",
-        "detector_volume": "TES_L1",
-        "detector_kind": "TES_PIXEL",
-        "hit_rows": 3,
-        "histories_with_hit": 3,
-        "deposit_keV_sum": 727.33396
-      }
-    ],
-    "boundary": "MEGAlib-only 1000-event full-geometry raw-hit runner/parser smoke; native HTsim detector/readout semantics are not yet a FLUKA-equivalent raw-deposit schema, so common event building and production-statistics closure remain open."
-  }
+  "volume_summary_sha256": "c8e1953203a9d8f762068520d892a3d9798deffd9033288ad2647ce868a31a34"
 }

@@ -1,22 +1,23 @@
 {
-  "band_summary": [
+  "boundary": "MEGAlib-only Phase-3 common Cu-64 raw-hit smoke; CC HIT volume deposits now provide the common raw-deposit schema, while native HTsim is retained only as a MEGAlib detector-type/readout summary. FLUKA production comparison, common event building, and production-statistics closure remain open.",
+  "cc_band_summary": [
     {
       "band": "all_tes_gt0",
       "band_label": "all TES > 0",
-      "efficiency_per_parent": 1.0,
-      "events": 1000,
+      "efficiency_per_parent": 0.003,
+      "events": 3,
       "histories": 1000,
-      "top_material_counts": "{\"Copper\": 932, \"CuNi\": 68}",
-      "top_source_volume_counts": "{\"ColdPlate_4K\": 390, \"ColdPlate_CP_100mK_intercept\": 91, \"ColdPlate_MXC_50mK_SD_anchor\": 69, \"ColdPlate_Still_0p7K\": 201, \"Cu_50mK_StillLike_Can_side_wall_rectcut_window_band\": 33}"
+      "top_material_counts": "{\"Copper\": 3}",
+      "top_source_volume_counts": "{\"ColdPlate_MXC_50mK_SD_anchor\": 1, \"Cu_50mK_StillLike_Can_side_wall_above_side_port\": 1, \"DR_MixingChamber_Cu\": 1}"
     },
     {
       "band": "e480_550",
       "band_label": "480-550 keV",
-      "efficiency_per_parent": 0.012,
-      "events": 12,
+      "efficiency_per_parent": 0.001,
+      "events": 1,
       "histories": 1000,
-      "top_material_counts": "{\"Copper\": 12}",
-      "top_source_volume_counts": "{\"ColdPlate_4K\": 7, \"ColdPlate_MXC_50mK_SD_anchor\": 1, \"ColdPlate_Still_0p7K\": 3, \"DR_Still_Pot_Cu\": 1}"
+      "top_material_counts": "{\"Copper\": 1}",
+      "top_source_volume_counts": "{\"Cu_50mK_StillLike_Can_side_wall_above_side_port\": 1}"
     },
     {
       "band": "w2_510p58_511p42",
@@ -25,16 +26,16 @@
       "events": 1,
       "histories": 1000,
       "top_material_counts": "{\"Copper\": 1}",
-      "top_source_volume_counts": "{\"ColdPlate_4K\": 1}"
+      "top_source_volume_counts": "{\"Cu_50mK_StillLike_Can_side_wall_above_side_port\": 1}"
     },
     {
       "band": "e1500_3000",
       "band_label": "1500-3000 keV",
-      "efficiency_per_parent": 0.001,
-      "events": 1,
+      "efficiency_per_parent": 0.0,
+      "events": 0,
       "histories": 1000,
-      "top_material_counts": "{\"Copper\": 1}",
-      "top_source_volume_counts": "{\"ColdPlate_Still_0p7K\": 1}"
+      "top_material_counts": "{}",
+      "top_source_volume_counts": "{}"
     },
     {
       "band": "e3000_10000",
@@ -46,40 +47,236 @@
       "top_source_volume_counts": "{}"
     }
   ],
-  "band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/band_summary.csv",
-  "boundary": "MEGAlib-only Phase-3 common Cu-64 raw-hit smoke; native HTsim detector/readout semantics are not yet FLUKA-equivalent raw deposits, so FLUKA production comparison, common event builder, and production-statistics closure remain open",
-  "detector_hit_summary": [
+  "cc_band_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_band_summary.csv",
+  "cc_hit_rows": 6477,
+  "cc_particle_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_particle_summary.csv",
+  "cc_tes_hit_rows": 11,
+  "cc_tes_hit_sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_hit_sample.csv",
+  "cc_tes_particle_summary": [
     {
-      "deposit_keV_sum": 212788.60286999986,
-      "detector_id": 4,
-      "detector_kind": "TES_PIXEL",
-      "detector_name": "D4",
-      "detector_volume": "TES_L3",
-      "histories_with_hit": 1000,
-      "hit_rows": 1349
+      "creator_process": "phot",
+      "deposit_keV_sum": 605.2936900000001,
+      "histories_with_hit": 2,
+      "hit_rows": 5,
+      "parent": "gamma",
+      "region_kind": "TES_PIXEL",
+      "secondary": "e-",
+      "step_process": "eIoni"
     },
     {
-      "deposit_keV_sum": 727.33396,
-      "detector_id": 2,
-      "detector_kind": "TES_PIXEL",
-      "detector_name": "D2",
-      "detector_volume": "TES_L1",
-      "histories_with_hit": 3,
-      "hit_rows": 3
+      "creator_process": "compt",
+      "deposit_keV_sum": 76.36037,
+      "histories_with_hit": 1,
+      "hit_rows": 1,
+      "parent": "gamma",
+      "region_kind": "TES_PIXEL",
+      "secondary": "e-",
+      "step_process": "eIoni"
+    },
+    {
+      "creator_process": "phot",
+      "deposit_keV_sum": 23.312,
+      "histories_with_hit": 2,
+      "hit_rows": 2,
+      "parent": "gamma",
+      "region_kind": "TES_PIXEL",
+      "secondary": "gamma",
+      "step_process": "phot"
+    },
+    {
+      "creator_process": "annihil",
+      "deposit_keV_sum": 22.326,
+      "histories_with_hit": 2,
+      "hit_rows": 2,
+      "parent": "e+",
+      "region_kind": "TES_PIXEL",
+      "secondary": "gamma",
+      "step_process": "phot"
+    },
+    {
+      "creator_process": "annihil",
+      "deposit_keV_sum": 0.04189,
+      "histories_with_hit": 1,
+      "hit_rows": 1,
+      "parent": "e+",
+      "region_kind": "TES_PIXEL",
+      "secondary": "gamma",
+      "step_process": "compt"
     }
   ],
-  "detector_hit_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/detector_hit_summary.csv",
-  "detector_map_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/detector_map_summary.csv",
-  "event_total_sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/event_total_sample.csv",
+  "cc_tes_particle_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_particle_summary.csv",
+  "cc_volume_summary": [
+    {
+      "deposit_keV_sum": 57448.662014796355,
+      "histories_with_hit": 406,
+      "hit_rows": 1688,
+      "region_kind": "OTHER",
+      "volume": "ColdPlate_4K"
+    },
+    {
+      "deposit_keV_sum": 30981.82015742242,
+      "histories_with_hit": 218,
+      "hit_rows": 1016,
+      "region_kind": "OTHER",
+      "volume": "ColdPlate_Still_0p7K"
+    },
+    {
+      "deposit_keV_sum": 18353.750094503,
+      "histories_with_hit": 103,
+      "hit_rows": 462,
+      "region_kind": "OTHER",
+      "volume": "ColdPlate_CP_100mK_intercept"
+    },
+    {
+      "deposit_keV_sum": 15070.611687433584,
+      "histories_with_hit": 82,
+      "hit_rows": 379,
+      "region_kind": "OTHER",
+      "volume": "ColdPlate_MXC_50mK_SD_anchor"
+    },
+    {
+      "deposit_keV_sum": 8411.380688516898,
+      "histories_with_hit": 40,
+      "hit_rows": 192,
+      "region_kind": "OTHER",
+      "volume": "DR_Still_Pot_Cu"
+    },
+    {
+      "deposit_keV_sum": 5385.544349089999,
+      "histories_with_hit": 38,
+      "hit_rows": 179,
+      "region_kind": "OTHER",
+      "volume": "Vacuum_Jacket_Al_266mmClass_side_port_side_wall_above_side_port"
+    },
+    {
+      "deposit_keV_sum": 4372.832144,
+      "histories_with_hit": 13,
+      "hit_rows": 86,
+      "region_kind": "OTHER",
+      "volume": "Passive_W_Bottom_Plate_detector_bay"
+    },
+    {
+      "deposit_keV_sum": 4145.208728071899,
+      "histories_with_hit": 23,
+      "hit_rows": 92,
+      "region_kind": "OTHER",
+      "volume": "DR_4K_Condenser_Cu"
+    },
+    {
+      "deposit_keV_sum": 4120.624177821601,
+      "histories_with_hit": 33,
+      "hit_rows": 148,
+      "region_kind": "OTHER",
+      "volume": "Cu_50mK_StillLike_Can_side_wall_rectcut_window_band"
+    },
+    {
+      "deposit_keV_sum": 4063.458296360199,
+      "histories_with_hit": 32,
+      "hit_rows": 160,
+      "region_kind": "OTHER",
+      "volume": "Cu_50mK_StillLike_Can_side_wall_above_side_port"
+    },
+    {
+      "deposit_keV_sum": 3729.7670191064,
+      "histories_with_hit": 32,
+      "hit_rows": 115,
+      "region_kind": "OTHER",
+      "volume": "Cu_50mK_StillLike_Can_bottom_cap_2mm"
+    },
+    {
+      "deposit_keV_sum": 3183.5048795957205,
+      "histories_with_hit": 22,
+      "hit_rows": 127,
+      "region_kind": "OTHER",
+      "volume": "DR_Capillary_CuNi_Still_4K"
+    },
+    {
+      "deposit_keV_sum": 2914.3513427000003,
+      "histories_with_hit": 21,
+      "hit_rows": 100,
+      "region_kind": "OTHER",
+      "volume": "Shield_60K_Al_side_window_side_wall_above_side_port"
+    },
+    {
+      "deposit_keV_sum": 2627.532410894701,
+      "histories_with_hit": 22,
+      "hit_rows": 104,
+      "region_kind": "OTHER",
+      "volume": "Cu_50mK_StillLike_Can_side_wall_below_side_port"
+    },
+    {
+      "deposit_keV_sum": 2363.9416751548,
+      "histories_with_hit": 18,
+      "hit_rows": 60,
+      "region_kind": "OTHER",
+      "volume": "DR_Capillary_CuNi_4K_60K"
+    },
+    {
+      "deposit_keV_sum": 2313.290830520001,
+      "histories_with_hit": 16,
+      "hit_rows": 77,
+      "region_kind": "OTHER",
+      "volume": "Shield_4K_Al_side_window_side_wall_above_side_port"
+    },
+    {
+      "deposit_keV_sum": 2147.68747,
+      "histories_with_hit": 4,
+      "hit_rows": 41,
+      "region_kind": "ACTIVE_SHIELD",
+      "volume": "CsI_TopAnnulus_Segment_05"
+    },
+    {
+      "deposit_keV_sum": 1903.5078035134,
+      "histories_with_hit": 15,
+      "hit_rows": 64,
+      "region_kind": "OTHER",
+      "volume": "DR_Continuous_HEX_CuNi_CP_to_Still"
+    },
+    {
+      "deposit_keV_sum": 1868.8900879999997,
+      "histories_with_hit": 4,
+      "hit_rows": 39,
+      "region_kind": "ACTIVE_SHIELD",
+      "volume": "CsI_Bottom_Quadrant_02"
+    },
+    {
+      "deposit_keV_sum": 1831.0851458820002,
+      "histories_with_hit": 8,
+      "hit_rows": 53,
+      "region_kind": "OTHER",
+      "volume": "MuMetal_MagShield_Outer_Cylinder_2mm"
+    }
+  ],
+  "cc_volume_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_volume_summary.csv",
+  "detector_instance_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/detector_instance_summary.csv",
   "geometry": "/home/ubuntu/TES_511_Balloon/outputs/geometry/DEMO2_DR_v3p5_user_cylmag_redesign_multiholeW_fix5_20260621_megalib_proxy/DEMO2_DR_v3p5_minpatch_centerfinger_megalib_proxy.geo.setup",
   "geometry_sha256": "f6ee8c36f45b6a66efa5544daf58a3431c6833289e5658eb8b4452f6792205b0",
   "histories": 1000,
+  "htsim_detector_type_summary": [
+    {
+      "deposit_keV_sum": 212788.60286999986,
+      "histories_with_hit": 1000,
+      "hit_rows": 1349,
+      "megalib_detector_type": 4,
+      "megalib_detector_type_name": "Scintillator"
+    },
+    {
+      "deposit_keV_sum": 727.33396,
+      "histories_with_hit": 3,
+      "hit_rows": 3,
+      "megalib_detector_type": 2,
+      "megalib_detector_type_name": "Calorimeter"
+    }
+  ],
+  "htsim_detector_type_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/htsim_detector_type_summary.csv",
+  "htsim_first_field": "MEGAlib detector type, not .det detector instance id",
+  "htsim_hit_rows": 1352,
   "no_sim_gz_replay": true,
   "parent_list": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv",
   "parent_list_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
   "pre_trigger_mode": "Everything",
-  "raw_hit_rows": 1352,
-  "raw_hit_sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/raw_hit_sample.csv",
+  "raw_hit_rows": 6477,
+  "raw_schema": "CC HIT volume energy deposits",
   "returncode": 0,
   "run_manifest": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/run_manifest.csv",
   "run_products_retained": false,

@@ -69,13 +69,14 @@ without `.sim.gz` replay: `1000` Cu-64 histories produce `5` any-TES events and
 `2` W2 events, and raw dump versus score output closes at `1.337e-10` TES
 relative delta. The matching MEGAlib raw-hit smoke also runs from the same
 parent stream without `.sim.gz` replay using `Run.Events 1000` and
-`PreTriggerMode Everything`: native HTsim gives `1000/1000` all-TES histories,
-`12/1000` in 480-550 keV, `1/1000` in W2, and detector hits dominated by
-`D4/TES_L3` (`1000` histories, `1349` hit rows). These are plumbing/parser
-checks only. The MEGAlib native HTsim detector/readout semantics are not yet a
-FLUKA-equivalent raw-deposit schema, so detector/readout semantic calibration,
-common event building, production statistics, and final cross-code raw-deposit
-truth remain open.
+`PreTriggerMode Everything`. The HTsim ambiguity is now calibrated: the first
+field is MEGAlib detector type (`4 = Scintillator`, `2 = Calorimeter`), not a
+`.det` detector-instance id. The comparable MEGAlib statistic is now the `CC
+HIT` volume-deposit truth: `3/1000` any-TES histories, `1/1000` in 480-550 keV,
+and `1/1000` in W2. These smoke counts are qualitatively close to the FLUKA
+`5/1000` any-TES and `2/1000` W2 counts, but far too low for a production
+efficiency conclusion. Common event building, production statistics, and final
+cross-code raw-deposit truth remain open.
 
 ## Evidence
 
@@ -198,8 +199,9 @@ Phase-3 MEGAlib common raw-hit smoke:
 
 ```text
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.md
-engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/band_summary.csv
-engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/detector_hit_summary.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_band_summary.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_hit_sample.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_particle_summary.csv
 ```
 
 Runtime identity result:
@@ -351,13 +353,14 @@ Phase-3 MEGAlib common raw-hit smoke:
 | stop condition | `Events` |
 | pre-trigger mode | `Everything` |
 | `.sim.gz` replay | `False` |
-| raw hit rows | `1352` |
-| any TES events, native HTsim | `1000 / 1000` |
-| 480-550 keV events, native HTsim | `12 / 1000` |
-| W2 510.58-511.42 keV events, native HTsim | `1 / 1000` |
-| 1500-3000 keV events, native HTsim | `1 / 1000` |
-| 3000-10000 keV events, native HTsim | `0 / 1000` |
-| dominant detector/readout | `D4 / TES_L3: 1000 histories, 1349 hit rows` |
+| `CC HIT` rows | `6477` |
+| `CC HIT` TES rows | `11` |
+| any TES events, `CC HIT` volume truth | `3 / 1000` |
+| 480-550 keV events, `CC HIT` volume truth | `1 / 1000` |
+| W2 510.58-511.42 keV events, `CC HIT` volume truth | `1 / 1000` |
+| 1500-3000 keV events, `CC HIT` volume truth | `0 / 1000` |
+| 3000-10000 keV events, `CC HIT` volume truth | `0 / 1000` |
+| native HTsim detector types | `type 4 Scintillator: 1000 histories, 1349 rows; type 2 Calorimeter: 3 histories, 3 rows` |
 | production statistics | `False` |
 
 ## What This Does Not Prove
@@ -380,22 +383,21 @@ translated geometry authority after the explicit InstrumentFrame transform.
 The FLUKA-side 1k raw-deposit smoke proves the parent stream can drive the full
 FLUKA geometry and raw scorer without replay. The MEGAlib-side 1k raw-hit smoke
 proves the same parent stream can drive Cosima and be parsed without replay,
-but its native HTsim detector/readout semantics are not yet a FLUKA-equivalent
-deposit schema. In particular, the native HTsim summary gives `1000/1000`
-all-TES histories dominated by `D4/TES_L3`, so it must not be directly ratioed
-against the FLUKA `5/1000` raw-deposit count. These smokes do not yet replace a
-Geant4 runtime point-location scorer, detector/readout semantic calibration, a
-common event builder, or production-statistics full-geometry raw-deposit truth.
+and its HTsim ambiguity is now understood: native HTsim first field is detector
+type, not `.det` detector id. The comparable MEGAlib `CC HIT` volume-truth smoke
+gives `3/1000` any-TES and `1/1000` W2 versus FLUKA `5/1000` any-TES and
+`2/1000` W2. These smokes do not yet replace a Geant4 runtime point-location
+scorer, a common event builder, or production-statistics full-geometry
+raw-deposit truth.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
 2. Runtime point-location audit for the built Cu-64 common positions if required before production transport.
-3. MEGAlib HTsim detector/readout semantic calibration against the common raw-deposit schema.
-4. Production-statistics full-geometry raw deposits for the common Cu-64 parents in both codes.
-5. Common external event builder and deterministic analytic W2 response.
-6. Common ancestry/stopping observables for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy.
-7. FLUKA EM-cut/material scan only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy.
+3. Production-statistics full-geometry raw deposits for the common Cu-64 parents in both codes, using FLUKA raw scoring and MEGAlib `CC HIT` volume truth.
+4. Common external event builder and deterministic analytic W2 response.
+5. Common ancestry/stopping observables for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy.
+6. FLUKA EM-cut/material scan only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy.
 
 ## Working Hypothesis After This Gate
 
@@ -412,9 +414,8 @@ delayed deficit:
 | 3000-10000 keV | 0.014 |
 
 The next run should therefore scale the built Cu-64 common parent stream to
-production-statistics full-geometry raw-deposit truth in both codes, after the
-MEGAlib HTsim/readout semantics are calibrated or replaced by a common
-deposit-level scorer. Insert a runtime point-location scorer first if the
-engine-level locator is required as a hard gate. The toy T2 W2 result no longer
-justifies an immediate FLUKA EM-cut scan for the 511-related deposited-energy
-gate.
+production-statistics full-geometry raw-deposit truth in both codes, using the
+MEGAlib `CC HIT` volume-deposit stream rather than native HTsim for TES/W2
+counts. Insert a runtime point-location scorer first if the engine-level locator
+is required as a hard gate. The toy T2 W2 result no longer justifies an
+immediate FLUKA EM-cut scan for the 511-related deposited-energy gate.

@@ -50,8 +50,10 @@ The first non-statistical gate has been run on the FLUKA side:
   deterministic parent list, without `.sim.gz` replay.
 - Phase-3 MEGAlib-only common Cu-64 raw-hit smoke:
   `PHASE3_CU64_COMMON_MEGALIB_RAW_PASS` for `1000` simulated events from the
-  same deterministic parent list, without `.sim.gz` replay; its native HTsim
-  detector/readout semantics are not yet a FLUKA-equivalent raw-deposit schema.
+  same deterministic parent list, without `.sim.gz` replay. HTsim semantic
+  calibration shows the first HTsim field is a MEGAlib detector type, not a
+  `.det` detector-instance id; comparable TES/W2 counts now come from `CC HIT`
+  volume-deposit truth.
 
 Runtime identity table:
 
@@ -750,33 +752,48 @@ from the deterministic Cu-64 parent list:
 
 ```text
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/summary.md
-engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/band_summary.csv
-engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/detector_hit_summary.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_band_summary.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_hit_sample.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_particle_summary.csv
 ```
 
 It uses `Run.Events 1000` and `PreTriggerMode Everything`, so the denominator
 is simulated events rather than requested triggered events. The source is the
 same parent-resampling authority and is not a `.sim.gz` replay.
 
-Smoke-statistics native HTsim band counts:
+The important semantic correction is now closed: MEGAlib `HTsim` first field is
+the detector type written by `MSimHT::ToSimString` (`4 = Scintillator`,
+`2 = Calorimeter`), not the `.det` detector-instance id. The previous
+`D4/TES_L3` interpretation was therefore a parser mistake. The comparable
+raw-deposit schema for this smoke is the patched `CC HIT <volume>
+edep_keV=...` comment stream.
+
+Smoke-statistics `CC HIT` volume-truth band counts:
 
 | band | events / histories | efficiency |
 |---|---:|---:|
-| all TES > 0 | `1000 / 1000` | `1.0` |
-| 480-550 keV | `12 / 1000` | `0.012` |
+| all TES > 0 | `3 / 1000` | `0.003` |
+| 480-550 keV | `1 / 1000` | `0.001` |
 | W2 510.58-511.42 keV | `1 / 1000` | `0.001` |
-| 1500-3000 keV | `1 / 1000` | `0.001` |
+| 1500-3000 keV | `0 / 1000` | `0.0` |
 | 3000-10000 keV | `0 / 1000` | `0.0` |
 
-The detector-hit summary is highly concentrated in the native MEGAlib readout:
-`D4/TES_L3` has `1000` histories with hits and `1349` hit rows, while `D2/TES_L1`
-has `3` histories with hits and `3` hit rows. Therefore this gate proves the
-independent source can drive Cosima and the HTsim parser, but the native HTsim
-detector/readout semantics are not yet a FLUKA-equivalent deposit schema. Do
-not compare the `1000/1000` all-TES count directly with the FLUKA `5/1000`
-raw-deposit count; the next gate must calibrate/replace the MEGAlib detector
-readout with a common raw-deposit/event-builder schema before interpreting
-per-parent W2 efficiency.
+The same run records `6477` `CC HIT` rows, of which only `11` are in
+`TES_PIXEL` volumes. Those `11` TES rows belong to three histories. Their
+particle/ancestry split answers the photon-carrier concern directly: most TES
+energy is deposited locally by `e-` secondaries, but those electrons are produced
+by gamma `phot`/`compt` interactions in the TES; smaller rows are direct gamma
+photoelectric/Compton deposits. In other words, "electron" is the local
+depositing carrier, not evidence that photons are absent from the TES ancestry.
+
+Native HTsim is retained only as a MEGAlib detector-type/readout diagnostic:
+detector type `4` (`Scintillator`) has `1000` histories and `1349` rows, and
+detector type `2` (`Calorimeter`) has `3` histories and `3` rows. These are not
+`.det` detector ids and must not be ratioed against FLUKA raw-deposit counts.
+At smoke statistics, the comparable FLUKA and MEGAlib raw-deposit counts are
+close but far too small to interpret as a production efficiency result:
+FLUKA `5/1000` any-TES and `2/1000` W2 versus MEGAlib `3/1000` any-TES and
+`1/1000` W2.
 
 ## 18. Source-region audit
 
@@ -1197,7 +1214,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Static coordinate-containment audit after inverse InstrumentFrame transform
 [x] Run FLUKA 1k Phase-3 common Cu-64 raw-deposit plumbing smoke
 [x] Run MEGAlib 1k Phase-3 common Cu-64 raw-hit plumbing smoke
-[ ] Calibrate MEGAlib HTsim detector/readout semantics against the common raw-deposit schema
+[x] Calibrate MEGAlib HTsim detector/readout semantics against the common raw-deposit schema
 [ ] Runtime engine point-location audit in Geant4/FLUKA, if required before production transport
 [ ] Run 1e6 Cu-64 parents per code
 [ ] Save raw deposit truth

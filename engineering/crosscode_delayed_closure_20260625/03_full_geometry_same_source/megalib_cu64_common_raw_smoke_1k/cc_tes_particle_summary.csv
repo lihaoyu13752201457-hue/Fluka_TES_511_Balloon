@@ -1,0 +1,6 @@
+region_kind,secondary,parent,creator_process,step_process,hit_rows,histories_with_hit,deposit_keV_sum
+TES_PIXEL,e-,gamma,phot,eIoni,5,2,605.2936900000001
+TES_PIXEL,e-,gamma,compt,eIoni,1,1,76.36037
+TES_PIXEL,gamma,gamma,phot,phot,2,2,23.312
+TES_PIXEL,gamma,e+,annihil,phot,2,2,22.326
+TES_PIXEL,gamma,e+,annihil,compt,1,1,0.04189

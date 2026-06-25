@@ -1,0 +1,7 @@
+source_index,event_id,nuclide,expected_ZA,expected_Z,expected_A,expected_isomer,runtime_Z,runtime_A,runtime_isomer,IJHION,RADDLY_s,identity_match
+1,153,Cu-64,29064,29,64,0,29,64,0,2906440,1.53e-07,True
+2,7,Cu-62,29062,29,62,0,29,62,0,2906240,7e-09,True
+3,16,I-128,53128,53,128,0,53,128,0,5312840,1.6e-08,True
+4,62,Na-22,11022,11,22,0,11,22,0,1102240,6.2e-08,True
+5,72,Na-24,11024,11,24,0,11,24,0,1102440,7.2e-08,True
+6,65,Al-28,13028,13,28,0,13,28,0,1302840,6.5e-08,True

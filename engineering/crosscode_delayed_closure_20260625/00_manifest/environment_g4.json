@@ -1,0 +1,37 @@
+{
+  "authority_paths": [
+    {
+      "exists": true,
+      "label": "source_v2_eventlist.dat",
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_eventlist.dat",
+      "sha256": "0861ded6378edea1e9ad7267c1089b97ba99457f3fb0c13c0da6394b5d88802e",
+      "size_bytes": 19698694
+    },
+    {
+      "exists": true,
+      "label": "source_v2_event_weights.csv",
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_event_weights.csv",
+      "sha256": "fa70c28c188ee8dc363c5f579d5332fae474539f40a35afe2624253cdebc5076",
+      "size_bytes": 69353445
+    },
+    {
+      "exists": true,
+      "label": "region_map.csv",
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/fluka_crosscode_validation_20260624/02_geometry_translation/region_map.csv",
+      "sha256": "b00a289ba31f9b144862b23991adbdfea5b4d6c131ec23537f357a8c9224d9ac",
+      "size_bytes": 527176
+    },
+    {
+      "exists": true,
+      "label": "fix5_geometry_smoke.inp",
+      "path": "/home/ubuntu/TES_511_Balloon/engineering/fluka_crosscode_validation_20260624/02_geometry_translation/fluka_geometry/fix5_geometry_smoke.inp",
+      "sha256": "674b862cb82368deb74409ead6fb92293056c2a23cdbc1c28db4ed4b747b1039",
+      "size_bytes": 618260
+    }
+  ],
+  "created_utc": "2026-06-25T09:15:57.696023+00:00",
+  "note": "Read-only fingerprint from the FLUKA-side workspace; full Geant4/MEGAlib runtime fingerprint still must be generated on the TES side.",
+  "tes_repo_commit": "455999408676e9a2c9b1e531a6c8562fe880792d",
+  "tes_repo_status_short": "?? add_mass/\n?? core_md/balloon511_nima_latex_drafts/draft_introduction.docx\n?? engineering/fluka_crosscode_validation_20260624/",
+  "tes_root": "/home/ubuntu/TES_511_Balloon"
+}

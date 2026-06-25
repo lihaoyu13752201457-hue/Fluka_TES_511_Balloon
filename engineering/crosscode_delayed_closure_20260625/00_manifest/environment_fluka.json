@@ -1,0 +1,44 @@
+{
+  "created_utc": "2026-06-25T09:15:57.615065+00:00",
+  "environment_subset": {
+    "FLUKADATA": "",
+    "FLUKA_HOME": "",
+    "PATH": "/home/ubuntu/.codex/packages/standalone/releases/0.142.1-x86_64-unknown-linux-musl/codex-path:/home/ubuntu/.local/bin:/home/ubuntu/bin:/home/ubuntu/Downloads/software/geant4/Qt5/5.15.2/gcc_64/bin:/home/ubuntu/.codex/tmp/arg0/codex-arg0lnlHuu:/home/ubuntu/.codex/packages/standalone/releases/0.142.1-x86_64-unknown-linux-musl/codex-path:/home/ubuntu/.local/bin:/home/ubuntu/.nvm/versions/node/v22.22.2/bin:/home/ubuntu/MEGAlib_Install/megalib-main/bin:/home/ubuntu/MEGAlib_Install/megalib-main/external/geant4_v10.02.p03/bin:/home/ubuntu/MEGAlib_Install/megalib-main/external/root_v6.36.6/bin:/home/ubuntu/miniconda3/bin:/home/ubuntu/miniconda3/bin:/home/ubuntu/miniconda3/condabin:/home/ubuntu/.local/bin:/home/ubuntu/bin:/home/ubuntu/Downloads/software/geant4/Qt5/5.15.2/gcc_64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin"
+  },
+  "fluka_executables": [
+    {
+      "exists": true,
+      "label": "fluka",
+      "path": "/home/ubuntu/fluka/fluka-4-5.1-local/usr/local/fluka/bin/fluka",
+      "sha256": "7f619943d13a77ebf5ce8dc9f5ce584f20f362a8d308d2fa530190187f09b07a",
+      "size_bytes": 89908008
+    },
+    {
+      "exists": true,
+      "label": "rfluka",
+      "path": "/home/ubuntu/fluka/fluka-4-5.1-local/usr/local/fluka/bin/rfluka",
+      "sha256": "f8c12714872423264124897f1713dd493a8c666002add19e330b68253b2b1442",
+      "size_bytes": 8435
+    },
+    {
+      "exists": true,
+      "label": "fff",
+      "path": "/home/ubuntu/fluka/fluka-4-5.1-local/usr/local/fluka/bin/fff",
+      "sha256": "5302cb8e78cac5e02f2c7ec94bf0772c3cc99ad41fb02e357f8b138b9f81826e",
+      "size_bytes": 512
+    },
+    {
+      "exists": true,
+      "label": "ldpmqmd",
+      "path": "/home/ubuntu/fluka/fluka-4-5.1-local/usr/local/fluka/bin/ldpmqmd",
+      "sha256": "42e05f8a22c73e2b28c53cf350b053d3ae993e97087cc370a59d447b9e35089e",
+      "size_bytes": 48
+    }
+  ],
+  "fluka_home": "/home/ubuntu/fluka/fluka-4-5.1-local/usr/local/fluka",
+  "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
+  "python": "3.13.2",
+  "repo": "/home/ubuntu/Fluka_TES_511_Balloon",
+  "repo_commit": "22c10d36206d81556494c13a1748016d3d37d1d4",
+  "repo_status_short": "M .gitignore\n?? engineering/\n?? work_fluka_harness/build_delayed_closure_manifest.py\n?? work_fluka_harness/build_raw_scoring_smoke.py\n?? work_fluka_harness/fluka_11_like_energy_band_stats_20260625/11_fix5_w2_prompt_delayed_energy_band_stats.md\n?? work_fluka_harness/fluka_11_like_energy_band_stats_20260625/engineering.md\n?? work_fluka_harness/run_fluka_delayed_source_identity_gate.py"
+}

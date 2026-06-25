@@ -1,0 +1,80 @@
+{
+  "created_utc": "2026-06-25T09:15:52.789068+00:00",
+  "dummy_hi_prope_ZA": 53128,
+  "elapsed_s": 5.480305194854736,
+  "errors": [],
+  "finished_utc": "2026-06-25T09:15:51.422592+00:00",
+  "fluka_executable": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/scoring_routines/fluka_identity_gate",
+  "fluka_executable_sha256": "7c10490e76b800eac5e8fc68ce133d4b799887ceb21397a6600d22ae57c42998",
+  "input": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/fluka_run/identity_gate.inp",
+  "input_sha256": "382e85f5f8540c268f45334b9878a6dade1c7a4bb676d09a3013912983fa099c",
+  "interpretation": "The production-style dummy HI-PROPE 53/128 card is not the observed source identity for these histories; the source routine overrides it with the source-v2 isotope Z/A/isomer before set_primary.",
+  "missing_targets": [],
+  "returncode": 0,
+  "rfluka_runtime_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/fluka_run/identity_gate001_source_identity_runtime.csv",
+  "runtime_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/runtime_source_identity.csv",
+  "selected_histories": 6,
+  "selected_source_rows_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/selected_source_rows.csv",
+  "selected_targets": [
+    "Cu-64",
+    "Cu-62",
+    "I-128",
+    "Na-22",
+    "Na-24",
+    "Al-28"
+  ],
+  "source_override_checked": true,
+  "started_utc": "2026-06-25T09:15:45.942257+00:00",
+  "status": "FLUKA_SOURCE_IDENTITY_GATE_PASS",
+  "target_source_summary": [
+    {
+      "ZA": 29064,
+      "activity_Bq": 4.701904943149167,
+      "first_event_id": 153,
+      "nuclide": "Cu-64",
+      "purpose": "W2 beta-plus anchor",
+      "rows": 6927
+    },
+    {
+      "ZA": 29062,
+      "activity_Bq": 0.12215955780924817,
+      "first_event_id": 7,
+      "nuclide": "Cu-62",
+      "purpose": "W2 secondary copper isotope",
+      "rows": 180
+    },
+    {
+      "ZA": 53128,
+      "activity_Bq": 65.53339484906249,
+      "first_event_id": 16,
+      "nuclide": "I-128",
+      "purpose": "dominant total delayed activity",
+      "rows": 96546
+    },
+    {
+      "ZA": 11022,
+      "activity_Bq": 0.001453951132709518,
+      "first_event_id": 62,
+      "nuclide": "Na-22",
+      "purpose": "long-lived positron emitter sanity check",
+      "rows": 197
+    },
+    {
+      "ZA": 11024,
+      "activity_Bq": 0.492798807690239,
+      "first_event_id": 72,
+      "nuclide": "Na-24",
+      "purpose": "high-energy cascade probe",
+      "rows": 728
+    },
+    {
+      "ZA": 13028,
+      "activity_Bq": 6.889611285847175,
+      "first_event_id": 65,
+      "nuclide": "Al-28",
+      "purpose": "high-energy gamma probe",
+      "rows": 10150
+    }
+  ],
+  "validation_csv": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/runtime_identity_validation.csv"
+}

@@ -1,0 +1,35 @@
+{
+  "date": "2026-06-25",
+  "status": "FLUKA_SOURCE_IDENTITY_GATE_PASS__CROSSCODE_CLOSURE_INCOMPLETE",
+  "completed_gates": [
+    {
+      "gate": "manifest_freeze",
+      "status": "PASS",
+      "path": "engineering/crosscode_delayed_closure_20260625/00_manifest/summary.md"
+    },
+    {
+      "gate": "fluka_runtime_source_identity",
+      "status": "PASS",
+      "path": "engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/summary.md",
+      "checked_nuclides": [
+        "Cu-64",
+        "Cu-62",
+        "I-128",
+        "Na-22",
+        "Na-24",
+        "Al-28"
+      ]
+    }
+  ],
+  "ruled_out": [
+    "The FLUKA delayed discrepancy is not explained by the dummy HI-PROPE 53/128 card silently replacing the checked source-v2 isotope identities."
+  ],
+  "not_yet_ruled_out": [
+    "Decay-kernel or decay-database differences",
+    "Loss of correlated Na-24 / Al-28 high-energy gamma cascades",
+    "Common emitted-particle transport differences",
+    "Full-geometry material/region/source-position differences",
+    "Common postprocessing or event-building differences"
+  ],
+  "next_required_gate": "Vacuum decay-kernel benchmark for Cu-64, Na-24, Al-28, and I-128 in both Geant4/MEGAlib and FLUKA"
+}

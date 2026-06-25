@@ -18,3 +18,12 @@ work_fluka_harness/**/*.out
 work_fluka_harness/**/ran*
 work_fluka_harness/**/core
 
+# Reproducible engineering gates keep summaries/CSVs, not local FLUKA
+# executables, run directories, logs or random seeds.
+engineering/**/fluka_run/
+engineering/**/scoring_routines/
+engineering/**/*.err
+engineering/**/*.log
+engineering/**/*.out
+engineering/**/ran*
+engineering/**/core

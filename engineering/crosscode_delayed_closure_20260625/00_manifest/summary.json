@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-06-25T09:15:59.442733+00:00",
+  "engineering_plan": "/home/ubuntu/Fluka_TES_511_Balloon/work_fluka_harness/fluka_11_like_energy_band_stats_20260625/engineering.md",
+  "files_hashed": 19,
+  "fluka_repo_commit": "22c10d36206d81556494c13a1748016d3d37d1d4",
+  "next_gate": "run_fluka_delayed_source_identity_gate.py",
+  "source_authority_target_isotopes": [
+    {
+      "ZA": 13028,
+      "activity_Bq": 6.889611285847175,
+      "nuclide": "Al-28",
+      "rows": 10150
+    },
+    {
+      "ZA": 29062,
+      "activity_Bq": 0.12215955780924817,
+      "nuclide": "Cu-62",
+      "rows": 180
+    },
+    {
+      "ZA": 29064,
+      "activity_Bq": 4.701904943149167,
+      "nuclide": "Cu-64",
+      "rows": 6927
+    },
+    {
+      "ZA": 53128,
+      "activity_Bq": 65.53339484906249,
+      "nuclide": "I-128",
+      "rows": 96546
+    },
+    {
+      "ZA": 11022,
+      "activity_Bq": 0.001453951132709518,
+      "nuclide": "Na-22",
+      "rows": 197
+    },
+    {
+      "ZA": 11024,
+      "activity_Bq": 0.492798807690239,
+      "nuclide": "Na-24",
+      "rows": 728
+    }
+  ],
+  "status": "FIRST_30MIN_MANIFEST_PRESENT",
+  "tes_repo_commit": "455999408676e9a2c9b1e531a6c8562fe880792d"
+}

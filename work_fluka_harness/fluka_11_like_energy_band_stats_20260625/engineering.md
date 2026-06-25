@@ -1,0 +1,820 @@
+# Geant4/MEGAlib–FLUKA Delayed-Background Closure Engineering Plan
+
+**Project:** TES_511_BALLOON / Fluka_TES_511_Balloon  
+**Date:** 2026-06-25  
+**Status:** ACTIONABLE — designed to reach a discriminating conclusion quickly  
+**Primary question:** Why is the FLUKA final delayed W2 rate higher than the Geant4/MEGAlib result?
+
+---
+
+## 0.0 Review amendments (2026-06-25 — read before §0)
+
+This block records review corrections to the plan below. Where the plan names **`Cu-64`** as the Phase-1 / decay-kernel probe (§0, §5, §23, §26, §29), read it as the isotope set **`{Cu-64, Na-24, Al-28, I-128}`** unless a step is explicitly W2-only.
+
+**A1 — Broaden the decay-kernel probe; Cu-64 alone cannot test the dominant discrepancy.**
+The plan centers on Cu-64 because W2 delayed is Cu-64-dominated. But Cu-64 is gamma-poor (β⁺ 17.6% / EC 43.1% / β⁻ 39.0%; only a 1.346 MeV γ at 0.48%), so its decay kernel tests β⁺/EC branching and annihilation, **not** the γ cascade. The most statistically decisive cross-code discrepancy is **not** the W2 511 line but the **high-energy γ deficit**:
+
+| band (final delayed) | G4 events | FLUKA/G4 rate |
+|---|---:|---:|
+| W2 511 | 30 | 2.64 (≈2σ, low stat) |
+| 1500–3000 keV | **506** | **0.041** |
+| 3000–10000 keV | **48** | **0.014** |
+
+The 1.5–10 MeV bands are driven by **Na-24 (1.369+2.754 MeV coincident) and Al-28 (1.779 MeV)** — exactly the correlated cascades that the "FLUKA semi-analogue `RADDECAY` does not preserve correlated γ cascades" hypothesis predicts. A Cu-64-only Phase 1 will likely PASS and mis-route to Phase 2/3, missing the real cause. **Add Na-24 and Al-28 (cascade test) and I-128 (77% of the inventory).** Highest-value first run: a vacuum decay-kernel of **Na-24 / Al-28** asking *does each decay emit both high-energy γ lines?* — no geometry, directly confirms/refutes the leading hypothesis.
+
+**A2 — Judge on the full spectrum, not W2 alone.** The W2 number is the least robust part (10 FLUKA / 30 G4 events, ≈2σ). The decision metric (§22, §24) must be the **per-band delayed spectrum and the high-energy deficit**, not the W2 rate in isolation. A clean Cu-64 W2 closure can stay statistically inconclusive while the real, high-significance signal sits at >1.5 MeV.
+
+**A3 — Data trap in the current CSVs (dedup before re-quoting).** `source_stage_rows.csv` carries, per band/stage, **both** per-isotope rows **and** an `activation` aggregate equal to their sum (e.g. W2 final: `Cu-64 10` + `activation 10`). Summing all delayed tags double-counts the FLUKA side by ~2×. The §1 baseline (`10` events, `2.636×`) already uses the de-duplicated headline value and is correct; the common post-processor (§20) and any re-quote must use per-isotope **or** `activation`, never both. Corrected picture: FLUKA total delayed is **lower** overall (all-TES>0 ratio ≈ `0.573`), with relative weight tilted into 511 and the high-energy bands collapsed — i.e. "lower total + spectral tilt", not "same total, redistributed".
+
+**A4 — Operational: parallelize Phase 3.** The `10⁶ × full-geometry` runs must use the parallel chunk driver, not the `--max-parallel 1` serial mode that previously serialized this project onto 1 of 24 cores and stalled. See `work_fluka_harness/NOTE_crosscode_independent_source_and_parallel_20260625.md`.
+
+**A5 — Optional / framing.** (i) In Phase 2, add 1.779 and 2.754 MeV mono-γ to the common list, as insurance that high-energy γ *transport* (not just emission) agrees. (ii) Per harness §19.3, a cleanly-isolated ~1.5–2× decay-model difference may be an **irreducible model systematic, not a bug** — Outcomes A and F already allow this; do not tune it away.
+
+---
+
+## 0.1 Execution status (2026-06-25)
+
+The first non-statistical gate has been run on the FLUKA side:
+
+- Manifest freeze exists at `engineering/crosscode_delayed_closure_20260625/00_manifest/`.
+- Source authority has `254704` heavy-isotope rows and `86.9998420669 Bq` total heavy delayed activity.
+- FLUKA runtime source identity gate: `FLUKA_SOURCE_IDENTITY_GATE_PASS`.
+- Gate histories: `Cu-64`, `Cu-62`, `I-128`, `Na-22`, `Na-24`, `Al-28` from the source-v2 EventList.
+
+Runtime identity table:
+
+| nuclide | event_id | expected Z/A/isomer | runtime Z/A/isomer | result |
+|---|---:|---:|---:|---|
+| Cu-64 | 153 | 29/64/0 | 29/64/0 | PASS |
+| Cu-62 | 7 | 29/62/0 | 29/62/0 | PASS |
+| I-128 | 16 | 53/128/0 | 53/128/0 | PASS |
+| Na-22 | 62 | 11/22/0 | 11/22/0 | PASS |
+| Na-24 | 72 | 11/24/0 | 11/24/0 | PASS |
+| Al-28 | 65 | 13/28/0 | 13/28/0 | PASS |
+
+Interpretation: the production-style dummy `HI-PROPE 53 128` card is not the cause of the delayed discrepancy for these checked histories. The source routine overrides the dummy isotope before `set_primary`, and FLUKA receives the source-v2 Z/A/isomer. Therefore the next discriminating target remains the decay-kernel / emitted-particle spectrum, especially the `Na-24` and `Al-28` high-energy correlated gamma cascades.
+
+This does **not** complete the cross-code closure. The Geant4/MEGAlib vacuum decay-kernel benchmark, common emitted-particle list, common EM transport test, and common full-geometry postprocessor are still open.
+
+Detailed artifacts:
+
+```text
+engineering/crosscode_delayed_closure_20260625/00_manifest/summary.md
+engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/summary.md
+engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/runtime_identity_validation.csv
+engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.md
+```
+
+---
+
+## 0. Executive answer: the fastest path
+
+Do **not** rerun the complete prompt + activation chain first. The discrepancy is already localized to delayed Cu activation near 511 keV, especially `Cu-64`.
+
+The fastest discriminating sequence is:
+
+1. **Run a Cu-64 decay-kernel benchmark in both codes** with no detector geometry.
+2. **Run an identical externally generated positron/photon list through a tiny common Cu/TES toy geometry.**
+3. **Run the exact same Cu-64 position list through the full geometry in both codes**, with detector response and event construction moved to one common Python post-processor.
+
+Each stage has a stop rule. The first stage where the codes diverge identifies the problem class:
+
+| First stage showing a significant discrepancy | Most likely cause |
+|---|---|
+| Cu-64 decay kernel | decay database, decay branching, isomer handling, RDM/RADDECAY implementation |
+| Toy positron/511 transport | positron slowing, annihilation model, atomic de-excitation, EM cuts |
+| Full-geometry raw deposits | coordinate mapping, materials, regions, geometry, production-position source |
+| Raw deposits agree but veto differs | shield scorer, threshold, hit retention, timing |
+| Veto agrees but final W2 differs | event grouping, TES response, smearing, topology/FoV post-processing |
+| All per-decay efficiencies agree but physical rates differ | activity/source weights and source authority |
+
+**Recommended first production run:** `10^6` Cu-64 decays per code. Based on the presently observed coupling, this should produce hundreds to more than one thousand W2 events and reduce the present 10-event FLUKA ambiguity. **(See §0.0-A1: the decay kernel must also run `Na-24`, `Al-28` and `I-128`. Cu-64 is gamma-poor and cannot test the high-energy γ-cascade deficit, which is the most statistically significant discrepancy.)**
+
+---
+
+## 1. Current numerical authority
+
+Use the following as the immutable pre-test baseline:
+
+| Quantity | Geant4/MEGAlib | FLUKA |
+|---|---:|---:|
+| Final prompt W2 rate | `0.036641023 s^-1` | `0.031891161 s^-1` |
+| Final delayed W2 rate | `0.00257520349 s^-1` | `0.00678780176 s^-1` |
+| Delayed fraction | `6.57%` | `17.55%` |
+| Final delayed W2 events | `30` | `10` |
+| Final Cu-64 contribution | `24 events / 0.00206016279 s^-1` | `10 events / 0.00678780176 s^-1` |
+
+The total W2 rates agree only because the prompt and delayed residuals compensate. Do not use total-rate agreement as a validation gate.
+
+### Current evidence paths
+
+TES repository:
+
+```text
+core_md/fix5_benchmarks.json
+outputs/reports/fix5_fullstat_v2_exactpos_m50000_s260613/
+stepwise_maintenance/step05_veto_time_axis/
+engineering/delayed_source_authority_v2_20260624/
+```
+
+FLUKA repository:
+
+```text
+work_fluka_harness/run_delayed_isotope_raw_mvp.py
+work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.md
+work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.json
+work_fluka_harness/fluka_11_like_energy_band_stats_20260625/source_stage_rows.csv
+work_fluka_harness/fluka_11_like_energy_band_stats_20260625/tes_deposit_carrier_rows.csv
+```
+
+---
+
+## 2. Definition of done
+
+A conclusion is considered closed when all of the following are true:
+
+- both codes use the **same isotope, state, positions, and statistical weights**;
+- detector smearing and event construction are applied by the **same external post-processor**;
+- each code has at least `300` final Cu-64 W2 events, or weighted relative MC uncertainty below `10%`;
+- the result is repeated with at least three seeds or deterministic source partitions;
+- all rates include `sum_w`, `sum_w2`, and effective sample size;
+- software versions and nuclear/EM data packages are fingerprinted;
+- the conclusion is assigned to one of the six problem classes in the decision table above.
+
+For publication-grade closure, target at least `1000` final W2 events per code or a ratio uncertainty below `5%`.
+
+---
+
+## 3. Work directory and provenance freeze
+
+Create one new tracked directory in each repository:
+
+```text
+engineering/crosscode_delayed_closure_20260625/
+├── 00_manifest/
+├── 01_cu64_decay_kernel/
+├── 02_common_em_transport/
+├── 03_full_geometry_same_source/
+├── 04_common_postprocess/
+└── 05_decision/
+```
+
+Before running anything, write:
+
+```text
+00_manifest/environment_g4.json
+00_manifest/environment_fluka.json
+00_manifest/source_authority.json
+00_manifest/file_hashes.sha256
+```
+
+### Required Geant4/MEGAlib fingerprint
+
+Record at minimum:
+
+```text
+Geant4 version and patch
+MEGAlib/Cosima commit
+physics list
+G4RADIOACTIVEDATA path/version/hash
+G4LEVELGAMMADATA path/version/hash
+G4ENSDFSTATEDATA path/version/hash
+G4LEDATA or G4EMLOW path/version/hash
+production cuts
+atomic de-excitation settings
+fluorescence/Auger/PIXE settings
+radioactive-decay settings
+custom isotope/position hook commit
+compiler and build flags
+```
+
+### Required FLUKA fingerprint
+
+Record at minimum:
+
+```text
+FLUKA version shown in the output header
+executable hash
+source_delayed_isotope.f hash
+mgdraw_raw.f hash
+DEFAULTS card
+RADDECAY card
+EMFCUT cards and effective cutoffs from the .out file
+PRECISIO/EM-CASCA choice
+isotope Z/A/isomer values seen by the source routine
+compiler/linker command
+```
+
+### Immediate source-identity gate
+
+The current FLUKA input contains a dummy `HI-PROPE 53 128` entry that should be overridden by the source routine. Add a diagnostic line after source assignment and verify actual `Z`, `A`, and `isomer` for at least:
+
+```text
+Cu-64
+Cu-62
+I-128
+Na-22
+```
+
+**Stop immediately** if the kernel identity does not match the ledger identity.
+
+---
+
+# Phase 1 — Cu-64 decay-kernel benchmark
+
+## 4. Purpose
+
+Determine whether the codes disagree before geometry or electromagnetic transport matters.
+
+This is the quickest way to distinguish a nuclear-decay/database problem from a geometry/transport problem.
+
+## 5. Configuration
+
+Run `10^6` parents at rest in a vacuum world, **per isotope, for `{Cu-64, Na-24, Al-28, I-128}`** (see §0.0-A1). Cu-64 fixes the 511/β⁺ channel; **Na-24 (1.369+2.754 MeV) and Al-28 (1.779 MeV) test the high-energy correlated γ cascade that drives the most significant discrepancy**; I-128 is 77% of the inventory. Do not use detector smearing, veto, or event selection.
+
+Record every emitted particle crossing a small scoring sphere around the source, before it interacts with detector material.
+
+### Required output schema
+
+```text
+event_id
+parent_Z
+parent_A
+parent_isomer
+particle_id
+kinetic_energy_keV
+time_s
+direction_x
+direction_y
+direction_z
+creator_process
+parent_track_id
+track_id
+```
+
+If full ancestry is inconvenient in FLUKA, the minimum acceptable output is per-parent emitted-particle multiplicity and energy spectrum.
+
+## 6. Metrics
+
+Calculate per parent decay:
+
+```text
+P(beta+)
+P(beta-)
+P(EC)
+mean positrons per parent
+positron kinetic-energy spectrum
+mean prompt photons per parent
+nuclear gamma line yields
+X-ray/Auger yields
+mean emitted electromagnetic energy
+fraction of events with correlated gamma emission
+emission-time distribution
+```
+
+Do not start with the W2 window here. This stage is about source physics, not detector response.
+
+## 7. Acceptance criteria
+
+Use both statistical and practical thresholds:
+
+```text
+branching/yield relative difference <= 3%: PASS
+3%–10%: WARN and inspect data versions
+>10% or >5 sigma: FAIL — decay-engine/database discrepancy
+```
+
+For the Cu-64 beta-plus branch, `10^6` parents makes statistical uncertainty much smaller than the present cross-code W2 discrepancy.
+
+## 8. Decision after Phase 1
+
+### If Phase 1 fails
+
+Do not run the full geometry yet. Inspect:
+
+Geant4 side:
+
+```text
+G4RadioactiveDecay
+G4BetaPlusDecay
+G4ECDecay
+G4PhotonEvaporation
+G4UAtomicDeexcitation
+ENSDF-derived radioactive-decay files
+nuclear-level data files
+```
+
+FLUKA side:
+
+```text
+RADDECAY mode
+isotope/source identity
+semi-analogue decay treatment
+decay database bundled with the installed FLUKA release
+isomer state handling
+```
+
+Also compare against an external evaluated Cu-64 decay table. The goal is not to choose a winner by reputation; it is to determine which code reproduces the evaluated branch and gamma yields.
+
+### If Phase 1 passes
+
+Proceed immediately to Phase 2. The discrepancy is not primarily the Cu-64 decay branching/database.
+
+---
+
+# Phase 2 — Common electromagnetic transport benchmark
+
+## 9. Purpose
+
+Isolate positron slowing, annihilation, photon escape, atomic relaxation, and EM cutoff behavior.
+
+## 10. Use an external code-neutral primary list
+
+Generate one shared CSV or HDF5 file outside both transport codes. Use a fixed seed and store every primary explicitly.
+
+Recommended samples:
+
+```text
+A. 1e6 monoenergetic 511 keV photons
+B. 1e6 back-to-back 511 keV photon pairs
+C. 1e6 positrons sampled from one frozen Cu-64 beta-plus spectrum
+D. optional: Cu-64 decay products exported from the Phase-1 evaluated/reference generator
+```
+
+Both codes must read the same rows. No independent random resampling is allowed at source level.
+
+## 11. Toy geometries
+
+Run in this order:
+
+### Geometry T0 — vacuum sphere
+
+Purpose: verify source direction, energy, count, and weight bookkeeping.
+
+### Geometry T1 — homogeneous Cu stopping sphere/slab
+
+Purpose: compare positron range, annihilation location, annihilation-in-flight fraction, and escaped 511 photons.
+
+### Geometry T2 — minimal Cu support + one Ta TES absorber
+
+Purpose: compare the probability that escaped annihilation photons deposit 480–550 keV and W2 energy in Ta.
+
+Keep geometry dimensions and material compositions explicitly identical.
+
+## 12. Required observables
+
+```text
+positron stopping-distance distribution
+annihilation position distribution
+annihilation-in-flight fraction
+escaped 511-photon yield per positron
+escaped photon energy and angle
+TES raw deposited-energy spectrum
+single-pixel and multi-pixel multiplicity
+shield-free W2 efficiency
+```
+
+## 13. FLUKA-specific scan
+
+Because the current W2 deposits are dominated by `EM_BELOW_THRESHOLD`, run at least:
+
+```text
+EM-CASCA + current effective cuts
+PRECISIO + current effective cuts
+PRECISIO + 1 keV electron/photon cuts
+PRECISIO + 10 keV electron/photon cuts
+PRECISIO + 100 keV diagnostic cuts
+```
+
+Read the actual effective cuts from the FLUKA output file; do not infer them only from the input card.
+
+## 14. Acceptance criteria
+
+For T0:
+
+```text
+source count, direction, and energy closure: < 0.1%
+```
+
+For T1/T2:
+
+```text
+broad spectral integral difference <= 5%: PASS
+W2 efficiency difference <= 10%: provisional PASS
+>20% and >5 sigma: FAIL — EM transport/cut discrepancy
+```
+
+## 15. Decision after Phase 2
+
+- Phase 1 passes, Phase 2 fails: focus on positron transport, annihilation, atomic de-excitation, and EM thresholds.
+- Both phases pass: proceed to full-geometry source/region mapping.
+
+---
+
+# Phase 3 — Full geometry with exactly the same Cu-64 source
+
+## 16. Purpose
+
+Remove the current ambiguity caused by comparing a legacy sampled MEGAlib source with a deterministic FLUKA EventList.
+
+## 17. Build one common Cu-64 position authority
+
+From the source-v2 production-position table, select only Cu-64 rows and create:
+
+```text
+03_full_geometry_same_source/cu64_common_positions.csv
+```
+
+Schema:
+
+```text
+common_event_id
+Z
+A
+isomer
+x_cm
+y_cm
+z_cm
+source_volume
+source_material
+original_activity_weight_Bq
+sampling_probability
+```
+
+Generate a deterministic diagnostic list of `10^6` Cu-64 parents by weighted resampling from this table. Save the actual selected source-row index for every history.
+
+### Two required modes
+
+1. **Unit-weight diagnostic mode**  
+   Every generated Cu-64 parent has equal diagnostic weight. Use this for comparing per-decay efficiency.
+
+2. **Physical-weight mode**  
+   Apply the original activity weights only after per-decay closure is established.
+
+The first comparison must be an efficiency comparison, not a physical-rate comparison:
+
+
+display math block:
+
+P(W2 | Cu-64 decay, common source positions)
+
+## 18. Source-region audit
+
+For every unique source position, record in both codes:
+
+```text
+input x/y/z
+resolved region or logical volume
+resolved material
+distance to nearest boundary
+inside/outside status
+expected source volume
+```
+
+Fail the run if any of the following occurs:
+
+```text
+position is in vacuum when expected in Cu
+material differs between codes
+coordinate differs by more than 0.01 mm
+source lies within numerical tolerance of a boundary without an explicit policy
+isomer or isotope identity differs
+```
+
+Pay special attention to the Cu volumes already seen in the MEGAlib W2 sample:
+
+```text
+ColdPlate_MXC_50mK_SD_anchor
+Cu_SubstrateSupport_SolidDisk_L0_deepest
+Cu_50mK_StillLike_Can_bottom_cap_2mm
+ColdPlate_CP_100mK_intercept
+Window
+Cu_50mK_StillLike_Can_side_wall_above_side_port
+DR_MixingChamber_Cu
+ColdPlate_Still_0p7K
+```
+
+## 19. Raw outputs required from both codes
+
+Do not compare only final event tables. Save deposit-level truth:
+
+```text
+common_event_id
+track_id
+parent_id
+particle_id
+creator_process
+global_time_s
+x_cm
+y_cm
+z_cm
+volume_or_region
+material
+TES_pixel_id
+shield_segment_id
+energy_deposit_keV
+incident_boundary_particle_id
+```
+
+If FLUKA cannot provide all ancestry immediately, add at least a TES-boundary crossing scorer and an annihilation-vertex scorer.
+
+## 20. Common external event builder
+
+Do not use different internal event grouping during the comparison. Feed both raw deposit files into one Python program.
+
+Calculate three event definitions:
+
+```text
+A. whole parent history
+B. deposits grouped within 1 microsecond
+C. deposits grouped within 1 nanosecond
+```
+
+For each definition, aggregate deposits by TES pixel and shield segment using identical code.
+
+## 21. Common detector response
+
+Turn off code-specific detector smearing. Keep raw deposited energy.
+
+For the comparison, avoid random Gaussian smearing. Compute the expected W2 acceptance analytically for every event:
+
+```text
+p_W2(E) = Phi((511.42 - E)/sigma) - Phi((510.58 - E)/sigma)
+sigma = 0.14 keV
+```
+
+Then calculate:
+
+```text
+R_W2_expected = sum(weight_i * p_W2(E_i))
+```
+
+This removes random smearing noise and makes the comparison deterministic.
+
+After closure, a sampled detector-response realization can be restored for paper figures.
+
+## 22. Stage-by-stage comparison
+
+For Cu-64 only, report:
+
+| Stage | Quantity |
+|---|---|
+| source | parents, sum_w, sum_w2 |
+| TES raw | any TES energy, broad-band spectrum |
+| 480–550 | broad annihilation-peak rate |
+| W2 unsmeared | exact raw energy in W2 |
+| W2 expected | analytic Gaussian response expectation |
+| active-veto | shield energy below 50 keV |
+| topology | single/multi-pixel fractions |
+| final | common topology/FoV rule |
+
+Also report conditional efficiencies:
+
+```text
+P(TES > 0 | decay)
+P(480–550 | TES > 0)
+P(W2 | 480–550)
+P(veto pass | W2)
+P(final | veto pass)
+```
+
+The first conditional efficiency that diverges identifies the responsible layer.
+
+---
+
+# Phase 4 — Statistical gate
+
+## 23. Minimum statistics
+
+Current FLUKA delayed W2 contains only 10 final events. That is insufficient for a factor-level software conclusion.
+
+Use these stop targets:
+
+```text
+Smoke: 1e5 Cu-64 parents per code
+Decision run: 1e6 Cu-64 parents per code
+Final validation: enough histories for >=1000 W2 events per code
+```
+
+If runtime is high, stop adaptively when either condition is met:
+
+```text
+N_W2 >= 300 per code
+or weighted relative sigma <= 10%
+```
+
+## 24. Weighted uncertainty
+
+Always report:
+
+```text
+sum_w
+sum_w2
+sigma_rate = sqrt(sum_w2)
+N_eff = (sum_w)^2 / sum_w2
+```
+
+For a ratio `r = R_FLUKA / R_G4`, use propagated uncertainty or a bootstrap over source positions/histories.
+
+### Decision thresholds
+
+```text
+0.80 <= r <= 1.25 and discrepancy < 3 sigma:
+    cross-code closure for current paper scope
+
+r outside [0.80, 1.25] and discrepancy >= 3 sigma:
+    real cross-code discrepancy; assign to first failing phase
+
+relative uncertainty > 15%:
+    inconclusive; add statistics, do not interpret central ratio
+```
+
+---
+
+# Phase 5 — Automated decision report
+
+## 25. Required final artifacts
+
+```text
+05_decision/decay_kernel_metrics.json
+05_decision/em_transport_metrics.json
+05_decision/full_geometry_metrics.json
+05_decision/crosscode_stage_ratios.csv
+05_decision/crosscode_decision.md
+05_decision/crosscode_decision.json
+```
+
+The machine-readable decision JSON should contain:
+
+```json
+{
+  "status": "PASS | FAIL_DECAY | FAIL_EM | FAIL_GEOMETRY | FAIL_EVENT_BUILDING | FAIL_SOURCE_NORMALIZATION | INCONCLUSIVE",
+  "first_failed_phase": "...",
+  "g4_commit": "...",
+  "fluka_commit": "...",
+  "g4_environment_hash": "...",
+  "fluka_environment_hash": "...",
+  "common_source_hash": "...",
+  "n_parent_g4": 0,
+  "n_parent_fluka": 0,
+  "n_w2_g4": 0,
+  "n_w2_fluka": 0,
+  "w2_efficiency_g4": 0.0,
+  "w2_efficiency_fluka": 0.0,
+  "ratio": 0.0,
+  "ratio_uncertainty": 0.0,
+  "significance_sigma": 0.0,
+  "notes": []
+}
+```
+
+---
+
+# 26. Concrete 24-hour run order
+
+## First 30 minutes
+
+- Freeze commits, versions, data directories, input hashes.
+- Verify FLUKA source routine actually launches Cu-64, not the dummy I-128 isotope.
+- Create the new engineering directory.
+
+## Hours 1–3
+
+- Implement/run the Cu-64 vacuum decay-kernel benchmark.
+- Compare beta-plus branch, positron spectrum, gamma yields and event timing.
+
+### Stop rule
+
+If the Cu-64 branch or emitted spectrum differs by more than 10%, stop. The conclusion is already “decay engine/database/configuration difference.”
+
+## Hours 3–6
+
+- Run code-neutral positron and 511-photon lists through toy Cu/Ta geometries.
+- Run FLUKA cutoff/default scan only if toy transport differs.
+
+### Stop rule
+
+If toy transport differs by more than 20% with adequate statistics, stop. The conclusion is “EM transport/cut/annihilation difference.”
+
+## Hours 6–18
+
+- Generate one `cu64_common_positions.csv`.
+- Run `10^6` common Cu-64 parents through both full geometries.
+- Save raw deposits and source-region audits.
+
+## Hours 18–22
+
+- Process both outputs with the same external event builder.
+- Evaluate whole-history, 1 microsecond and 1 nanosecond grouping.
+- Apply analytic Gaussian W2 acceptance.
+
+## Hours 22–24
+
+- Generate the decision matrix and `crosscode_decision.md`.
+- Only then decide whether the manuscript should use:
+  - the MEGAlib value;
+  - the FLUKA value;
+  - a cross-code interval;
+  - or a stated unresolved systematic.
+
+---
+
+# 27. What not to do next
+
+Do not spend the next cycle on:
+
+- rerunning all eight atmospheric species;
+- rebuilding the complete gondola;
+- averaging the two delayed rates;
+- tuning cuts until the total W2 rates match;
+- comparing only final W2 counts;
+- treating `EM_BELOW_THRESHOLD` as incident-particle identity;
+- interpreting the current 10 FLUKA events as a settled factor-2.6 discrepancy;
+- mixing legacy sampled MEGAlib source positions with source-v2 FLUKA positions in the decisive test.
+
+These actions add cost without identifying the first layer where the codes diverge.
+
+---
+
+# 28. Likely conclusions and manuscript action
+
+## Outcome A — decay kernel differs
+
+Paper treatment:
+
+```text
+Delayed activation is assigned an explicit cross-code nuclear-decay-model systematic.
+Do not promote either central value until evaluated Cu-64 yields identify the correct configuration.
+```
+
+## Outcome B — decay closes, EM transport differs
+
+Paper treatment:
+
+```text
+Quote sensitivity to positron/annihilation transport and EM cut settings.
+Use the configuration validated against the toy benchmark or laboratory data.
+```
+
+## Outcome C — toy closes, full-geometry raw deposits differ
+
+Paper treatment:
+
+```text
+Treat the issue as geometry/source-position mapping; fix coordinates, materials or region assignment before reporting delayed rate.
+```
+
+## Outcome D — raw deposits close, event construction differs
+
+Paper treatment:
+
+```text
+Use one common external event builder and detector response for both codes.
+The transport codes are not the origin of the discrepancy.
+```
+
+## Outcome E — all per-decay efficiencies close
+
+Paper treatment:
+
+```text
+The residual originates in source activity/weights/source realization. Promote source-v2 as the single delayed-source authority and rerun the paper baseline from it.
+```
+
+## Outcome F — ratio remains different but statistics are adequate and no single layer dominates
+
+Paper treatment:
+
+```text
+Report the cross-code difference as a model systematic, not as a statistical uncertainty.
+Keep the headline as a reference-model estimate and include both delayed values in a validation subsection.
+```
+
+---
+
+# 29. Recommended owner checklist
+
+```text
+[x] Freeze repositories and environment manifests
+[x] Verify actual FLUKA isotope Z/A/isomer at runtime
+[ ] Build Cu-64 decay-kernel outputs in both codes
+[ ] Compare branch and emitted-particle spectra
+[ ] Build one common external positron/511 source list
+[ ] Run Cu/Ta toy transport in both codes
+[ ] Scan FLUKA effective EM cuts if needed
+[ ] Build cu64_common_positions.csv
+[ ] Audit source region/material in both geometries
+[ ] Run 1e6 Cu-64 parents per code
+[ ] Save raw deposit truth
+[ ] Run common external event builder
+[ ] Apply deterministic analytic W2 response
+[ ] Produce stage ratios and weighted uncertainties
+[ ] Assign first failed phase
+[ ] Update manuscript delayed-background statement
+```
+
+---
+
+## 30. One-sentence operational rule
+
+> Use the same Cu-64 parents, positions, weights, raw-output schema, event builder and detector response in both codes; stop at the first stage where the statistically resolved discrepancy appears.

@@ -1,0 +1,57 @@
+{
+  "eventlist": {
+    "exists": true,
+    "label": "source_v2_eventlist",
+    "path": "/home/ubuntu/TES_511_Balloon/engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_eventlist.dat",
+    "sha256": "0861ded6378edea1e9ad7267c1089b97ba99457f3fb0c13c0da6394b5d88802e",
+    "size_bytes": 19698694
+  },
+  "heavy_isotope_rows": 254704,
+  "heavy_total_activity_Bq": 86.99984206693608,
+  "target_isotopes": [
+    {
+      "ZA": 13028,
+      "activity_Bq": 6.889611285847175,
+      "nuclide": "Al-28",
+      "rows": 10150
+    },
+    {
+      "ZA": 29062,
+      "activity_Bq": 0.12215955780924817,
+      "nuclide": "Cu-62",
+      "rows": 180
+    },
+    {
+      "ZA": 29064,
+      "activity_Bq": 4.701904943149167,
+      "nuclide": "Cu-64",
+      "rows": 6927
+    },
+    {
+      "ZA": 53128,
+      "activity_Bq": 65.53339484906249,
+      "nuclide": "I-128",
+      "rows": 96546
+    },
+    {
+      "ZA": 11022,
+      "activity_Bq": 0.001453951132709518,
+      "nuclide": "Na-22",
+      "rows": 197
+    },
+    {
+      "ZA": 11024,
+      "activity_Bq": 0.492798807690239,
+      "nuclide": "Na-24",
+      "rows": 728
+    }
+  ],
+  "weight_rows": 254704,
+  "weights": {
+    "exists": true,
+    "label": "source_v2_event_weights",
+    "path": "/home/ubuntu/TES_511_Balloon/engineering/delayed_source_authority_v2_20260624/04_custom_source_v2/source_v2_event_weights.csv",
+    "sha256": "fa70c28c188ee8dc363c5f579d5332fae474539f40a35afe2624253cdebc5076",
+    "size_bytes": 69353445
+  }
+}

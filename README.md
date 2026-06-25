@@ -33,6 +33,10 @@ is not yet evidence that the prompt and activation components are each correct.
   - Delayed isotope-source same-statistic comparison artifacts.
 - `work_fluka_harness/source_truth_validation/`
   - Source-truth gate summaries for the eight prompt species.
+- `engineering/crosscode_delayed_closure_20260625/`
+  - Current delayed closure engineering status.
+  - FLUKA runtime source-identity gate showing that checked delayed parents
+    are not silently replaced by the dummy `HI-PROPE 53 128` card.
 
 ## Important Interpretation Detail
 

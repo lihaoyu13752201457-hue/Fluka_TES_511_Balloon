@@ -1,0 +1,6 @@
+nuclide,particle_code,particle,multiplicity,events,fraction
+Na-24,3,ELECTRON,0,29,0.00145
+Na-24,3,ELECTRON,1,19971,0.99855
+Na-24,7,PHOTON,0,2,0.0001
+Na-24,7,PHOTON,1,27,0.00135
+Na-24,7,PHOTON,2,19971,0.99855

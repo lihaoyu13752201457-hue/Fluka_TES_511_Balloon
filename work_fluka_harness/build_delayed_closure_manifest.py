@@ -112,6 +112,12 @@ def main() -> int:
         ROOT / "work_fluka_harness/build_fluka_11_like_energy_band_stats.py",
         ROOT / "work_fluka_harness/build_raw_scoring_smoke.py",
         ROOT / "work_fluka_harness/run_fluka_delayed_source_identity_gate.py",
+        ROOT / "work_fluka_harness/run_fluka_decay_kernel_benchmark.py",
+        ROOT / "engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/summary.json",
+        ROOT / "engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/runtime_identity_validation.csv",
+        ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/summary.json",
+        ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/particle_yields.csv",
+        ROOT / "engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/gamma_line_yields.csv",
         EVENTLIST,
         WEIGHTS,
         REGION_MAP,
@@ -148,13 +154,17 @@ def main() -> int:
     source = source_authority_summary()
     summary = {
         "created_utc": now_utc(),
-        "status": "FIRST_30MIN_MANIFEST_PRESENT",
+        "status": "MANIFEST_SOURCE_IDENTITY_AND_FLUKA_DECAY_SMOKE_PRESENT",
         "engineering_plan": str(ROOT / "work_fluka_harness/fluka_11_like_energy_band_stats_20260625/engineering.md"),
         "files_hashed": len([r for r in records if r["exists"] and r["sha256"]]),
         "fluka_repo_commit": fluka_env["repo_commit"],
         "tes_repo_commit": g4_env["tes_repo_commit"],
         "source_authority_target_isotopes": source["target_isotopes"],
-        "next_gate": "run_fluka_delayed_source_identity_gate.py",
+        "completed_fluka_gates": [
+            "runtime source identity gate",
+            "vacuum decay-kernel smoke for Cu-64, Na-24, Al-28, I-128",
+        ],
+        "next_gate": "Geant4/MEGAlib vacuum decay-kernel benchmark and FLUKA 1e6-per-isotope production gate",
     }
     for name, data in (
         ("environment_fluka.json", fluka_env),
@@ -175,7 +185,8 @@ def main() -> int:
                 f"- files_hashed: `{summary['files_hashed']}`",
                 f"- source heavy isotope rows: `{source['heavy_isotope_rows']}`",
                 f"- source heavy total activity_Bq: `{source['heavy_total_activity_Bq']:.12g}`",
-                "- next gate: `run_fluka_delayed_source_identity_gate.py`",
+                "- completed FLUKA gates: runtime source identity; vacuum decay-kernel smoke",
+                f"- next gate: `{summary['next_gate']}`",
                 "",
             ]
         ),

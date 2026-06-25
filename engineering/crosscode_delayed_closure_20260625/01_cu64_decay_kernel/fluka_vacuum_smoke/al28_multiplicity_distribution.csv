@@ -1,0 +1,4 @@
+nuclide,particle_code,particle,multiplicity,events,fraction
+Al-28,3,ELECTRON,0,2,0.0001
+Al-28,3,ELECTRON,1,19998,0.9999
+Al-28,7,PHOTON,1,20000,1.0

@@ -1,0 +1,4 @@
+nuclide,particle_code,particle,count,yield_per_parent,mean_kinetic_energy_keV
+Cu-64,3,ELECTRON,23737,1.18685,64.27413326562029
+Cu-64,4,POSITRON,3556,0.1778,281.6418132172663
+Cu-64,7,PHOTON,3474,0.1737,43.580199943522636

@@ -1,9 +1,13 @@
 {
-  "created_utc": "2026-06-25T09:15:59.442733+00:00",
+  "completed_fluka_gates": [
+    "runtime source identity gate",
+    "vacuum decay-kernel smoke for Cu-64, Na-24, Al-28, I-128"
+  ],
+  "created_utc": "2026-06-25T09:30:23.210998+00:00",
   "engineering_plan": "/home/ubuntu/Fluka_TES_511_Balloon/work_fluka_harness/fluka_11_like_energy_band_stats_20260625/engineering.md",
-  "files_hashed": 19,
-  "fluka_repo_commit": "22c10d36206d81556494c13a1748016d3d37d1d4",
-  "next_gate": "run_fluka_delayed_source_identity_gate.py",
+  "files_hashed": 25,
+  "fluka_repo_commit": "7b33757f7d5dd9634b4cb3e9746a2f128959f804",
+  "next_gate": "Geant4/MEGAlib vacuum decay-kernel benchmark and FLUKA 1e6-per-isotope production gate",
   "source_authority_target_isotopes": [
     {
       "ZA": 13028,
@@ -42,6 +46,6 @@
       "rows": 728
     }
   ],
-  "status": "FIRST_30MIN_MANIFEST_PRESENT",
+  "status": "MANIFEST_SOURCE_IDENTITY_AND_FLUKA_DECAY_SMOKE_PRESENT",
   "tes_repo_commit": "455999408676e9a2c9b1e531a6c8562fe880792d"
 }

@@ -40,6 +40,7 @@ The first non-statistical gate has been run on the FLUKA side:
 - Source authority has `254704` heavy-isotope rows and `86.9998420669 Bq` total heavy delayed activity.
 - FLUKA runtime source identity gate: `FLUKA_SOURCE_IDENTITY_GATE_PASS`.
 - Gate histories: `Cu-64`, `Cu-62`, `I-128`, `Na-22`, `Na-24`, `Al-28` from the source-v2 EventList.
+- FLUKA vacuum decay-kernel smoke: `FLUKA_DECAY_KERNEL_SMOKE_PASS` for `Cu-64`, `Na-24`, `Al-28`, `I-128` with `20000` parents per isotope.
 
 Runtime identity table:
 
@@ -54,7 +55,21 @@ Runtime identity table:
 
 Interpretation: the production-style dummy `HI-PROPE 53 128` card is not the cause of the delayed discrepancy for these checked histories. The source routine overrides the dummy isotope before `set_primary`, and FLUKA receives the source-v2 Z/A/isomer. Therefore the next discriminating target remains the decay-kernel / emitted-particle spectrum, especially the `Na-24` and `Al-28` high-energy correlated gamma cascades.
 
-This does **not** complete the cross-code closure. The Geant4/MEGAlib vacuum decay-kernel benchmark, common emitted-particle list, common EM transport test, and common full-geometry postprocessor are still open.
+FLUKA-side Phase-1 smoke result:
+
+| nuclide | FLUKA smoke metric | value |
+|---|---|---:|
+| Cu-64 | positron yield / parent | `0.1778` |
+| Cu-64 | 1346-keV gamma yield / parent | `0.0047` |
+| Na-24 | 1369-keV gamma yield / parent | `0.9999` |
+| Na-24 | 2754-keV gamma yield / parent | `0.99855` |
+| Na-24 | same-parent 1369+2754 coincidence fraction | `0.99855` |
+| Al-28 | 1779-keV gamma yield / parent | `1.0` |
+| I-128 | photon yield / parent | `0.2038` |
+
+Interpretation of the smoke result: FLUKA `RADDECAY` does emit the high-energy `Na-24` and `Al-28` gamma lines in this vacuum scorer, and the `Na-24` two-line coincidence appears in essentially every decay. Therefore the earlier high-energy FLUKA/TES deficit is **not explained by total absence of these FLUKA gamma lines**. The remaining possibilities include Geant4-side decay-kernel differences, production/statistical comparison at `1e6` parents per isotope, transport/geometry coupling, or common-postprocessing effects.
+
+This does **not** complete the cross-code closure. The Geant4/MEGAlib vacuum decay-kernel benchmark, FLUKA `1e6`/isotope production gate, common emitted-particle list, common EM transport test, and common full-geometry postprocessor are still open.
 
 Detailed artifacts:
 
@@ -62,6 +77,9 @@ Detailed artifacts:
 engineering/crosscode_delayed_closure_20260625/00_manifest/summary.md
 engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/summary.md
 engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/runtime_identity_validation.csv
+engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/summary.md
+engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/gamma_line_yields.csv
+engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/particle_yields.csv
 engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.md
 ```
 
@@ -797,6 +815,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 ```text
 [x] Freeze repositories and environment manifests
 [x] Verify actual FLUKA isotope Z/A/isomer at runtime
+[x] Build FLUKA smoke decay-kernel outputs for Cu-64, Na-24, Al-28, I-128
 [ ] Build Cu-64 decay-kernel outputs in both codes
 [ ] Compare branch and emitted-particle spectra
 [ ] Build one common external positron/511 source list

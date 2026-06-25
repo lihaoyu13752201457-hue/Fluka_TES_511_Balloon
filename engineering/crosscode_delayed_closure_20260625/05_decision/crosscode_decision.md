@@ -13,6 +13,12 @@ This removes one plausible bookkeeping failure from the delayed discrepancy:
 the FLUKA delayed result is not high because all delayed parents were silently
 run as dummy I-128.
 
+The FLUKA-side vacuum decay-kernel smoke also passes for `Cu-64`, `Na-24`,
+`Al-28`, and `I-128` at `20000` parents per isotope. In this scorer, FLUKA does
+emit the expected high-energy `Na-24` and `Al-28` gamma lines; the high-energy
+delayed deficit is therefore not explained by a total absence of those FLUKA
+decay photons.
+
 ## Evidence
 
 Manifest:
@@ -28,6 +34,14 @@ engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity
 engineering/crosscode_delayed_closure_20260625/00_manifest/fluka_source_identity_gate/runtime_identity_validation.csv
 ```
 
+FLUKA decay-kernel smoke:
+
+```text
+engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/summary.md
+engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/gamma_line_yields.csv
+engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/fluka_vacuum_smoke/particle_yields.csv
+```
+
 Runtime identity result:
 
 | nuclide | event_id | expected Z/A/isomer | FLUKA runtime Z/A/isomer | result |
@@ -39,6 +53,18 @@ Runtime identity result:
 | Na-24 | 72 | 11/24/0 | 11/24/0 | PASS |
 | Al-28 | 65 | 13/28/0 | 13/28/0 | PASS |
 
+FLUKA decay-kernel smoke line result:
+
+| nuclide | line / channel | yield or fraction |
+|---|---|---:|
+| Cu-64 | positron yield / parent | `0.1778` |
+| Cu-64 | 1346-keV gamma yield / parent | `0.0047` |
+| Na-24 | 1369-keV gamma yield / parent | `0.9999` |
+| Na-24 | 2754-keV gamma yield / parent | `0.99855` |
+| Na-24 | same-parent 1369+2754 coincidence | `0.99855` |
+| Al-28 | 1779-keV gamma yield / parent | `1.0` |
+| I-128 | photon yield / parent | `0.2038` |
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
@@ -47,15 +73,17 @@ parents.
 
 Open discriminators:
 
-1. Vacuum decay-kernel comparison for `Cu-64`, `Na-24`, `Al-28`, and `I-128`.
-2. Common emitted-particle list through a common toy geometry.
-3. Common full-geometry source positions and common external postprocessor.
+1. Geant4/MEGAlib vacuum decay-kernel comparison for `Cu-64`, `Na-24`, `Al-28`, and `I-128`.
+2. FLUKA production decay-kernel run at `1e6` parents per isotope.
+3. Common emitted-particle list through a common toy geometry.
+4. Common full-geometry source positions and common external postprocessor.
 
 ## Working Hypothesis After This Gate
 
-The leading explanation remains a decay-kernel / emitted-particle-spectrum
-difference, not a source-identity replay error. The most decisive existing
-signal is the high-energy delayed deficit:
+The leading explanation is no longer "FLUKA completely fails to emit the
+`Na-24`/`Al-28` high-energy gamma lines." FLUKA emits those lines in the
+vacuum smoke scorer. The most decisive existing unresolved signal remains the
+full-chain high-energy delayed deficit:
 
 | final delayed band | FLUKA/G4 rate ratio |
 |---|---:|
@@ -63,7 +91,6 @@ signal is the high-energy delayed deficit:
 | 1500-3000 keV | 0.041 |
 | 3000-10000 keV | 0.014 |
 
-The next run should therefore test whether FLUKA `RADDECAY` emits the expected
-correlated high-energy gamma cascades for `Na-24` and `Al-28`, while also
-checking `Cu-64` for the W2 beta-plus channel and `I-128` because it dominates
-the total delayed activity inventory.
+The next run should therefore reproduce the same decay-kernel scorer on the
+Geant4/MEGAlib side and then promote FLUKA to the `1e6`/isotope production gate
+before moving to common emitted-particle transport.

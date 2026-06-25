@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-06-25T09:15:57.615065+00:00",
+  "created_utc": "2026-06-25T09:30:21.403893+00:00",
   "environment_subset": {
     "FLUKADATA": "",
     "FLUKA_HOME": "",
@@ -39,6 +39,6 @@
   "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
   "python": "3.13.2",
   "repo": "/home/ubuntu/Fluka_TES_511_Balloon",
-  "repo_commit": "22c10d36206d81556494c13a1748016d3d37d1d4",
-  "repo_status_short": "M .gitignore\n?? engineering/\n?? work_fluka_harness/build_delayed_closure_manifest.py\n?? work_fluka_harness/build_raw_scoring_smoke.py\n?? work_fluka_harness/fluka_11_like_energy_band_stats_20260625/11_fix5_w2_prompt_delayed_energy_band_stats.md\n?? work_fluka_harness/fluka_11_like_energy_band_stats_20260625/engineering.md\n?? work_fluka_harness/run_fluka_delayed_source_identity_gate.py"
+  "repo_commit": "7b33757f7d5dd9634b4cb3e9746a2f128959f804",
+  "repo_status_short": "M engineering/crosscode_delayed_closure_20260625/00_manifest/environment_fluka.json\n M engineering/crosscode_delayed_closure_20260625/00_manifest/environment_g4.json\n M engineering/crosscode_delayed_closure_20260625/00_manifest/file_hashes.sha256\n M engineering/crosscode_delayed_closure_20260625/00_manifest/summary.json\n M engineering/crosscode_delayed_closure_20260625/00_manifest/summary.md\n M engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.json\n M engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.md\n M work_fluka_harness/build_delayed_closure_manifest.py\n M work_fluka_harness/fluka_11_like_energy_band_stats_20260625/engineering.md\n?? engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/\n?? work_fluka_harness/run_fluka_decay_kernel_benchmark.py"
 }

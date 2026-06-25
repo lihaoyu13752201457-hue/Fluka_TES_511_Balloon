@@ -63,8 +63,13 @@ audit and static coordinate-containment audit now pass: all rows map to
 translated FLUKA regions/materials and all rows are inside their declared source
 volume after applying the explicit `InstrumentFrame.Rotation 0 45 0` inverse
 transform. A deterministic `1000000`-history Cu-64 parent resampling authority
-is also built and covers all `6927` source rows at least once. Full transport
-and raw-deposit truth remain open.
+is also built and covers all `6927` source rows at least once. The first FLUKA
+full-geometry raw-deposit smoke now runs directly from that parent stream,
+without `.sim.gz` replay: `1000` Cu-64 histories produce `5` any-TES events and
+`2` W2 events, and raw dump versus score output closes at `1.337e-10` TES
+relative delta. This is a FLUKA-side plumbing check only; MEGAlib transport,
+common event building, production statistics, and final cross-code
+raw-deposit truth remain open.
 
 ## Evidence
 
@@ -173,6 +178,14 @@ Phase-3 Cu-64 parent resampling authority:
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.json
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_sample.csv
+```
+
+Phase-3 FLUKA common raw-deposit smoke:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/band_summary.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/scoring_closure.json
 ```
 
 Runtime identity result:
@@ -294,7 +307,26 @@ Phase-3 Cu-64 parent resampling authority:
 | full local list SHA256 | `a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975` |
 | selected `Copper` histories | `937427` |
 | selected `CuNi` histories | `62573` |
-| transport run performed | `False` |
+| production transport run performed | `False` |
+
+Phase-3 FLUKA common raw-deposit smoke:
+
+| quantity | value |
+|---|---:|
+| smoke status | `PHASE3_CU64_COMMON_FLUKA_RAW_PASS` |
+| histories | `1000` |
+| source mode | `phase3_cu64_common_parent_resampling` |
+| `.sim.gz` replay | `False` |
+| raw event rows | `107` |
+| any TES events | `5 / 1000` |
+| 480-550 keV events | `2 / 1000` |
+| W2 510.58-511.42 keV events | `2 / 1000` |
+| 1500-3000 keV events | `0 / 1000` |
+| 3000-10000 keV events | `0 / 1000` |
+| TES score/raw relative delta | `1.337e-10` |
+| shield score/raw relative delta | `2.282e-10` |
+| MEGAlib side run | `False` |
+| production statistics | `False` |
 
 ## What This Does Not Prove
 
@@ -313,14 +345,16 @@ Phase-3 position file, name-level audit, static coordinate-containment audit,
 and deterministic 1e6-parent resampling authority now show that the common
 Cu-64 coordinates and parent stream are internally consistent with the
 translated geometry authority after the explicit InstrumentFrame transform.
-They do not yet replace a FLUKA or Geant4 runtime point-location scorer or a
-full transport raw-deposit run.
+The FLUKA-side 1k raw-deposit smoke proves the parent stream can drive the full
+FLUKA geometry and raw scorer without replay, but it does not yet replace a
+Geant4 runtime point-location scorer, the MEGAlib transport side, a common
+event builder, or production-statistics full-geometry raw-deposit truth.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
 2. Runtime point-location audit for the built Cu-64 common positions if required before production transport.
-3. Full-geometry raw deposits for the common Cu-64 parents.
+3. Production-statistics full-geometry raw deposits for the common Cu-64 parents in both codes.
 4. Common external event builder and deterministic analytic W2 response.
 5. Common ancestry/stopping observables for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy.
 6. FLUKA EM-cut/material scan only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy.
@@ -339,8 +373,8 @@ delayed deficit:
 | 1500-3000 keV | 0.041 |
 | 3000-10000 keV | 0.014 |
 
-The next run should therefore use the built Cu-64 common positions for
-full-geometry raw-deposit truth, with a runtime point-location scorer inserted
-first if the engine-level locator is required as a hard gate. The toy T2 W2
-result no longer justifies an immediate FLUKA EM-cut scan for the 511-related
-deposited-energy gate.
+The next run should therefore scale the built Cu-64 common parent stream to
+production-statistics full-geometry raw-deposit truth in both codes, with a
+runtime point-location scorer inserted first if the engine-level locator is
+required as a hard gate. The toy T2 W2 result no longer justifies an immediate
+FLUKA EM-cut scan for the 511-related deposited-energy gate.

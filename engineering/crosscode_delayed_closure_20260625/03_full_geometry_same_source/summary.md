@@ -9,6 +9,7 @@
 - source_region_material_name_audit: `SOURCE_REGION_MATERIAL_NAME_AUDIT_PASS`
 - source_coordinate_containment_audit: `SOURCE_COORDINATE_CONTAINMENT_STATIC_PASS`
 - parent_resampling_authority: `CU64_PARENT_RESAMPLING_AUTHORITY_COMPLETE`
+- fluka_common_raw_smoke: `PHASE3_CU64_COMMON_FLUKA_RAW_PASS`
 
 ## Production Tags
 
@@ -24,6 +25,29 @@
 - The separate name-level audit maps all `6927` rows to translated FLUKA region/material names: `Copper` `93.749%` activity and `CuNi` `6.251%`.
 - The separate static coordinate audit inverse-rotates source-v2 coordinates by `InstrumentFrame.Rotation 0 45 0` and verifies `6927/6927` rows are inside their declared source volume as the deepest translated object.
 - The separate parent-resampling authority draws `1,000,000` deterministic Cu-64 parent histories; all `6927` source rows are represented, and the full selected-index list is local/ignored with SHA256 `a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975`.
+- The FLUKA-side `1000`-history raw-deposit smoke runs directly from that parent list, without `.sim.gz` replay, and closes raw dump versus score output at `1.34e-10` TES relative delta and `2.28e-10` shield relative delta.
 - Runtime Geant4/FLUKA point-location has not been tested by these static artifacts.
-- Full FLUKA/MEGAlib transport has not yet been run from the resampled parent list.
+- Production-statistics FLUKA/MEGAlib transport has not yet been run from the resampled parent list.
 - `sampling_probability` is normalized over Cu-64 rows only and is suitable for deterministic Cu-64 parent resampling.
+
+## FLUKA Raw-Deposit Smoke
+
+Artifact:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md
+```
+
+| band | events / histories | efficiency |
+|---|---:|---:|
+| all TES > 0 | `5 / 1000` | `0.005` |
+| 480-550 keV | `2 / 1000` | `0.002` |
+| W2 510.58-511.42 keV | `2 / 1000` | `0.002` |
+| 1500-3000 keV | `0 / 1000` | `0.0` |
+| 3000-10000 keV | `0 / 1000` | `0.0` |
+
+Boundary: this is a FLUKA-only plumbing smoke. It proves the common Cu-64 parent
+stream can drive the full FLUKA geometry and raw-deposit scorer without replay,
+and that raw dump/scoring energy closure is numerically tight. It is not a
+MEGAlib comparison, common event-builder result, or production-statistics
+delayed-W2 conclusion.

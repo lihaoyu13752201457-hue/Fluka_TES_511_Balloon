@@ -22,6 +22,7 @@ work_fluka_harness/**/core
 # executables, run directories, logs or random seeds.
 engineering/**/fluka_run/
 engineering/**/cosima_run/
+engineering/**/raw_events/
 engineering/**/scoring_routines/
 engineering/**/*.sim
 engineering/**/*.sim.gz

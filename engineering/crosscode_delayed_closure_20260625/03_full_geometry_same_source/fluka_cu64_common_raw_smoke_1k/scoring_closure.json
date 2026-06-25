@@ -1,0 +1,18 @@
+{
+  "created_at_utc": "2026-06-25T11:58:26.054836+00:00",
+  "event_totals_file": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/fluka_run/phase3_cu64_common_raw001_event_totals_tmp.csv",
+  "histories": 1000,
+  "normalization": "SCORE ENERGY output is per unit source weight and per region volume; no region volumes were supplied, so volume=1 and totals are multiplied by sum(fluka_transport_weight).",
+  "raw_deposits_file": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/fluka_run/phase3_cu64_common_raw001_raw_deposits_tmp.csv",
+  "raw_dump_shield_total_keV": 33465.141153662,
+  "raw_dump_tes_total_keV": 1458.19986065,
+  "raw_event_rows": 107,
+  "score_output": "/home/ubuntu/Fluka_TES_511_Balloon/engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/fluka_run/phase3_cu64_common_raw001.out",
+  "score_rows_parsed": 3110,
+  "score_shield_total_keV": 33465.141161299995,
+  "score_tes_total_keV": 1458.1998604550001,
+  "score_weight_sum": 1000.0,
+  "shield_relative_delta": 2.282373373635355e-10,
+  "status": "PASS",
+  "tes_relative_delta": 1.3372635812717172e-10
+}

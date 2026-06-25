@@ -457,7 +457,36 @@ full local list SHA256 is
 `6927` source rows are represented at least once; selected histories split into
 `937427` `Copper` and `62573` `CuNi` parents. The full list is intentionally
 ignored under `full_untracked/`; the repo keeps only compact summaries and a
-bounded sample. Transport has not yet been run from this list.
+bounded sample. Production-statistics transport has not yet been run from this
+list.
+
+## Phase-3 FLUKA Common Raw-Deposit Smoke
+
+The first full-geometry raw-deposit plumbing smoke now runs on the FLUKA side
+from the deterministic Cu-64 parent list, without `.sim.gz` replay:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md
+```
+
+It uses the first `1000` resampled Cu-64 parent histories and records raw
+deposits plus event totals. The raw dump agrees with the FLUKA score output to
+`1.337e-10` relative difference for TES energy and `2.282e-10` for shield
+energy.
+
+| band | events / histories | efficiency |
+|---|---:|---:|
+| all TES > 0 | `5 / 1000` | `0.005` |
+| 480-550 keV | `2 / 1000` | `0.002` |
+| W2 510.58-511.42 keV | `2 / 1000` | `0.002` |
+| 1500-3000 keV | `0 / 1000` | `0.0` |
+| 3000-10000 keV | `0 / 1000` | `0.0` |
+
+Boundary: this is a FLUKA-only smoke-statistics check. It confirms the full
+geometry can be driven by the independent Phase-3 Cu-64 parent stream and that
+the raw-deposit scorer is internally closed. It does not yet answer the
+FLUKA/TES delayed-W2 discrepancy; that still requires the MEGAlib side,
+production statistics, common event building, and analytic W2 response.
 
 Audit artifacts:
 
@@ -472,6 +501,7 @@ Audit artifacts:
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md`
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md`
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md`
+- `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md`
 
 ## Follow-Up Checks
 

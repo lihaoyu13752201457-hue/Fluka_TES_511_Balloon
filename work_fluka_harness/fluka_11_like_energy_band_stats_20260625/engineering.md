@@ -45,6 +45,9 @@ The first non-statistical gate has been run on the FLUKA side:
 - Geant4/MEGAlib independent EventList vacuum decay-kernel smoke:
   `GEANT4_MEGALIB_DECAY_KERNEL_SMOKE_PASS` for `Cu-64`, `Na-24`,
   `Al-28`, `I-128` with `20000` parents per isotope.
+- Phase-3 FLUKA-only common Cu-64 raw-deposit smoke:
+  `PHASE3_CU64_COMMON_FLUKA_RAW_PASS` for `1000` histories from the
+  deterministic parent list, without `.sim.gz` replay.
 
 Runtime identity table:
 
@@ -124,6 +127,7 @@ engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megal
 engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/gamma_line_yields.csv
 engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/particle_yields.csv
 engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/crosscode_decay_kernel_line_comparison.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md
 engineering/crosscode_delayed_closure_20260625/05_decision/crosscode_decision.md
 ```
 
@@ -702,7 +706,37 @@ That file is intentionally ignored by git (`268 MB` locally); the repository
 keeps only the hash, bounded sample, and summaries. All `6927` source-position
 rows are represented at least once in the 1e6 parent list. The selected-history
 material split is `937427` `Copper` parents and `62573` `CuNi` parents. No
-FLUKA or MEGAlib transport has been run by this resampling gate.
+production-statistics FLUKA/MEGAlib transport has been run by this resampling
+gate.
+
+### 17.3 FLUKA common raw-deposit smoke status, 2026-06-25
+
+The first Phase-3 full-geometry raw-deposit plumbing smoke has run on the FLUKA
+side from the deterministic Cu-64 parent list:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/band_summary.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/fluka_cu64_common_raw_smoke_1k/scoring_closure.json
+```
+
+It uses the first `1000` resampled Cu-64 parent histories and does not replay a
+Geant4 `.sim.gz` file. The raw dump closes against the FLUKA score output:
+TES relative delta `1.337e-10`, shield relative delta `2.282e-10`.
+
+Smoke-statistics band counts:
+
+| band | events / histories | efficiency |
+|---|---:|---:|
+| all TES > 0 | `5 / 1000` | `0.005` |
+| 480-550 keV | `2 / 1000` | `0.002` |
+| W2 510.58-511.42 keV | `2 / 1000` | `0.002` |
+| 1500-3000 keV | `0 / 1000` | `0.0` |
+| 3000-10000 keV | `0 / 1000` | `0.0` |
+
+This is a FLUKA-side runner/scorer closure only. It does not replace the
+required production-statistics FLUKA/MEGAlib raw-deposit comparison, common
+event builder, or analytic W2 response.
 
 ## 18. Source-region audit
 
@@ -1121,6 +1155,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Build deterministic 1e6 Cu-64 parent resampling authority
 [x] Audit source-volume name/material translation against the FLUKA region map
 [x] Static coordinate-containment audit after inverse InstrumentFrame transform
+[x] Run FLUKA 1k Phase-3 common Cu-64 raw-deposit plumbing smoke
 [ ] Runtime engine point-location audit in Geant4/FLUKA, if required before production transport
 [ ] Run 1e6 Cu-64 parents per code
 [ ] Save raw deposit truth

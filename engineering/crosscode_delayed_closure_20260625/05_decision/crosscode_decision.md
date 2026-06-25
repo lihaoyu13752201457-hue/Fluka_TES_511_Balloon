@@ -54,6 +54,14 @@ central value (`2.25x`) as a stable production result and removes a simple
 common-source Cu+Ta W2 EM-transport/deposition mismatch as the explanation for
 the full-chain delayed W2 excess.
 
+The Phase-3 Cu-64 common source-position authority is built. It contains `6927`
+source-v2 Cu-64 positions with `Z=29`, `A=64`, `isomer=0` and total Cu-64
+activity weight `4.701904943 Bq`. The source is dominated by neutron production
+(`6918` rows, `4.6958012557 Bq`). This starts the full-geometry closure path,
+but it is not a material verdict: `source_material` is intentionally
+`PENDING_REGION_AUDIT` until the same positions are resolved in Geant4 logical
+volumes and FLUKA regions/materials.
+
 ## Evidence
 
 Manifest:
@@ -131,6 +139,14 @@ engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_a
 engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/ta_deposit_efficiency_comparison.csv
 ```
 
+Phase-3 Cu-64 common source-position authority:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_positions.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_position_volume_summary.csv
+```
+
 Runtime identity result:
 
 | nuclide | event_id | expected Z/A/isomer | FLUKA runtime Z/A/isomer | result |
@@ -203,6 +219,16 @@ Phase-2 T2 Cu+Ta deposited-energy production-statistics gate:
 | `mono511_gamma` | Ta deposit efficiency, W2 510.58-511.42 keV | `0.00551` | `0.00559` | `0.98569` | `-0.24` |
 | `pair511_gamma` | Ta deposit efficiency, W2 510.58-511.42 keV | `0.00545` | `0.00541` | `1.00739` | `0.12` |
 
+Phase-3 Cu-64 common positions:
+
+| quantity | value |
+|---|---:|
+| rows | `6927` |
+| total Cu-64 activity weight | `4.7019049431490107524463624743796 Bq` |
+| neutron-produced rows / activity | `6918 / 4.695801255687516606153413823323 Bq` |
+| proton-produced rows / activity | `8 / 0.0054283622268401050116675860957 Bq` |
+| mu-minus-produced rows / activity | `1 / 0.0006753252346540412812810649609 Bq` |
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
@@ -216,15 +242,18 @@ absorber dimensions and low event counts. The T2 production-statistics toy gate
 passes W2/broad deposited-energy efficiency for generated 511-related sources,
 but it still lacks exact full-geometry Ta/TES dimensions, common full-geometry
 source positions, material/region audit, ancestry/stopping truth, and the final
-analytic W2 response.
+analytic W2 response. The Phase-3 position file starts that path but does not
+yet resolve whether those coordinates land in the same material/region in both
+full geometries.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
-2. Common full-geometry Cu-64 source positions, source-region/material audit, and raw deposits.
-3. Common external event builder and deterministic analytic W2 response.
-4. Common ancestry/stopping observables for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy.
-5. FLUKA EM-cut/material scan only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy.
+2. Source-region/material audit for the built Cu-64 common positions in both full geometries.
+3. Full-geometry raw deposits for the common Cu-64 parents.
+4. Common external event builder and deterministic analytic W2 response.
+5. Common ancestry/stopping observables for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy.
+6. FLUKA EM-cut/material scan only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy.
 
 ## Working Hypothesis After This Gate
 
@@ -240,7 +269,7 @@ delayed deficit:
 | 1500-3000 keV | 0.041 |
 | 3000-10000 keV | 0.014 |
 
-The next run should therefore move to Phase 3: common full-geometry Cu-64 source
-positions, source-region/material audit, raw deposits, one common event builder,
-and deterministic analytic W2 response. The toy T2 W2 result no longer justifies
-an immediate FLUKA EM-cut scan for the 511-related deposited-energy gate.
+The next run should therefore resolve the built Cu-64 common positions in both
+full geometries and fail fast on any source-region/material mismatch before
+starting high-stat full transport. The toy T2 W2 result no longer justifies an
+immediate FLUKA EM-cut scan for the 511-related deposited-energy gate.

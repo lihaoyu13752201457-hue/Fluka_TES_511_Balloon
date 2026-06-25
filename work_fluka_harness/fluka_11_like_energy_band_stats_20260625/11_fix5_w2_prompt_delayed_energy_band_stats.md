@@ -417,6 +417,20 @@ reason FLUKA's full-chain delayed W2 fraction is high. The remaining decisive
 route is full-geometry common Cu-64 source positions, region/material audit,
 raw deposits, common event building, and deterministic analytic W2 response.
 
+## Phase-3 Cu-64 Common Positions
+
+The Phase-3 source-position authority now exists at:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_positions.csv
+```
+
+It contains `6927` source-v2 Cu-64 positions (`Z=29`, `A=64`, `isomer=0`) with
+total Cu-64 activity weight `4.701904943 Bq`. The source is almost entirely
+neutron-produced (`6918` rows, `4.6958012557 Bq`), with small proton and
+mu-minus tails. `source_material` is deliberately `PENDING_REGION_AUDIT`; this
+file is the position/weight authority, not the geometry-material verdict.
+
 Audit artifacts:
 
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md`
@@ -426,6 +440,7 @@ Audit artifacts:
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md`
+- `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md`
 
 ## Follow-Up Checks
 
@@ -443,5 +458,6 @@ composition questions:
 4. Keep reporting energy-band-specific activation fractions; do not quote the
    W2 `6.57%` delayed fraction as a global activation fraction.
 5. Promote the now-passing T2 toy result into full-geometry common raw-deposit
-   truth with agreed source positions, region/material audit, common event
-   builder, exact Ta/TES dimensions, and deterministic analytic W2 response.
+   truth using the built Cu-64 common positions, region/material audit, common
+   event builder, exact Ta/TES dimensions, and deterministic analytic W2
+   response.

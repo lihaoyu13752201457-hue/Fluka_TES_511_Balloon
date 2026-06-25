@@ -1,6 +1,6 @@
 {
   "date": "2026-06-25",
-  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_AND_T2_PRODUCTION_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
+  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_T2_PRODUCTION_AND_PHASE3_POSITION_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
   "completed_gates": [
     {
       "gate": "manifest_freeze",
@@ -204,6 +204,36 @@
         "pair511_gamma_w2_poisson_z": 0.1213794258068809,
         "largest_511_related_abs_poisson_z": 0.6773340106676827
       }
+    },
+    {
+      "gate": "phase3_cu64_common_positions",
+      "status": "COMPLETE",
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md",
+      "positions_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_positions.csv",
+      "positions_sha256": "28aa15b2669e9ef7e40956ec7035aca0ed289014f23b03dd4181f7b0a569bf98",
+      "rows": 6927,
+      "Z": 29,
+      "A": 64,
+      "isomer_values": [
+        0
+      ],
+      "total_activity_weight_Bq": "4.7019049431490107524463624743795999999999999999999999999999999999999999999999523",
+      "sampling_probability_sum": "1.0000000000000000000000000000000000000000000000000000000000000000000000000000164",
+      "source_material_policy": "PENDING_REGION_AUDIT",
+      "production_tag_summary": {
+        "muminus": {
+          "rows": 1,
+          "activity_weight_Bq": "0.0006753252346540412812810649609"
+        },
+        "n": {
+          "rows": 6918,
+          "activity_weight_Bq": "4.6958012556875166061534138233229999999999999999999999999999999999999999999999523"
+        },
+        "p": {
+          "rows": 8,
+          "activity_weight_Bq": "0.0054283622268401050116675860957"
+        }
+      }
     }
   ],
   "ruled_out": [
@@ -222,5 +252,5 @@
     "Common ancestry/stopping differences for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy",
     "FLUKA EM-cut/material dependence of W2 deposited-energy efficiency only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy"
   ],
-  "next_required_gate": "Run Phase 3 with common full-geometry Cu-64 source positions, source-region/material audit, raw deposits, one common external event builder, and deterministic analytic W2 response."
+  "next_required_gate": "Resolve the built Cu-64 common positions in both full geometries and fail fast on any source-region/material mismatch before high-stat full transport."
 }

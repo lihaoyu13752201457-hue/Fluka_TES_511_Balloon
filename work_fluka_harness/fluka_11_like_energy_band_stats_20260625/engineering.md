@@ -621,6 +621,41 @@ sampling_probability
 
 Generate a deterministic diagnostic list of `10^6` Cu-64 parents by weighted resampling from this table. Save the actual selected source-row index for every history.
 
+### 17.1 Cu-64 common position authority status, 2026-06-25
+
+The Phase-3 Cu-64 source-position authority is built:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_positions.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md
+```
+
+It filters the source-v2 delayed position-weight table to Cu-64 and produces
+`6927` common position rows with `Z=29`, `A=64`, `isomer=0`. The total Cu-64
+activity weight represented by these rows is:
+
+```text
+4.7019049431490107524463624743796 Bq
+```
+
+The Cu-64 source is dominated by neutron production:
+
+| production_tag | rows | activity weight |
+|---|---:|---:|
+| `n` | `6918` | `4.695801255687516606153413823323 Bq` |
+| `p` | `8` | `0.0054283622268401050116675860957 Bq` |
+| `muminus` | `1` | `0.0006753252346540412812810649609 Bq` |
+
+The largest source volumes by Cu-64 activity are `ColdPlate_4K` (`39.14%`),
+`ColdPlate_Still_0p7K` (`18.97%`), `ColdPlate_CP_100mK_intercept` (`9.60%`),
+and `ColdPlate_MXC_50mK_SD_anchor` (`8.43%`). `source_material` is deliberately
+set to `PENDING_REGION_AUDIT`, because material must be resolved separately in
+both full geometries rather than inferred from source-v2 reporting names.
+
+Next Phase-3 step: build the deterministic parent resampling list and run the
+source-region/material audit in both codes before starting high-stat full
+transport.
+
 ### Two required modes
 
 1. **Unit-weight diagnostic mode**  
@@ -983,7 +1018,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Build one common external positron/511 source list and pass T0 source-bookkeeping smoke
 [x] Run Cu/Ta toy transport in both codes (T1/T2 smoke complete; T2 production W2/broad deposited-energy acceptance pass)
 [ ] Scan FLUKA effective EM cuts if full-geometry or ancestry observables reopen a W2 EM-transport discrepancy
-[ ] Build cu64_common_positions.csv
+[x] Build cu64_common_positions.csv
 [ ] Audit source region/material in both geometries
 [ ] Run 1e6 Cu-64 parents per code
 [ ] Save raw deposit truth

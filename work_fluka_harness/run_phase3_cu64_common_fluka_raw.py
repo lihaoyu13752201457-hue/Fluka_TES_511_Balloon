@@ -20,7 +20,6 @@ from run_delayed_isotope_raw_mvp import (
     load_region_crosswalk,
     now_utc,
     parse_event_totals,
-    rows_from_csv,
     run,
     sha256_path,
     write_csv,
@@ -66,34 +65,40 @@ def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> 
 
 def source_rows_from_parent_list(path: Path, max_events: int | None, start_index: int) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
-    for row in rows_from_csv(path):
-        parent_history_id = int(row["resampled_history_id"])
-        if parent_history_id < start_index:
-            continue
-        rows.append(
-            {
-                **row,
-                "history_id": len(rows) + 1,
-                "parent_resampled_history_id": parent_history_id,
-                "event_id": row["common_event_id"],
-                "nuclide": "Cu-64",
-                "source_name": f"phase3_cu64_common_parent_{parent_history_id:09d}",
-                "isotope_Z": 29,
-                "isotope_A": 64,
-                "isomer": 0,
-                "dx": 0.0,
-                "dy": 0.0,
-                "dz": 1.0,
-                "time_s": 0.0,
-                "history_weight": 1.0,
-                "event_weight_Bq": row.get("original_activity_weight_Bq", ""),
-                "key_activity_Bq": row.get("original_activity_weight_Bq", ""),
-                "key_rpip_count": "",
-                "raw_volume": row.get("source_volume", ""),
-            }
-        )
-        if max_events is not None and len(rows) >= max_events:
-            break
+    stop_index = start_index + max_events - 1 if max_events is not None else None
+    with path.open(newline="", encoding="utf-8", errors="replace") as handle:
+        reader = csv.DictReader(handle)
+        for raw_row in reader:
+            row = {key: (value or "").strip() for key, value in raw_row.items()}
+            parent_history_id = int(row["resampled_history_id"])
+            if parent_history_id < start_index:
+                continue
+            if stop_index is not None and parent_history_id > stop_index:
+                break
+            rows.append(
+                {
+                    **row,
+                    "history_id": len(rows) + 1,
+                    "parent_resampled_history_id": parent_history_id,
+                    "event_id": row["common_event_id"],
+                    "nuclide": "Cu-64",
+                    "source_name": f"phase3_cu64_common_parent_{parent_history_id:09d}",
+                    "isotope_Z": 29,
+                    "isotope_A": 64,
+                    "isomer": 0,
+                    "dx": 0.0,
+                    "dy": 0.0,
+                    "dz": 1.0,
+                    "time_s": 0.0,
+                    "history_weight": 1.0,
+                    "event_weight_Bq": row.get("original_activity_weight_Bq", ""),
+                    "key_activity_Bq": row.get("original_activity_weight_Bq", ""),
+                    "key_rpip_count": "",
+                    "raw_volume": row.get("source_volume", ""),
+                }
+            )
+            if max_events is not None and len(rows) >= max_events:
+                break
     if not rows:
         raise ValueError("no Phase-3 Cu-64 parent rows selected")
     return rows

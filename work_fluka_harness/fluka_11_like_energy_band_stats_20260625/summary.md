@@ -44,6 +44,33 @@ final is higher than TES by `2.636x`, while prompt W2 final is lower by
 `Cu-64` in FLUKA W2 final, is high relative to the TES Step05 delayed sample,
 not whether the total W2 background number alone agrees.
 
+## Cu-64 Cross-Code Production Gate
+
+To check whether the low TES delayed W2 fraction was a Step05 post-processing
+artifact, the Phase-3 cross-code run used one deterministic 1,000,000-parent
+Cu-64 source stream in FLUKA and MEGAlib. It is an independent-source run, not a
+`.sim.gz` replay. Full raw truth is retained locally under `/tmp/phase3prod`;
+the repository stores only bounded summaries.
+
+Raw full-geometry parent-history TES coupling already differs:
+
+| band | FLUKA events / histories | MEGAlib events / histories | FLUKA/MEGAlib | z |
+|---|---:|---:|---:|---:|
+| all TES > 0 | `6566 / 1000000` | `2797 / 1000000` | `2.34752` | `39.1` |
+| 480-550 keV | `1470 / 1000000` | `1072 / 1000000` | `1.37127` | `7.9` |
+| W2 510.58-511.42 keV | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+
+The common parent-history event builder applies the same active-veto threshold
+and the same analytic W2 Gaussian response (`sigma = 0.14 keV`) to both codes.
+The analytic W2 expectation is essentially unchanged from exact-window W2:
+FLUKA/MEGAlib `1.25946` raw (`5.48 sigma`) and `1.17707` after active veto
+(`2.85 sigma`).
+
+Conclusion: the first failed phase is full-geometry raw-deposit/source-material
+coupling, before the common detector response. That makes the TES-vs-FLUKA W2
+composition residual a real upstream coupling question, not evidence that the
+W2 detector-response window alone manufactured the low TES delayed fraction.
+
 ## Inputs
 
 - TES Step05 event catalog: `/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl`

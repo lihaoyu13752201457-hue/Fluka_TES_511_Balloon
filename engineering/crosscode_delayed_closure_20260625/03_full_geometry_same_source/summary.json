@@ -252,6 +252,27 @@
   },
   "output_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_positions.csv",
   "output_sha256": "28aa15b2669e9ef7e40956ec7035aca0ed289014f23b03dd4181f7b0a569bf98",
+  "parent_history_event_builder": {
+    "active_veto_threshold_keV": 50.0,
+    "boundary": "Common parent-history event builder only; sub-event time splitting and side-Compton/FoV topology remain open.",
+    "comparison_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/comparison_stage_ratios.csv",
+    "first_failed_phase": "full-geometry raw-deposit/source-material coupling before common detector response",
+    "histories_per_code": 1000000,
+    "key_results": {
+      "w2_exact_active_veto_fluka_over_megalib": 1.1758436944937833,
+      "w2_exact_active_veto_z": 2.8294437396473744,
+      "w2_exact_raw_fluka_over_megalib": 1.2589285714285714,
+      "w2_exact_raw_z": 5.472800371864761,
+      "w2_expected_active_veto_fluka_over_megalib": 1.1770703112695755,
+      "w2_expected_active_veto_z": 2.8475295120905226,
+      "w2_expected_raw_fluka_over_megalib": 1.259457785135875,
+      "w2_expected_raw_z": 5.480628443355405
+    },
+    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/summary.json",
+    "stage_rows_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/stage_rows.csv",
+    "status": "PHASE3_CU64_COMMON_PARENT_EVENT_BUILDER_PASS",
+    "w2_sigma_keV": 0.14
+  },
   "parent_resampling_authority": {
     "full_list_csv_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
     "histories": 1000000,
@@ -278,6 +299,29 @@
       "rows": 8
     }
   ],
+  "raw_production_1e6": {
+    "boundary": "Production raw-deposit gate only; full raw truth is local/ignored and committed outputs are bounded summaries.",
+    "chunk_manifest_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_raw_production_1e6/chunk_manifest.csv",
+    "chunks": 20,
+    "comparison_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_raw_production_1e6/comparison_band_summary.csv",
+    "histories_per_code": 1000000,
+    "key_results": {
+      "all_tes_gt0_fluka_over_megalib": 2.347515194851627,
+      "all_tes_gt0_z": 39.05738396840519,
+      "e480_550_fluka_over_megalib": 1.3712686567164178,
+      "e480_550_z": 7.899111480775425,
+      "w2_fluka_events": 1269,
+      "w2_fluka_over_megalib": 1.2589285714285714,
+      "w2_megalib_events": 1008,
+      "w2_z": 5.472800371864761
+    },
+    "no_sim_gz_replay": true,
+    "parent_list_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
+    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_raw_production_1e6/summary.json",
+    "raw_truth_retained_locally": true,
+    "status": "PHASE3_CU64_COMMON_RAW_PRODUCTION_PASS",
+    "work_root_untracked": "/tmp/phase3prod"
+  },
   "rows": 6927,
   "sampling_probability_sum": "1.0000000000000000000000000000000000000000000000000000000000000000000000000000164",
   "source_coordinate_containment_audit": {
@@ -293,7 +337,7 @@
     "status": "SOURCE_REGION_MATERIAL_NAME_AUDIT_PASS"
   },
   "source_sha256": "fa70c28c188ee8dc363c5f579d5332fae474539f40a35afe2624253cdebc5076",
-  "status": "CU64_COMMON_POSITIONS_COMPLETE",
+  "status": "CU64_COMMON_POSITIONS_AND_PHASE3_RAW_PRODUCTION_PARENT_EVENT_BUILDER_COMPLETE",
   "top_source_volumes": [
     {
       "activity_fraction": "0.39136667351115603542250747257208020931067939116759672020202725726887290858593176",

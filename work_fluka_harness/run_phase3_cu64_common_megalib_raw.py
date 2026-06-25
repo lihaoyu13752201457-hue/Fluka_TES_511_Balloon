@@ -82,6 +82,12 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return [{key: (value or "").strip() for key, value in row.items()} for row in csv.DictReader(handle)]
 
 
+def iter_csv(path: Path) -> Iterable[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8", errors="replace") as handle:
+        for row in csv.DictReader(handle):
+            yield {key: (value or "").strip() for key, value in row.items()}
+
+
 def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
@@ -117,10 +123,13 @@ def find_sim_file(out_prefix: Path) -> Path:
 
 def source_rows_from_parent_list(path: Path, max_events: int | None, start_index: int) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
-    for row in read_csv(path):
+    stop_index = start_index + max_events - 1 if max_events is not None else None
+    for row in iter_csv(path):
         parent_history_id = int(row["resampled_history_id"])
         if parent_history_id < start_index:
             continue
+        if stop_index is not None and parent_history_id > stop_index:
+            break
         rows.append(
             {
                 **row,
@@ -552,6 +561,7 @@ def main() -> int:
     ap.add_argument("--max-events", type=int, default=1000)
     ap.add_argument("--start-index", type=int, default=1)
     ap.add_argument("--sample-rows", type=int, default=50)
+    ap.add_argument("--write-full-truth", action="store_true")
     ap.add_argument("--keep-run-products", action="store_true")
     args = ap.parse_args()
 
@@ -607,6 +617,50 @@ def main() -> int:
     tes_hits = [hit for hit in cc_hits if hit["region_kind"] == "TES_PIXEL"]
     particle_summary = cc_particle_summary(cc_hits)
     tes_particle_summary = cc_particle_summary(tes_hits)
+    full_truth_files: dict[str, str] = {}
+
+    if args.write_full_truth:
+        total_rows = event_total_rows(sources, totals)
+        cc_raw_hits_path = out_dir / "cc_raw_hits.csv"
+        cc_event_totals_path = out_dir / "cc_event_totals.csv"
+        write_csv(
+            cc_event_totals_path,
+            total_rows,
+            [
+                "history_id",
+                "tes_total_keV",
+                "active_shield_total_keV",
+                "other_total_keV",
+                "all_total_keV",
+                "cc_hit_rows",
+            ],
+        )
+        write_csv(
+            cc_raw_hits_path,
+            cc_hits,
+            [
+                "history_id",
+                "volume",
+                "region_kind",
+                "x_cm",
+                "y_cm",
+                "z_cm",
+                "deposit_keV",
+                "time_s",
+                "secondary",
+                "track_id",
+                "parent_track_id",
+                "step_process",
+                "primary",
+                "parent",
+                "creator_process",
+                "primary_id",
+            ],
+        )
+        full_truth_files = {
+            "cc_event_totals_csv": rel(cc_event_totals_path),
+            "cc_raw_hits_csv": rel(cc_raw_hits_path),
+        }
 
     write_csv(
         out_dir / "cc_band_summary.csv",
@@ -704,6 +758,7 @@ def main() -> int:
         "run_products_retained": bool(args.keep_run_products),
         "cosima_log": str(log_path),
         "no_sim_gz_replay": True,
+        "full_truth_written": bool(args.write_full_truth),
     }
     write_csv(out_dir / "run_manifest.csv", [manifest], list(manifest.keys()))
 
@@ -737,6 +792,7 @@ def main() -> int:
         "htsim_hit_rows": len(htsim_hits),
         "htsim_first_field": "MEGAlib detector type, not .det detector instance id",
         "run_products_retained": bool(args.keep_run_products),
+        "full_truth_written": bool(args.write_full_truth),
         "run_manifest": rel(out_dir / "run_manifest.csv"),
         "cc_band_summary_csv": rel(out_dir / "cc_band_summary.csv"),
         "cc_volume_summary_csv": rel(out_dir / "cc_volume_summary.csv"),
@@ -751,6 +807,7 @@ def main() -> int:
         "cc_band_summary": bands,
         "boundary": "MEGAlib-only Phase-3 common Cu-64 raw-hit smoke; CC HIT volume deposits now provide the common raw-deposit schema, while native HTsim is retained only as a MEGAlib detector-type/readout summary. FLUKA production comparison, common event building, and production-statistics closure remain open.",
     }
+    summary.update(full_truth_files)
     write_json(out_dir / "summary.json", summary)
 
     band_lines = [
@@ -817,6 +874,7 @@ def main() -> int:
                 f"- htsim_hit_rows: `{len(htsim_hits)}`",
                 "- htsim_first_field: `MEGAlib detector type, not .det detector instance id`",
                 f"- run_products_retained: `{bool(args.keep_run_products)}`",
+                f"- full_truth_written: `{bool(args.write_full_truth)}`",
                 f"- elapsed_s: `{elapsed_s:.3f}`",
                 f"- cc_band_summary_csv: `{rel(out_dir / 'cc_band_summary.csv')}`",
                 f"- cc_tes_hit_sample_csv: `{rel(out_dir / 'cc_tes_hit_sample.csv')}`",

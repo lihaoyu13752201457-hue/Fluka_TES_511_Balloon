@@ -795,6 +795,61 @@ close but far too small to interpret as a production efficiency result:
 FLUKA `5/1000` any-TES and `2/1000` W2 versus MEGAlib `3/1000` any-TES and
 `1/1000` W2.
 
+### 17.5 Phase-3 Cu-64 production raw-deposit gate, 2026-06-25
+
+The Phase-3 common Cu-64 parent stream has now been run at production
+statistics in both codes:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_raw_production_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/summary.md
+```
+
+This is still an independent-source run. It does not replay a Geant4
+`.sim.gz`; both codes consume the same deterministic 1,000,000-parent Cu-64
+selected-index authority, with full raw truth retained locally under
+`/tmp/phase3prod` and only bounded summaries committed.
+
+Raw parent-history TES coupling:
+
+| band | FLUKA events / histories | MEGAlib events / histories | FLUKA/MEGAlib | z |
+|---|---:|---:|---:|---:|
+| all TES > 0 | `6566 / 1000000` | `2797 / 1000000` | `2.34752` | `39.1` |
+| 480-550 keV | `1470 / 1000000` | `1072 / 1000000` | `1.37127` | `7.9` |
+| W2 510.58-511.42 keV | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+| 1500-3000 keV | `1 / 1000000` | `0 / 1000000` | `n/a` | `1` |
+| 3000-10000 keV | `0 / 1000000` | `0 / 1000000` | `n/a` | `n/a` |
+
+The common parent-history event builder then applies the same active-veto
+threshold and the same deterministic analytic W2 Gaussian response
+(`sigma = 0.14 keV`) to both codes:
+
+| metric | stage | FLUKA sum_w / histories | MEGAlib sum_w / histories | FLUKA/MEGAlib | z |
+|---|---|---:|---:|---:|---:|
+| W2 exact window | raw | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+| W2 analytic Gaussian expectation | raw | `1265.99 / 1000000` | `1005.19 / 1000000` | `1.25946` | `5.48` |
+| W2 exact window | active-veto | `662 / 1000000` | `563 / 1000000` | `1.17584` | `2.83` |
+| W2 analytic Gaussian expectation | active-veto | `660.692 / 1000000` | `561.302 / 1000000` | `1.17707` | `2.85` |
+
+This answers the earlier concern that the TES_511_BALLOON delayed W2 fraction
+might be accidentally low because of a post-processing or W2-response artifact.
+The discrepancy is already present before the detector response: FLUKA
+full-geometry raw TES coupling is higher than MEGAlib for the same Cu-64 parent
+stream, and the analytic W2 response preserves the raw W2 ratio. The first
+failed phase is therefore full-geometry raw-deposit/source-material coupling,
+not the common W2 detector response.
+
+Two operational fixes were needed for this production run: the FLUKA and
+MEGAlib runners now stream the parent-list slice instead of loading the full
+280 MB selected-index CSV per chunk, and the production work root was shortened
+to `/tmp/phase3prod` because long FLUKA run paths truncated the generated
+`-echo.inp` filename.
+
+Boundary: the parent-history event builder is not yet the full external event
+builder requested in Section 22. It does not perform 1 microsecond / 1
+nanosecond sub-event splitting or side-Compton/FoV topology. Those remain open
+if the next manuscript statement needs final Step05-equivalent selection.
+
 ## 18. Source-region audit
 
 For every unique source position, record in both codes:
@@ -1216,12 +1271,12 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Run MEGAlib 1k Phase-3 common Cu-64 raw-hit plumbing smoke
 [x] Calibrate MEGAlib HTsim detector/readout semantics against the common raw-deposit schema
 [ ] Runtime engine point-location audit in Geant4/FLUKA, if required before production transport
-[ ] Run 1e6 Cu-64 parents per code
-[ ] Save raw deposit truth
-[ ] Run common external event builder
-[ ] Apply deterministic analytic W2 response
-[ ] Produce stage ratios and weighted uncertainties
-[ ] Assign first failed phase
+[x] Run 1e6 Cu-64 parents per code
+[x] Save raw deposit truth locally under `/tmp/phase3prod`; commit summaries only
+[ ] Run common external event builder (parent-history stage complete; 1 us / 1 ns and topology/FoV remain)
+[x] Apply deterministic analytic W2 response at parent-history stage
+[x] Produce parent-history stage ratios and weighted uncertainties
+[x] Assign first failed phase: full-geometry raw-deposit/source-material coupling
 [ ] Update manuscript delayed-background statement
 ```
 

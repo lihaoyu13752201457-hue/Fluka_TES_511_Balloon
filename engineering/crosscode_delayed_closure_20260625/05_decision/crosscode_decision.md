@@ -63,20 +63,21 @@ audit and static coordinate-containment audit now pass: all rows map to
 translated FLUKA regions/materials and all rows are inside their declared source
 volume after applying the explicit `InstrumentFrame.Rotation 0 45 0` inverse
 transform. A deterministic `1000000`-history Cu-64 parent resampling authority
-is also built and covers all `6927` source rows at least once. The first FLUKA
-full-geometry raw-deposit smoke now runs directly from that parent stream,
-without `.sim.gz` replay: `1000` Cu-64 histories produce `5` any-TES events and
-`2` W2 events, and raw dump versus score output closes at `1.337e-10` TES
-relative delta. The matching MEGAlib raw-hit smoke also runs from the same
-parent stream without `.sim.gz` replay using `Run.Events 1000` and
-`PreTriggerMode Everything`. The HTsim ambiguity is now calibrated: the first
-field is MEGAlib detector type (`4 = Scintillator`, `2 = Calorimeter`), not a
-`.det` detector-instance id. The comparable MEGAlib statistic is now the `CC
-HIT` volume-deposit truth: `3/1000` any-TES histories, `1/1000` in 480-550 keV,
-and `1/1000` in W2. These smoke counts are qualitatively close to the FLUKA
-`5/1000` any-TES and `2/1000` W2 counts, but far too low for a production
-efficiency conclusion. Common event building, production statistics, and final
-cross-code raw-deposit truth remain open.
+is also built and covers all `6927` source rows at least once. The 1k FLUKA and
+MEGAlib plumbing smokes run directly from that parent stream, without `.sim.gz`
+replay, and the MEGAlib HTsim ambiguity is calibrated: native HTsim first field
+is detector type, not `.det` detector-instance id, so comparable MEGAlib TES
+counts use `CC HIT` volume-deposit truth. The Phase-3 production raw-deposit
+gate has now run `1000000` Cu-64 parents per code. FLUKA gives `6566/1000000`
+any-TES and `1269/1000000` W2 histories; MEGAlib gives `2797/1000000` any-TES
+and `1008/1000000` W2 histories. The raw W2 ratio is FLUKA/MEGAlib `1.25893`
+(`5.47 sigma`). A common parent-history event builder with identical active
+veto and analytic W2 response preserves the discrepancy: analytic W2 is
+FLUKA/MEGAlib `1.25946` raw (`5.48 sigma`) and `1.17707` after active veto
+(`2.85 sigma`). The first failed phase is therefore full-geometry
+raw-deposit/source-material coupling before common detector response. The
+full Step05-equivalent 1 microsecond / 1 nanosecond splitting and
+side-Compton/FoV topology remain open.
 
 ## Evidence
 
@@ -202,6 +203,22 @@ engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/mega
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_band_summary.csv
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_hit_sample.csv
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/megalib_cu64_common_raw_smoke_1k/cc_tes_particle_summary.csv
+```
+
+Phase-3 Cu-64 common raw-deposit production:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_raw_production_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_raw_production_1e6/comparison_band_summary.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_raw_production_1e6/chunk_manifest.csv
+```
+
+Phase-3 Cu-64 common parent-history event builder:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/comparison_stage_ratios.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/stage_rows.csv
 ```
 
 Runtime identity result:
@@ -363,6 +380,29 @@ Phase-3 MEGAlib common raw-hit smoke:
 | native HTsim detector types | `type 4 Scintillator: 1000 histories, 1349 rows; type 2 Calorimeter: 3 histories, 3 rows` |
 | production statistics | `False` |
 
+Phase-3 Cu-64 common raw-deposit production gate:
+
+| band | FLUKA events / histories | MEGAlib events / histories | FLUKA/MEGAlib | z |
+|---|---:|---:|---:|---:|
+| all TES > 0 | `6566 / 1000000` | `2797 / 1000000` | `2.34752` | `39.1` |
+| 480-550 keV | `1470 / 1000000` | `1072 / 1000000` | `1.37127` | `7.9` |
+| W2 510.58-511.42 keV | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+| 1500-3000 keV | `1 / 1000000` | `0 / 1000000` | `n/a` | `1` |
+| 3000-10000 keV | `0 / 1000000` | `0 / 1000000` | `n/a` | `n/a` |
+
+Phase-3 common parent-history event builder:
+
+| metric | stage | FLUKA sum_w / histories | MEGAlib sum_w / histories | FLUKA/MEGAlib | z |
+|---|---|---:|---:|---:|---:|
+| W2 exact window | raw | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+| W2 analytic Gaussian expectation | raw | `1265.99 / 1000000` | `1005.19 / 1000000` | `1.25946` | `5.48` |
+| W2 exact window | active-veto | `662 / 1000000` | `563 / 1000000` | `1.17584` | `2.83` |
+| W2 analytic Gaussian expectation | active-veto | `660.692 / 1000000` | `561.302 / 1000000` | `1.17707` | `2.85` |
+
+Interpretation: the common parent-history builder and analytic W2 response do
+not remove the raw discrepancy. The first failed phase is full-geometry
+raw-deposit/source-material coupling, before common detector response.
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
@@ -375,29 +415,26 @@ first shared Ta deposited-energy observable, but with intentionally enlarged
 absorber dimensions and low event counts. The T2 production-statistics toy gate
 passes W2/broad deposited-energy efficiency for generated 511-related sources,
 but it still lacks exact full-geometry Ta/TES dimensions, runtime engine point
-location, ancestry/stopping truth, and the final analytic W2 response. The
-Phase-3 position file, name-level audit, static coordinate-containment audit,
-and deterministic 1e6-parent resampling authority now show that the common
-Cu-64 coordinates and parent stream are internally consistent with the
-translated geometry authority after the explicit InstrumentFrame transform.
-The FLUKA-side 1k raw-deposit smoke proves the parent stream can drive the full
-FLUKA geometry and raw scorer without replay. The MEGAlib-side 1k raw-hit smoke
-proves the same parent stream can drive Cosima and be parsed without replay,
-and its HTsim ambiguity is now understood: native HTsim first field is detector
-type, not `.det` detector id. The comparable MEGAlib `CC HIT` volume-truth smoke
-gives `3/1000` any-TES and `1/1000` W2 versus FLUKA `5/1000` any-TES and
-`2/1000` W2. These smokes do not yet replace a Geant4 runtime point-location
-scorer, a common event builder, or production-statistics full-geometry
-raw-deposit truth.
+location and ancestry/stopping truth. The Phase-3 position file, name-level
+audit, static coordinate-containment audit, and deterministic 1e6-parent
+resampling authority now show that the common Cu-64 coordinates and parent
+stream are internally consistent with the translated geometry authority after
+the explicit InstrumentFrame transform. The FLUKA and MEGAlib smokes prove the
+parent stream can drive both full geometries without replay, and the production
+raw-deposit gate shows a statistically significant W2 raw-coupling difference.
+The common parent-history event builder and analytic W2 response do not remove
+that difference. What remains open is the physical/source-material detail
+inside the full-geometry raw coupling, plus the complete Step05-equivalent
+1 microsecond / 1 nanosecond splitting and side-Compton/FoV topology if a final
+manuscript-level selection is required.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
-2. Runtime point-location audit for the built Cu-64 common positions if required before production transport.
-3. Production-statistics full-geometry raw deposits for the common Cu-64 parents in both codes, using FLUKA raw scoring and MEGAlib `CC HIT` volume truth.
-4. Common external event builder and deterministic analytic W2 response.
-5. Common ancestry/stopping observables for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy.
-6. FLUKA EM-cut/material scan only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy.
+2. Runtime point-location audit for the built Cu-64 common positions if required before interpreting boundary-near sources.
+3. Raw-coupling decomposition by source volume/material, parent decay channel, annihilation/stopping location, and TES incident ancestry.
+4. Complete common external event builder with 1 microsecond / 1 nanosecond splitting and side-Compton/FoV topology.
+5. FLUKA EM-cut/material scan only if the raw-coupling or ancestry gate points to an EM-transport threshold/material dependence.
 
 ## Working Hypothesis After This Gate
 
@@ -413,9 +450,11 @@ delayed deficit:
 | 1500-3000 keV | 0.041 |
 | 3000-10000 keV | 0.014 |
 
-The next run should therefore scale the built Cu-64 common parent stream to
-production-statistics full-geometry raw-deposit truth in both codes, using the
-MEGAlib `CC HIT` volume-deposit stream rather than native HTsim for TES/W2
-counts. Insert a runtime point-location scorer first if the engine-level locator
-is required as a hard gate. The toy T2 W2 result no longer justifies an
-immediate FLUKA EM-cut scan for the 511-related deposited-energy gate.
+The next run should therefore stop treating detector response as the leading
+suspect and decompose the Phase-3 raw-coupling difference itself: source
+volume/material, positron stopping and annihilation location, incident TES
+ancestry, and boundary-near point-location behavior. The toy T2 W2 result no
+longer justifies an immediate FLUKA EM-cut scan for the 511-related
+deposited-energy gate, and the Phase-3 parent-history W2 response result no
+longer supports blaming the analytic W2 detector-response window as the first
+failure.

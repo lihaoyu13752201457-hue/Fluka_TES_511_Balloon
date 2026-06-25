@@ -123,6 +123,34 @@ energy is dominated by `EM_BELOW_THRESHOLD`, consistent with photon/electromagne
 cascades reaching the TES. A separate ancestry or boundary-crossing scorer is
 still required to label incident photons event by event.
 
+### Phase-3 Cu-64 cross-code check of the delayed-W2 question
+
+The latest independent-source cross-code gate now tests the dominant delayed
+W2 isotope channel more directly. FLUKA and MEGAlib were both run on the same
+deterministic 1,000,000-parent Cu-64 source stream, without `.sim.gz` replay.
+Full raw truth is kept locally under `/tmp/phase3prod`; only summary CSV/JSON
+artifacts are committed.
+
+Raw full-geometry TES coupling:
+
+| band | FLUKA events / histories | MEGAlib events / histories | FLUKA/MEGAlib | z |
+|---|---:|---:|---:|---:|
+| all TES > 0 | `6566 / 1000000` | `2797 / 1000000` | `2.34752` | `39.1` |
+| 480-550 keV | `1470 / 1000000` | `1072 / 1000000` | `1.37127` | `7.9` |
+| W2 510.58-511.42 keV | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+
+Applying the same parent-history active-veto and analytic W2 Gaussian response
+does not remove the difference: the analytic W2 expectation gives
+FLUKA/MEGAlib `1.25946` raw (`5.48 sigma`) and `1.17707` after active veto
+(`2.85 sigma`).
+
+Therefore the current answer to "why would TES_511_BALLOON delayed W2 be this
+low?" is not "the W2 response or final selection artificially removed delayed
+events." The cross-code failure appears earlier: full-geometry raw-deposit or
+source-material coupling for Cu-64 already differs before the common detector
+response is applied. The remaining open task is to isolate which full-geometry
+coupling detail causes that raw Cu-64 difference.
+
 ## Stream Classification Check
 
 The Step05 parser assigns `stream` by SIM file/mode, not by secondary particle

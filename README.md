@@ -19,6 +19,17 @@ The prompt deficit (`-0.004749862 cps`) and delayed excess
 (`+0.004212598 cps`) mostly cancel in the total. Therefore the total W2 rate
 is not yet evidence that the prompt and activation components are each correct.
 
+## Latest Cross-Code Gate
+
+The Phase-3 Cu-64 independent-source gate now runs the same deterministic
+`1,000,000`-parent Cu-64 stream in FLUKA and MEGAlib without `.sim.gz` replay.
+Raw W2 full-geometry TES coupling is already different before detector response:
+FLUKA `1269 / 1000000`, MEGAlib `1008 / 1000000`, FLUKA/MEGAlib `1.25893`
+(`5.47 sigma`). Applying the same parent-history active veto and analytic W2
+Gaussian response gives FLUKA/MEGAlib `1.25946` raw and `1.17707` after active
+veto, so the first failed phase is full-geometry raw-deposit/source-material
+coupling, not the common W2 response.
+
 ## Key Artifacts
 
 - `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.md`
@@ -35,6 +46,8 @@ is not yet evidence that the prompt and activation components are each correct.
   - Current delayed closure engineering status.
   - FLUKA runtime source-identity gate showing that checked delayed parents
     are not silently replaced by the dummy `HI-PROPE 53 128` card.
+  - Phase-3 Cu-64 production raw-deposit and parent-history event-builder
+    summaries.
 
 ## Important Interpretation Detail
 

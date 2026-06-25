@@ -11,6 +11,8 @@
 - parent_resampling_authority: `CU64_PARENT_RESAMPLING_AUTHORITY_COMPLETE`
 - fluka_common_raw_smoke: `PHASE3_CU64_COMMON_FLUKA_RAW_PASS`
 - megalib_common_raw_smoke: `PHASE3_CU64_COMMON_MEGALIB_RAW_PASS`
+- raw_production_1e6: `PHASE3_CU64_COMMON_RAW_PRODUCTION_PASS`
+- parent_history_event_builder: `PHASE3_CU64_COMMON_PARENT_EVENT_BUILDER_PASS`
 
 ## Production Tags
 
@@ -29,7 +31,9 @@
 - The FLUKA-side `1000`-history raw-deposit smoke runs directly from that parent list, without `.sim.gz` replay, and closes raw dump versus score output at `1.34e-10` TES relative delta and `2.28e-10` shield relative delta.
 - The MEGAlib-side `1000`-event raw-hit smoke also runs directly from that parent list, without `.sim.gz` replay, using `Run.Events` and `PreTriggerMode Everything`.
 - Runtime Geant4/FLUKA point-location has not been tested by these static artifacts.
-- MEGAlib HTsim semantics are calibrated: HTsim first field is detector type, not `.det` detector id. Comparable MEGAlib TES/W2 counts now use `CC HIT` volume-deposit truth. Production-statistics FLUKA/MEGAlib transport has not yet been run from the resampled parent list.
+- MEGAlib HTsim semantics are calibrated: HTsim first field is detector type, not `.det` detector id. Comparable MEGAlib TES/W2 counts now use `CC HIT` volume-deposit truth.
+- Production-statistics FLUKA/MEGAlib transport has now run for the shared `1,000,000`-parent Cu-64 stream. Full raw truth is retained locally under `/tmp/phase3prod`; committed outputs are bounded summaries only.
+- The common parent-history builder applies identical active-veto and analytic W2 response calculations to both codes. It does not yet perform 1 microsecond / 1 nanosecond sub-event splitting or side-Compton/FoV topology.
 - `sampling_probability` is normalized over Cu-64 rows only and is suitable for deterministic Cu-64 parent resampling.
 
 ## FLUKA Raw-Deposit Smoke
@@ -86,3 +90,42 @@ without replay. It also calibrates the HTsim ambiguity: native HTsim type `4`
 means `Scintillator`, not `.det` detector `D4`. The comparable smoke counts are
 FLUKA `5/1000` any-TES and `2/1000` W2 versus MEGAlib `3/1000` any-TES and
 `1/1000` W2, too small for an efficiency conclusion.
+
+## Production Raw-Deposit Gate
+
+Artifact:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_raw_production_1e6/summary.md
+```
+
+| band | FLUKA events / histories | MEGAlib events / histories | FLUKA/MEGAlib | z |
+|---|---:|---:|---:|---:|
+| all TES > 0 | `6566 / 1000000` | `2797 / 1000000` | `2.34752` | `39.1` |
+| 480-550 keV | `1470 / 1000000` | `1072 / 1000000` | `1.37127` | `7.9` |
+| W2 510.58-511.42 keV | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+| 1500-3000 keV | `1 / 1000000` | `0 / 1000000` | `n/a` | `1` |
+| 3000-10000 keV | `0 / 1000000` | `0 / 1000000` | `n/a` | `n/a` |
+
+Boundary: this is a full-geometry raw-deposit production-statistics comparison
+for the common Cu-64 parent stream. It is not a `.sim.gz` replay. The raw truth
+is local/ignored; committed files are the chunk manifest and band summaries.
+
+## Parent-History Event Builder
+
+Artifact:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_parent_1e6/summary.md
+```
+
+| metric | stage | FLUKA sum_w / histories | MEGAlib sum_w / histories | FLUKA/MEGAlib | z |
+|---|---|---:|---:|---:|---:|
+| W2 exact window | raw | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+| W2 analytic Gaussian expectation | raw | `1265.99 / 1000000` | `1005.19 / 1000000` | `1.25946` | `5.48` |
+| W2 exact window | active-veto | `662 / 1000000` | `563 / 1000000` | `1.17584` | `2.83` |
+| W2 analytic Gaussian expectation | active-veto | `660.692 / 1000000` | `561.302 / 1000000` | `1.17707` | `2.85` |
+
+Interpretation: the common parent-history event builder and analytic W2 response
+do not remove the discrepancy. The first failed phase is full-geometry
+raw-deposit/source-material coupling, before common detector response.

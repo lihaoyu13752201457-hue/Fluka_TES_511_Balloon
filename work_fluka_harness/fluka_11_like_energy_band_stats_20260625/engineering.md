@@ -942,6 +942,57 @@ about `13%` of the net W2 raw difference. This weakens a pure
 boundary-proximity explanation, although it does not replace a true runtime
 point-location scorer or positron stopping/annihilation locator.
 
+### 17.8 Phase-3 common time/topology event builder, 2026-06-25
+
+The common external event builder now includes the two requested time-split
+definitions and a bounded TES/active-shield topology summary:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/comparison_stage_ratios.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/topology_summary.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/time_split_summary.csv
+```
+
+It consumes the independent Cu-64 common-parent raw deposits under
+`/tmp/phase3prod`; it does not replay `.sim.gz` files. Within each parent it
+clusters detector deposits by:
+
+```text
+parent: whole parent history
+within_1us: cluster from first detector deposit within 1 microsecond
+within_1ns: cluster from first detector deposit within 1 nanosecond
+```
+
+W2 focus comparison:
+
+| event definition | stage | FLUKA W2 | MEGAlib W2 | FLUKA/MEGAlib | z |
+|---|---|---:|---:|---:|---:|
+| parent | raw | `1269` | `1008` | `1.25893` | `5.47` |
+| parent | active-veto | `662` | `563` | `1.17584` | `2.83` |
+| within 1 us | raw | `1269` | `1008` | `1.25893` | `5.47` |
+| within 1 us | active-veto | `662` | `563` | `1.17584` | `2.83` |
+| within 1 ns | raw | `1269` | `1008` | `1.25893` | `5.47` |
+| within 1 ns | active-veto | `662` | `568` | `1.16549` | `2.68` |
+
+Time split summary:
+
+| code | event definition | detector parents | split parents | subevents | max subevents/parent |
+|---|---|---:|---:|---:|---:|
+| FLUKA | parent | `86695` | `0` | `86695` | `1` |
+| FLUKA | within 1 us | `86695` | `0` | `86695` | `1` |
+| FLUKA | within 1 ns | `86695` | `0` | `86695` | `1` |
+| MEGAlib | parent | `68643` | `0` | `68643` | `1` |
+| MEGAlib | within 1 us | `68643` | `0` | `68643` | `1` |
+| MEGAlib | within 1 ns | `68643` | `301` | `68944` | `2` |
+
+Interpretation: common event grouping is not the first failed phase. The
+1 microsecond split is identical to parent-history grouping for this sample.
+The 1 nanosecond split only moves a small MEGAlib active-veto tail and does not
+remove the W2 excess. The builder adds single/multi TES-pixel and
+active-shield-touch bookkeeping, but it does not implement the final
+side-Compton/FoV reconstruction cut.
+
 ## 18. Source-region audit
 
 For every unique source position, record in both codes:
@@ -1365,12 +1416,13 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [ ] Runtime engine point-location audit in Geant4/FLUKA, if required before production transport
 [x] Run 1e6 Cu-64 parents per code
 [x] Save raw deposit truth locally under `/tmp/phase3prod`; commit summaries only
-[ ] Run common external event builder (parent-history stage complete; 1 us / 1 ns and topology/FoV remain)
 [x] Apply deterministic analytic W2 response at parent-history stage
 [x] Produce parent-history stage ratios and weighted uncertainties
 [x] Assign first failed phase: full-geometry raw-deposit/source-material coupling
 [x] Decompose Phase-3 raw coupling by source volume/material/production tag and local TES carrier
 [x] Audit W2 raw selected histories against static source-boundary margins
+[x] Run common 1 us / 1 ns time split and TES/active-shield topology builder
+[ ] Add final side-Compton/FoV reconstruction cut if manuscript-level final selection is required
 [ ] Update manuscript delayed-background statement
 ```
 

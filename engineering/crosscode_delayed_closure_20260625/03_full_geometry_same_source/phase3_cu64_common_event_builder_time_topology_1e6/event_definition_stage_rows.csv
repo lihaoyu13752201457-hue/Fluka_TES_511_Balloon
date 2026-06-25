@@ -1,0 +1,49 @@
+code,event_definition,event_definition_label,metric,metric_label,stage,histories,events,sum_w,sum_w2,n_eff,efficiency_per_parent,efficiency_sigma
+fluka,parent,whole parent history,all_tes_gt0,all TES > 0,raw,1000000,6566,6566.0,6566.0,6566.0,0.006566,8.103085831953158e-05
+fluka,parent,whole parent history,all_tes_gt0,all TES > 0,active_veto,1000000,4434,4434.0,4434.0,4434.0,0.004434,6.658828725834597e-05
+fluka,parent,whole parent history,e480_550,480-550 keV,raw,1000000,1470,1470.0,1470.0,1470.0,0.00147,3.834057902536163e-05
+fluka,parent,whole parent history,e480_550,480-550 keV,active_veto,1000000,779,779.0,779.0,779.0,0.000779,2.7910571473905726e-05
+fluka,parent,whole parent history,w2_510p58_511p42,W2 510.58-511.42 keV,raw,1000000,1269,1269.0,1269.0,1269.0,0.001269,3.562302626111375e-05
+fluka,parent,whole parent history,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto,1000000,662,662.0,662.0,662.0,0.000662,2.5729360660537213e-05
+fluka,parent,whole parent history,w2_expected,W2 analytic Gaussian expectation,raw,1000000,1291,1265.9932885508895,1262.230129282694,1269.7676671422093,0.0012659932885508895,3.552787819843304e-05
+fluka,parent,whole parent history,w2_expected,W2 analytic Gaussian expectation,active_veto,1000000,676,660.6923328164887,658.6434383212597,662.7476009706784,0.0006606923328164887,2.5664049530837094e-05
+fluka,within_1us,cluster from first deposit within 1 microsecond,all_tes_gt0,all TES > 0,raw,1000000,6566,6566.0,6566.0,6566.0,0.006566,8.103085831953158e-05
+fluka,within_1us,cluster from first deposit within 1 microsecond,all_tes_gt0,all TES > 0,active_veto,1000000,4434,4434.0,4434.0,4434.0,0.004434,6.658828725834597e-05
+fluka,within_1us,cluster from first deposit within 1 microsecond,e480_550,480-550 keV,raw,1000000,1470,1470.0,1470.0,1470.0,0.00147,3.834057902536163e-05
+fluka,within_1us,cluster from first deposit within 1 microsecond,e480_550,480-550 keV,active_veto,1000000,779,779.0,779.0,779.0,0.000779,2.7910571473905726e-05
+fluka,within_1us,cluster from first deposit within 1 microsecond,w2_510p58_511p42,W2 510.58-511.42 keV,raw,1000000,1269,1269.0,1269.0,1269.0,0.001269,3.562302626111375e-05
+fluka,within_1us,cluster from first deposit within 1 microsecond,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto,1000000,662,662.0,662.0,662.0,0.000662,2.5729360660537213e-05
+fluka,within_1us,cluster from first deposit within 1 microsecond,w2_expected,W2 analytic Gaussian expectation,raw,1000000,1291,1265.9932885508895,1262.230129282694,1269.7676671422093,0.0012659932885508895,3.552787819843304e-05
+fluka,within_1us,cluster from first deposit within 1 microsecond,w2_expected,W2 analytic Gaussian expectation,active_veto,1000000,676,660.6923328164887,658.6434383212597,662.7476009706784,0.0006606923328164887,2.5664049530837094e-05
+fluka,within_1ns,cluster from first deposit within 1 nanosecond,all_tes_gt0,all TES > 0,raw,1000000,6566,6566.0,6566.0,6566.0,0.006566,8.103085831953158e-05
+fluka,within_1ns,cluster from first deposit within 1 nanosecond,all_tes_gt0,all TES > 0,active_veto,1000000,4434,4434.0,4434.0,4434.0,0.004434,6.658828725834597e-05
+fluka,within_1ns,cluster from first deposit within 1 nanosecond,e480_550,480-550 keV,raw,1000000,1470,1470.0,1470.0,1470.0,0.00147,3.834057902536163e-05
+fluka,within_1ns,cluster from first deposit within 1 nanosecond,e480_550,480-550 keV,active_veto,1000000,779,779.0,779.0,779.0,0.000779,2.7910571473905726e-05
+fluka,within_1ns,cluster from first deposit within 1 nanosecond,w2_510p58_511p42,W2 510.58-511.42 keV,raw,1000000,1269,1269.0,1269.0,1269.0,0.001269,3.562302626111375e-05
+fluka,within_1ns,cluster from first deposit within 1 nanosecond,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto,1000000,662,662.0,662.0,662.0,0.000662,2.5729360660537213e-05
+fluka,within_1ns,cluster from first deposit within 1 nanosecond,w2_expected,W2 analytic Gaussian expectation,raw,1000000,1291,1265.9932885508895,1262.230129282694,1269.7676671422093,0.0012659932885508895,3.552787819843304e-05
+fluka,within_1ns,cluster from first deposit within 1 nanosecond,w2_expected,W2 analytic Gaussian expectation,active_veto,1000000,676,660.6923328164887,658.6434383212597,662.7476009706784,0.0006606923328164887,2.5664049530837094e-05
+megalib,parent,whole parent history,all_tes_gt0,all TES > 0,raw,1000000,2797,2797.0,2797.0,2797.0,0.002797,5.288667128870941e-05
+megalib,parent,whole parent history,all_tes_gt0,all TES > 0,active_veto,1000000,1609,1609.0,1609.0,1609.0,0.001609,4.011234224026316e-05
+megalib,parent,whole parent history,e480_550,480-550 keV,raw,1000000,1072,1072.0,1072.0,1072.0,0.001072,3.2741411087489804e-05
+megalib,parent,whole parent history,e480_550,480-550 keV,active_veto,1000000,606,606.0,606.0,606.0,0.000606,2.461706725018234e-05
+megalib,parent,whole parent history,w2_510p58_511p42,W2 510.58-511.42 keV,raw,1000000,1008,1008.0,1008.0,1008.0,0.001008,3.1749015732775085e-05
+megalib,parent,whole parent history,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto,1000000,563,563.0,563.0,563.0,0.000563,2.3727621035409345e-05
+megalib,parent,whole parent history,w2_expected,W2 analytic Gaussian expectation,raw,1000000,1009,1005.1891416209602,1002.248722508111,1008.1381873993915,0.0010051891416209603,3.1658312060312237e-05
+megalib,parent,whole parent history,w2_expected,W2 analytic Gaussian expectation,active_veto,1000000,563,561.3023520380558,559.6411699824627,562.9684649778831,0.0005613023520380558,2.3656736249585714e-05
+megalib,within_1us,cluster from first deposit within 1 microsecond,all_tes_gt0,all TES > 0,raw,1000000,2797,2797.0,2797.0,2797.0,0.002797,5.288667128870941e-05
+megalib,within_1us,cluster from first deposit within 1 microsecond,all_tes_gt0,all TES > 0,active_veto,1000000,1609,1609.0,1609.0,1609.0,0.001609,4.011234224026316e-05
+megalib,within_1us,cluster from first deposit within 1 microsecond,e480_550,480-550 keV,raw,1000000,1072,1072.0,1072.0,1072.0,0.001072,3.2741411087489804e-05
+megalib,within_1us,cluster from first deposit within 1 microsecond,e480_550,480-550 keV,active_veto,1000000,606,606.0,606.0,606.0,0.000606,2.461706725018234e-05
+megalib,within_1us,cluster from first deposit within 1 microsecond,w2_510p58_511p42,W2 510.58-511.42 keV,raw,1000000,1008,1008.0,1008.0,1008.0,0.001008,3.1749015732775085e-05
+megalib,within_1us,cluster from first deposit within 1 microsecond,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto,1000000,563,563.0,563.0,563.0,0.000563,2.3727621035409345e-05
+megalib,within_1us,cluster from first deposit within 1 microsecond,w2_expected,W2 analytic Gaussian expectation,raw,1000000,1009,1005.1891416209602,1002.248722508111,1008.1381873993915,0.0010051891416209603,3.1658312060312237e-05
+megalib,within_1us,cluster from first deposit within 1 microsecond,w2_expected,W2 analytic Gaussian expectation,active_veto,1000000,563,561.3023520380558,559.6411699824627,562.9684649778831,0.0005613023520380558,2.3656736249585714e-05
+megalib,within_1ns,cluster from first deposit within 1 nanosecond,all_tes_gt0,all TES > 0,raw,1000000,2797,2797.0,2797.0,2797.0,0.002797,5.288667128870941e-05
+megalib,within_1ns,cluster from first deposit within 1 nanosecond,all_tes_gt0,all TES > 0,active_veto,1000000,1618,1618.0,1618.0,1618.0,0.001618,4.022437072223753e-05
+megalib,within_1ns,cluster from first deposit within 1 nanosecond,e480_550,480-550 keV,raw,1000000,1072,1072.0,1072.0,1072.0,0.001072,3.2741411087489804e-05
+megalib,within_1ns,cluster from first deposit within 1 nanosecond,e480_550,480-550 keV,active_veto,1000000,611,611.0,611.0,611.0,0.000611,2.471841418861655e-05
+megalib,within_1ns,cluster from first deposit within 1 nanosecond,w2_510p58_511p42,W2 510.58-511.42 keV,raw,1000000,1008,1008.0,1008.0,1008.0,0.001008,3.1749015732775085e-05
+megalib,within_1ns,cluster from first deposit within 1 nanosecond,w2_510p58_511p42,W2 510.58-511.42 keV,active_veto,1000000,568,568.0,568.0,568.0,0.000568,2.383275057562597e-05
+megalib,within_1ns,cluster from first deposit within 1 nanosecond,w2_expected,W2 analytic Gaussian expectation,raw,1000000,1009,1005.1891416209602,1002.248722508111,1008.1381873993915,0.0010051891416209603,3.1658312060312237e-05
+megalib,within_1ns,cluster from first deposit within 1 nanosecond,w2_expected,W2 analytic Gaussian expectation,active_veto,1000000,568,566.2888489116858,564.6142001966072,567.9684646437435,0.0005662888489116858,2.376161190232277e-05

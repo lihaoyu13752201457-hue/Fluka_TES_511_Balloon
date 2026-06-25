@@ -90,6 +90,14 @@ versus `278` MEGAlib, `0.552` of the net difference). This does not replace a
 runtime point-location scorer, but it says the current discrepancy is not just
 "almost all selected sources are numerically on a boundary."
 
+The common time/topology event builder closes the 1 microsecond / 1 nanosecond
+event-grouping loophole. Parent-history and 1 microsecond W2 results are
+identical (`1269` FLUKA versus `1008` MEGAlib raw; `662` versus `563` after
+active veto). The 1 nanosecond split changes only a small MEGAlib active-veto
+tail (`563` to `568`) and leaves FLUKA at `662`, so time clustering does not
+explain the delayed W2 difference. Final side-Compton/FoV reconstruction
+remains open if a manuscript-level final selection is required.
+
 ## Inputs
 
 - TES Step05 event catalog: `/home/ubuntu/TES_511_Balloon/stepwise_maintenance/step05_veto_time_axis/outputs_fix5_fullstat_v2_exactpos_m50000_s260613_l1/work/event_catalog.pkl`

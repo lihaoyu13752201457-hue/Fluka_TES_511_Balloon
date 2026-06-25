@@ -1,0 +1,7 @@
+code,event_definition,event_definition_label,window_s,histories,histories_with_detector_deposits,histories_with_multiple_subevents,subevents_with_detector_deposits,subevents_per_detector_parent,max_subevents_per_parent
+fluka,parent,whole parent history,,1000000,86695,0,86695,1.0,1
+fluka,within_1us,cluster from first deposit within 1 microsecond,1e-06,1000000,86695,0,86695,1.0,1
+fluka,within_1ns,cluster from first deposit within 1 nanosecond,1e-09,1000000,86695,0,86695,1.0,1
+megalib,parent,whole parent history,,1000000,68643,0,68643,1.0,1
+megalib,within_1us,cluster from first deposit within 1 microsecond,1e-06,1000000,68643,0,68643,1.0,1
+megalib,within_1ns,cluster from first deposit within 1 nanosecond,1e-09,1000000,68643,301,68944,1.0043850064828168,2

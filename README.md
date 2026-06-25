@@ -43,6 +43,12 @@ positions with margin `< 0.01 cm` contribute only `0.13` of the net W2 raw
 difference. Runtime point-location and stopping/annihilation location are still
 separate open tests.
 
+The common external time/topology builder now also runs on the independent raw
+deposits. Parent-history and 1 microsecond clustering are identical for W2; 1
+nanosecond clustering only shifts MEGAlib active-veto W2 from `563` to `568`
+and leaves FLUKA at `662`. Event grouping is therefore not the source of the
+delayed-W2 difference. Final side-Compton/FoV reconstruction remains open.
+
 ## Key Artifacts
 
 - `work_fluka_harness/fluka_11_like_energy_band_stats_20260625/summary.md`

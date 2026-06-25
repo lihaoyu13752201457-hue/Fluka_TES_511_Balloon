@@ -15,6 +15,7 @@
 - parent_history_event_builder: `PHASE3_CU64_COMMON_PARENT_EVENT_BUILDER_PASS`
 - raw_coupling_decomposition: `PHASE3_CU64_RAW_COUPLING_DECOMPOSITION_PASS`
 - boundary_margin_audit: `PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_PASS`
+- time_topology_event_builder: `PHASE3_CU64_COMMON_TIME_TOPOLOGY_BUILDER_PASS`
 
 ## Production Tags
 
@@ -35,7 +36,8 @@
 - Runtime Geant4/FLUKA point-location has not been tested by these static artifacts.
 - MEGAlib HTsim semantics are calibrated: HTsim first field is detector type, not `.det` detector id. Comparable MEGAlib TES/W2 counts now use `CC HIT` volume-deposit truth.
 - Production-statistics FLUKA/MEGAlib transport has now run for the shared `1,000,000`-parent Cu-64 stream. Full raw truth is retained locally under `/tmp/phase3prod`; committed outputs are bounded summaries only.
-- The common parent-history builder applies identical active-veto and analytic W2 response calculations to both codes. It does not yet perform 1 microsecond / 1 nanosecond sub-event splitting or side-Compton/FoV topology.
+- The common parent-history builder applies identical active-veto and analytic W2 response calculations to both codes.
+- The common time/topology builder now also applies 1 microsecond and 1 nanosecond clustering plus TES/active-shield channel bookkeeping. It does not implement the final side-Compton/FoV reconstruction cut.
 - The raw-coupling decomposition shows the W2 difference is distributed across source volumes/materials and is not isolated to `CuNi` or a non-neutron production tag.
 - The static boundary-margin audit shows the net W2 raw excess is not dominated by source positions with margin `< 0.01 cm`.
 - `sampling_probability` is normalized over Cu-64 rows only and is suitable for deterministic Cu-64 parent resampling.
@@ -133,6 +135,31 @@ engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phas
 Interpretation: the common parent-history event builder and analytic W2 response
 do not remove the discrepancy. The first failed phase is full-geometry
 raw-deposit/source-material coupling, before common detector response.
+
+## Common Time/Topology Event Builder
+
+Artifact:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/summary.md
+```
+
+W2 focus comparison:
+
+| event definition | stage | FLUKA W2 / histories | MEGAlib W2 / histories | FLUKA/MEGAlib | z |
+|---|---|---:|---:|---:|---:|
+| parent | raw | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+| parent | active-veto | `662 / 1000000` | `563 / 1000000` | `1.17584` | `2.83` |
+| within 1 us | raw | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+| within 1 us | active-veto | `662 / 1000000` | `563 / 1000000` | `1.17584` | `2.83` |
+| within 1 ns | raw | `1269 / 1000000` | `1008 / 1000000` | `1.25893` | `5.47` |
+| within 1 ns | active-veto | `662 / 1000000` | `568 / 1000000` | `1.16549` | `2.68` |
+
+Interpretation: parent-history and 1 microsecond clustering are identical for
+this W2 observable. The 1 nanosecond split affects only a small MEGAlib
+active-veto tail (`563` to `568`) and does not remove the raw W2 excess. The
+builder also reports single/multi TES-pixel and active-shield-touch topology;
+final side-Compton/FoV reconstruction remains open.
 
 ## Raw-Coupling Decomposition
 

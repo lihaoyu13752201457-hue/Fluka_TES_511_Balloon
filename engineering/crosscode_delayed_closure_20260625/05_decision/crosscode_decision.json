@@ -705,18 +705,64 @@
       },
       "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/summary.json",
       "status": "PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_PASS"
+    },
+    {
+      "boundary": "Common time/topology event builder over existing independent Cu-64 raw deposits; final side-Compton/FoV reconstruction remains open.",
+      "comparison_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/comparison_stage_ratios.csv",
+      "gate": "phase3_cu64_common_time_topology_event_builder_1e6",
+      "histories_per_code": {
+        "fluka": 1000000,
+        "megalib": 1000000
+      },
+      "interpretation": "Parent-history and 1 microsecond W2 results are identical; 1 nanosecond clustering only shifts a small MEGAlib active-veto tail and does not remove the W2 excess.",
+      "key_results": {
+        "parent_w2_active_veto": {
+          "fluka_over_megalib": 1.1758436944937833,
+          "fluka_sum_w": 662.0,
+          "megalib_sum_w": 563.0,
+          "z": 2.8285714285714296
+        },
+        "parent_w2_raw": {
+          "fluka_over_megalib": 1.2589285714285714,
+          "fluka_sum_w": 1269.0,
+          "megalib_sum_w": 1008.0,
+          "z": 5.469643137118803
+        },
+        "time_split": {
+          "fluka_within_1ns_split_parents": 0,
+          "megalib_within_1ns_split_parents": 301,
+          "megalib_within_1ns_subevents": 68944
+        },
+        "within_1ns_w2_active_veto": {
+          "fluka_over_megalib": 1.165492957746479,
+          "fluka_sum_w": 662.0,
+          "megalib_sum_w": 568.0,
+          "z": 2.680249958007345
+        },
+        "within_1us_w2_active_veto": {
+          "fluka_over_megalib": 1.1758436944937833,
+          "fluka_sum_w": 662.0,
+          "megalib_sum_w": 563.0,
+          "z": 2.8285714285714296
+        }
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/summary.json",
+      "status": "PHASE3_CU64_COMMON_TIME_TOPOLOGY_BUILDER_PASS",
+      "summary_md": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/summary.md",
+      "time_split_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/time_split_summary.csv",
+      "topology_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/topology_summary.csv"
     }
   ],
   "date": "2026-06-25",
-  "next_required_gate": "Inspect physical raw-coupling mechanisms inside the dominant Phase-3 Cu-64 source volumes: runtime point location, positron stopping/annihilation location, and incident TES ancestry; complete Step05-equivalent event building afterward if needed.",
+  "next_required_gate": "Inspect physical raw-coupling mechanisms inside the dominant Phase-3 Cu-64 source volumes: runtime point location, positron stopping/annihilation location, and incident TES ancestry; add final side-Compton/FoV reconstruction only if a manuscript-level final selection is required.",
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
     "Runtime engine point-location differences not visible in the static geometry translator",
     "Exact physical Ta/TES geometry dependence in full geometry",
     "Common ancestry/stopping differences for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy",
     "FLUKA EM-cut/material dependence of W2 deposited-energy efficiency only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy",
-    "Complete 1 us / 1 ns and side-Compton/FoV event builder after parent-history stage",
-    "Runtime point-location, positron stopping/annihilation location, or incident TES ancestry inside dominant source volumes"
+    "Runtime point-location, positron stopping/annihilation location, or incident TES ancestry inside dominant source volumes",
+    "Final side-Compton/FoV reconstruction in the common external event builder if manuscript-level final selection is required"
   ],
   "ruled_out": [
     "The FLUKA delayed discrepancy is not explained by the dummy HI-PROPE 53/128 card silently replacing the checked source-v2 isotope identities.",
@@ -733,7 +779,8 @@
     "The Phase-3 production-statistics raw-deposit comparison is no longer missing: the common 1e6-parent Cu-64 stream was run in both codes without .sim.gz replay.",
     "The analytic W2 detector-response window is not the first failure for the Phase-3 Cu-64 W2 mismatch: exact-window W2 and analytic Gaussian W2 have the same FLUKA/MEGAlib raw ratio within statistics.",
     "The Phase-3 W2 raw-coupling difference is not isolated to CuNi or non-neutron production; the first decomposition shows distributed source-volume/material contributions.",
-    "A pure static near-boundary source-position explanation for the Phase-3 W2 raw excess is weak: margin <0.01 cm contributes only 0.13 of the net difference."
+    "A pure static near-boundary source-position explanation for the Phase-3 W2 raw excess is weak: margin <0.01 cm contributes only 0.13 of the net difference.",
+    "Common 1 microsecond / 1 nanosecond time clustering is not the first failure for the Phase-3 Cu-64 W2 mismatch: parent and 1us counts are identical, and 1ns clustering does not remove the active-veto excess."
   ],
-  "status": "PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_COMPLETE__PHYSICAL_RAW_COUPLING_AUDIT_REMAINS__CROSSCODE_CLOSURE_INCOMPLETE"
+  "status": "PHASE3_CU64_TIME_TOPOLOGY_BUILDER_COMPLETE__PHYSICAL_RAW_COUPLING_AUDIT_REMAINS__CROSSCODE_CLOSURE_INCOMPLETE"
 }

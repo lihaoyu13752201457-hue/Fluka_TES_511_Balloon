@@ -13716,7 +13716,7 @@
       "selected_margin_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/selected_margin_summary.csv",
       "status": "PHASE3_CU64_BOUNDARY_MARGIN_AUDIT_PASS"
     },
-    "interpretation": "The TES-vs-FLUKA W2 composition residual is not explained by common analytic W2 response; the Phase-3 cross-code Cu-64 difference is present in raw deposits, distributed across source volumes/materials, and not dominated by static source-boundary margins <0.01 cm.",
+    "interpretation": "The TES-vs-FLUKA W2 composition residual is not explained by common analytic W2 response, static source-boundary margins <0.01 cm, or common 1us/1ns time clustering; the Phase-3 Cu-64 difference is already present in raw deposits and remains a physical raw-coupling question.",
     "parent_history_event_builder": {
       "active_veto_threshold_keV": 50.0,
       "boundary": "Common parent-history event builder only; sub-event time splitting and side-Compton/FoV topology remain open.",
@@ -13838,6 +13838,51 @@
       "raw_truth_retained_locally": true,
       "status": "PHASE3_CU64_COMMON_RAW_PRODUCTION_PASS",
       "work_root_untracked": "/tmp/phase3prod"
+    },
+    "time_topology_event_builder": {
+      "boundary": "Common time/topology event builder over existing independent Cu-64 raw deposits; final side-Compton/FoV reconstruction remains open.",
+      "comparison_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/comparison_stage_ratios.csv",
+      "histories_per_code": {
+        "fluka": 1000000,
+        "megalib": 1000000
+      },
+      "interpretation": "Parent-history and 1 microsecond W2 results are identical; 1 nanosecond clustering only shifts a small MEGAlib active-veto tail and does not remove the W2 excess.",
+      "key_results": {
+        "parent_w2_active_veto": {
+          "fluka_over_megalib": 1.1758436944937833,
+          "fluka_sum_w": 662.0,
+          "megalib_sum_w": 563.0,
+          "z": 2.8285714285714296
+        },
+        "parent_w2_raw": {
+          "fluka_over_megalib": 1.2589285714285714,
+          "fluka_sum_w": 1269.0,
+          "megalib_sum_w": 1008.0,
+          "z": 5.469643137118803
+        },
+        "time_split": {
+          "fluka_within_1ns_split_parents": 0,
+          "megalib_within_1ns_split_parents": 301,
+          "megalib_within_1ns_subevents": 68944
+        },
+        "within_1ns_w2_active_veto": {
+          "fluka_over_megalib": 1.165492957746479,
+          "fluka_sum_w": 662.0,
+          "megalib_sum_w": 568.0,
+          "z": 2.680249958007345
+        },
+        "within_1us_w2_active_veto": {
+          "fluka_over_megalib": 1.1758436944937833,
+          "fluka_sum_w": 662.0,
+          "megalib_sum_w": 563.0,
+          "z": 2.8285714285714296
+        }
+      },
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/summary.json",
+      "status": "PHASE3_CU64_COMMON_TIME_TOPOLOGY_BUILDER_PASS",
+      "summary_md": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/summary.md",
+      "time_split_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/time_split_summary.csv",
+      "topology_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/topology_summary.csv"
     }
   },
   "scope": "independent-source FLUKA prompt+delayed energy-band statistics with TES Step05 comparison",

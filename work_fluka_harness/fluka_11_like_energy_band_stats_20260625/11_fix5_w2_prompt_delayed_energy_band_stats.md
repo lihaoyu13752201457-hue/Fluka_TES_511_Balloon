@@ -166,6 +166,16 @@ the net W2 raw FLUKA-MEGAlib difference. A runtime point-location scorer and
 positron stopping/annihilation locator are still needed for the physical
 mechanism.
 
+The common time/topology event builder closes the main event-grouping loophole:
+parent-history and 1 microsecond W2 results are identical (`1269` FLUKA versus
+`1008` MEGAlib raw; `662` versus `563` after active veto). At 1 nanosecond,
+only MEGAlib active-veto W2 shifts slightly (`563` to `568`), leaving FLUKA at
+`662`. Therefore the low TES_511_BALLOON delayed W2 is not explained by a
+different 1 microsecond / 1 nanosecond split or by the analytic W2 response.
+The remaining missing final-builder layer is side-Compton/FoV reconstruction,
+while the leading physics question remains runtime point location and
+positron/gamma coupling inside the dominant source volumes.
+
 ## Stream Classification Check
 
 The Step05 parser assigns `stream` by SIM file/mode, not by secondary particle

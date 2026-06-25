@@ -455,7 +455,52 @@
     "status": "SOURCE_REGION_MATERIAL_NAME_AUDIT_PASS"
   },
   "source_sha256": "fa70c28c188ee8dc363c5f579d5332fae474539f40a35afe2624253cdebc5076",
-  "status": "CU64_COMMON_POSITIONS_PHASE3_RAW_PRODUCTION_PARENT_EVENT_BUILDER_DECOMPOSITION_AND_BOUNDARY_MARGIN_AUDIT_COMPLETE",
+  "status": "CU64_COMMON_POSITIONS_PHASE3_RAW_PRODUCTION_PARENT_EVENT_BUILDER_DECOMPOSITION_BOUNDARY_MARGIN_AND_TIME_TOPOLOGY_COMPLETE",
+  "time_topology_event_builder": {
+    "boundary": "Common time/topology event builder over existing independent Cu-64 raw deposits; final side-Compton/FoV reconstruction remains open.",
+    "comparison_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/comparison_stage_ratios.csv",
+    "histories_per_code": {
+      "fluka": 1000000,
+      "megalib": 1000000
+    },
+    "interpretation": "Parent-history and 1 microsecond W2 results are identical; 1 nanosecond clustering only shifts a small MEGAlib active-veto tail and does not remove the W2 excess.",
+    "key_results": {
+      "parent_w2_active_veto": {
+        "fluka_over_megalib": 1.1758436944937833,
+        "fluka_sum_w": 662.0,
+        "megalib_sum_w": 563.0,
+        "z": 2.8285714285714296
+      },
+      "parent_w2_raw": {
+        "fluka_over_megalib": 1.2589285714285714,
+        "fluka_sum_w": 1269.0,
+        "megalib_sum_w": 1008.0,
+        "z": 5.469643137118803
+      },
+      "time_split": {
+        "fluka_within_1ns_split_parents": 0,
+        "megalib_within_1ns_split_parents": 301,
+        "megalib_within_1ns_subevents": 68944
+      },
+      "within_1ns_w2_active_veto": {
+        "fluka_over_megalib": 1.165492957746479,
+        "fluka_sum_w": 662.0,
+        "megalib_sum_w": 568.0,
+        "z": 2.680249958007345
+      },
+      "within_1us_w2_active_veto": {
+        "fluka_over_megalib": 1.1758436944937833,
+        "fluka_sum_w": 662.0,
+        "megalib_sum_w": 563.0,
+        "z": 2.8285714285714296
+      }
+    },
+    "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/summary.json",
+    "status": "PHASE3_CU64_COMMON_TIME_TOPOLOGY_BUILDER_PASS",
+    "summary_md": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/summary.md",
+    "time_split_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/time_split_summary.csv",
+    "topology_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/topology_summary.csv"
+  },
   "top_source_volumes": [
     {
       "activity_fraction": "0.39136667351115603542250747257208020931067939116759672020202725726887290858593176",

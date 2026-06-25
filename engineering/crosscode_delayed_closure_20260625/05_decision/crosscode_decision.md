@@ -84,8 +84,10 @@ FLUKA versus `227` MEGAlib), while `Cu_SubstrateSupport_SolidDisk_L0_deepest`
 pulls the other way (`74` versus `164`). The static boundary-margin audit then
 weakens a pure boundary-proximity explanation: source positions with static
 margin `< 0.01 cm` contribute only `0.13` of the net W2 raw difference. The
-full Step05-equivalent 1 microsecond / 1 nanosecond splitting and
-side-Compton/FoV topology remain open.
+common time/topology event builder then closes the event-grouping concern:
+parent-history and 1 microsecond W2 counts are identical, and 1 nanosecond
+clustering does not remove the active-veto W2 excess. Final side-Compton/FoV
+reconstruction remains open.
 
 ## Evidence
 
@@ -243,6 +245,15 @@ Phase-3 Cu-64 static boundary-margin audit:
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/summary.md
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/margin_bin_comparison.csv
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_boundary_margin_audit_1e6/selected_margin_summary.csv
+```
+
+Phase-3 Cu-64 common time/topology event builder:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/comparison_stage_ratios.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/topology_summary.csv
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/phase3_cu64_common_event_builder_time_topology_1e6/time_split_summary.csv
 ```
 
 Runtime identity result:
@@ -461,6 +472,22 @@ Interpretation: the static source-boundary margin distribution does not support
 a pure "almost on the boundary" explanation. Runtime point-location and
 stopping/annihilation location remain separate open tests.
 
+Phase-3 common time/topology event builder:
+
+| event definition | stage | FLUKA W2 | MEGAlib W2 | FLUKA/MEGAlib | z |
+|---|---|---:|---:|---:|---:|
+| parent | raw | `1269` | `1008` | `1.25893` | `5.47` |
+| parent | active-veto | `662` | `563` | `1.17584` | `2.83` |
+| within 1 us | raw | `1269` | `1008` | `1.25893` | `5.47` |
+| within 1 us | active-veto | `662` | `563` | `1.17584` | `2.83` |
+| within 1 ns | raw | `1269` | `1008` | `1.25893` | `5.47` |
+| within 1 ns | active-veto | `662` | `568` | `1.16549` | `2.68` |
+
+Interpretation: common event grouping is not the first failed phase. The 1
+microsecond split is identical to parent-history grouping, and the 1 nanosecond
+split only moves a small MEGAlib active-veto tail. The remaining final-builder
+gap is side-Compton/FoV reconstruction, not time clustering.
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
@@ -485,16 +512,16 @@ that difference. The first source-volume/material decomposition shows the
 difference is distributed and not isolated to `CuNi` or non-neutron production.
 The static boundary-margin audit shows the net excess is not dominated by
 source positions with static margin `< 0.01 cm`. What remains open is the
-physical raw-coupling mechanism inside the dominant source volumes, plus the
-complete Step05-equivalent 1 microsecond / 1 nanosecond splitting and
-side-Compton/FoV topology if a final manuscript-level selection is required.
+physical raw-coupling mechanism inside the dominant source volumes, plus final
+side-Compton/FoV reconstruction if a manuscript-level final selection is
+required.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
 2. Runtime point-location audit for the built Cu-64 common positions if required before interpreting boundary-near sources.
 3. Runtime point-location, positron stopping/annihilation location, and incident TES ancestry inside the source volumes that dominate the raw-coupling difference.
-4. Complete common external event builder with 1 microsecond / 1 nanosecond splitting and side-Compton/FoV topology.
+4. Add final side-Compton/FoV reconstruction to the common external event builder if the manuscript-level final selection is required.
 5. FLUKA EM-cut/material scan only if the raw-coupling or ancestry gate points to an EM-transport threshold/material dependence.
 
 ## Working Hypothesis After This Gate

@@ -1,0 +1,90 @@
+{
+  "common_primaries_csv": "",
+  "common_primaries_sample_csv": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/common_primaries_sample.csv",
+  "common_primaries_sample_sha256": "5b2c28f75f4f5d0640a2df001afabd65fe55f63cfa742f57e1512ec0c1db0cb2",
+  "common_primaries_sha256": "276bf6b64aac96669d6379866e85d05a9a34795fb0cff1c472970f5ffc6ed548",
+  "comparison_csv": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/ta_deposit_efficiency_comparison.csv",
+  "comparison_sha256": "2909fc4c674beb07868b976a3dafba438f71a22e96773e03b21115de1dfdffc7",
+  "created_utc": "2026-06-25T11:08:38Z",
+  "family_counts": [
+    {
+      "count": 100000,
+      "family": "cu64_eplus_smoke",
+      "particle": "eplus"
+    },
+    {
+      "count": 100000,
+      "family": "mono511_gamma",
+      "particle": "gamma"
+    },
+    {
+      "count": 100000,
+      "family": "pair511_gamma",
+      "particle": "gamma"
+    }
+  ],
+  "family_summary_csv": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/family_ta_deposit_summary.csv",
+  "family_summary_sha256": "923e46d2dd62d1daf5630f2285c85294e353c6ee646f364c28599bd9d9124b8e",
+  "geometry": {
+    "cu_radius_cm": 1.0,
+    "ta_center_z_cm": 3.0,
+    "ta_half_x_cm": 2.0,
+    "ta_half_y_cm": 2.0,
+    "ta_half_z_cm": 0.05,
+    "world_half_width_cm": 100.0
+  },
+  "large_input_tables_retained": false,
+  "megalib_htsim_sample_csv": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/megalib_htsim_sample.csv",
+  "notes": [
+    "This is a generated-source Ta deposited-energy transport gate, not final full-geometry closure.",
+    "The Ta slab is intentionally larger than a physical TES pixel for stable deposited-energy statistics.",
+    "Generated-source production runs may drop full input tables after hashing to avoid retaining large reproducible tables."
+  ],
+  "primary_count": 300000,
+  "run_tier": "production",
+  "run_type": "phase2_t2_cu_ta_absorber_transport_production",
+  "runs": {
+    "FLUKA": {
+      "code": "FLUKA",
+      "elapsed_s": 50.92753267288208,
+      "finished_utc": "2026-06-25T11:08:37Z",
+      "input": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/fluka_inputs/t2_cu_ta_absorber.inp",
+      "input_sha256": "c1ddbdf84e1370f2def18b8f7463c80793e78f52c47356ee05d9d444bfa39d97",
+      "primaries_dat": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/fluka_inputs/primaries.dat",
+      "primaries_dat_sha256": "b9723ec4d87329e6fc5c63b108ea5c6427eb27b7a807535e3ee39eb266f71371",
+      "returncode": 0,
+      "rfluka_log": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/fluka_run/rfluka.log",
+      "run_products_retained": false,
+      "started_utc": "2026-06-25T11:07:46Z"
+    },
+    "MEGAlib": {
+      "code": "MEGAlib",
+      "cosima_log": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/cosima_run/cosima.log",
+      "elapsed_s": 75.40236115455627,
+      "eventlist": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/megalib_inputs/common_eventlist.dat",
+      "eventlist_sha256": "b28384949710e52f7128edc65f4bbbcb56c11e3d830b39afae99427536293b39",
+      "finished_utc": "2026-06-25T11:07:40Z",
+      "geometry": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/megalib_inputs/t2_cu_ta_absorber.geo.setup",
+      "geometry_sha256": "76e852ff6839cdc81d9a83b667b5d9b5f68f7f227dcfc31bd2715c8e1600e424",
+      "returncode": 0,
+      "run_products_retained": false,
+      "sim_event_count": 300000,
+      "sim_file": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/cosima_run/t2_cu_ta_absorber.inc1.id1.sim.gz",
+      "sim_file_generated": true,
+      "source": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/megalib_inputs/t2_cu_ta_absorber.source",
+      "source_sha256": "0ef8e46edda56c2295a831797df7b1398c346f135f96b690880ee5f28040c422",
+      "started_utc": "2026-06-25T11:06:24Z"
+    }
+  },
+  "seed": 24066701,
+  "source_csv": "",
+  "source_generation_counts": {
+    "high_gamma_each": 0,
+    "mono511": 100000,
+    "pair511_pairs": 50000,
+    "positrons": 100000
+  },
+  "source_mode": "generated",
+  "status": "T2_CU_TA_ABSORBER_TRANSPORT_PRODUCTION_COMPLETE",
+  "ta_deposit_sample_csv": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/ta_deposit_sample.csv"
+}

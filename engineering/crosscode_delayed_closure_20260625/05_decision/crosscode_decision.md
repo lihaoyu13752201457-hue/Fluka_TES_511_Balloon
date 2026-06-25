@@ -44,6 +44,16 @@ in both engines, but it is not final Phase-2 closure because statistics, exact
 Ta/TES dimensions, ancestry/stopping observables, and deterministic W2 response
 are still open.
 
+The generated-source T2 production-statistics gate is now complete. It uses the
+same Cu+Ta toy geometry with `100000` Cu-64 positron rows, `100000` mono-511
+photon rows, and `100000` pair-511 photon rows. The W2 Ta deposited-energy
+efficiency agrees in the 511-related channels: Cu-64 positron rows give
+FLUKA/MEGAlib `1.029` (`1132` versus `1100`, `0.68 sigma`), mono-511 rows
+`0.986`, and pair-511 rows `1.007`. This rules out the low-statistics T2 smoke
+central value (`2.25x`) as a stable production result and removes a simple
+common-source Cu+Ta W2 EM-transport/deposition mismatch as the explanation for
+the full-chain delayed W2 excess.
+
 ## Evidence
 
 Manifest:
@@ -113,6 +123,14 @@ engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_a
 engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/ta_deposit_efficiency_comparison.csv
 ```
 
+Phase-2 T2 Cu+Ta absorber production-statistics gate:
+
+```text
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/family_ta_deposit_summary.csv
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/ta_deposit_efficiency_comparison.csv
+```
+
 Runtime identity result:
 
 | nuclide | event_id | expected Z/A/isomer | FLUKA runtime Z/A/isomer | result |
@@ -176,6 +194,15 @@ Phase-2 T2 Cu+Ta deposited-energy smoke:
 | `mono1779_gamma` | Ta deposit efficiency, 480-550 keV | `0.003906` | `0` | `n/a` | `1.00` |
 | `mono2754_gamma` | Ta deposit efficiency, all nonzero | `0.011719` | `0.023438` | `0.50` | `-1.00` |
 
+Phase-2 T2 Cu+Ta deposited-energy production-statistics gate:
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | Ta deposit efficiency, W2 510.58-511.42 keV | `0.01132` | `0.01100` | `1.02909` | `0.68` |
+| `cu64_eplus_smoke` | Ta deposit efficiency, 480-550 keV | `0.01232` | `0.01212` | `1.01650` | `0.40` |
+| `mono511_gamma` | Ta deposit efficiency, W2 510.58-511.42 keV | `0.00551` | `0.00559` | `0.98569` | `-0.24` |
+| `pair511_gamma` | Ta deposit efficiency, W2 510.58-511.42 keV | `0.00545` | `0.00541` | `1.00739` | `0.12` |
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
@@ -185,17 +212,19 @@ only verifies common source bookkeeping; it does not compare positron slowing,
 annihilation, photon escape, material coupling, or TES deposited energy. The
 T1 smoke adds escaped-particle evidence in a Cu sphere. The T2 smoke adds a
 first shared Ta deposited-energy observable, but with intentionally enlarged
-absorber dimensions and low event counts; it still lacks production statistics,
-exact Ta/TES geometry, common ancestry/stopping truth, and the final analytic
-W2 response.
+absorber dimensions and low event counts. The T2 production-statistics toy gate
+passes W2/broad deposited-energy efficiency for generated 511-related sources,
+but it still lacks exact full-geometry Ta/TES dimensions, common full-geometry
+source positions, material/region audit, ancestry/stopping truth, and the final
+analytic W2 response.
 
 Open discriminators:
 
 1. Geant4/MEGAlib production-statistics decay-kernel run if low-yield-line precision is needed.
-2. Production common T1/T2 raw-deposit transport through agreed Cu/Ta/TES toy geometries.
-3. Common ancestry/stopping observables for positron slowing, annihilation photons, and photon-to-Ta deposition.
-4. FLUKA EM-cut/material scan if the production T2 W2 deposited-energy efficiency remains high.
-5. Common full-geometry source positions and common external postprocessor.
+2. Common full-geometry Cu-64 source positions, source-region/material audit, and raw deposits.
+3. Common external event builder and deterministic analytic W2 response.
+4. Common ancestry/stopping observables for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy.
+5. FLUKA EM-cut/material scan only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy.
 
 ## Working Hypothesis After This Gate
 
@@ -211,8 +240,7 @@ delayed deficit:
 | 1500-3000 keV | 0.041 |
 | 3000-10000 keV | 0.014 |
 
-The next run should therefore promote T1 from smoke to common raw-deposit truth
-and promote T2 from enlarged-absorber smoke to production Ta/TES W2-efficiency
-transport with agreed dimensions and enough statistics. If that preserves a
-large FLUKA excess in W2 deposited energy, the next most useful discriminator is
-a FLUKA EM-cut/material scan before returning to full-geometry differences.
+The next run should therefore move to Phase 3: common full-geometry Cu-64 source
+positions, source-region/material audit, raw deposits, one common event builder,
+and deterministic analytic W2 response. The toy T2 W2 result no longer justifies
+an immediate FLUKA EM-cut scan for the 511-related deposited-energy gate.

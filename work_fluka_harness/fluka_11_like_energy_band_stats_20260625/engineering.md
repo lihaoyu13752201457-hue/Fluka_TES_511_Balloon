@@ -545,6 +545,43 @@ This is still a low-statistics smoke. It proves the shared T2 machinery runs
 and produces Ta deposit truth in both engines, but it does not yet satisfy the
 Phase-2 acceptance criteria for W2 efficiency.
 
+### 14.4 T2 Cu+Ta production-statistics status, 2026-06-25
+
+The generated-source T2 production-statistics gate is complete:
+
+```text
+engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md
+```
+
+It uses the same 1 cm radius Cu sphere plus deliberately enlarged Ta slab
+(`4.0 x 4.0 x 0.1 cm` at `z = 3.0 cm`), but raises the 511-related common
+source list to `300000` rows: `100000` Cu-64 positrons, `100000` mono-511
+photons, and `100000` pair-511 photon rows. Full input tables were dropped
+after hashing to avoid retaining large reproducible tables; the retained
+artifact keeps the hash, bounded source sample, input decks, and compact
+summaries.
+
+Key Ta deposited-energy efficiencies:
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | W2 Ta deposit efficiency | `0.01132` | `0.01100` | `1.02909` | `0.68` |
+| `cu64_eplus_smoke` | 480-550 keV Ta deposit efficiency | `0.01232` | `0.01212` | `1.01650` | `0.40` |
+| `mono511_gamma` | W2 Ta deposit efficiency | `0.00551` | `0.00559` | `0.98569` | `-0.24` |
+| `pair511_gamma` | W2 Ta deposit efficiency | `0.00545` | `0.00541` | `1.00739` | `0.12` |
+
+This passes the Phase-2 toy W2/broad deposited-energy acceptance threshold for
+the 511-related generated sources. The low-statistics T2 smoke's `2.25x`
+Cu-64 W2 central value was a count fluctuation, not a stable production result.
+The full-chain delayed W2 excess is therefore not explained by a simple
+common-source Cu+Ta W2 EM transport/deposition mismatch in this toy geometry.
+
+Remaining Phase-2 caveat: this is still a toy geometry with an enlarged Ta
+absorber and without common annihilation/stopping ancestry. The next decisive
+step is Phase 3: common full-geometry Cu-64 source positions, source
+region/material audit, raw deposits, common event builder, and analytic W2
+response.
+
 ## 15. Decision after Phase 2
 
 - Phase 1 passes, Phase 2 fails: focus on positron transport, annihilation, atomic de-excitation, and EM thresholds.
@@ -944,8 +981,8 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Compare first-pass branch/line yields for Cu-64, Na-24, Al-28, I-128
 [ ] Build Geant4/MEGAlib 1e6/isotope production decay-kernel outputs if low-yield-line precision is needed
 [x] Build one common external positron/511 source list and pass T0 source-bookkeeping smoke
-[ ] Run Cu/Ta toy transport in both codes (T1/T2 smoke complete; production statistics and acceptance closure open)
-[ ] Scan FLUKA effective EM cuts if needed
+[x] Run Cu/Ta toy transport in both codes (T1/T2 smoke complete; T2 production W2/broad deposited-energy acceptance pass)
+[ ] Scan FLUKA effective EM cuts if full-geometry or ancestry observables reopen a W2 EM-transport discrepancy
 [ ] Build cu64_common_positions.csv
 [ ] Audit source region/material in both geometries
 [ ] Run 1e6 Cu-64 parents per code

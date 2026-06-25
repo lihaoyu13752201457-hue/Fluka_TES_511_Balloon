@@ -1,6 +1,6 @@
 {
   "date": "2026-06-25",
-  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_AND_T2_SMOKE_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
+  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_AND_T2_PRODUCTION_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
   "completed_gates": [
     {
       "gate": "manifest_freeze",
@@ -159,6 +159,51 @@
         "pair511_gamma_w2_ta_deposit_eff_megalib": 0.00390625,
         "largest_511_related_abs_poisson_z": 1.386750490563073
       }
+    },
+    {
+      "gate": "phase2_t2_cu_ta_absorber_transport_production_100k",
+      "status": "PASS",
+      "path": "engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md",
+      "primary_count": 300000,
+      "source_mode": "generated",
+      "source_families": {
+        "cu64_eplus_smoke": 100000,
+        "mono511_gamma": 100000,
+        "pair511_gamma": 100000
+      },
+      "large_input_tables_retained": false,
+      "common_primaries_sha256": "276bf6b64aac96669d6379866e85d05a9a34795fb0cff1c472970f5ffc6ed548",
+      "geometry": {
+        "cu_material": "Copper",
+        "cu_shape": "sphere",
+        "cu_radius_cm": 1.0,
+        "ta_material": "Tantalum",
+        "ta_slab_cm": [
+          4.0,
+          4.0,
+          0.1
+        ],
+        "ta_center_z_cm": 3.0
+      },
+      "key_results": {
+        "cu64_eplus_smoke_w2_ta_deposit_eff_fluka": 0.01132,
+        "cu64_eplus_smoke_w2_ta_deposit_eff_megalib": 0.011,
+        "cu64_eplus_smoke_w2_fluka_over_megalib": 1.0290909090909093,
+        "cu64_eplus_smoke_w2_poisson_z": 0.6773340106676827,
+        "cu64_eplus_smoke_480_550_ta_deposit_eff_fluka": 0.01232,
+        "cu64_eplus_smoke_480_550_ta_deposit_eff_megalib": 0.01212,
+        "cu64_eplus_smoke_480_550_fluka_over_megalib": 1.0165016501650164,
+        "cu64_eplus_smoke_480_550_poisson_z": 0.4045566970313675,
+        "mono511_gamma_w2_ta_deposit_eff_fluka": 0.00551,
+        "mono511_gamma_w2_ta_deposit_eff_megalib": 0.00559,
+        "mono511_gamma_w2_fluka_over_megalib": 0.9856887298747764,
+        "mono511_gamma_w2_poisson_z": -0.24012009007506566,
+        "pair511_gamma_w2_ta_deposit_eff_fluka": 0.00545,
+        "pair511_gamma_w2_ta_deposit_eff_megalib": 0.00541,
+        "pair511_gamma_w2_fluka_over_megalib": 1.0073937153419594,
+        "pair511_gamma_w2_poisson_z": 0.1213794258068809,
+        "largest_511_related_abs_poisson_z": 0.6773340106676827
+      }
     }
   ],
   "ruled_out": [
@@ -166,16 +211,16 @@
     "The high-energy delayed deficit is not explained by a total absence of FLUKA Na-24 1369/2754 keV or Al-28 1779 keV decay photons in the 1e6-parent vacuum production scorer.",
     "The high-energy delayed deficit is not explained by a total absence of Geant4/MEGAlib Na-24 1369/2754 keV or Al-28 1779 keV decay photons in the 2e4-parent independent EventList smoke scorer.",
     "The W2 Cu-64 discrepancy is unlikely to be a simple beta-plus branching bookkeeping error: Geant4/MEGAlib smoke gives 0.1767 positrons per Cu-64 parent and FLUKA production gives 0.176483.",
-    "The next common-source comparison is not already biased at T0 by source-adapter count, particle-code, kinetic-energy, direction, or weight drift for the 2048-row photon/positron smoke list."
+    "The next common-source comparison is not already biased at T0 by source-adapter count, particle-code, kinetic-energy, direction, or weight drift for the 2048-row photon/positron smoke list.",
+    "The full-chain delayed W2 excess is not explained by a simple common-source Cu+Ta W2 EM-transport/deposition mismatch in the enlarged toy geometry: the T2 production W2 ratios are 1.029 for Cu-64 positron rows, 0.986 for mono-511 rows, and 1.007 for pair-511 rows."
   ],
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
-    "Production-statistics common T1/T2 emitted-particle and raw-deposit transport differences",
-    "Exact Ta/TES geometry dependence of T2 deposited-energy efficiency",
-    "Common ancestry/stopping differences for positron slowing, annihilation photons, and photon-to-Ta deposition",
-    "FLUKA EM-cut/material dependence of W2 deposited-energy efficiency",
     "Full-geometry material/region/source-position differences",
-    "Common postprocessing or event-building differences"
+    "Exact physical Ta/TES geometry dependence in full geometry",
+    "Common postprocessing or event-building differences",
+    "Common ancestry/stopping differences for positron slowing, annihilation photons, and photon-to-Ta deposition if full geometry reopens the discrepancy",
+    "FLUKA EM-cut/material dependence of W2 deposited-energy efficiency only if a later full-geometry or ancestry gate reopens a W2 EM-transport discrepancy"
   ],
-  "next_required_gate": "Promote T1/T2 from smoke to production common raw-deposit truth with agreed Ta/TES dimensions and sufficient statistics; if W2 deposited-energy disagreement remains, run a FLUKA EM-cut/material scan before returning to full-geometry differences."
+  "next_required_gate": "Run Phase 3 with common full-geometry Cu-64 source positions, source-region/material audit, raw deposits, one common external event builder, and deterministic analytic W2 response."
 }

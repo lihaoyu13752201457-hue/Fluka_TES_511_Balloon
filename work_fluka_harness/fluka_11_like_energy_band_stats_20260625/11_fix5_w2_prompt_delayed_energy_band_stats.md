@@ -392,6 +392,31 @@ Phase-2 acceptance pass. Production T2 still needs agreed Ta/TES dimensions,
 higher statistics, common ancestry/stopping observables, and deterministic
 analytic W2 response.
 
+## Phase-2 T2 Cu+Ta Production-Statistics Gate
+
+The production-statistics generated-source T2 run repeats the same Cu+Ta toy
+observable with `300000` common primaries: `100000` Cu-64 positron rows,
+`100000` mono-511 photon rows, and `100000` back-to-back-pair photon rows.
+Full input tables were dropped after hashing to avoid committing large
+reproducible tables; the retained artifact keeps the source hash, bounded
+sample, geometry/input decks, and compact summaries.
+
+Key result: the low-statistics `2.25x` Cu-64 W2 smoke ratio does **not** persist.
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | W2 Ta deposit efficiency | `0.01132` (`1132/100000`) | `0.01100` (`1100/100000`) | `1.02909` | `0.68` |
+| `cu64_eplus_smoke` | 480-550 keV Ta deposit efficiency | `0.01232` | `0.01212` | `1.01650` | `0.40` |
+| `mono511_gamma` | W2 Ta deposit efficiency | `0.00551` | `0.00559` | `0.98569` | `-0.24` |
+| `pair511_gamma` | W2 Ta deposit efficiency | `0.00545` | `0.00541` | `1.00739` | `0.12` |
+
+Interpretation: the toy Cu+Ta W2 deposited-energy efficiency is closed at
+production statistics for the 511-related generated sources. This rules out a
+simple common-source Cu/Ta W2 EM transport or Ta-deposition mismatch as the
+reason FLUKA's full-chain delayed W2 fraction is high. The remaining decisive
+route is full-geometry common Cu-64 source positions, region/material audit,
+raw deposits, common event building, and deterministic analytic W2 response.
+
 Audit artifacts:
 
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md`
@@ -400,6 +425,7 @@ Audit artifacts:
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/summary.md`
+- `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md`
 
 ## Follow-Up Checks
 
@@ -416,6 +442,6 @@ composition questions:
    on rejecting single-site events.
 4. Keep reporting energy-band-specific activation fractions; do not quote the
    W2 `6.57%` delayed fraction as a global activation fraction.
-5. Promote T1/T2 from smoke to production common raw-deposit truth with agreed
-   Ta/TES dimensions and enough statistics before treating the full-chain
-   high-energy deficit as a decay-kernel or source-list effect.
+5. Promote the now-passing T2 toy result into full-geometry common raw-deposit
+   truth with agreed source positions, region/material audit, common event
+   builder, exact Ta/TES dimensions, and deterministic analytic W2 response.

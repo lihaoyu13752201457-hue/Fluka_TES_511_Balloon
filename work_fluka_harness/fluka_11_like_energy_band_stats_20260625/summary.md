@@ -150,7 +150,8 @@ This is the check for the photon/electron concern. `deposit_carrier` is the loca
 5. The independent decay-kernel cross-check does not support the hypothesis that one code simply omits the important delayed photons. In fresh independent-source runs, Geant4/MEGAlib smoke and FLUKA production both emit `Na-24` 1369/2754-keV cascades and `Al-28` 1779-keV photons at approximately unit yield; Cu-64 beta-plus yield is also consistent (`0.1767` vs `0.176483`).
 6. The first Phase-2 common-source gate now also passes: FLUKA and MEGAlib both start the same `2048` explicit photon/positron primary rows with closed count, energy, direction, particle-code, and weight bookkeeping. This removes source-adapter resampling as the immediate explanation, but it does not yet test Cu/Ta transport or W2 deposition efficiency.
 7. The first T1 Cu-sphere transport smoke is complete. For 1 cm Cu sphere escape, the 511-related W2 photon yields are close at smoke statistics: Cu-64 positron rows FLUKA/MEGAlib `0.972`, mono-511 rows `0.943`, and pair-511 rows `0.897`; the largest of these approximate Poisson z-scores is `1.21 sigma`. T2/Ta deposition and common raw-deposit truth remain open.
-8. The first T2 Cu+Ta absorber smoke is also complete. It proves both engines can run the same common source through Cu plus a Ta absorber and produce Ta deposited-energy summaries. Low-statistics W2 Ta efficiencies are not yet decisive: Cu-64 positron rows give FLUKA/MEGAlib `2.25` with only `9` vs `4` W2 events (`1.39 sigma`), while mono-511 gives `1` vs `1` W2 event.
+8. The first T2 Cu+Ta absorber smoke proved both engines can reach the same Ta deposited-energy observable, but its `9` vs `4` Cu-64 W2 counts were too low to interpret.
+9. The T2 production-statistics generated-source run now closes the toy W2 deposited-energy gate. With `100000` rows each for Cu-64 positrons, mono-511 photons, and pair-511 photons, the W2 Ta efficiencies are FLUKA/MEGAlib `1.029` for Cu-64 positrons (`1132` vs `1100`, `0.68 sigma`), `0.986` for mono-511 photons, and `1.007` for pair-511 photons. Therefore the full-chain FLUKA delayed W2 excess is not explained by a simple common-source Cu+Ta W2 EM transport/deposition mismatch in this toy geometry.
 
 ## Decay-Kernel Cross-Code Check
 
@@ -226,10 +227,36 @@ source rows.
 | `mono511_gamma` | W2 Ta deposit efficiency | `0.001953` | `0.001953` | `1.0` | `0.00` |
 | `pair511_gamma` | W2 Ta deposit efficiency | `0.005859` | `0.003906` | `1.5` | `0.45` |
 
-Interpretation: the machinery now reaches the actual Ta deposited-energy
-observable in both engines, but the smoke is too low-statistics to satisfy the
-Phase-2 W2-efficiency acceptance criteria. The next required step is production
-T2 with agreed Ta/TES dimensions and enough events for weighted uncertainties.
+Interpretation: the machinery reaches the actual Ta deposited-energy observable
+in both engines, but this smoke alone is too low-statistics to satisfy the
+Phase-2 W2-efficiency acceptance criteria.
+
+## Phase-2 T2 Cu+Ta Production-Statistics Gate
+
+The generated-source production-statistics T2 gate uses the same toy geometry
+but increases the 511-related source list to `300000` rows:
+
+| family | particle | rows |
+|---|---|---:|
+| `cu64_eplus_smoke` | eplus | `100000` |
+| `mono511_gamma` | gamma | `100000` |
+| `pair511_gamma` | gamma | `100000` |
+
+The full common input tables were dropped after hashing to keep the repository
+small; both engines still received the same generated in-memory primary list.
+
+| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |
+|---|---|---:|---:|---:|---:|
+| `cu64_eplus_smoke` | W2 Ta deposit efficiency | `0.01132` | `0.01100` | `1.02909` | `0.68` |
+| `cu64_eplus_smoke` | 480-550 keV Ta deposit efficiency | `0.01232` | `0.01212` | `1.01650` | `0.40` |
+| `mono511_gamma` | W2 Ta deposit efficiency | `0.00551` | `0.00559` | `0.98569` | `-0.24` |
+| `pair511_gamma` | W2 Ta deposit efficiency | `0.00545` | `0.00541` | `1.00739` | `0.12` |
+
+Interpretation: T2 W2/broad deposited-energy efficiency passes the Phase-2 toy
+acceptance threshold for the 511-related generated sources. The next useful
+discriminator is not an immediate FLUKA EM-cut scan for W2, but the
+full-geometry common Cu-64 source-position/material audit and common external
+event builder.
 
 ## Artifacts
 
@@ -241,3 +268,4 @@ T2 with agreed Ta/TES dimensions and enough events for weighted uncertainties.
 - Phase-2 T0 common-source gate: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t0_source_bookkeeping_smoke/summary.md`
 - Phase-2 T1 Cu-sphere smoke: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t1_cu_sphere_transport_smoke/summary.md`
 - Phase-2 T2 Cu+Ta absorber smoke: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_smoke/summary.md`
+- Phase-2 T2 Cu+Ta production-statistics gate: `engineering/crosscode_delayed_closure_20260625/02_common_em_transport/t2_cu_ta_absorber_transport_production_100k/summary.md`

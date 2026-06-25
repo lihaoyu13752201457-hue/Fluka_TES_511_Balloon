@@ -26,6 +26,7 @@ from typing import Any, Iterable
 
 import build_raw_scoring_smoke as scoring
 from run_common_transport_t0_source_gate import COSIMA, PRIMARY_FIELDS, rel, sha256_path, write_fluka_primaries, write_megalib_eventlist
+from run_common_transport_t0_source_gate import build_common_primaries
 from run_common_transport_t1_cu_gate import SOURCE_FORTRAN, load_or_build_primaries, rows_from_csv
 from run_eplus_raw_mvp import env, run, write_json
 
@@ -66,6 +67,28 @@ def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> 
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in fieldnames})
+
+
+def source_family_counts(primaries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    counts: dict[tuple[str, str], int] = defaultdict(int)
+    for row in primaries:
+        counts[(str(row["family"]), str(row["particle"]))] += 1
+    return [
+        {"family": family, "particle": particle, "count": count}
+        for (family, particle), count in sorted(counts.items())
+    ]
+
+
+def primary_sample(primaries: list[dict[str, Any]], limit_per_family: int) -> list[dict[str, Any]]:
+    counts: dict[str, int] = defaultdict(int)
+    sample: list[dict[str, Any]] = []
+    for row in primaries:
+        family = str(row["family"])
+        if counts[family] >= limit_per_family:
+            continue
+        sample.append(row)
+        counts[family] += 1
+    return sample
 
 
 def open_sim(path: Path) -> Iterable[str]:
@@ -555,20 +578,36 @@ def write_summary_md(out_dir: Path, summary: dict[str, Any], comparison: list[di
             return value
         return f"{float(value):.6g}"
 
+    tier_title = "Production-Statistics" if summary["run_tier"] == "production" else "Smoke"
     md = [
-        "# Phase-2 T2 Cu+Ta Absorber Transport Smoke",
+        f"# Phase-2 T2 Cu+Ta Absorber Transport {tier_title}",
         "",
         f"- status: `{summary['status']}`",
         f"- primary_count: `{summary['primary_count']}`",
+        f"- source_mode: `{summary['source_mode']}`",
         f"- geometry: `Cu sphere radius {CU_RADIUS_CM} cm + Ta slab {2*TA_HALF_X_CM} x {2*TA_HALF_Y_CM} x {2*TA_HALF_Z_CM} cm at z={TA_CENTER_Z_CM} cm`",
+        f"- large_input_tables_retained: `{summary['large_input_tables_retained']}`",
+        f"- common_primaries_sha256: `{summary['common_primaries_sha256']}`",
+        f"- common_primaries_sample_csv: `{summary['common_primaries_sample_csv']}`",
         f"- family_summary_csv: `{summary['family_summary_csv']}`",
         f"- comparison_csv: `{summary['comparison_csv']}`",
         "",
-        "## Key Ta Deposit Efficiencies",
+        "## Source Mix",
         "",
-        "| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |",
-        "|---|---|---:|---:|---:|---:|",
+        "| family | particle | count |",
+        "|---|---|---:|",
     ]
+    for row in summary["family_counts"]:
+        md.append(f"| {row['family']} | {row['particle']} | `{row['count']}` |")
+    md.extend(
+        [
+            "",
+            "## Key Ta Deposit Efficiencies",
+            "",
+            "| family | metric | FLUKA | MEGAlib | FLUKA/MEGAlib | z approx |",
+            "|---|---|---:|---:|---:|---:|",
+        ]
+    )
     key_metrics = {"eff_480_550", "eff_w2_510p58_511p42"}
     for row in comparison:
         if row["metric"] not in key_metrics:
@@ -578,18 +617,28 @@ def write_summary_md(out_dir: Path, summary: dict[str, Any], comparison: list[di
             f"`{fmt(row['megalib'])}` | `{fmt(row['fluka_over_megalib'])}` | "
             f"`{float(row['poisson_z_approx']):.3g}` |"
         )
-    md.extend(
-        [
-            "",
-            "## Boundary",
-            "",
-            "- This is a T2 smoke, not the final production T2 closure.",
-            "- The Ta slab is intentionally larger than a physical TES pixel to get smoke statistics from the 2048-row common source.",
-            "- Detector smearing is disabled on the MEGAlib side with `EnergyResolution Ideal`; FLUKA records raw deposited energy.",
-            "- The final production gate still needs higher statistics, exact agreed Ta/TES dimensions, common ancestry/stopping observables, and deterministic analytic W2 response.",
-            "",
-        ]
-    )
+    md.extend(["", "## Boundary", ""])
+    if summary["run_tier"] == "production":
+        md.extend(
+            [
+                "- This is a production-statistics T2 generated-source transport gate, but still a toy geometry rather than full TES geometry.",
+                "- The Ta slab is intentionally larger than a physical TES pixel to get stable deposited-energy statistics.",
+                "- Detector smearing is disabled on the MEGAlib side with `EnergyResolution Ideal`; FLUKA records raw deposited energy.",
+                "- Full input tables are allowed to be dropped after hashing; both engines still receive the same in-memory primary list in the same run.",
+                "- The final closure still needs exact full-geometry source positions, material/region audit, common ancestry/stopping observables, and deterministic analytic W2 response.",
+            ]
+        )
+    else:
+        md.extend(
+            [
+                "- This is a T2 smoke, not the final production T2 closure.",
+                "- The Ta slab is intentionally larger than a physical TES pixel to get smoke statistics from the 2048-row common source.",
+                "- Detector smearing is disabled on the MEGAlib side with `EnergyResolution Ideal`; FLUKA records raw deposited energy.",
+                "- For larger generated-source runs, full input tables may be dropped after hashing; both engines still receive the same in-memory primary list in the same run.",
+                "- The final production gate still needs higher statistics, exact agreed Ta/TES dimensions, common ancestry/stopping observables, and deterministic analytic W2 response.",
+            ]
+        )
+    md.append("")
     (out_dir / "summary.md").write_text("\n".join(md), encoding="utf-8")
 
 
@@ -597,18 +646,46 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--source-csv", type=Path, default=T0_SOURCE_CSV)
+    ap.add_argument("--source-mode", choices=("csv", "generated"), default="csv")
+    ap.add_argument("--run-tier", choices=("smoke", "production"), default="smoke")
     ap.add_argument("--seed", type=int, default=24066701)
+    ap.add_argument("--mono511", type=int, default=512)
+    ap.add_argument("--pair511", type=int, default=256)
+    ap.add_argument("--high-gamma-each", type=int, default=256)
+    ap.add_argument("--positrons", type=int, default=512)
+    ap.add_argument("--source-sample-per-family", type=int, default=50)
+    ap.add_argument("--drop-large-input-tables", action="store_true")
     ap.add_argument("--keep-run-products", action="store_true")
     args = ap.parse_args()
+
+    if min(args.mono511, args.pair511, args.high_gamma_each, args.positrons, args.source_sample_per_family) < 0:
+        raise SystemExit("source counts and sample limits must be non-negative")
 
     out_dir = args.out_dir.expanduser().resolve()
     if out_dir.exists():
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    primaries = load_or_build_primaries(args.source_csv.expanduser().resolve(), args.seed)
+    if args.source_mode == "generated":
+        primaries = build_common_primaries(
+            seed=args.seed,
+            mono511=args.mono511,
+            pair511=args.pair511,
+            high_gamma_each=args.high_gamma_each,
+            positrons=args.positrons,
+        )
+    else:
+        primaries = load_or_build_primaries(args.source_csv.expanduser().resolve(), args.seed)
+    if not primaries:
+        raise SystemExit("no primaries generated")
+
+    large_input_tables_retained = not args.drop_large_input_tables
     common_csv = out_dir / "common_primaries.csv"
     write_csv(common_csv, primaries, PRIMARY_FIELDS)
+    common_sha = sha256_path(common_csv)
+    common_sample_csv = out_dir / "common_primaries_sample.csv"
+    sample_rows = primary_sample(primaries, args.source_sample_per_family)
+    write_csv(common_sample_csv, sample_rows, PRIMARY_FIELDS)
 
     megalib_run = run_megalib(out_dir, primaries, args.seed + 100, args.keep_run_products)
     fluka_run = run_fluka(out_dir, primaries, args.seed + 200, args.keep_run_products)
@@ -629,18 +706,46 @@ def main() -> int:
     if megalib_run["ta_hit_sample"]:
         write_csv(hit_sample_csv, list(megalib_run["ta_hit_sample"]), list(megalib_run["ta_hit_sample"][0].keys()))
 
+    if args.drop_large_input_tables:
+        for maybe_large in (
+            common_csv,
+            ROOT / str(fluka_run["primaries_dat"]),
+            ROOT / str(megalib_run["eventlist"]),
+        ):
+            try:
+                maybe_large.unlink()
+            except FileNotFoundError:
+                pass
+
     run_ok = fluka_run["returncode"] == 0 and megalib_run["returncode"] == 0
     deposit_ok = bool(fluka_run["ta_deposits"]) and bool(megalib_run["ta_deposits"])
-    status = "T2_CU_TA_ABSORBER_TRANSPORT_SMOKE_COMPLETE" if run_ok and deposit_ok else "T2_CU_TA_ABSORBER_TRANSPORT_SMOKE_INCOMPLETE"
+    status_kind = "PRODUCTION" if args.run_tier == "production" else "SMOKE"
+    status = (
+        f"T2_CU_TA_ABSORBER_TRANSPORT_{status_kind}_COMPLETE"
+        if run_ok and deposit_ok
+        else f"T2_CU_TA_ABSORBER_TRANSPORT_{status_kind}_INCOMPLETE"
+    )
     summary = {
         "status": status,
-        "run_type": "phase2_t2_cu_ta_absorber_transport_smoke",
+        "run_type": f"phase2_t2_cu_ta_absorber_transport_{args.run_tier}",
+        "run_tier": args.run_tier,
         "created_utc": now_utc(),
+        "source_mode": args.source_mode,
         "seed": args.seed,
-        "source_csv": rel(args.source_csv),
-        "common_primaries_csv": rel(common_csv),
-        "common_primaries_sha256": sha256_path(common_csv),
+        "source_csv": rel(args.source_csv) if args.source_mode == "csv" else "",
+        "source_generation_counts": {
+            "mono511": args.mono511 if args.source_mode == "generated" else "",
+            "pair511_pairs": args.pair511 if args.source_mode == "generated" else "",
+            "high_gamma_each": args.high_gamma_each if args.source_mode == "generated" else "",
+            "positrons": args.positrons if args.source_mode == "generated" else "",
+        },
+        "large_input_tables_retained": large_input_tables_retained,
+        "common_primaries_csv": rel(common_csv) if large_input_tables_retained else "",
+        "common_primaries_sha256": common_sha,
+        "common_primaries_sample_csv": rel(common_sample_csv),
+        "common_primaries_sample_sha256": sha256_path(common_sample_csv),
         "primary_count": len(primaries),
+        "family_counts": source_family_counts(primaries),
         "geometry": {
             "cu_radius_cm": CU_RADIUS_CM,
             "ta_half_x_cm": TA_HALF_X_CM,
@@ -660,8 +765,9 @@ def main() -> int:
             "MEGAlib": {key: value for key, value in megalib_run.items() if key not in {"ta_deposits", "ta_hit_sample"}},
         },
         "notes": [
-            "This is a smoke gate for Ta deposited-energy response, not final Phase-2 closure.",
-            "The Ta slab is intentionally larger than a physical TES pixel for smoke statistics.",
+            "This is a generated-source Ta deposited-energy transport gate, not final full-geometry closure.",
+            "The Ta slab is intentionally larger than a physical TES pixel for stable deposited-energy statistics.",
+            "Generated-source production runs may drop full input tables after hashing to avoid retaining large reproducible tables.",
         ],
     }
     write_json(out_dir / "summary.json", summary)

@@ -57,10 +57,14 @@ the full-chain delayed W2 excess.
 The Phase-3 Cu-64 common source-position authority is built. It contains `6927`
 source-v2 Cu-64 positions with `Z=29`, `A=64`, `isomer=0` and total Cu-64
 activity weight `4.701904943 Bq`. The source is dominated by neutron production
-(`6918` rows, `4.6958012557 Bq`). This starts the full-geometry closure path,
-but it is not a material verdict: `source_material` is intentionally
-`PENDING_REGION_AUDIT` until the same positions are resolved in Geant4 logical
-volumes and FLUKA regions/materials.
+(`6918` rows, `4.6958012557 Bq`). The position file keeps
+`source_material=PENDING_REGION_AUDIT`, but the follow-on name-level material
+audit and static coordinate-containment audit now pass: all rows map to
+translated FLUKA regions/materials and all rows are inside their declared source
+volume after applying the explicit `InstrumentFrame.Rotation 0 45 0` inverse
+transform. A deterministic `1000000`-history Cu-64 parent resampling authority
+is also built and covers all `6927` source rows at least once. Full transport
+and raw-deposit truth remain open.
 
 ## Evidence
 
@@ -161,6 +165,14 @@ Phase-3 Cu-64 static coordinate-containment audit:
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.json
 engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_coordinate_containment_audit.csv
+```
+
+Phase-3 Cu-64 parent resampling authority:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.json
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_sample.csv
 ```
 
 Runtime identity result:
@@ -270,6 +282,20 @@ Phase-3 Cu-64 static coordinate-containment audit:
 | minimum approximate source-boundary margin | `2.325151502e-05 cm` |
 | runtime point location tested | `False` |
 
+Phase-3 Cu-64 parent resampling authority:
+
+| quantity | value |
+|---|---:|
+| audit status | `CU64_PARENT_RESAMPLING_AUTHORITY_COMPLETE` |
+| histories | `1000000` |
+| selected unique source rows | `6927 / 6927` |
+| seed | `20260625_phase3_cu64` |
+| selection stream SHA256 | `3be6695480c8b130ea9a396cbe34efdc47e97be4aa3575bcf4b2968be147a98e` |
+| full local list SHA256 | `a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975` |
+| selected `Copper` histories | `937427` |
+| selected `CuNi` histories | `62573` |
+| transport run performed | `False` |
+
 ## What This Does Not Prove
 
 This does not close the Geant4/MEGAlib versus FLUKA delayed discrepancy. It
@@ -283,10 +309,12 @@ absorber dimensions and low event counts. The T2 production-statistics toy gate
 passes W2/broad deposited-energy efficiency for generated 511-related sources,
 but it still lacks exact full-geometry Ta/TES dimensions, runtime engine point
 location, ancestry/stopping truth, and the final analytic W2 response. The
-Phase-3 position file, name-level audit, and static coordinate-containment audit
-now show that the common Cu-64 coordinates are internally consistent with the
+Phase-3 position file, name-level audit, static coordinate-containment audit,
+and deterministic 1e6-parent resampling authority now show that the common
+Cu-64 coordinates and parent stream are internally consistent with the
 translated geometry authority after the explicit InstrumentFrame transform.
-They do not yet replace a FLUKA or Geant4 runtime point-location scorer.
+They do not yet replace a FLUKA or Geant4 runtime point-location scorer or a
+full transport raw-deposit run.
 
 Open discriminators:
 

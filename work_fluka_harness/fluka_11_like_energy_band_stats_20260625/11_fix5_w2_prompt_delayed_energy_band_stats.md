@@ -448,6 +448,17 @@ The deepest resolved material split is `6494` rows in `Copper` (`93.75%`
 activity) and `433` rows in `CuNi` (`6.25%`). This is still a static translator
 audit, not a runtime FLUKA/Geant4 point-location scorer.
 
+The deterministic `1,000,000`-history Cu-64 parent resampling authority is also
+built from the same `cu64_common_positions.csv`. It uses seed
+`20260625_phase3_cu64`; the selected-index stream SHA256 is
+`3be6695480c8b130ea9a396cbe34efdc47e97be4aa3575bcf4b2968be147a98e`, and the
+full local list SHA256 is
+`a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975`. All
+`6927` source rows are represented at least once; selected histories split into
+`937427` `Copper` and `62573` `CuNi` parents. The full list is intentionally
+ignored under `full_untracked/`; the repo keeps only compact summaries and a
+bounded sample. Transport has not yet been run from this list.
+
 Audit artifacts:
 
 - `engineering/crosscode_delayed_closure_20260625/01_cu64_decay_kernel/geant4_megalib_vacuum_smoke/summary.md`
@@ -460,6 +471,7 @@ Audit artifacts:
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/summary.md`
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_region_material_name_audit.md`
 - `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/source_coordinate_containment_audit.md`
+- `engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md`
 
 ## Follow-Up Checks
 

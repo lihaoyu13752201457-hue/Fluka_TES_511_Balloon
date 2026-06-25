@@ -39,6 +39,15 @@
         "runtime_point_location_tested": false,
         "coordinate_transform_policy": "source-v2 coordinates are inverse-rotated by InstrumentFrame.Rotation 0 45 0 into the MEGAlib/FLUKA-translator local frame before static containment"
     },
+    "parent_resampling_authority": {
+        "status": "CU64_PARENT_RESAMPLING_AUTHORITY_COMPLETE",
+        "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md",
+        "histories": 1000000,
+        "selected_unique_positions": 6927,
+        "selection_stream_sha256": "3be6695480c8b130ea9a396cbe34efdc47e97be4aa3575bcf4b2968be147a98e",
+        "full_list_csv_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
+        "transport_run_performed": false
+    },
     "top_source_volumes": [
     {
       "activity_fraction": "0.39136667351115603542250747257208020931067939116759672020202725726887290858593176",

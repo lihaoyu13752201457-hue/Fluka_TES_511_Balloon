@@ -1,0 +1,161 @@
+{
+  "algorithm": "counter-based SHA256 u64: sha256('phase3-cu64-parent-resampling-v1|{seed}|{history_id}\\n') first 8 bytes big-endian; bisect on sampling_probability CDF",
+  "boundary": "parent resampling authority only; full transport and raw deposits remain open",
+  "coordinate_audit_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_source_coordinate_containment_audit.csv",
+  "coordinate_audit_sha256": "d223ff99a03ed0425ab939789d6dadca8ef05c363fb562cfeb0a41fb288062ff",
+  "full_list_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv",
+  "full_list_csv_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
+  "full_list_written": true,
+  "histories": 1000000,
+  "material_summary": [
+    {
+      "resolved_static_material": "Copper",
+      "selected_histories": 937427,
+      "selection_fraction": 0.937427,
+      "source_rows_represented_activity_Bq": "4.4079931270587108550100473276045999999999999999999999999999999999999999999999541"
+    },
+    {
+      "resolved_static_material": "CuNi",
+      "selected_histories": 62573,
+      "selection_fraction": 0.062573,
+      "source_rows_represented_activity_Bq": "0.29391181609029989743631514677499999999999999999999999999999999999999999999999997"
+    }
+  ],
+  "material_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_material_summary.csv",
+  "material_summary_sha256": "9d55da238c07f9d38231e0473ff9f2cd6b07dd811aa511cac0eff0163190ef42",
+  "no_sim_gz_replay": true,
+  "positions_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_common_positions.csv",
+  "positions_sha256": "28aa15b2669e9ef7e40956ec7035aca0ed289014f23b03dd4181f7b0a569bf98",
+  "sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_sample.csv",
+  "sample_csv_sha256": "cec68545dcbbe487c06e697a49cd966a027ce2f7e13d178f653ee7a0c256255d",
+  "seed": "20260625_phase3_cu64",
+  "selected_unique_positions": 6927,
+  "selection_stream_sha256": "3be6695480c8b130ea9a396cbe34efdc47e97be4aa3575bcf4b2968be147a98e",
+  "source_position_rows": 6927,
+  "status": "CU64_PARENT_RESAMPLING_AUTHORITY_COMPLETE",
+  "top_volume_summary": [
+    {
+      "selected_histories": 391829,
+      "selection_fraction": 0.391829,
+      "source_rows_represented_activity_Bq": "1.8401688967658895710996982167468999999999999999999999999999999999999999999999923",
+      "source_volume": "ColdPlate_4K"
+    },
+    {
+      "selected_histories": 188826,
+      "selection_fraction": 0.188826,
+      "source_rows_represented_activity_Bq": "0.89191668111207599723777941972400000000000000000000000000000000000000000000000082",
+      "source_volume": "ColdPlate_Still_0p7K"
+    },
+    {
+      "selected_histories": 95876,
+      "selection_fraction": 0.095876,
+      "source_rows_represented_activity_Bq": "0.45138858196186340088099253016190000000000000000000000000000000000000000000000075",
+      "source_volume": "ColdPlate_CP_100mK_intercept"
+    },
+    {
+      "selected_histories": 84445,
+      "selection_fraction": 0.084445,
+      "source_rows_represented_activity_Bq": "0.39640762262525436513350587930000000000000000000000000000000000000000000000000090",
+      "source_volume": "ColdPlate_MXC_50mK_SD_anchor"
+    },
+    {
+      "selected_histories": 31280,
+      "selection_fraction": 0.03128,
+      "source_rows_represented_activity_Bq": "0.14729529813301403635953899959999999999999999999999999999999999999999999999999990",
+      "source_volume": "Cu_50mK_StillLike_Can_side_wall_rectcut_window_band"
+    },
+    {
+      "selected_histories": 28450,
+      "selection_fraction": 0.02845,
+      "source_rows_represented_activity_Bq": "0.13439823989680554383074039726190000000000000000000000000000000000000000000000004",
+      "source_volume": "DR_Still_Pot_Cu"
+    },
+    {
+      "selected_histories": 26982,
+      "selection_fraction": 0.026982,
+      "source_rows_represented_activity_Bq": "0.12693189286116877787665342370000000000000000000000000000000000000000000000000018",
+      "source_volume": "Cu_50mK_StillLike_Can_bottom_cap_2mm"
+    },
+    {
+      "selected_histories": 26299,
+      "selection_fraction": 0.026299,
+      "source_rows_represented_activity_Bq": "0.12353799198252790146283916100000000000000000000000000000000000000000000000000010",
+      "source_volume": "Cu_50mK_StillLike_Can_side_wall_above_side_port"
+    },
+    {
+      "selected_histories": 17915,
+      "selection_fraction": 0.017915,
+      "source_rows_represented_activity_Bq": "0.084168741790293735062593714090000000000000000000000000000000000000000000000000004",
+      "source_volume": "DR_Capillary_CuNi_4K_60K"
+    },
+    {
+      "selected_histories": 17828,
+      "selection_fraction": 0.017828,
+      "source_rows_represented_activity_Bq": "0.082811181438837384497068009030000000000000000000000000000000000000000000000000028",
+      "source_volume": "DR_4K_Condenser_Cu"
+    },
+    {
+      "selected_histories": 17795,
+      "selection_fraction": 0.017795,
+      "source_rows_represented_activity_Bq": "0.082811181438837384497068009030000000000000000000000000000000000000000000000000028",
+      "source_volume": "Cu_50mK_StillLike_Can_side_wall_below_side_port"
+    },
+    {
+      "selected_histories": 16721,
+      "selection_fraction": 0.016721,
+      "source_rows_represented_activity_Bq": "0.078738500384468332800490893819999999999999999999999999999999999999999999999999975",
+      "source_volume": "DR_Capillary_CuNi_Still_4K"
+    },
+    {
+      "selected_histories": 14457,
+      "selection_fraction": 0.014457,
+      "source_rows_represented_activity_Bq": "0.067199237397089352993522400759999999999999999999999999999999999999999999999999975",
+      "source_volume": "DR_MixingChamber_Cu"
+    },
+    {
+      "selected_histories": 13913,
+      "selection_fraction": 0.013913,
+      "source_rows_represented_activity_Bq": "0.065162896869904827145233843169999999999999999999999999999999999999999999999999973",
+      "source_volume": "DR_Continuous_HEX_CuNi_CP_to_Still"
+    },
+    {
+      "selected_histories": 9197,
+      "selection_fraction": 0.009197,
+      "source_rows_represented_activity_Bq": "0.04344193124660321809682256211000000",
+      "source_volume": "DR_Continuous_HEX_CuNi_MXC_to_CP"
+    },
+    {
+      "selected_histories": 4708,
+      "selection_fraction": 0.004708,
+      "source_rows_represented_activity_Bq": "0.022399745799029784331174133579999999999999999999999999999999999999999999999999995",
+      "source_volume": "Cu_SubstrateSupport_SolidDisk_L0_deepest"
+    },
+    {
+      "selected_histories": 3312,
+      "selection_fraction": 0.003312,
+      "source_rows_represented_activity_Bq": "0.015611944041748031503545608260000000000000000000000000000000000000000000000000003",
+      "source_volume": "PreCool_FlexLink_Cu_remote_interface"
+    },
+    {
+      "selected_histories": 2992,
+      "selection_fraction": 0.002992,
+      "source_rows_represented_activity_Bq": "0.014254383690291680938019903189999999999999999999999999999999999999999999999999999",
+      "source_volume": "DR_Capillary_CuNi_CP_Still"
+    },
+    {
+      "selected_histories": 1835,
+      "selection_fraction": 0.001835,
+      "source_rows_represented_activity_Bq": "0.0081453621087381033931542303950000000000000000000000000000000000000000000000000003",
+      "source_volume": "DR_Capillary_CuNi_MXC_CP"
+    },
+    {
+      "selected_histories": 432,
+      "selection_fraction": 0.000432,
+      "source_rows_represented_activity_Bq": "0.002036340527184525848288557599",
+      "source_volume": "Cu_SubstrateSupport_OpenRing_L5_YP_panel"
+    }
+  ],
+  "transport_run_performed": false,
+  "volume_summary_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_volume_summary.csv",
+  "volume_summary_sha256": "76052fd7693e7208759bc7fe0cafc15c7e0efac54d0c71a8899c495a565b55cb"
+}

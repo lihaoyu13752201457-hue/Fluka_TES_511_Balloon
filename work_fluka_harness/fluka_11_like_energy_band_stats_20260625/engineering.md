@@ -672,6 +672,38 @@ display math block:
 
 P(W2 | Cu-64 decay, common source positions)
 
+### 17.2 Deterministic Cu-64 parent resampling status, 2026-06-25
+
+The Phase-3 diagnostic parent list is built reproducibly:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.json
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_sample.csv
+```
+
+It draws `1,000,000` Cu-64 parent histories from `cu64_common_positions.csv`
+using the normalized `sampling_probability` column and a counter-based SHA256
+random stream:
+
+```text
+seed: 20260625_phase3_cu64
+selection_stream_sha256: 3be6695480c8b130ea9a396cbe34efdc47e97be4aa3575bcf4b2968be147a98e
+full_list_csv_sha256: a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975
+```
+
+The full selected-index list exists locally at:
+
+```text
+engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/full_untracked/cu64_parent_resampling_1e6.csv
+```
+
+That file is intentionally ignored by git (`268 MB` locally); the repository
+keeps only the hash, bounded sample, and summaries. All `6927` source-position
+rows are represented at least once in the 1e6 parent list. The selected-history
+material split is `937427` `Copper` parents and `62573` `CuNi` parents. No
+FLUKA or MEGAlib transport has been run by this resampling gate.
+
 ## 18. Source-region audit
 
 For every unique source position, record in both codes:
@@ -1086,6 +1118,7 @@ Keep the headline as a reference-model estimate and include both delayed values 
 [x] Run Cu/Ta toy transport in both codes (T1/T2 smoke complete; T2 production W2/broad deposited-energy acceptance pass)
 [ ] Scan FLUKA effective EM cuts if full-geometry or ancestry observables reopen a W2 EM-transport discrepancy
 [x] Build cu64_common_positions.csv
+[x] Build deterministic 1e6 Cu-64 parent resampling authority
 [x] Audit source-volume name/material translation against the FLUKA region map
 [x] Static coordinate-containment audit after inverse InstrumentFrame transform
 [ ] Runtime engine point-location audit in Geant4/FLUKA, if required before production transport

@@ -31,3 +31,7 @@ engineering/**/*.log
 engineering/**/*.out
 engineering/**/ran*
 engineering/**/core
+
+# Large reproducible source-driver tables for production runs. Keep compact
+# manifests, hashes and bounded samples in git instead.
+engineering/**/full_untracked/

@@ -1,6 +1,6 @@
 {
   "date": "2026-06-25",
-  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_T2_PRODUCTION_PHASE3_POSITION_NAME_AND_STATIC_COORDINATE_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
+  "status": "FLUKA_SOURCE_IDENTITY_DECAY_KERNEL_T0_T1_SMOKE_T2_PRODUCTION_PHASE3_POSITION_NAME_STATIC_COORDINATE_AND_PARENT_RESAMPLING_GATES_COMPLETE__CROSSCODE_CLOSURE_INCOMPLETE",
   "completed_gates": [
     {
       "gate": "manifest_freeze",
@@ -283,6 +283,30 @@
         }
       },
       "boundary": "static translator containment only; runtime Geant4/FLUKA point location remains open"
+    },
+    {
+      "gate": "phase3_cu64_parent_resampling_authority",
+      "status": "COMPLETE",
+      "path": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_summary.md",
+      "histories": 1000000,
+      "seed": "20260625_phase3_cu64",
+      "selected_unique_positions": 6927,
+      "selection_stream_sha256": "3be6695480c8b130ea9a396cbe34efdc47e97be4aa3575bcf4b2968be147a98e",
+      "full_list_csv_sha256": "a2b5dbb883e49e16154290c0275561f41a6799f3753f4396262ad07f291a3975",
+      "sample_csv": "engineering/crosscode_delayed_closure_20260625/03_full_geometry_same_source/cu64_parent_resampling_sample.csv",
+      "material_summary": {
+        "Copper": {
+          "selected_histories": 937427,
+          "selection_fraction": 0.937427
+        },
+        "CuNi": {
+          "selected_histories": 62573,
+          "selection_fraction": 0.062573
+        }
+      },
+      "full_list_policy": "full 1e6-row selected-index CSV is local and ignored under full_untracked; repository stores hashes, summaries and bounded sample",
+      "transport_run_performed": false,
+      "boundary": "parent resampling authority only; full transport and raw deposits remain open"
     }
   ],
   "ruled_out": [
@@ -293,7 +317,8 @@
     "The next common-source comparison is not already biased at T0 by source-adapter count, particle-code, kinetic-energy, direction, or weight drift for the 2048-row photon/positron smoke list.",
     "The full-chain delayed W2 excess is not explained by a simple common-source Cu+Ta W2 EM-transport/deposition mismatch in the enlarged toy geometry: the T2 production W2 ratios are 1.029 for Cu-64 positron rows, 0.986 for mono-511 rows, and 1.007 for pair-511 rows.",
     "The built Cu-64 common-position rows are not missing from the FLUKA translation map at source-volume-name level: 6927/6927 rows map to translated FLUKA region/material names.",
-    "The built Cu-64 common-position rows are not statically outside their declared source volumes after applying the explicit InstrumentFrame transform: 6927/6927 rows pass static containment and resolve to Copper/CuNi."
+    "The built Cu-64 common-position rows are not statically outside their declared source volumes after applying the explicit InstrumentFrame transform: 6927/6927 rows pass static containment and resolve to Copper/CuNi.",
+    "The Phase-3 Cu-64 parent stream is no longer undefined: a deterministic 1e6-history selected-index authority exists, covers 6927/6927 source rows, and has a recorded full-list SHA256."
   ],
   "not_yet_ruled_out": [
     "Geant4/MEGAlib production-statistics low-yield decay-kernel differences",
